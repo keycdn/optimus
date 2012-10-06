@@ -41,7 +41,7 @@ Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-T
 
 = Beschränkungen =
 * Bilder in folgenden Formaten werden komprimiert: PNG, GIF und JPEG.
-* Bilder über 2 MB werden ignoriert, Vorschauvarianten dennoch optimiert.
+* Bilder über 100 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
 * Durch den notwendigen Transfer der Bilder zum *Optimus*-Server verzögert sich die Fertigstellung des Upload-Vorgangs.
 * Keep it simple: *Optimus* kommt ohne einer Optionsseite aus.
 
@@ -83,6 +83,10 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 
 == Changelog ==
+
+= 0.0.4 =
+* Diverse Code-Optimierungen
+* Reduzierung der Max-Größe auf 100 KB
 
 = 0.0.3 =
 * Unterstützung für PHP 5.2.4

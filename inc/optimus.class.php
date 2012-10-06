@@ -200,7 +200,9 @@ class Optimus
 			}
 			
 			/* Umkehren */
-			$todo_files = array_reverse( $todo_files );
+			$todo_files = array_reverse(
+				array_unique($todo_files)
+			);
 		}
 		
 		$result_diff = array();
@@ -211,7 +213,7 @@ class Optimus
 			$upload_filesize = (int)filesize($upload_path . $file);
 
 			/* Zu klein/groß? */
-			if ( $upload_filesize <= 0 or $upload_filesize > 1024 * 1024 * 2 ) {
+			if ( $upload_filesize <= 0 or $upload_filesize > 1024 * 100 ) {
 				continue;
 			}
 			
@@ -221,9 +223,9 @@ class Optimus
 			/* Inhalt */
 			$result_body = wp_remote_retrieve_body($result);
 			
-			/* 403 als Antwort? */
-			if ( wp_remote_retrieve_response_code($result) === 403 ) {
-				$upload_data['optimus'] = $result_body;
+			/* Kein 200 als Antwort? */
+			if ( wp_remote_retrieve_response_code($result) !== 200 ) {
+				$upload_data['optimus'] = esc_html($result_body);
 				
 				return $upload_data;
 			}
