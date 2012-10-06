@@ -23,7 +23,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 = Prinzip =
 Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den entfernten *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die komprimierte Ausgabe in der Mediathek.
 
-Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar. An der gleichen Stelle werden auch Fehler abgebildet.
+Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/). An der gleichen Stelle werden auch Fehler abgebildet.
 
 
 = Vorteile =
@@ -90,7 +90,7 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 = 0.0.4 =
 * Diverse Code-Optimierungen
-* Reduzierung der Max-Größe auf 100 KB
+* Reduzierung der Max-Größe
 
 = 0.0.3 =
 * Unterstützung für PHP 5.2.4
