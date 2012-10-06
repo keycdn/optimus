@@ -39,9 +39,13 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie ImgOptim. *Optimus* hat einen gravierenden Vorteil, dass auch von WordPress erstellte Thumbnails eines Bildes behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
 
 
+= Empfehlung =
+*Optimus* mag Bilder im JPEG-Format besonders - diese lassen sich in der Größer am schnellsten reduzieren. Speichert eure Fotos daher als JPEG statt PNG. PNGs sind eher für Illustrationen geeignet.
+
+
 = Beschränkungen =
 * Bilder in folgenden Formaten werden komprimiert: PNG, GIF und JPEG.
-* Bilder über 100 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
+* Bilder über 200 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
 * Durch den notwendigen Transfer der Bilder zum *Optimus*-Server verzögert sich die Fertigstellung des Upload-Vorgangs.
 * Keep it simple: *Optimus* kommt ohne einer Optionsseite aus.
 
