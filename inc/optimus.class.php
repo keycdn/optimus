@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.1
+	* @change  0.0.4
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -221,11 +221,11 @@ class Optimus
 			$result = self::_optimize_upload_image( $upload_url . $file	);
 			
 			/* Inhalt */
-			$result_body = wp_remote_retrieve_body($result);
+			$result_body = trim( wp_remote_retrieve_body($result) );
 			
 			/* Kein 200 als Antwort? */
 			if ( wp_remote_retrieve_response_code($result) !== 200 ) {
-				$upload_data['optimus'] = esc_html($result_body);
+				$upload_data['optimus'] = ( empty($result_body) ? 'Unbekannter Fehler' : esc_html($result_body) );
 				
 				return $upload_data;
 			}
