@@ -40,7 +40,7 @@ Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-T
 
 
 = Empfehlung =
-*Optimus* mag Bilder im JPEG-Format besonders - diese lassen sich in der Größer am schnellsten reduzieren. Speichert eure Fotos daher als JPEG statt PNG. PNGs sind eher für Illustrationen geeignet.
+*Optimus* mag Bilder im JPEG-Format besonders - diese lassen sich in der Größe am schnellsten reduzieren. Speichert eure Fotos daher als JPEG statt PNG. PNGs sind eher für Illustrationen geeignet.
 
 
 = Beschränkungen =
