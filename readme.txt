@@ -16,7 +16,6 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 == Description ==
 
-= Tschüss, Smush.it =
 *Optimus* übernimmt die automatische Komprimierung der hochgeladenen Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
 
 
