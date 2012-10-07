@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.4
+	* @change  0.0.5
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -183,6 +183,11 @@ class Optimus
 		
 		/* Kein richtiges Format */
 		if ( ! file_is_displayable_image( $upload_path . $upload_file ) ) {
+			return $upload_data;
+		}
+		
+		/* Prüfung des URL-Formats */
+		if ( ( ! $url_details = parse_url($upload_url) ) or empty($url_details['host']) or empty($url_details['path']) ) {
 			return $upload_data;
 		}
 		
