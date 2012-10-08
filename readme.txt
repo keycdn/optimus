@@ -19,6 +19,10 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 *Optimus* übernimmt die automatische Komprimierung der hochgeladenen Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
 
 
+= Wichtig =
+Um den Support-Aufwand zu reduzieren, liest euch die Plugin-Beschreibung bis zum Ende durch. Danke!
+
+
 = Prinzip =
 Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den entfernten *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die komprimierte Ausgabe in der Mediathek.
 
@@ -87,6 +91,10 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Changelog ==
 
+= 0.0.5 =
+* Zusatzabfrage für (korrupte) Bild-URLs
+* Weiterer [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/)
+
 = 0.0.4 =
 * Diverse Code-Optimierungen
 * Reduzierung der Max-Größe
@@ -105,3 +113,4 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 == Screenshots ==
 
 1. Anzeige der Komprimierung in Prozent
+2. Hochgeladene Thumbnails mit und ohne *Optimus*
