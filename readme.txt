@@ -117,10 +117,3 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 1. Anzeige der Komprimierung in Prozent
 2. Hochgeladene Thumbnails mit und ohne *Optimus*
-
-
-
-== Supporters ==
-
-* [Mirko Müller](http://www.mirko.de)
-* [Dominik Schilling](http://wpgrafie.de)
