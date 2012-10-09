@@ -1,6 +1,6 @@
 === Optimus ===
 Contributors: sergej.mueller
-Tags: images, optimize, smush.it, compress
+Tags: images, optimize, compress
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6
 Requires at least: 3.4
 Tested up to: 3.5
@@ -20,7 +20,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 
 = Wichtig =
-Um den Support-Aufwand zu reduzieren, liest euch die Plugin-Beschreibung bis zum Ende durch. Danke!
+Um den Support-Aufwand zu reduzieren, liest euch die Plugin-Beschreibung bis zum Ende durch. Beachtet auch die [FAQ](http://wordpress.org/extend/plugins/optimus/faq/).
 
 
 = Prinzip =
@@ -117,3 +117,21 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 1. Anzeige der Komprimierung in Prozent
 2. Hochgeladene Thumbnails mit und ohne *Optimus*
+
+
+
+== Frequently Asked Questions ==
+
+= Generell =
+Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der IP-Adresse bestraft. Das gilt auch für Power-Nutzer, die keinerlei Unterstützung geleistet haben (Stichwort *Nehmen UND Geben*).
+
+*Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
+
+= Unzugängliche Datei =
+Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ursachen können dafür verantwortlich sein:
+
+* Das Bild befindet sich in einem Blog, welches im Web nicht erreichbar ist. Lokale - also auf dem Desktop-Rechner installierte - WordPress-Blogs zählen ebenfalls dazu.
+* Geschütztes Upload-Verzeichnis kann genau so für Unzugänglichkeit der Bilder zuständig sein.
+
+= Korrupte Bild-URL =
+Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet.
