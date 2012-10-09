@@ -123,7 +123,6 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Frequently Asked Questions ==
 
-= Generell =
 Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der IP-Adresse bestraft. Das gilt auch für Power-Nutzer, die keinerlei Unterstützung geleistet haben (Stichwort *Nehmen UND Geben*).
 
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
