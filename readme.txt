@@ -62,6 +62,7 @@ Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-T
 = Warum mache ich das? =
 smush.it hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* stelle ich eine geschwinde Alternative zur Verfügung, die jedoch nicht wie smush.it enden soll. Daher meine Bitte: Missbraucht den Service nicht. Ich gebe euch ein feines und unkompliziertes Plugin in die Hände und erwarte Respekt und Kooperation.
 
+= Finanzierung =
 Zurzeit finanziere ich das Projekt aus Einnahmen meines [SEO-Plugins](http://wpseo.de). Performance-Server kosten Geld. Über die Unterstützung jeder Art freue ich mich dennoch:
 
 * Per [Flattr](http://flattr.com/profile/sergej.mueller)
