@@ -66,7 +66,7 @@ Zurzeit finanziere ich das Projekt aus Einnahmen meines [SEO-Plugins](http://wps
 
 * Per [Flattr](http://flattr.com/profile/sergej.mueller)
 * Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6)
-* Empfehlung via Blogbeitrag
+* Empfehlung via Blogbeitrag oder Tweet
 * Oder oder
 
 Sollte sich das Projekt mit zunehmender Nutzeranzahl nicht länger finanzieren können, werde ich auf ein kostenpflichtiges Modell umsteigen oder den Service einstellen müssen. Meine Vision ist jedoch, kostenlos und werbefrei zu bleiben, da alle Nutzer freiwillig mitmachen und unterstützen. Danke!
