@@ -46,7 +46,8 @@ Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-T
 *Optimus* mag Bilder im JPEG-Format besonders - diese lassen sich in der Größe am schnellsten reduzieren. Speichert eure Fotos daher als JPEG statt PNG. PNGs sind eher für Illustrationen geeignet.
 
 
-= Beschränkungen =
+= Einschränkungen =
+* Nur Server-Anfragen aus DE, AT und CH werden bearbeitet.
 * Bilder in folgenden Formaten werden komprimiert: PNG, GIF und JPEG.
 * Bilder über 200 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
 * Durch den notwendigen Transfer der Bilder zum *Optimus*-Server verzögert sich die Fertigstellung des Upload-Vorgangs.
@@ -136,3 +137,6 @@ Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ur
 
 = Korrupte Bild-URL =
 Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet.
+
+= Server-Anfrage abgewiesen =
+*Optimus* ist grade mal paar Tage alt, schon versuchen Spammer und „Trickser“ aus der ganzen Welt den Dienst zu missbrauchen. Das Ergebnis: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
