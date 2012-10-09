@@ -123,19 +123,20 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Frequently Asked Questions ==
 
+= Allgemein =
 Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der IP-Adresse bestraft. Das gilt auch für Power-Nutzer, die keinerlei Unterstützung geleistet haben (Stichwort *Nehmen UND Geben*).
 
+= Länderbegrenzung =
+Seit der Plugin-Veröffentlichung versuchen Spammer und „Trickser“ aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
+
+= Fehlermeldungen =
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
 
-= Unzugängliche Datei =
+= 1. Unerreichbare Datei =
 Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ursachen können dafür verantwortlich sein:
 
-* Das Bild befindet sich in einem Blog, welches im Web nicht erreichbar ist. Lokale - also auf dem Desktop-Rechner installierte - WordPress-Blogs zählen ebenfalls dazu.
 * Geschütztes Upload-Verzeichnis kann genau so für Unzugänglichkeit der Bilder zuständig sein.
 * Bilder werden nicht in WordPress, sondern auf einem entfernten CDN (Amazon S3, etc.) abgelegt.
 
-= Korrupte Bild-URL =
-Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet.
-
-= Server-Anfrage abgewiesen =
-*Optimus* ist grade mal paar Tage alt, schon versuchen Spammer und „Trickser“ aus der ganzen Welt den Dienst zu missbrauchen. Das Ergebnis: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
+= 2. Ungültige URL =
+Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet. Anfragen aus localhost-Instanzen können ebenfalls nicht entgegen genommen werden.
