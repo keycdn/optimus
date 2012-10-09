@@ -132,6 +132,7 @@ Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ur
 
 * Das Bild befindet sich in einem Blog, welches im Web nicht erreichbar ist. Lokale - also auf dem Desktop-Rechner installierte - WordPress-Blogs zählen ebenfalls dazu.
 * Geschütztes Upload-Verzeichnis kann genau so für Unzugänglichkeit der Bilder zuständig sein.
+* Bilder werden nicht in WordPress, sondern auf einem entfernten CDN (Amazon S3, etc.) abgelegt.
 
 = Korrupte Bild-URL =
 Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet.
