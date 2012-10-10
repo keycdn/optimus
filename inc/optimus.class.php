@@ -218,7 +218,7 @@ class Optimus
 			$upload_filesize = (int)filesize($upload_path . $file);
 
 			/* Zu klein/groß? */
-			if ( $upload_filesize <= 0 or $upload_filesize > 1024 * 200 ) {
+			if ( $upload_filesize <= 0 or $upload_filesize > 1024 * 300 ) {
 				continue;
 			}
 			

@@ -39,7 +39,7 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 
 
 = Bonustipp =
-Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie ImgOptim. *Optimus* hat einen gravierenden Vorteil, dass auch von WordPress erstellte Thumbnails eines Bildes behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
+Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie ImageOptim. *Optimus* hat einen gravierenden Vorteil, dass auch von WordPress erstellte Thumbnails eines Bildes behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
 
 
 = Empfehlung =
@@ -49,7 +49,7 @@ Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-T
 = Einschränkungen =
 * Nur Server-Anfragen aus DE, AT und CH werden bearbeitet.
 * Bilder in folgenden Formaten werden komprimiert: PNG, GIF und JPEG.
-* Bilder über 200 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
+* Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
 * Durch den notwendigen Transfer der Bilder zum *Optimus*-Server verzögert sich die Fertigstellung des Upload-Vorgangs.
 * Keep it simple: *Optimus* kommt ohne einer Optionsseite aus.
 
@@ -128,6 +128,21 @@ Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der
 
 = Länderbegrenzung =
 Seit der Plugin-Veröffentlichung versuchen Spammer und „Trickser“ aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
+
+
+= Bulk-Optimierung =
+
+Nein, eine Gruppen-Optimierung in WordPress vorhandener Bilder wird es vorerst nicht geben. Denn: Würden alle Plugin-Nutzer von der Funktion Gebrauch machen und Tausende an Bildern an den Server zwecks Optimierung schicken, würde es für diesen fatale Folgen haben.
+
+Daher die Empfehlung: Optimiert eure bereits existierende Uploads mit einem Desktop-Tool wie beispielsweise [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/) für Mac (für Windows und Linux gibt es Alternativen). Denkbare Vorgehensweise:
+
+* Den kompletten *uploads* Ordner auf den lokalen Rechner herunter laden.
+* Eine Sicherung des Ordners anfertigen.
+* Den Ordner auf das Optimierungstool ziehen.
+* Alle Bilder im Ordner werden vom Tool optimiert (kann dauern).
+* Nach der Optimierung den Ordner per FTP an den Ursprungsort übertragen (überschreiben).
+
+Auf diese Weise werden in WordPress existente Bilder in der Größe reduziert.
 
 = Fehlermeldungen =
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
