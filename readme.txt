@@ -131,6 +131,7 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 = 1. Allgemein =
 Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der IP-Adresse bestraft. Das gilt auch für Power-Nutzer, die keinerlei Unterstützung geleistet haben (Stichwort *Nehmen UND Geben*).
 
+
 = 2. Länderbegrenzung =
 Seit der Plugin-Veröffentlichung versuchen Spammer und „Trickser“ aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
 
@@ -147,6 +148,7 @@ Daher die Empfehlung: Optimiert eure bereits existierende Uploads mit einem Desk
 * Alle Bilder im Ordner werden vom Tool optimiert (kann dauern).
 * Nach der Optimierung den Ordner per FTP an den Ursprungsort übertragen.
 
+
 = 4. Fehlermeldungen =
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
 
@@ -158,3 +160,12 @@ Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ur
 
 = 4.2. Ungültige URL =
 Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet. Anfragen aus localhost-Instanzen können ebenfalls nicht entgegen genommen werden.
+
+
+= 5. Häufig gestellte Fragen =
+
+= 5.1. Das Originalbild wird nicht optimiert =
+
+*Optimus* verfügt über einen Limit von aktuell 300 KB. Dateien, die diese Größe übersteigen, überspringen die geplante Optimierung. So passiert es schnell, dass Initialbilder in der Größe nicht reduziert werden.
+
+Das ist aber keinesfalls tragisch, da in Artikeln meist zugeschnittene, von *Optimus* komprimierte Miniaturbilder und selten Originalbilder eingebunden werden.
