@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.5
+	* @change  0.0.6
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen

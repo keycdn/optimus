@@ -95,6 +95,11 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Changelog ==
 
+= 0.0.6 =
+* Erweiterung der FAQ
+* Unterstützung für WordPress 3.5
+* Erhöhung des max. Limits auf 300 KB
+
 = 0.0.5 =
 * Zusatzabfrage für (korrupte) Bild-URLs
 * Weiterer [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/)
@@ -123,14 +128,14 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Frequently Asked Questions ==
 
-= Allgemein =
+= 1. Allgemein =
 Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der IP-Adresse bestraft. Das gilt auch für Power-Nutzer, die keinerlei Unterstützung geleistet haben (Stichwort *Nehmen UND Geben*).
 
-= Länderbegrenzung =
+= 2. Länderbegrenzung =
 Seit der Plugin-Veröffentlichung versuchen Spammer und „Trickser“ aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
 
 
-= Bulk-Optimierung =
+= 3. Bulk-Optimierung =
 
 Nein, eine Gruppen-Optimierung in WordPress vorhandener Bilder wird es vorerst nicht geben. Denn: Würden alle Plugin-Nutzer von der Funktion Gebrauch machen und Tausende an Bildern an den Server zwecks Optimierung schicken, würde es für diesen fatale Folgen haben.
 
@@ -140,18 +145,16 @@ Daher die Empfehlung: Optimiert eure bereits existierende Uploads mit einem Desk
 * Eine Sicherung des Ordners anfertigen.
 * Den Ordner auf das Optimierungstool ziehen.
 * Alle Bilder im Ordner werden vom Tool optimiert (kann dauern).
-* Nach der Optimierung den Ordner per FTP an den Ursprungsort übertragen (überschreiben).
+* Nach der Optimierung den Ordner per FTP an den Ursprungsort übertragen.
 
-Auf diese Weise werden in WordPress existente Bilder in der Größe reduziert.
-
-= Fehlermeldungen =
+= 4. Fehlermeldungen =
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
 
-= 1. Unerreichbare Datei =
+= 4.1. Unerreichbare Datei =
 Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ursachen können dafür verantwortlich sein:
 
-* Geschütztes Upload-Verzeichnis kann genau so für Unzugänglichkeit der Bilder zuständig sein.
-* Bilder werden nicht in WordPress, sondern auf einem entfernten CDN (Amazon S3, etc.) abgelegt.
+* Geschütztes Upload-Verzeichnis
+* Bilder werden nicht in WordPress, sondern extern (z.B. CDN) abgelegt
 
-= 2. Ungültige URL =
+= 4.2. Ungültige URL =
 Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet. Anfragen aus localhost-Instanzen können ebenfalls nicht entgegen genommen werden.
