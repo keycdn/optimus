@@ -66,7 +66,7 @@ smush.it hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zei
 = Finanzierung =
 Zurzeit finanziere ich das Projekt aus Einnahmen meines [SEO-Plugins](http://wpseo.de). Performance-Server kosten Geld. Über die Unterstützung jeder Art freue ich mich dennoch:
 
-* Per [Flattr](http://flattr.com/profile/sergej.mueller)
+* Per [Flattr](https://flattr.com/donation/give/to/sergej.mueller)
 * Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6)
 * Empfehlung via Blogbeitrag
 * Oder Tweet
