@@ -129,7 +129,7 @@ class Optimus
 	* Hinzufügen der Meta-Links
 	*
 	* @since   0.0.1
-	* @change  0.0.6
+	* @change  0.0.3
 	*
 	* @param   array   $input  Array mit Links
 	* @param   string  $file   Name des Plugins
@@ -147,7 +147,7 @@ class Optimus
 			$input,
 			array(
 				'<a href="http://wpcoder.de" target="_blank">Plugins des Autors</a>',
-				'<a href="https://flattr.com/donation/give/to/sergej.mueller" target="_blank">Unterstützen via Flattr</a>',
+				'<a href="http://flattr.com/profile/sergej.mueller" target="_blank">Unterstützen via Flattr</a>',
 				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6" target="_blank">Unterstützen via PayPal</a>'
 			)
 		);
@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.6
+	* @change  0.0.7
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -210,7 +210,8 @@ class Optimus
 			);
 		}
 		
-		$result_diff = array();
+		/* Differenz */
+		$response_diff = array();
 		
 		/* Files loopen */
 		foreach ($todo_files as $file) {
@@ -223,50 +224,57 @@ class Optimus
 			}
 			
 			/* Request senden */
-			$result = self::_optimize_upload_image( $upload_url . $file	);
+			$response = self::_optimize_upload_image( $upload_url . $file );
 			
 			/* Inhalt */
-			$result_body = trim( wp_remote_retrieve_body($result) );
+			$response_body = trim( wp_remote_retrieve_body($response) );
+			
+			/* Code */
+			$response_code = wp_remote_retrieve_response_code($response);
 			
 			/* Kein 200 als Antwort? */
-			if ( wp_remote_retrieve_response_code($result) !== 200 ) {
-				$upload_data['optimus'] = ( empty($result_body) ? 'Unbekannter Fehler' : esc_html($result_body) );
+			if ( $response_code !== 200 ) {
+				if ( empty($response_body) or strip_tags($response_body) !== $response_body ) {
+					$upload_data['optimus'] = sprintf('Fehlercode %d', $response_code);
+				} else {
+					$upload_data['optimus'] = $response_body;
+				}
 				
 				return $upload_data;
 			}
 			
 			/* Fehler? */
-			if ( is_wp_error($result) ) {
-				$upload_data['optimus'] = $result->get_error_message();
+			if ( is_wp_error($response) ) {
+				$upload_data['optimus'] = $response->get_error_message();
 				
 				return $upload_data;
 			}
 			
 			/* Inhalt schreiben */
-			if ( ! file_put_contents($upload_path . $file, $result_body) ) {
+			if ( ! file_put_contents($upload_path . $file, $response_body) ) {
 				wp_die('Bild kann nicht ersetzt werden!');
 			}
 		  	
 		  	/* Optimierte Größe */
-		  	$result_filesize = wp_remote_retrieve_header(
-		  		$result,
+		  	$response_filesize = wp_remote_retrieve_header(
+		  		$response,
 		  		'content-length'
 		  	);
 		  	
 		  	/* Differenz */
 		  	array_push(
-		  		$result_diff,
+		  		$response_diff,
 		  		self::_calculate_diff_filesize(
 		  			$upload_filesize,
-		  			$result_filesize
+		  			$response_filesize
 		  		)
 		  	);
 		}
 		
 		/* Mittelwert speichern */
-		if ( $count = count($result_diff) ) {
+		if ( $count = count($response_diff) ) {
 			$upload_data['optimus'] = round(
-				array_sum($result_diff) / $count
+				array_sum($response_diff) / $count
 			);
 		}
 		

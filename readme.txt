@@ -95,6 +95,9 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Changelog ==
 
+= 0.0.7 =
+* Verbesserte Fehlerausgabe an den Nutzer
+
 = 0.0.6 =
 * Erweiterung der FAQ
 * Unterstützung für WordPress 3.5
@@ -160,6 +163,9 @@ Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ur
 
 = 4.2. Ungültige URL =
 Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet. Anfragen aus localhost-Instanzen können ebenfalls nicht entgegen genommen werden.
+
+= 4.3. Fehlercode 403 - 444 =
+Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen an den *Optimus*-Server zu stellen. Bitte das *Optimus*-Plugin deinstallieren.
 
 
 = 5. Häufig gestellte Fragen =
