@@ -46,9 +46,8 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 = Einschränkungen =
 * Nur Server-Anfragen aus DE, AT und CH werden bearbeitet.
 * Ausnahmslos JPEG-Bilder unterliegen der Dateigrößenreduzierung.
+* Keep it simple: *Optimus* kommt vorerst ohne Optionsseite aus.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
-* Durch den notwendigen Transfer der Bilder zum *Optimus*-Server verzögert sich die Fertigstellung des Upload-Vorgangs.
-* Keep it simple: *Optimus* kommt  vorerst ohne einer Optionsseite aus.
 
 
 = Datenschutz =
@@ -58,7 +57,7 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 
 
 = Warum mache ich das? =
-smush.it hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* stelle ich eine geschwinde Alternative zur Verfügung, die jedoch nicht wie smush.it enden soll. Daher meine Bitte: Missbraucht den Service nicht. Ich gebe euch ein feines und unkompliziertes Plugin in die Hände und erwarte Respekt und Kooperation.
+Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* stelle ich eine geschwinde Alternative zur Verfügung, die jedoch nicht wie *Smush.it* enden soll. Daher meine Bitte: Missbraucht den Service nicht. Ich gebe euch ein feines und unkompliziertes Plugin in die Hände und erwarte Respekt und Kooperation.
 
 = Finanzierung =
 Zurzeit finanziere ich das Projekt aus Einnahmen meines [SEO-Plugins](http://wpseo.de). Performance-Server kosten Geld. Über die Unterstützung jeder Art freue ich mich dennoch:
@@ -158,7 +157,7 @@ Daher die Empfehlung: Optimiert eure bereits existierende Uploads mit einem Desk
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden.
 
 = 4.1. Fehlercode 403 =
-Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen an den *Optimus*-Server zu stellen. Bitte das *Optimus*-Plugin deinstallieren.
+Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen an den *Optimus*-Server zu stellen. Oder etwas stimmt mit der Bild-URL nicht.
 
 
 = 5. Häufig gestellte Fragen =
@@ -167,4 +166,4 @@ Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen 
 *Optimus* verfügt über einen Limit von aktuell 300 KB. Dateien, die diese Größe übersteigen, überspringen die geplante Optimierung. So passiert es schnell, dass Initialbilder in der Größe nicht reduziert werden. Das ist aber keinesfalls tragisch, da in Artikeln meist zugeschnittene, von *Optimus* komprimierte Miniaturbilder und selten Originalbilder eingebunden werden.
 
 = 5.2. Was bedeutet der zum Teil ausgefüllte grüne Kreis? =
-Da es bis dato nicht ersichtlich war, wie viele Vorschaubilder eines Bildes tatsächlich optimiert und welche wegen des oben erwähnten Limits von 300 kB übersprungen wurden, zeigt das grüne Diagramm die erfolgreiche Menge optisch dar: Ist der halbe Kreis in Grün, so befanden sich ca. 50 % der Bilder in der Optimierungsphase. Ist der Kreis komplett grün ausgefüllt, so wurden alle Thumbnails samt Originalbild in der Größe reduziert.
+Da es bis dato nicht ersichtlich war, wie viele Vorschaubilder eines Bildes tatsächlich optimiert und welche wegen des oben erwähnten Limits von 300 kB übersprungen wurden, zeigt das grüne Diagramm die erfolgreiche Menge optisch dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/): Ist der halbe Kreis in Grün, so befanden sich ca. 50 % der Bilder in der Optimierungsphase. Ist der Kreis komplett grün ausgefüllt, so wurden alle Thumbnails samt Originalbild in der Größe reduziert. Ein- und Dreiviertel analog zu verstehen.
