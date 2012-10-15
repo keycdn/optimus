@@ -1,46 +1,67 @@
-.column-optimus p {
-	font: normal 11px/34px Arial !important;
-	color: #fff;
-	width: 34px;
-	height: 34px;
-	overflow: hidden;
-	white-space: nowrap;
-	margin-left: 10px !important;
-	border-radius: 17px;
-}
-.column-optimus p span {
-    width: 34px;
-    height: 34px;
-    display: inline-block;
-    text-align: center;
-}
-.column-optimus p.done {
-    background: #1fb300;
+.manage-column.column-optimus {
+	width: 5em;
 }
 
-.column-optimus p.error {
-    cursor: pointer;
-    background: orange;
+.optimus.column-optimus div {
+	width: 32px;
+	height: 32px;
+	position: relative;
+	background: #bbb;
+	margin-left: 11px;
+	border-radius: 16px;
+	
+	-webkit-mask-image: -webkit-gradient(
+		linear,
+		0% 0%,
+		0% 100%,
+		from( rgba(0, 0, 0, .6) ),
+		to( rgba(0, 0, 0, 1) )
+	);
 }
-.column-optimus p.error span {
-    font-size: 20px;
-    
-    -webkit-transform-style: preserve-3d;
-    -webkit-transition: 0.6s;
-    -moz-transform-style: preserve-3d;
-    -moz-transition: 0.6s;
-    transform-style: preserve-3d;
-    transition: 0.6s;
+
+.optimus.column-optimus p {
+	top: 0;
+	left: 0;
+	font: normal 10px/33px Arial;
+	color: #fff;
+	width: 32px;
+	height: 32px;
+	margin: 0;
+	z-index: 99;
+	position: absolute;
+	text-align: center;
 }
-.column-optimus p.error:hover {
-    width: auto;
+.optimus.column-optimus p:before {
+	top: 0;
+	left: 0;
+	border: 16px solid transparent;
+	z-index: -99;
+	content: '';
+	position: absolute;
+	border-radius: 16px;
+	
+	transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
 }
-.column-optimus p.error:hover span {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    transform: rotate(45deg);
+
+.optimus.column-optimus .one p:before {
+	border-right-color: #1fb300;
 }
-.column-optimus p.error em {
-    display: inline-block;
-    vertical-align: top;
+.optimus.column-optimus .two p:before {
+	border-right-color: #1fb300;
+	border-bottom-color: #1fb300;
+}
+.optimus.column-optimus .three p:before {
+	border-left-color: #1fb300;
+	border-right-color: #1fb300;
+	border-bottom-color: #1fb300;
+}
+.optimus.column-optimus .four p:before {
+	border-color: #1fb300;
+}
+
+.optimus.column-optimus .fail p:before {
+	border-color: orange;
 }

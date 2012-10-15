@@ -16,7 +16,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 == Description ==
 
-*Optimus* übernimmt die automatische Komprimierung der hochgeladenen Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
+*Optimus* übernimmt die automatische Komprimierung der hochgeladenen JPEG-Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
 
 
 = Wichtig =
@@ -26,32 +26,29 @@ Um den Support-Aufwand zu reduzieren, liest euch die Plugin-Beschreibung bis zum
 = Prinzip =
 Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den entfernten *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die komprimierte Ausgabe in der Mediathek.
 
-Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/). An der gleichen Stelle werden auch Fehler abgebildet.
+Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/). An der gleichen Stelle werden auch Fehlercodes abgebildet.
 
 
 = Vorteile =
 * Verkleinerung der Dateigröße ohne Verlust der Qualität
-* Optimierung aller Vorschauvarianten eines Bildes
+* Optimierung der Vorschauvarianten eines Bildes
 * Keine Einstellungen oder Code-Anpassungen notwendig
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
 * Kostenlos und werbefrei
 
 
-= Bonustipp =
-Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie ImageOptim. *Optimus* hat einen gravierenden Vorteil, dass auch von WordPress erstellte Thumbnails eines Bildes behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
-
-
-= Empfehlung =
-*Optimus* mag Bilder im JPEG-Format besonders - diese lassen sich in der Größe am schnellsten reduzieren. Speichert eure Fotos daher als JPEG statt PNG. PNGs sind eher für Illustrationen geeignet.
+= Bonustipps =
+* Fotos stets als JPEGs statt PNGs speichern und in den Blog übertragen. PNG ist sinnvoll bei Illustrationen, JPEG ist das richtige Format für Fotoaufnahmen.
+* Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress erstellte (und im Theme verknüpfte) Thumbnails eines Bildes ebenfalls behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
 
 
 = Einschränkungen =
 * Nur Server-Anfragen aus DE, AT und CH werden bearbeitet.
-* Bilder in folgenden Formaten werden komprimiert: PNG, GIF und JPEG.
+* Ausnahmslos JPEG-Bilder unterliegen der Dateigrößenreduzierung.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
 * Durch den notwendigen Transfer der Bilder zum *Optimus*-Server verzögert sich die Fertigstellung des Upload-Vorgangs.
-* Keep it simple: *Optimus* kommt ohne einer Optionsseite aus.
+* Keep it simple: *Optimus* kommt  vorerst ohne einer Optionsseite aus.
 
 
 = Datenschutz =
@@ -83,7 +80,7 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 * PHP ab 5.2.4
 * WordPress ab 3.4
 * Ausgehende Verbindung
-* Im Web erreichbarer Blog (keine lokale Installationen)
+* Im Web erreichbarer Blog (kein localhost)
 
 
 = Autor =
@@ -94,6 +91,11 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 
 == Changelog ==
+
+= 0.0.8 =
+* Beschränkung auf JPEGs (da fast keine PNG/GIF-Nutzung)
+* Menge der optimierten Thumbnails als Diagramm, siehe [FAQ](http://wordpress.org/extend/plugins/optimus/faq/)
+* Überarbeitung diverser Code-Fragmente
 
 = 0.0.7 =
 * Verbesserte Fehlerausgabe an den Nutzer
@@ -136,7 +138,7 @@ Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der
 
 
 = 2. Länderbegrenzung =
-Seit der Plugin-Veröffentlichung versuchen Spammer und „Trickser“ aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
+Seit der Plugin-Veröffentlichung versuchen Spammer aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
 
 
 = 3. Bulk-Optimierung =
@@ -153,25 +155,16 @@ Daher die Empfehlung: Optimiert eure bereits existierende Uploads mit einem Desk
 
 
 = 4. Fehlermeldungen =
-*Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden. Nachfolgend einige der Hinweise:
+*Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden.
 
-= 4.1. Unerreichbare Datei =
-Das zur Optimierung übergebene Bild konnte nicht eingelesen werden. Folgende Ursachen können dafür verantwortlich sein:
-
-* Geschütztes Upload-Verzeichnis
-* Bilder werden nicht in WordPress, sondern extern (z.B. CDN) abgelegt
-
-= 4.2. Ungültige URL =
-Bilder mit manipulierten, unvollständigen oder nicht WordPress-konformen Pfaden werden abgewiesen und nicht bearbeitet. Anfragen aus localhost-Instanzen können ebenfalls nicht entgegen genommen werden.
-
-= 4.3. Fehlercode 403 - 444 =
+= 4.1. Fehlercode 403 =
 Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen an den *Optimus*-Server zu stellen. Bitte das *Optimus*-Plugin deinstallieren.
 
 
 = 5. Häufig gestellte Fragen =
 
 = 5.1. Das Originalbild wird nicht optimiert =
+*Optimus* verfügt über einen Limit von aktuell 300 KB. Dateien, die diese Größe übersteigen, überspringen die geplante Optimierung. So passiert es schnell, dass Initialbilder in der Größe nicht reduziert werden. Das ist aber keinesfalls tragisch, da in Artikeln meist zugeschnittene, von *Optimus* komprimierte Miniaturbilder und selten Originalbilder eingebunden werden.
 
-*Optimus* verfügt über einen Limit von aktuell 300 KB. Dateien, die diese Größe übersteigen, überspringen die geplante Optimierung. So passiert es schnell, dass Initialbilder in der Größe nicht reduziert werden.
-
-Das ist aber keinesfalls tragisch, da in Artikeln meist zugeschnittene, von *Optimus* komprimierte Miniaturbilder und selten Originalbilder eingebunden werden.
+= 5.2. Was bedeutet der zum Teil ausgefüllte grüne Kreis? =
+Da es bis dato nicht ersichtlich war, wie viele Vorschaubilder eines Bildes tatsächlich optimiert und welche wegen des oben erwähnten Limits von 300 kB übersprungen wurden, zeigt das grüne Diagramm die erfolgreiche Menge optisch dar: Ist der halbe Kreis in Grün, so befanden sich ca. 50 % der Bilder in der Optimierungsphase. Ist der Kreis komplett grün ausgefüllt, so wurden alle Thumbnails samt Originalbild in der Größe reduziert.

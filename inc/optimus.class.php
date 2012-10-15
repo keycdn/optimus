@@ -28,13 +28,13 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  0.0.2
+	* @change  0.0.8
 	*/
 
 	public function __construct()
 	{
 		/* Filter */
-		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) or (defined('DOING_CRON') && DOING_CRON) or (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) or (defined('DOING_AJAX') && DOING_AJAX) ) {
+		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) or (defined('DOING_CRON') && DOING_CRON) or (defined('DOING_AJAX') && DOING_AJAX) ) {
 			return;
 		}
 
@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.7
+	* @change  0.0.8
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -168,10 +168,10 @@ class Optimus
 		/* Upload-Ordner */
 		$upload_dir = wp_upload_dir();
 		
-		/* WP-Bugfux */
+		/* WP-Bugfix */
 		if ( empty($upload_dir['subdir']) ) {
 			$upload_path = trailingslashit($upload_dir['path']);
-			$upload_file_url = trailingslashit($upload_dir['url']);
+			$upload_url = trailingslashit($upload_dir['url']);
 			$upload_file = $upload_data['file'];
 		} else {
 			$file_info = pathinfo($upload_data['file']);
@@ -181,13 +181,17 @@ class Optimus
 			$upload_file = $file_info['basename'];
 		}
 		
-		/* Kein richtiges Format */
-		if ( ! file_is_displayable_image( $upload_path . $upload_file ) ) {
+		/* Leer oder kein JPEG? */
+		if ( empty($upload_file) or !self::_is_valid_jpeg($upload_file) ) {
 			return $upload_data;
 		}
 		
-		/* Prüfung des URL-Formats */
-		if ( ( ! $url_details = parse_url($upload_url) ) or empty($url_details['host']) or empty($url_details['path']) ) {
+		/* URLs zerlegen */
+		$parsed_blog_url = parse_url( get_bloginfo('url') );
+		$parsed_upload_url = parse_url($upload_url);
+		
+		/* Host abgleichen */
+		if ( empty($parsed_upload_url['host']) or $parsed_upload_url['host'] === 'localhost' or $parsed_upload_url['host'] !== $parsed_blog_url['host'] ) {
 			return $upload_data;
 		}
 		
@@ -198,6 +202,11 @@ class Optimus
 		if ( !empty($upload_data['sizes']) ) {
 			/* Loopen */
 			foreach( $upload_data['sizes'] as $size ) {
+				/* Leer oder kein JPEG? */
+				if ( empty($size['file']) or !self::_is_valid_jpeg($size['file']) ) {
+					continue;
+				}
+				
 				array_push(
 					$todo_files,
 					$size['file']
@@ -211,7 +220,7 @@ class Optimus
 		}
 		
 		/* Differenz */
-		$response_diff = array();
+		$diff_filesizes = array();
 		
 		/* Files loopen */
 		foreach ($todo_files as $file) {
@@ -219,7 +228,7 @@ class Optimus
 			$upload_filesize = (int)filesize($upload_path . $file);
 
 			/* Zu klein/groß? */
-			if ( $upload_filesize <= 0 or $upload_filesize > 1024 * 300 ) {
+			if ( empty($upload_filesize) or $upload_filesize > 1024 * 300 ) {
 				continue;
 			}
 			
@@ -227,43 +236,44 @@ class Optimus
 			$response = self::_optimize_upload_image( $upload_url . $file );
 			
 			/* Inhalt */
-			$response_body = trim( wp_remote_retrieve_body($response) );
+			$response_body = (string)wp_remote_retrieve_body($response);
 			
 			/* Code */
-			$response_code = wp_remote_retrieve_response_code($response);
+			$response_code = (int)wp_remote_retrieve_response_code($response);
 			
 			/* Kein 200 als Antwort? */
 			if ( $response_code !== 200 ) {
-				if ( empty($response_body) or strip_tags($response_body) !== $response_body ) {
-					$upload_data['optimus'] = sprintf('Fehlercode %d', $response_code);
-				} else {
-					$upload_data['optimus'] = $response_body;
-				}
+				$upload_data['optimus'] = array(
+					'error' => $response_code
+				);
 				
 				return $upload_data;
 			}
 			
 			/* Fehler? */
 			if ( is_wp_error($response) ) {
-				$upload_data['optimus'] = $response->get_error_message();
-				
+				return $upload_data;
+			}
+			
+			/* Optimierte Größe */
+			$response_filesize = wp_remote_retrieve_header(
+				$response,
+				'content-length'
+			);
+			
+			/* Leere Datei? */
+			if ( empty($response_filesize) ) {
 				return $upload_data;
 			}
 			
 			/* Inhalt schreiben */
 			if ( ! file_put_contents($upload_path . $file, $response_body) ) {
-				wp_die('Bild kann nicht ersetzt werden!');
+				return $upload_data;
 			}
-		  	
-		  	/* Optimierte Größe */
-		  	$response_filesize = wp_remote_retrieve_header(
-		  		$response,
-		  		'content-length'
-		  	);
 		  	
 		  	/* Differenz */
 		  	array_push(
-		  		$response_diff,
+		  		$diff_filesizes,
 		  		self::_calculate_diff_filesize(
 		  			$upload_filesize,
 		  			$response_filesize
@@ -271,10 +281,15 @@ class Optimus
 		  	);
 		}
 		
+		/* Arrays zählen */
+		$ordered = count($todo_files);
+		$received = count($diff_filesizes);
+		
 		/* Mittelwert speichern */
-		if ( $count = count($response_diff) ) {
-			$upload_data['optimus'] = round(
-				array_sum($response_diff) / $count
+		if ( $received ) {
+			$upload_data['optimus'] = array(
+				'profit'   => round( array_sum($diff_filesizes) / $received ),
+				'quantity' => round( $received * 100 / $ordered )
 			);
 		}
 		
@@ -311,7 +326,7 @@ class Optimus
 		return wp_remote_post(
 			'http://37.200.98.126',
 			array(
-				'timeout' => 60,
+				'timeout' => 30,
 				'body'	  => $params
 			)
 		);
@@ -356,7 +371,7 @@ class Optimus
 			return;
 		}
 		
-		echo self::_get_diff_filesize($id);
+		echo self::_get_column_html($id);
 	}
 		
 	
@@ -385,16 +400,16 @@ class Optimus
 	
 	
 	/**
-	* Gibt die formatierte Differenz der Dateigröße zurück
+	* Gibt die formatierte Spalte in HTML zurück
 	*
 	* @since   0.0.1
-	* @change  0.0.2
+	* @change  0.0.8
 	*
 	* @param   intval  $id  Attachment-ID
 	* @return  mixed        Ermittelter Wert
 	*/
 	
-	private static function _get_diff_filesize($id)
+	private static function _get_column_html($id)
 	{
 		/* Metadaten des Anhangs */
 		$data = (array)wp_get_attachment_metadata($id);
@@ -402,23 +417,96 @@ class Optimus
 		/* Ausgabe */
 		if ( array_key_exists('optimus', $data) ) {
 			/* Init */
-			$optimus = esc_html($data['optimus']);
+			$optimus = $data['optimus'];
+			
+			/* Neue Methode */
+			if ( is_array($optimus) ) {
+				/* Ausgabe der Erfolgmeldung */
+				if ( isset($optimus['profit']) ) {
+					return sprintf(
+						'<div class="%s"><p>%d%%</p></div>',
+						self::_pie_chart_class( $optimus['quantity'] ),
+						$optimus['profit']
+					);
+				}
+				
+				/* Ausgabe des Fehlercodes */
+				if ( isset($optimus['error']) ) {
+					return sprintf(
+						'<div class="fail"><p>%d</p></div>',
+						$optimus['error']
+					);
+				}
+			}
 			
 			/* Ergebnis als Zahl */
 			if ( is_numeric($optimus) ) {
 				return sprintf(
-					'<p class="done"><span>%d%%</span></p>',
+					'<div><p>%d%%</p></div>',
 					$optimus
 				);
 			}
 			
-			/* Ergebnis als Fehler */
+			/* Ergebnis als String */
 			return sprintf(
-				'<p class="error"><span>+</span><em>%s</em></p>',
+				'<div class="fail"><p>X</p></div>',
 				$optimus
 			);
 		}
 		
 		return NULL;
+	}
+	
+	
+	/**
+	* Gibt die CSS-Klasse je nach Menge komprimierter Dateien
+	*
+	* @since   0.0.8
+	* @change  0.0.8
+	*
+	* @param   intval  $quantity  Menge als Prozentwert
+	* @return  string             CSS-Klasse
+	*/
+	
+	private static function _pie_chart_class($quantity)
+	{
+		/* Init */
+		$quantity = (int)$quantity;
+		
+		/* Leer? */
+		if ( empty($quantity) ) {
+			return '';
+		}
+		
+		/* Loop */
+		switch(true) {
+			case ($quantity == 100):
+				return 'four';
+			case ($quantity <= 25):
+				return 'one';
+			case ($quantity <= 50):
+				return 'two';
+			default:
+				return 'three';
+		}
+	}
+	
+	
+	/**
+	* Prüft auf das JPEG-Format
+	*
+	* @since   0.0.8
+	* @change  0.0.8
+	*
+	* @param   string   $file  Dateiname
+	* @return  boolean         TRUE bei JPEG
+	*/
+	
+	private static function _is_valid_jpeg($file)
+	{
+		/* Erweiterung */
+		$extension = pathinfo($file, PATHINFO_EXTENSION);
+		
+		return ( $extension === 'jpg' or $extension === 'jpeg' );
 	}
 }

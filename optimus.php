@@ -5,7 +5,7 @@ Description: Reduzierung der Dateigröße während des Uploads der Bilder in die
 Author: Sergej M&uuml;ller
 Author URI: http://wpseo.de
 Plugin URI: http://wordpress.org/extend/plugins/optimus/
-Version: 0.0.7
+Version: 0.0.8
 */
 
 
