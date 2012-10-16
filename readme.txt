@@ -149,13 +149,13 @@ Um den Missbrauch des Dienstes zu minimieren, werden alle Anfragen außerhalb vo
 
 Nein, eine Gruppen-Optimierung in WordPress vorhandener Bilder wird es vorerst nicht geben. Denn: Würden alle Plugin-Nutzer von der Funktion Gebrauch machen und Tausende an Bildern an den Server zwecks Optimierung schicken, würde es für diesen fatale Folgen haben.
 
-Daher die Empfehlung: Optimiert eure bereits existierende Uploads mit einem Desktop-Tool wie beispielsweise [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/) für Mac (für Windows und Linux gibt es Alternativen). Denkbare Vorgehensweise:
+Daher die Empfehlung: Existierende Bilder mit einem Desktop-Tool wie beispielsweise [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/) für Mac (für Windows und Linux gibt es [Alternativen](http://alternativeto.net/software/imageoptim/) optimieren lassen). Denkbare Vorgehensweise:
 
-* Den kompletten *uploads* Ordner auf den lokalen Rechner herunter laden.
+* Den WordPress-Ordner *uploads* auf die lokale Festplatte herunterladen.
 * Eine Sicherung des Ordners anfertigen.
-* Den Ordner auf das Optimierungstool ziehen.
+* Den gesamten Ordner auf das Optimierungstool ziehen.
 * Alle Bilder im Ordner werden vom Tool optimiert (kann dauern).
-* Nach der Optimierung den Ordner per FTP an den Ursprungsort übertragen.
+* Nach der Optimierung den Ordner an den Ursprungsort übertragen.
 
 
 = 4. Fehlermeldungen =
