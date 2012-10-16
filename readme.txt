@@ -44,7 +44,7 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 
 
 = Einschränkungen =
-* Nur Server-Anfragen aus DE, AT und CH werden bearbeitet.
+* Nur Server-Anfragen aus DE, AT und CH werden bearbeitet. *(Du brauchst einen Zugang? Melde dich)*
 * Bilder in JPEG- und PNG-Formaten unterliegen der Dateigrößenreduzierung.
 * Keep it simple: *Optimus* kommt vorerst ohne Optionsseite aus.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
@@ -140,7 +140,7 @@ Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der
 
 
 = 2. Länderbegrenzung =
-Seit der Plugin-Veröffentlichung versuchen Spammer aus ganzer Welt den Dienst zu missbrauchen und an eigene Bedürfnisse anzupassen. Das Resultat: Der Server erfährt seinen Limit und der Traffic katapultiert in die Höhe. Als Reaktion werden ab sofort ausschließlich Server-Anfragen aus 3 Ländern zugelassen: Deutschland, Österreich und die Schweiz.
+Um den Missbrauch des Dienstes zu minimieren, werden alle Anfragen außerhalb von Deutschland, Österreich und der Schweiz blockiert. Wenn du einen Zugang zum Service außerhalb der freigegebenen Länder benötigst, melde dich beim [Entwickler](http://wpcoder.de).
 
 
 = 3. Bulk-Optimierung =
