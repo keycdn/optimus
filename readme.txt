@@ -20,7 +20,9 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 
 = Wichtig =
-Um den Support-Aufwand zu reduzieren, liest euch die Plugin-Beschreibung bis zum Ende durch. Beachtet auch die [FAQ](http://wordpress.org/extend/plugins/optimus/faq/).
+* Liest den Beschreibungstext vollständig durch
+* Beachtet die Hinweise unter [FAQ](http://wordpress.org/extend/plugins/optimus/faq/)
+* Unterstützt des Projekt (*warum?* weiter unten)
 
 
 = Prinzip =
@@ -44,7 +46,7 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 
 
 = Einschränkungen =
-* Nur Server-Anfragen aus DE, AT und CH werden bearbeitet. *(Du brauchst einen Zugang? Melde dich)*
+* Zugelassen sind Anfragen aus DACH. Benötigst einen Zugang außerhalb? Melde dich.
 * Bilder in JPEG- und PNG-Formaten unterliegen der Dateigrößenreduzierung.
 * Keep it simple: *Optimus* kommt vorerst ohne Optionsseite aus.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
