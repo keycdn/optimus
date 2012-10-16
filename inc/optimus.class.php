@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.8
+	* @change  0.0.9
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -182,7 +182,7 @@ class Optimus
 		}
 		
 		/* Leer oder kein JPEG? */
-		if ( empty($upload_file) or !self::_is_valid_jpeg($upload_file) ) {
+		if ( empty($upload_file) or !file_is_displayable_image($upload_path . $upload_file) ) {
 			return $upload_data;
 		}
 		
@@ -203,7 +203,7 @@ class Optimus
 			/* Loopen */
 			foreach( $upload_data['sizes'] as $size ) {
 				/* Leer oder kein JPEG? */
-				if ( empty($size['file']) or !self::_is_valid_jpeg($size['file']) ) {
+				if ( empty($size['file']) or !file_is_displayable_image($upload_path . $size['file']) ) {
 					continue;
 				}
 				
@@ -489,24 +489,5 @@ class Optimus
 			default:
 				return 'three';
 		}
-	}
-	
-	
-	/**
-	* Prüft auf das JPEG-Format
-	*
-	* @since   0.0.8
-	* @change  0.0.8
-	*
-	* @param   string   $file  Dateiname
-	* @return  boolean         TRUE bei JPEG
-	*/
-	
-	private static function _is_valid_jpeg($file)
-	{
-		/* Erweiterung */
-		$extension = pathinfo($file, PATHINFO_EXTENSION);
-		
-		return ( $extension === 'jpg' or $extension === 'jpeg' );
 	}
 }

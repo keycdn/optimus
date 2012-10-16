@@ -16,7 +16,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 == Description ==
 
-*Optimus* übernimmt die automatische Komprimierung der hochgeladenen JPEG-Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
+*Optimus* übernimmt die automatische Komprimierung der hochgeladenen Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
 
 
 = Wichtig =
@@ -39,13 +39,13 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 
 
 = Bonustipps =
-* Fotos stets als JPEGs statt PNGs speichern und in den Blog übertragen. PNG ist sinnvoll bei Illustrationen, JPEG ist das richtige Format für Fotoaufnahmen.
+* Fotos stets als JPEGs statt PNGs speichern und in den Blog übertragen. PNG ist sinnvoll bei Illustrationen, JPEG ist das richtige Format für Fotoaufnahmen. Weiterer Grund: Die Reduzierung der PNGs in der Größe dauert deutlich länger.
 * Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress erstellte (und im Theme verknüpfte) Thumbnails eines Bildes ebenfalls behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
 
 
 = Einschränkungen =
 * Nur Server-Anfragen aus DE, AT und CH werden bearbeitet.
-* Ausnahmslos JPEG-Bilder unterliegen der Dateigrößenreduzierung.
+* Bilder in JPEG- und PNG-Formaten unterliegen der Dateigrößenreduzierung.
 * Keep it simple: *Optimus* kommt vorerst ohne Optionsseite aus.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
 
@@ -72,7 +72,7 @@ Sollte sich das Projekt mit zunehmender Nutzeranzahl nicht länger finanzieren k
 
 
 = Schlusswort =
-Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. Sehr detailliert und transparent. Ist man mit aufgeführten Punkten nicht einverstanden, so möge man das Plugin NICHT in Betrieb nehmen. Konstruktive Vorschläge sind per E-Mail gerne willkommen.
+Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. Sehr detailliert und transparent. Ist man mit aufgeführten Punkten oder Update-Zyklen nicht einverstanden, so möge man das Plugin NICHT in Betrieb nehmen. Konstruktive Vorschläge sind per E-Mail gerne willkommen.
 
 
 = Systemanforderungen =
@@ -90,6 +90,9 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 
 == Changelog ==
+
+= 0.0.9 =
+* Support für PNGs (Nutzer haben lieb gefragt ;)
 
 = 0.0.8 =
 * Beschränkung auf JPEGs (da fast keine PNG/GIF-Nutzung)
