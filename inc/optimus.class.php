@@ -158,7 +158,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  0.0.9
+	* @change  1.0.0
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -190,8 +190,13 @@ class Optimus
 		$parsed_blog_url = parse_url( get_bloginfo('url') );
 		$parsed_upload_url = parse_url($upload_url);
 		
+		/* Leere Werte? */
+		if ( empty($parsed_upload_url['host']) or empty($parsed_upload_url['path']) ) {
+			return $upload_data;
+		}
+		
 		/* Host abgleichen */
-		if ( empty($parsed_upload_url['host']) or $parsed_upload_url['host'] === 'localhost' or $parsed_upload_url['host'] !== $parsed_blog_url['host'] ) {
+		if ( $parsed_upload_url['host'] !== $parsed_blog_url['host'] or in_array($parsed_upload_url['host'], array('localhost', '127.0.0.1', 'wp')) ) {
 			return $upload_data;
 		}
 		
