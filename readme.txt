@@ -142,7 +142,7 @@ Jeder Missbrauch des Plugins und der Server-Software wird durch die Sperrung der
 
 
 = 2. Länderbegrenzung =
-Um den Missbrauch des Dienstes zu minimieren, werden alle Anfragen außerhalb von Deutschland, Österreich und der Schweiz blockiert. Wenn du einen Zugang zum Service außerhalb der freigegebenen Länder benötigst, melde dich beim [Entwickler](http://wpcoder.de).
+Um den Missbrauch des Dienstes zu minimieren, werden alle Anfragen außerhalb von Deutschland, Österreich und der Schweiz blockiert. Wenn du einen Zugang zum Service außerhalb der Region benötigst, melde dich beim [Plugin-Entwickler](http://wpcoder.de).
 
 
 = 3. Bulk-Optimierung =
