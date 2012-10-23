@@ -16,23 +16,19 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 == Description ==
 
-*Optimus* übernimmt die automatische Komprimierung der hochgeladenen Medien. Die Dateigröße reduziert sich um bis zu 50 Prozent, die Qualität des Bildes bleibt garantiert erhalten. Praktisch und effektiv.
-
-
-= Wichtig =
-* Liest den Beschreibungstext vollständig durch
-* Beachtet die Hinweise unter [FAQ](http://wordpress.org/extend/plugins/optimus/faq/)
-* Unterstützt des Projekt (*warum?* weiter unten)
+= Goodbye Smush.it =
+Das *Optimus*-Plugin verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 50 Prozent möglich. Pro Bild lassen sich somit mehrere Kilobyte einsparen, die der Performance positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten. Mehr zur Funktionsweise, Einschränkungen und Finanzierung in der nachfolgenden Beschreibung.
 
 
 = Prinzip =
-Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den entfernten *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - in der Größe reduzierte - Version des Bildes in der Mediathek.
+Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den entfernten *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - in der Größe reduzierte - Version des Bildes in der Mediathek ab.
 
-Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/). An der gleichen Stelle werden auch Fehlercodes abgebildet.
+Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/). An der gleichen Stelle werden auch Fehlercodes abgebildet, siehe dazu [FAQ](http://wordpress.org/extend/plugins/optimus/faq/).
 
-Im Vergleich zu anderen Tools, dreht *Optimus* nicht an der Qualität eines Bildes. Stattdessen werden aus Dateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Verlustfrei: Auf diese Art bleibt die Qualität der Grafik erhalten, die Dateigröße kann um ein Vielfaches minimiert werden.
+Anders als andere Tools rührt *Optimus* die Qualität eines Bildes niemals an. Stattdessen werden aus Dateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Absolut verlustfrei! Auf diese Art bleibt die Qualität der Grafik erhalten, die Dateigröße kann um ein Vielfaches minimiert werden.
 
-= Vorteile =
+
+= Pluspunkte =
 * Verkleinerung der Dateigröße ohne Verlust der Qualität
 * Optimierung der Vorschauvarianten eines Bildes
 * Keine Einstellungen oder Code-Anpassungen notwendig
@@ -41,25 +37,25 @@ Im Vergleich zu anderen Tools, dreht *Optimus* nicht an der Qualität eines Bild
 * Kostenlos und werbefrei
 
 
-= Bonustipps =
-* Fotos stets als JPEGs statt PNGs speichern und in den Blog übertragen. PNG ist sinnvoll bei Illustrationen, JPEG ist das richtige Format für Fotoaufnahmen. Weiterer Grund: Die Reduzierung der PNGs in der Größe dauert deutlich länger.
-* Zahlreiche Blogger optimieren ihre Bilder händisch vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress erstellte (und im Theme verknüpfte) Thumbnails eines Bildes ebenfalls behandelt und minimiert werden. Schliesslich werden im Theme fast immer Thumbnails (= Vorschaubilder) eingebunden und nur selten das Originalbild.
-
-
-= Einschränkungen =
-* Zugelassen sind Anfragen aus DACH. Benötigst einen Zugang außerhalb? Melde dich.
-* Bilder in JPEG- und PNG-Formaten unterliegen der Dateigrößenreduzierung.
-* Keep it simple: *Optimus* kommt vorerst ohne Optionsseite aus.
+= Regeln =
+* Nur Bilder in JPEG- und PNG-Formaten unterliegen der Dateigrößenreduzierung.
+* Keep it simple: *Optimus* kommt ohne einer Optionsseite aus.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
+* Zugelassen sind Anfragen aus DACH. Benötigst einen Zugang außerhalb? Melde dich.
+
+
+= Tipps =
+* Fotos stets als JPEGs statt PNGs speichern. Das PNG-Format ist sinnvoll für Illustrationen, JPEG ist dagegen genau das Richtige für Fotoaufnahmen. Weiterer Grund: Die Größenreduzierung geht bei JPEGs flotter vonstatten.
+* Zahlreiche Blogger optimieren ihre Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress erstellte Thumbnails (= Vorschaubilder) eines Bildes ebenfalls behandelt und minimiert werden. Schliesslich sind im Theme fast immer Thumbnails eingebunden und nur selten das Originalbild.
 
 
 = Datenschutz =
-* Nach der Optimierung und Auslieferung der optimierten Bilder löscht der *Optimus*-Server die temporär abgelegten Dateien - unverzüglich. Keine Aufbewahrung!
-* Während der Kommunikation zum *Optimus*-Server teilt das Plugin die aktuelle Blog-URL mit. Auf diese Weise soll der Missbrauch der Software erkannt und Power-Nutzer identifiziert werden.
+* Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär abgelegten Dateien - unverzüglich. Keine Aufbewahrung!
+* Während der Kommunikation zum *Optimus*-Server teilt das Plugin die aktuelle Blog-URL mit. Auf diese Weise soll der Missbrauch der Software erkannt und fleißige Power-Nutzer identifiziert werden.
 * Der Server-Standort ist Deutschland beim Hoster domainFACTORY.
 
 
-= Warum mache ich das? =
+= Hintergrund =
 Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* stelle ich eine geschwinde Alternative zur Verfügung, die jedoch nicht wie *Smush.it* enden soll. Daher meine Bitte: Missbraucht den Service nicht. Ich gebe euch ein feines und unkompliziertes Plugin in die Hände und erwarte Respekt und Kooperation.
 
 = Finanzierung =
@@ -67,15 +63,15 @@ Zurzeit finanziere ich das Projekt aus Einnahmen meines [SEO-Plugins](http://wps
 
 * Per [Flattr](https://flattr.com/donation/give/to/sergej.mueller)
 * Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6)
-* Empfehlung via Blogbeitrag
+* Via Blogbeitrag
 * Oder Tweet
 * Oder oder
 
-Sollte sich das Projekt mit zunehmender Nutzeranzahl nicht länger finanzieren können, werde ich auf ein kostenpflichtiges Modell umsteigen oder den Service einstellen müssen. Meine Vision ist jedoch, kostenlos und werbefrei zu bleiben, da alle Nutzer freiwillig mitmachen und unterstützen. Danke!
+Sollte sich das Projekt mit zunehmender Nutzeranzahl nicht länger finanzieren können, werde ich auf ein kostenpflichtiges Modell umsteigen oder den Service einstellen müssen. Meine Vision ist jedoch, kostenlos und werbefrei zu bleiben, da alle Nutzer freiwillig mitmachen und unterstützen.
 
 
 = Schlusswort =
-Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. Sehr detailliert und transparent. Ist man mit aufgeführten Punkten oder Update-Zyklen nicht einverstanden, so möge man das Plugin NICHT in Betrieb nehmen. Konstruktive Vorschläge sind per E-Mail gerne willkommen.
+Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. Sehr detailliert und transparent. Ist man mit aufgeführten Punkten oder Update-Zyklen nicht einverstanden, so möge man das Plugin NICHT in Betrieb nehmen. Konstruktive Vorschläge sind per E-Mail willkommen.
 
 
 = Systemanforderungen =
@@ -88,14 +84,13 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 = Autor =
 * [Google+](https://plus.google.com/110569673423509816572 "Google+")
 * [Plugins](http://wpcoder.de "Plugins")
-* [Portfolio](http://ebiene.de "Portfolio")
 
 
 
 == Changelog ==
 
 = 0.0.9 =
-* Support für PNGs (Nutzer haben lieb gefragt ;)
+* Support für PNGs
 
 = 0.0.8 =
 * Beschränkung auf JPEGs (da fast keine PNG/GIF-Nutzung)
