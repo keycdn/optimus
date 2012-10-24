@@ -41,7 +41,7 @@ Anders als andere Tools rührt *Optimus* die Qualität eines Bildes niemals an. 
 * Nur Bilder in JPEG- und PNG-Formaten unterliegen der Dateigrößenreduzierung.
 * Keep it simple: *Optimus* kommt ohne einer Optionsseite aus.
 * Bilder über 300 KB werden ignoriert, Vorschauvarianten dennoch optimiert.
-* Zugelassen sind Anfragen aus DACH. Benötigst einen Zugang außerhalb? Melde dich.
+* Zugelassen sind Server-Anfragen aus D-A-CH. Melde dich für Zugänge außerhalb.
 
 
 = Tipps =
