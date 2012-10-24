@@ -158,7 +158,7 @@ Daher die Empfehlung: Existierende Bilder mit einem Desktop-Tool wie beispielswe
 *Optimus* ist in der Lage, vom Server erhaltene Fehlermeldungen in der Mediathek abzubilden, z.B.:
 
 = 4.1. Fehlercode 403 =
-Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen an den *Optimus*-Server zu stellen. Oder etwas stimmt mit der Bild-URL nicht.
+Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen an den *Optimus*-Server zu stellen. Oder etwas stimmt mit der Bild-URL nicht. Ebenso gilt eine URL zum Bild als ungültig, wenn diese Sonder-, Frage-, Prozent- und Leerzeichen beinhaltet.
 
 
 = 5. Häufig gestellte Fragen =
