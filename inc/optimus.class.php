@@ -129,7 +129,7 @@ class Optimus
 	* Hinzufügen der Meta-Links
 	*
 	* @since   0.0.1
-	* @change  0.0.3
+	* @change  1.0.0
 	*
 	* @param   array   $input  Array mit Links
 	* @param   string  $file   Name des Plugins
@@ -147,8 +147,7 @@ class Optimus
 			$input,
 			array(
 				'<a href="http://wpcoder.de" target="_blank">Plugins des Autors</a>',
-				'<a href="http://flattr.com/profile/sergej.mueller" target="_blank">Unterstützen via Flattr</a>',
-				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6" target="_blank">Unterstützen via PayPal</a>'
+				'Unterstützung via <a href="https://flattr.com/donation/give/to/sergej.mueller" target="_blank">Flattr</a> / <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6" target="_blank">PayPal</a>'
 			)
 		);
 	}
