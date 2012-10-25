@@ -17,7 +17,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 == Description ==
 
 = Goodbye Smush.it =
-Das *Optimus*-Plugin verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 50 Prozent möglich. Pro Bild lassen sich somit mehrere Kilobyte einsparen, die der Performance positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten. Mehr zur Funktionsweise, Einschränkungen und Finanzierung in der nachfolgenden Beschreibung.
+Das *Optimus*-Plugin verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 50 Prozent möglich. Pro Bild lassen sich somit mehrere Kilobyte einsparen, die der Performance positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten. Mehr zu Funktionsweise, Limitierung und Finanzierung in nachfolgender Beschreibung.
 
 
 = Prinzip =
