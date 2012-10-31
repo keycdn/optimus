@@ -59,7 +59,7 @@ Anders als andere Tools rührt *Optimus* die Qualität eines Bildes niemals an. 
 Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* stelle ich eine geschwinde Alternative zur Verfügung, die jedoch nicht wie *Smush.it* enden soll. Daher meine Bitte: Missbraucht den Service nicht. Ich gebe euch ein feines und unkompliziertes Plugin in die Hände und erwarte Respekt und Kooperation.
 
 = Finanzierung =
-Performante Server sind nicht billig. Aktuell finanziere ich das Projekt aus den Einnahmen meines [WordPress SEO](http://wpseo.de) Plugins. Über die Unterstützung jeder Art freue ich mich dennoch:
+Performante Server sind nicht billig. Aktuell finanziere ich das Projekt aus den Einnahmen meines [wpSEO](http://wpseo.de) Plugins. Über die Unterstützung jeder Art freue ich mich dennoch:
 
 * Per [Flattr](https://flattr.com/donation/give/to/sergej.mueller)
 * Per [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6)
