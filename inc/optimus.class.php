@@ -146,8 +146,8 @@ class Optimus
 		return array_merge(
 			$input,
 			array(
-				'<a href="http://wpcoder.de" target="_blank">Plugins des Autors</a>',
-				'Unterstützung via <a href="https://flattr.com/donation/give/to/sergej.mueller" target="_blank">Flattr</a> / <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6" target="_blank">PayPal</a>'
+				'<a href="https://flattr.com/donation/give/to/sergej.mueller" target="_blank">Flattr</a>',
+				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6" target="_blank">PayPal</a>'
 			)
 		);
 	}
@@ -195,7 +195,7 @@ class Optimus
 		}
 		
 		/* Host abgleichen */
-		if ( $parsed_upload_url['host'] !== $parsed_blog_url['host'] or in_array($parsed_upload_url['host'], array('localhost', '127.0.0.1', 'wp')) ) {
+		if ( $parsed_upload_url['host'] !== $parsed_blog_url['host'] or in_array($parsed_upload_url['host'], array('127.0.0.1')) or strpos($parsed_upload_url['host'], '.') === false ) {
 			return $upload_data;
 		}
 		

@@ -89,6 +89,11 @@ Ich bin der Meinung, alle Vor- und Nachteile der Lösung aufgelistet zu haben. S
 
 == Changelog ==
 
+= 1.0.0 =
+* Code-Freeze
+* Vervollständigung der FAQ
+* Filter für lokale Installationen
+
 = 0.0.9 =
 * Support für PNGs
 
@@ -163,11 +168,14 @@ Die Fehlermeldung besagt: Der Blog hat keine Berechtigung, Optimierungsanfragen 
 
 = 5. Häufig gestellte Fragen =
 
-= 5.1. Das Originalbild wird nicht optimiert? =
+= 5.1. Wie finde ich heraus, ob Optimus tatsächlich funktioniert? =
+*Optimus* kennzeichnet behandelte Bilder in der Mediathek durch grün angefärbte Kreise, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/). Fehlen die Kreise in der *Optimus*-Spalte oder sind diese ausgegraut, so konnte die Optimierung nicht erfolgreich durchgeführt werden.
+
+= 5.2. Das Originalbild wird nicht optimiert? =
 *Optimus* verfügt über einen Limit von aktuell 300 KB. Dateien, die diese Größe übersteigen, überspringen die geplante Optimierung. So passiert es schnell, dass Initialbilder in der Größe nicht reduziert werden. Das ist aber keinesfalls tragisch, da in Artikeln meist zugeschnittene, von *Optimus* komprimierte Miniaturbilder und selten Originalbilder eingebunden werden.
 
-= 5.2. Was bedeutet der zum Teil ausgefüllte grüne Kreis? =
+= 5.3. Was bedeutet der zum Teil ausgefüllte grüne Kreis? =
 Da es bis dato nicht ersichtlich war, wie viele Vorschaubilder eines Bildes tatsächlich optimiert und welche wegen des oben erwähnten Limits von 300 kB übersprungen wurden, zeigt das grüne Diagramm die erfolgreiche Menge optisch dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/): Ist der halbe Kreis in Grün, so befanden sich ca. 50 % der Bilder in der Optimierungsphase. Ist der Kreis komplett grün ausgefüllt, so wurden alle Thumbnails samt Originalbild in der Größe reduziert. Ein- und Dreiviertel analog zu verstehen.
 
-= 5.3. JPEG-Bilder stärker komprimieren? =
+= 5.4. JPEG-Bilder stärker komprimieren? =
 Da *Optimus* die Qualität und die optische Darstellung der Bilder nicht beeinflusst, kann auch die Stärke der Komprimierung nicht verändert werden. Im Auslieferungszustand wendet WordPress automatisch eine Kompression von 90 % auf hochgeladene JPEGs an. Auf Wunsch kann jeder Blogger diesen Wert nach Bedürfnissen anpassen. Ein [Code-Snippet](https://gist.github.com/3900552) genügt. Je kleiner der Wert, desto schlechter die Qualität.
