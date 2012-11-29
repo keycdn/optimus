@@ -195,7 +195,7 @@ class Optimus
 		}
 		
 		/* Host abgleichen */
-		if ( $parsed_upload_url['host'] !== $parsed_blog_url['host'] or in_array($parsed_upload_url['host'], array('127.0.0.1')) or strpos($parsed_upload_url['host'], '.') === false ) {
+		if ( $parsed_upload_url['host'] !== $parsed_blog_url['host'] or filter_var($parsed_upload_url['host'], FILTER_VALIDATE_IP) or strpos($parsed_upload_url['host'], '.') === false ) {
 			return $upload_data;
 		}
 		
