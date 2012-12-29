@@ -59,11 +59,12 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 * Ausgehende Verbindung
 * Im Web erreichbare Bilder
 
-
 = Autor =
 * [Google+](https://plus.google.com/110569673423509816572 "Google+")
 * [Plugins](http://wpcoder.de "Plugins")
 
+= Plugin Website =
+* [optimus.io](http://optimus.io)
 
 
 == Changelog ==
