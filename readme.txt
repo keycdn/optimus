@@ -1,6 +1,6 @@
 === Optimus ===
 Contributors: sergej.mueller
-Tags: images, optimize, compress
+Tags: images, optimize, compress, smushit
 Requires at least: 3.4
 Tested up to: 3.5
 Stable tag: trunk
@@ -15,7 +15,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 == Description ==
 
-= Goodbye Smush.it =
+= (Fast) Magie =
 Das *Optimus*-Plugin verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobyte einsparen, die der Performance von Blogseiten positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
 
 
