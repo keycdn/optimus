@@ -4,8 +4,8 @@ Plugin Name: Optimus
 Description: Reduzierung der Dateigröße während des Uploads der Bilder in die Mediathek. Effektive und geschwinde Komprimierung ohne Qualitätsverlust.
 Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
-Plugin URI: http://wordpress.org/extend/plugins/optimus/
-Version: 1.0.0
+Plugin URI: http://optimus.io
+Version: 1.1.0
 */
 
 
@@ -28,6 +28,13 @@ add_action(
 		'instance'
 	)
 );
+register_uninstall_hook(
+	__FILE__,
+	array(
+		'Optimus',
+		'handle_uninstall_hook'
+	)
+);
 
 
 /* Autoload Init */
@@ -35,7 +42,7 @@ spl_autoload_register('optimus_autoload');
 
 /* Autoload Funktion */
 function optimus_autoload($class) {
-	if ( in_array($class, array('Optimus')) ) {
+	if ( in_array($class, array('Optimus', 'Optimus_HQ')) ) {
 		require_once(
 			sprintf(
 				'%s/inc/%s.class.php',

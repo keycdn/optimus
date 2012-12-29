@@ -28,7 +28,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  0.0.8
+	* @change  1.1.0
 	*/
 
 	public function __construct()
@@ -45,27 +45,11 @@ class Optimus
 		
 		/* Hooks */
 		add_action(
-			'admin_init',
-			array(
-				__CLASS__,
-				'admin_init'
-			)
-		);
-		add_action(
 			'admin_print_styles-upload.php',
 			array(
 				__CLASS__,
 				'add_media_css'
 			)
-		);
-		add_filter(
-			'plugin_row_meta',
-			array(
-				__CLASS__,
-				'add_meta_link'
-			),
-			10,
-			2
 		);
 		add_filter(
 			'wp_generate_attachment_metadata',
@@ -90,23 +74,43 @@ class Optimus
 			10,
 			2
 		);
-	}
-	
-	
-	/**
-	* Initialisierung des Admin-Bereiches
-	*
-	* @since   0.0.2
-	* @change  0.0.2
-	*/
-	
-	public static function admin_init()
-	{
-		wp_register_style(
-			'optimus-media',
-			plugins_url(
-				'css/styles.min.css',
-				OPTIMUS_FILE
+
+		add_filter(
+			'plugin_row_meta',
+			array(
+				__CLASS__,
+				'add_meta_link'
+			),
+			10,
+			2
+		);
+		add_action(
+			'after_plugin_row_' .OPTIMUS_BASE,
+			array(
+				'Optimus_HQ',
+				'display_key_input'
+			)
+		);
+		add_action(
+			'admin_init',
+			array(
+				'Optimus_HQ',
+				'verify_key_input'
+			)
+		);
+
+		add_action(
+			'network_admin_notices',
+			array(
+				'Optimus_HQ',
+				'display_admin_notices'
+			)
+		);
+		add_action(
+			'admin_notices',
+			array(
+				'Optimus_HQ',
+				'display_admin_notices'
 			)
 		);
 	}
@@ -116,11 +120,19 @@ class Optimus
 	* Hinzufügen der Stylesheets
 	*
 	* @since   0.0.2
-	* @change  0.0.2
+	* @change  1.1.0
 	*/
 	
 	public static function add_media_css()
 	{
+		wp_register_style(
+			'optimus-media',
+			plugins_url(
+				'css/styles.min.css',
+				OPTIMUS_FILE
+			)
+		);
+
 		wp_enqueue_style('optimus-media');
 	}
 
@@ -129,7 +141,7 @@ class Optimus
 	* Hinzufügen der Meta-Links
 	*
 	* @since   0.0.1
-	* @change  1.0.0
+	* @change  1.1.0
 	*
 	* @param   array   $input  Array mit Links
 	* @param   string  $file   Name des Plugins
@@ -142,12 +154,29 @@ class Optimus
 		if ( $file !== OPTIMUS_BASE ) {
 			return $input;
 		}
+
+		/* Keine Rechte? */
+		if ( ! current_user_can('update_plugins') ) {
+			return $input;
+		}
+
+		/* Optimus HQ */
+		if ( Optimus_HQ::unlocked() ) {
+			return $input;
+		}
 		
 		return array_merge(
 			$input,
 			array(
-				'<a href="https://flattr.com/donation/give/to/sergej.mueller" target="_blank">Flattr</a>',
-				'<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=5RDDW9FEHGLG6" target="_blank">PayPal</a>'
+				sprintf(
+					'<a href="%s">Optimus HQ aktivieren</a>',
+					add_query_arg(
+						array(
+							'_optimus_action' => 'rekey'
+						),
+						network_admin_url('plugins.php#optimus')
+					)
+				)
 			)
 		);
 	}
@@ -157,7 +186,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  1.0.0
+	* @change  1.1.0
 	*
 	* @param   array  $upload_data  Array mit Upload-Informationen
 	* @return  array  $upload_data  Array mit erneuerten Upload-Informationen
@@ -180,22 +209,13 @@ class Optimus
 			$upload_file = $file_info['basename'];
 		}
 		
-		/* Leer oder kein JPEG? */
-		if ( empty($upload_file) or !file_is_displayable_image($upload_path . $upload_file) ) {
+		/* Dateityp-Prüfung */
+		if ( ! self::_is_allowed_file_type($upload_file) ) {
 			return $upload_data;
 		}
-		
-		/* URLs zerlegen */
-		$parsed_blog_url = parse_url( get_bloginfo('url') );
-		$parsed_upload_url = parse_url($upload_url);
-		
-		/* Leere Werte? */
-		if ( empty($parsed_upload_url['host']) or empty($parsed_upload_url['path']) ) {
-			return $upload_data;
-		}
-		
-		/* Host abgleichen */
-		if ( $parsed_upload_url['host'] !== $parsed_blog_url['host'] or filter_var($parsed_upload_url['host'], FILTER_VALIDATE_IP) or strpos($parsed_upload_url['host'], '.') === false ) {
+
+		/* Host-Prüfung */
+		if ( ! self::_is_allowed_host_pattern($upload_url) ) {
 			return $upload_data;
 		}
 		
@@ -206,15 +226,12 @@ class Optimus
 		if ( !empty($upload_data['sizes']) ) {
 			/* Loopen */
 			foreach( $upload_data['sizes'] as $size ) {
-				/* Leer oder kein JPEG? */
-				if ( empty($size['file']) or !file_is_displayable_image($upload_path . $size['file']) ) {
-					continue;
+				if ( ! empty($size['file']) ) {
+					array_push(
+						$todo_files,
+						$size['file']
+					);
 				}
-				
-				array_push(
-					$todo_files,
-					$size['file']
-				);
 			}
 			
 			/* Umkehren */
@@ -230,14 +247,14 @@ class Optimus
 		foreach ($todo_files as $file) {
 			/* Dateigröße */
 			$upload_filesize = (int)filesize($upload_path . $file);
-
-			/* Zu klein/groß? */
-			if ( empty($upload_filesize) or $upload_filesize > 1024 * 300 ) {
+			
+			/* Zu groß? */
+			if ( ! self::_is_allowed_file_size($file, $upload_filesize) ) {
 				continue;
 			}
 			
 			/* Request senden */
-			$response = self::_optimize_upload_image( $upload_url . $file );
+			$response = self::_optimize_upload_image($upload_url . $file);
 			
 			/* Inhalt */
 			$response_body = (string)wp_remote_retrieve_body($response);
@@ -292,12 +309,122 @@ class Optimus
 		/* Mittelwert speichern */
 		if ( $received ) {
 			$upload_data['optimus'] = array(
-				'profit'   => round( array_sum($diff_filesizes) / $received ),
+				'profit'   => max($diff_filesizes),
 				'quantity' => round( $received * 100 / $ordered )
 			);
 		}
 		
 		return $upload_data;
+	}
+
+
+	/**
+	* Prüfung des erlaubten Bildtyps pro Datei
+	*
+	* @since   1.1.0
+	* @change  1.1.0
+	*
+	* @param   string   $url  Bild-URL
+	* @return  boolean        TRUE bei bestehender Prüfung
+	*/
+
+	private static function _is_allowed_file_type($url)
+	{
+		/* Leer? */
+		if ( empty($url) ) {
+			return false;
+		}
+
+		/* URL zerlegen */
+		$parsed_url = pathinfo($url);
+
+		/* Keine Dateiendung? */
+		if ( empty($parsed_url['extension']) ) {
+			return false;
+		}
+
+		/* Quota-Prüfung */
+		return array_key_exists(
+			$parsed_url['extension'],
+			self::_get_request_quota()
+		);
+	}
+
+
+	/**
+	* Prüfung der erlaubten Bildgröße pro Dateityp
+	*
+	* @since   1.1.0
+	* @change  1.1.0
+	*
+	* @param   string   $url    Bild-URL
+	* @param   integer  $bytes  Bild-Größe
+	* @return  boolean          TRUE bei bestehender Prüfung
+	*/
+
+	private static function _is_allowed_file_size($url, $bytes)
+	{
+		/* Leer? */
+		if ( empty($url) OR empty($bytes) ) {
+			return false;
+		}
+
+		/* URL zerlegen */
+		$parsed_url = pathinfo($url);
+
+		/* Keine Dateiendung? */
+		if ( empty($parsed_url['extension']) ) {
+			return false;
+		}
+
+		/* Quota */
+		$request_quota = self::_get_request_quota();
+
+		/* Falscher Dateityp? */
+		if ( ! array_key_exists($parsed_url['extension'], $request_quota) ) {
+			return false;
+		}
+
+		/* Zu groß? */
+		if ( $bytes > $request_quota[$parsed_url['extension']] ) {
+			return false;
+		}
+
+		return true;
+	}
+
+
+	/**
+	* Prüfung des URL-Hosts auf den festgelegten Muster
+	*
+	* @since   1.1.0
+	* @change  1.1.0
+	*
+	* @param   string  $url  Zu prüfende URL
+	* @return  boolean       TRUE bei bestehender Prüfung
+	*/
+
+	private static function _is_allowed_host_pattern($url)
+	{
+		/* Leer? */
+		if ( empty($url) ) {
+			return false;
+		}
+
+		/* URL zerlegen */
+		$parsed_url = parse_url($url);
+		
+		/* Leere Werte? */
+		if ( empty($parsed_url['host']) OR empty($parsed_url['path']) ) {
+			return false;
+		}
+		
+		/* Host prüfen */
+		if ( filter_var($parsed_url['host'], FILTER_VALIDATE_IP) OR strpos($parsed_url['host'], '.') === false ) {
+			return false;
+		}
+
+		return true;
 	}
 	
 	
@@ -305,7 +432,7 @@ class Optimus
 	* Start der Optimierungsanfrage für eine Datei
 	*
 	* @since   0.0.1
-	* @change  0.0.1
+	* @change  1.1.0
 	*
 	* @param   string  $file  URL der zu optimierender Datei
 	* @return  array          Array inkl. Rückgabe-Header
@@ -328,12 +455,47 @@ class Optimus
 		
 		/* URL erfragen */
 		return wp_remote_post(
-			'http://37.200.98.126',
+			sprintf(
+				'%s%s',
+				'http://api.optimus.io',
+				( Optimus_HQ::unlocked() ? sprintf( '/%s/', Optimus_HQ::key() ) : '' )
+			),
 			array(
-				'timeout' => 30,
-				'body'	  => $params
+				'timeout'	=> 30,
+				'body'		=> $params
 			)
 		);
+	}
+
+
+	/**
+	* Rückgabe der Kontingente pro Optimus Modell
+	*
+	* @since   1.1.0
+	* @change  1.1.0
+	*
+	* @return  array  Array mit Datensätzen
+	*/
+
+	private static function _get_request_quota()
+	{
+		/* Kontingente */
+		$quota = array(
+			/* FREE */
+			false => array(
+				'jpg'  => 20 * 1024,
+				'jpeg' => 20 * 1024
+			),
+
+			/* HQ */
+			true => array(
+				'jpg'  => 1000 * 1024,
+				'jpeg' => 1000 * 1024,
+				'png'  => 100 * 1024
+			)
+		);
+
+		return $quota[ Optimus_HQ::unlocked() ];
 	}
 	
 	
@@ -376,6 +538,19 @@ class Optimus
 		}
 		
 		echo self::_get_column_html($id);
+	}
+
+
+	/**
+	* Entfernt Plugin-Optionen
+	*
+	* @since   1.1.0
+	* @change  1.1.0
+	*/
+
+	public static function handle_uninstall_hook()
+	{
+		delete_site_option('optimus_key');
 	}
 		
 	
