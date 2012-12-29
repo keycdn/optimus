@@ -70,7 +70,7 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 == Changelog ==
 
 = 1.1.0 =
-* Umstellung auf Freemium Modell / [Offizielles Statement](http://wordpress.org/extend/plugins/optimus/faq/)
+* Umstellung auf Freemium Modell / [Offizielles Statement](https://plus.google.com/110569673423509816572/posts/XEoHhEi5uJw)
 * Plugin Website: [optimus.io](http://optimus.io)
 
 = 1.0.0 =
@@ -83,7 +83,7 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 = 0.0.8 =
 * Beschränkung auf JPEGs (da fast keine PNG/GIF-Nutzung)
-* Menge der optimierten Thumbnails als Diagramm, siehe [FAQ](http://wordpress.org/extend/plugins/optimus/faq/)
+* Menge der optimierten Thumbnails als Diagramm
 * Überarbeitung diverser Code-Fragmente
 
 = 0.0.7 =
@@ -116,7 +116,7 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 == Upgrade Notice ==
 
 = 1.1.0 =
-*Optimus* wurde auf Freemium Modell umgestellt. [Offizielles Statement](http://wordpress.org/extend/plugins/optimus/faq/) des Entwicklers.
+*Optimus* wurde auf Freemium Modell umgestellt. [Offizielles Statement](https://plus.google.com/110569673423509816572/posts/XEoHhEi5uJw).
 
 
 
@@ -124,23 +124,3 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 1. Anzeige der Komprimierung in Prozent
 2. Hochgeladene Thumbnails mit und ohne *Optimus*
-
-
-
-== Frequently Asked Questions ==
-
-= Neuanfang für Optimus =
-*Optimus* wurde auf [Freemium](http://de.wikipedia.org/wiki/Freemium) Modell umgestellt. Optimus gibt es nun in zwei Varianten: Weiterhin die kostenlose Fassung des Plugins mit einigen Beschränkungen und Optimus HQ als kostenpflichtige Alternative mit höher gesetzten Limits. Alle Einzelheiten zu den beiden Varianten auf der offiziellen Optimus Website [optimus.io](http://optimus.io).
-
-= Die berechtigte Frage nach „Warum?“ =
-In der Plugin-Beschreibung habe ich euch explizit darauf hingewiesen, dass der *Optimus Server* richtiges Geld kostet. Die Kosten war ich bereit (zum Teil) selbst zu tragen, war dennoch auf eure Unterstützung angewiesen. Im ersten Monat hat es wunderbar geklappt, danach aber auch nicht mehr. Ich betone: Es musste nicht immer finanzielle Unterstützung sein. Aber ganz ohne geht’s nicht. Das akzeptiere ich so nicht. Wer (viel) nimmt, muss auch geben können.
-
-Ich kann Nutzer mehr als verstehen, die sagen „Warum soll ich ein Projekt unterstützen und andere profitieren nur davon?“ Weil viele der Nutzer die Kaufbereitschaft signalisiert haben, gibt's nun die kaufbare *Optimus* Version.
-
-Das Prinzip: Ist jemand mit Weniger zufrieden, genügt *Optimus* in der Grundversion. Ist man professionell unterwegs, ist *Optimus HQ* ein zuverlässiger Begleiter bei der Optimierung der Bildgröße und Seitenladezeit.
-
-Der Preis ist sehr fair und transparent - diesen kann sich wirklich jeder leisten. Bei der Preisgestaltung ging es mir nicht darum Profit zu schlagen, sondern die Hardware-Kosten zu decken. Vom Support- und Weiterentwicklungsaufwand spreche ich hier gar nicht - diese gibt’s wie immer *on top*.
-
-In diesem Sinne: Schimpft nicht, versucht zu verstehen. Meine andere Plugins können gerne kostenlos bleiben. Doch sobald ein Kostenfaktor wie Hardware hinzukommt, will ich auf entstehenden Kosten nicht sitzen bleiben.
-
-Details zu Optimus HQ unter [optimus.io](http://optimus.io)
