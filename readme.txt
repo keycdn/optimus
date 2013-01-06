@@ -122,5 +122,5 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 == Screenshots ==
 
-1. Anzeige der Komprimierung in Prozent
-2. Hochgeladene Thumbnails mit und ohne *Optimus*
+1. Anzeige der Komprimierung und der Bildmenge als Kreis
+2. Bild samt Thumbnails ohne (oben) und mit Optimus Optimierung
