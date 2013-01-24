@@ -72,6 +72,10 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 == Changelog ==
 
+= 1.1.1 =
+* Interne Umstellung auf Mime-Type
+* Code-Optimierungen
+
 = 1.1.0 =
 * Umstellung auf Freemium Modell / [Offizielles Statement](https://plus.google.com/110569673423509816572/posts/XEoHhEi5uJw)
 * Plugin Website: [optimus.io](http://optimus.io)

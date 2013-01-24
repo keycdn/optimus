@@ -17,7 +17,7 @@ class Optimus_HQ
 	* @since   1.1.0
 	* @change  1.1.0
 	*/
-	
+
 	public static function display_key_input()
 	{
 		/* Keine Rechte? */
@@ -46,8 +46,8 @@ class Optimus_HQ
   			</td>
 	  	</tr>
 	<?php }
-	
-	
+
+
 	/**
 	* Prüfung und Speicherung des Optimus HQ Keys
 	*
@@ -128,9 +128,11 @@ class Optimus_HQ
 		}
 
 		/* Ausgabe */
-		echo sprintf(
-			'<div class="updated"><p>%s</p></div>',
-			$msg
+		show_message(
+			sprintf(
+				'<div class="updated"><p>%s</p></div>',
+				$msg
+			)
 		);
 	}
 
