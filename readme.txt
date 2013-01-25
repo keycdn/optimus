@@ -74,7 +74,7 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 == Changelog ==
 
 = 1.1.2 =
-* Option in Plugin-Einstellungen: Bild-Metadaten nicht entfernen
+* Option: Bild-Metadaten nicht entfernen / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/Nu8SLUwvNSS)
 
 = 1.1.1 =
 * Interne Umstellung auf Mime-Type
