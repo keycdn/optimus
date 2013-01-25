@@ -129,9 +129,9 @@ class Optimus_Settings
 					<table class="form-table">
 						<tr>
 							<th>
-								Bild-Metadaten (EXIF, IPTC) nicht entfernen
+								Bild-Metadaten (EXIF, IPTC) <strong>nicht</strong> entfernen
 								<small>
-									Behält Copyright- und andere Bild-Informationen
+									Aktive Option behält EXIF- und IPTC-Informationen.<br />Andernfalls werden alle Bild-Metadaten entfernt.
 								</small>
 							</th>
 							<td>
