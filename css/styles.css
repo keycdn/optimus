@@ -1,3 +1,47 @@
+/* @group Plugin Icon */
+
+#icon-optimus {
+	width: 32px;
+	height: 32px;
+	background: url('../img/icon@2x.png');
+	background-size: 100%;
+}
+
+/* @end group */
+
+
+/* @group GUI */
+
+#optimus_main .table {
+	width: 460px;
+	height: 1%;
+	margin: 20px 0 0;
+	padding: 0 0 5px;
+	overflow: hidden;
+	border: 1px solid #DFDFDF;
+}
+#optimus_main .form-table {
+	margin: 6px 0 0;
+}
+#optimus_main .form-table th {
+	width: 300px;
+}
+#optimus_main .form-table th small {
+	color: #8F8F8F;
+	display: block;
+	text-shadow: none;
+}
+#optimus_main .rounded {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+/* @end group */
+
+
+/* @group Media */
+
 .manage-column.column-optimus {
 	width: 5em;
 }
@@ -9,7 +53,7 @@
 	background: #bbb;
 	margin-left: 11px;
 	border-radius: 16px;
-	
+
 	-webkit-mask-image: -webkit-gradient(
 		linear,
 		0% 0%,
@@ -39,7 +83,7 @@
 	content: '';
 	position: absolute;
 	border-radius: 16px;
-	
+
 	transform: rotate(-45deg);
 	-o-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
@@ -66,3 +110,5 @@
 .optimus.column-optimus .fail p:before {
 	border-color: orange;
 }
+
+/* @end group */

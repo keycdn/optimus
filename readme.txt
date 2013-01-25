@@ -28,13 +28,14 @@ Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plug
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
 
-Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden.
+Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
 
 = Pluspunkte =
 * Verkleinerung der Dateigröße ohne Verlust der Qualität
 * Optimierung aller Vorschauvarianten eines Bildes
 * Keine Einstellungen oder Code-Anpassungen notwendig
+* Option: Keine Entfernung von EXIF- und IPTC-Metadaten
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
 
@@ -71,6 +72,9 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 
 == Changelog ==
+
+= 1.1.2 =
+* Option in Plugin-Einstellungen: Bild-Metadaten nicht entfernen
 
 = 1.1.1 =
 * Interne Umstellung auf Mime-Type

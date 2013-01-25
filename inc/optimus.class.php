@@ -28,7 +28,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.1
+	* @change  1.1.2
 	*/
 
 	public function __construct()
@@ -47,8 +47,8 @@ class Optimus
 		add_action(
 			'admin_print_styles-upload.php',
 			array(
-				__CLASS__,
-				'add_media_css'
+				'Optimus_Media',
+				'add_css'
 			)
 		);
 		add_filter(
@@ -63,15 +63,15 @@ class Optimus
 		add_filter(
 			'manage_media_columns',
 			array(
-				__CLASS__,
-				'manage_posts_columns'
+				'Optimus_Media',
+				'manage_columns'
 			)
 		);
 		add_action(
 			'manage_media_custom_column',
 			array(
-				__CLASS__,
-				'manage_posts_column'
+				'Optimus_Media',
+				'manage_column'
 			),
 			10,
 			2
@@ -86,6 +86,13 @@ class Optimus
 			10,
 			2
 		);
+		add_filter(
+				'plugin_action_links_' .OPTIMUS_BASE,
+				array(
+					__CLASS__,
+					'add_action_link'
+				)
+			);
 		add_action(
 			'after_plugin_row_' .OPTIMUS_BASE,
 			array(
@@ -98,6 +105,20 @@ class Optimus
 			array(
 				'Optimus_HQ',
 				'verify_key_input'
+			)
+		);
+		add_action(
+			'admin_init',
+			array(
+				'Optimus_Settings',
+				'register_settings'
+			)
+		);
+		add_action(
+			'admin_menu',
+			array(
+				'Optimus_Settings',
+				'add_page'
 			)
 		);
 
@@ -119,23 +140,37 @@ class Optimus
 
 
 	/**
-	* Hinzufügen der Stylesheets
+	* Hinzufügen der Action-Links
 	*
-	* @since   0.0.2
-	* @change  1.1.0
+	* @since   1.1.2
+	* @change  1.1.2
+	*
+	* @param   array  $data  Bereits existente Links
+	* @return  array  $data  Erweitertes Array mit Links
 	*/
 
-	public static function add_media_css()
+	public static function add_action_link($data)
 	{
-		wp_register_style(
-			'optimus-media',
-			plugins_url(
-				'css/styles.min.css',
-				OPTIMUS_FILE
+		/* Rechte? */
+		if ( !current_user_can('manage_options') ) {
+			return $data;
+		}
+
+		return array_merge(
+			$data,
+			array(
+				sprintf(
+					'<a href="%s">%s</a>',
+					add_query_arg(
+						array(
+							'page' => 'optimus'
+						),
+						admin_url('options-general.php')
+					),
+					__('Settings')
+				)
 			)
 		);
-
-		wp_enqueue_style('optimus-media');
 	}
 
 
@@ -188,7 +223,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  1.1.1
+	* @change  1.1.2
 	*
 	* @param   array    $upload_data    Array mit Upload-Informationen
 	* @param   integer  $attachment_id  Attachment ID
@@ -227,6 +262,9 @@ class Optimus
 		if ( ! self::_is_allowed_host_pattern($upload_url) ) {
 			return $upload_data;
 		}
+
+		/* Optionen */
+		$options = self::get_options();
 
 		/* Array mit Dateien */
 		$todo_files = array($upload_file);
@@ -267,7 +305,7 @@ class Optimus
 			}
 
 			/* Request senden */
-			$response = self::_optimize_upload_image($upload_url_file);
+			$response = self::_optimize_upload_image($upload_url_file, $options['copy_markers']);
 
 			/* Inhalt */
 			$response_body = (string)wp_remote_retrieve_body($response);
@@ -424,13 +462,14 @@ class Optimus
 	* Start der Optimierungsanfrage für eine Datei
 	*
 	* @since   0.0.1
-	* @change  1.1.0
+	* @change  1.1.2
 	*
-	* @param   string  $file  URL der zu optimierender Datei
-	* @return  array          Array inkl. Rückgabe-Header
+	* @param   string  $file     URL der zu optimierender Datei
+	* @param   intval  $markers  Kopie der Metadaten [Ja/Nein]
+	* @return  array             Array inkl. Rückgabe-Header
 	*/
 
-	private static function _optimize_upload_image($file)
+	private static function _optimize_upload_image($file, $markers)
 	{
 		/* Argumente */
 		$params = array(
@@ -442,7 +481,8 @@ class Optimus
 						'https'
 					)
 				)
-			)
+			),
+			'markers' => $markers
 		);
 
 		/* URL erfragen */
@@ -490,48 +530,6 @@ class Optimus
 
 
 	/**
-	* Ausgabe der Optimus-Spalte mit der Überschrift
-	*
-	* @since   0.0.1
-	* @change  0.0.1
-	*
-	* @param   array  $columns  Verfügbare Spalten
-	* @return  array            Editierte Spalten
-	*/
-
-	public static function manage_posts_columns($columns)
-	{
-		return array_merge(
-			$columns,
-			array(
-				'optimus' => 'Optimus'
-			)
-		);
-	}
-
-
-	/**
-	* Ausgabe der Optimus-Spalte mit Werten
-	*
-	* @since   0.0.1
-	* @change  0.0.1
-	*
-	* @param   string   $column  Bezeichnung der Spalte
-	* @param   integer  $id      ID des aktuellen Objektes
-	*/
-
-	public static function manage_posts_column($column, $id)
-	{
-		/* Falsche Spalte? */
-		if ( $column !== 'optimus' ) {
-			return;
-		}
-
-		echo self::_get_column_html($id);
-	}
-
-
-	/**
 	* Entfernt Plugin-Optionen
 	*
 	* @since   1.1.0
@@ -569,94 +567,21 @@ class Optimus
 
 
 	/**
-	* Gibt die formatierte Spalte in HTML zurück
+	* Rückgabe der Optionen
 	*
-	* @since   0.0.1
-	* @change  0.0.8
+	* @since   1.1.2
+	* @change  1.1.2
 	*
-	* @param   intval  $id  Attachment-ID
-	* @return  mixed        Ermittelter Wert
+	* @return  array  $diff  Array mit Werten
 	*/
 
-	private static function _get_column_html($id)
+	public static function get_options()
 	{
-		/* Metadaten des Anhangs */
-		$data = (array)wp_get_attachment_metadata($id);
-
-		/* Ausgabe */
-		if ( array_key_exists('optimus', $data) ) {
-			/* Init */
-			$optimus = $data['optimus'];
-
-			/* Neue Methode */
-			if ( is_array($optimus) ) {
-				/* Ausgabe der Erfolgmeldung */
-				if ( isset($optimus['profit']) ) {
-					return sprintf(
-						'<div class="%s"><p>%d%%</p></div>',
-						self::_pie_chart_class( $optimus['quantity'] ),
-						$optimus['profit']
-					);
-				}
-
-				/* Ausgabe des Fehlercodes */
-				if ( isset($optimus['error']) ) {
-					return sprintf(
-						'<div class="fail"><p>%d</p></div>',
-						$optimus['error']
-					);
-				}
-			}
-
-			/* Ergebnis als Zahl */
-			if ( is_numeric($optimus) ) {
-				return sprintf(
-					'<div><p>%d%%</p></div>',
-					$optimus
-				);
-			}
-
-			/* Ergebnis als String */
-			return sprintf(
-				'<div class="fail"><p>X</p></div>',
-				$optimus
-			);
-		}
-
-		return NULL;
-	}
-
-
-	/**
-	* Gibt die CSS-Klasse je nach Menge komprimierter Dateien
-	*
-	* @since   0.0.8
-	* @change  0.0.8
-	*
-	* @param   intval  $quantity  Menge als Prozentwert
-	* @return  string             CSS-Klasse
-	*/
-
-	private static function _pie_chart_class($quantity)
-	{
-		/* Init */
-		$quantity = (int)$quantity;
-
-		/* Leer? */
-		if ( empty($quantity) ) {
-			return '';
-		}
-
-		/* Loop */
-		switch(true) {
-			case ($quantity == 100):
-				return 'four';
-			case ($quantity <= 25):
-				return 'one';
-			case ($quantity <= 50):
-				return 'two';
-			default:
-				return 'three';
-		}
+		return wp_parse_args(
+			get_option('optimus'),
+			array(
+				'copy_markers' => 0
+			)
+		);
 	}
 }
