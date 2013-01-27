@@ -75,7 +75,7 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 == Changelog ==
 
 = 1.1.3 =
-* Unterstützung für WordPress Apps und Windows Live Writer
+* Unterstützung für WordPress Apps und Windows Live Writer / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/CDAc5FoDioN)
 
 = 1.1.2 =
 * Option: Bild-Metadaten nicht entfernen / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/Nu8SLUwvNSS)
