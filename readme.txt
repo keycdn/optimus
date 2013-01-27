@@ -34,7 +34,7 @@ Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Sta
 = Pluspunkte =
 * Verkleinerung der Dateigröße ohne Verlust der Qualität
 * Optimierung aller Vorschauvarianten eines Bildes
-* Keine Einstellungen oder Code-Anpassungen notwendig
+* Keine Code-Anpassungen notwendig
 * Option: Keine Entfernung von EXIF- und IPTC-Metadaten
 * Auch für Bildübertragungen aus WordPress Apps und Windows Live Writer
 * Vorteilhafterer PageSpeed als Ranking-Faktor
