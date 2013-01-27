@@ -36,6 +36,7 @@ Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Sta
 * Optimierung aller Vorschauvarianten eines Bildes
 * Keine Einstellungen oder Code-Anpassungen notwendig
 * Option: Keine Entfernung von EXIF- und IPTC-Metadaten
+* Auch für Bildübertragungen aus WordPress Apps und Windows Live Writer
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
 
@@ -72,6 +73,9 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 
 == Changelog ==
+
+= 1.1.3 =
+* Unterstützung für WordPress Apps und Windows Live Writer
 
 = 1.1.2 =
 * Option: Bild-Metadaten nicht entfernen / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/Nu8SLUwvNSS)

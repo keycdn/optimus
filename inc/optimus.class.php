@@ -28,7 +28,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.2
+	* @change  1.1.3
 	*/
 
 	public function __construct()
@@ -37,6 +37,17 @@ class Optimus
 		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) or (defined('DOING_CRON') && DOING_CRON) or (defined('DOING_AJAX') && DOING_AJAX) ) {
 			return;
 		}
+
+		/* Fire! */
+		add_filter(
+			'wp_generate_attachment_metadata',
+			array(
+				__CLASS__,
+				'optimize_upload_images'
+			),
+			10,
+			2
+		);
 
 		/* BE only */
 		if ( !is_admin() ) {
@@ -50,15 +61,6 @@ class Optimus
 				'Optimus_Media',
 				'add_css'
 			)
-		);
-		add_filter(
-			'wp_generate_attachment_metadata',
-			array(
-				__CLASS__,
-				'optimize_upload_images'
-			),
-			10,
-			2
 		);
 		add_filter(
 			'manage_media_columns',
