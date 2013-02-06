@@ -55,6 +55,10 @@ Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Sta
 Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* wird eine geschwinde Alternative zur Verfügung, die jedoch nicht wie *Smush.it* enden soll. Daher die Bitte: Missbraucht den Service nicht. Danke!
 
 
+= Support =
+Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
+
+
 = Systemanforderungen =
 * PHP ab 5.2.4
 * WordPress ab 3.4
