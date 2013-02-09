@@ -89,12 +89,12 @@ class Optimus
 			2
 		);
 		add_filter(
-				'plugin_action_links_' .OPTIMUS_BASE,
-				array(
-					__CLASS__,
-					'add_action_link'
-				)
-			);
+			'plugin_action_links_' .OPTIMUS_BASE,
+			array(
+				__CLASS__,
+				'add_action_link'
+			)
+		);
 		add_action(
 			'after_plugin_row_' .OPTIMUS_BASE,
 			array(
