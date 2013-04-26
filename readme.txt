@@ -2,7 +2,7 @@
 Contributors: sergej.mueller
 Tags: images, optimize, compress, smushit
 Requires at least: 3.4
-Tested up to: 3.5
+Tested up to: 3.6
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -28,7 +28,7 @@ Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plug
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
 
-Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen - der Kompressionsgewinn fällt entsprechend kleiner aus.
+Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. NEU: Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb des Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
 
 = Pluspunkte =
@@ -55,6 +55,10 @@ Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Sta
 Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* wird eine geschwinde Alternative zur Verfügung, die jedoch nicht wie *Smush.it* enden soll. Daher die Bitte: Missbraucht den Service nicht. Danke!
 
 
+= Support =
+Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
+
+
 = Systemanforderungen =
 * PHP ab 5.2.4
 * WordPress ab 3.4
@@ -74,8 +78,12 @@ Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. I
 
 == Changelog ==
 
+= 1.1.4 =
+* Optimus HQ: Erhöhung des Limits für PNGs auf 200 KB
+* Optimus HQ: Konvertierung der Bilder ins [WebP-Format](http://cup.wpcoder.de/webp-jpeg-alternative/) *experimentell*
+
 = 1.1.3 =
-* Unterstützung für WordPress-Apps und Windows Live Writer / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/CDAc5FoDioN)
+* Unterstützung für WordPress Apps und Windows Live Writer / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/CDAc5FoDioN)
 
 = 1.1.2 =
 * Option: Bild-Metadaten nicht entfernen / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/Nu8SLUwvNSS)
