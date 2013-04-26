@@ -28,7 +28,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.3
+	* @change  1.1.4
 	*/
 
 	public function __construct()
@@ -50,7 +50,7 @@ class Optimus
 		);
 
 		/* BE only */
-		if ( !is_admin() ) {
+		if ( ! is_admin() ) {
 			return;
 		}
 
@@ -136,6 +136,13 @@ class Optimus
 			array(
 				'Optimus_HQ',
 				'display_admin_notices'
+			)
+		);
+		add_filter(
+			'wp_delete_file',
+			array(
+				__CLASS__,
+				'delete_converted_file'
 			)
 		);
 	}
@@ -225,7 +232,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  1.1.2
+	* @change  1.1.4
 	*
 	* @param   array    $upload_data    Array mit Upload-Informationen
 	* @param   integer  $attachment_id  Attachment ID
@@ -256,12 +263,12 @@ class Optimus
 		$mime_type = get_post_mime_type($attachment);
 
 		/* Prüfung auf Mime-Type */
-		if ( ! self::_is_allowed_mime_type($mime_type) ) {
+		if ( ! self::_allowed_mime_type($mime_type) ) {
 			return $upload_data;
 		}
 
 		/* Host-Prüfung */
-		if ( ! self::_is_allowed_host_pattern($upload_url) ) {
+		if ( ! self::_allowed_host_pattern($upload_url) ) {
 			return $upload_data;
 		}
 
@@ -275,7 +282,7 @@ class Optimus
 		if ( !empty($upload_data['sizes']) ) {
 			/* Loopen */
 			foreach( $upload_data['sizes'] as $size ) {
-				if ( self::_is_allowed_mime_type($size['mime-type']) ) {
+				if ( self::_allowed_mime_type($size['mime-type']) ) {
 					array_push(
 						$todo_files,
 						$size['file']
@@ -294,55 +301,73 @@ class Optimus
 
 		/* Files loopen */
 		foreach ($todo_files as $file) {
+			/* No file? */
+			if ( empty($file) ) {
+				continue;
+			}
+
 			/* Pfad + Datei */
-			$upload_path_file = path_join($upload_path, $file);
 			$upload_url_file = path_join($upload_url, $file);
+			$upload_path_file = path_join($upload_path, $file);
 
 			/* Dateigröße */
 			$upload_filesize = (int)filesize($upload_path_file);
 
 			/* Zu groß? */
-			if ( ! self::_is_allowed_file_size($mime_type, $upload_filesize) ) {
+			if ( ! self::_allowed_file_size($mime_type, $upload_filesize) ) {
 				continue;
 			}
 
-			/* Request senden */
-			$response = self::_optimize_upload_image($upload_url_file, $options['copy_markers']);
-
-			/* Inhalt */
-			$response_body = (string)wp_remote_retrieve_body($response);
-
-			/* Code */
-			$response_code = (int)wp_remote_retrieve_response_code($response);
-
-			/* Kein 200 als Antwort? */
-			if ( $response_code !== 200 ) {
-				$upload_data['optimus'] = array(
-					'error' => $response_code
-				);
-
-				return $upload_data;
-			}
-
-			/* Fehler? */
-			if ( is_wp_error($response) ) {
-				return $upload_data;
-			}
-
-			/* Optimierte Größe */
-			$response_filesize = wp_remote_retrieve_header(
-				$response,
-				'content-length'
+			/* Encoded url */
+			$upload_url_file_encoded = urlencode(
+				esc_url_raw(
+					$upload_url_file,
+					array('http', 'https')
+				)
 			);
 
-			/* Leere Datei? */
-			if ( empty($response_filesize) ) {
-				return $upload_data;
+			/*  Request: Optimize image */
+			$action_response = self::_do_image_action(
+				$upload_path_file,
+				array(
+					'img'     => $upload_url_file_encoded,
+					'action'  => 'optimize',
+					'target'  => $mime_type,
+					'markers' => $options['copy_markers']
+				)
+			);
+
+			/* Check */
+			switch (true) {
+				case ( is_array($action_response) ):
+					return array_merge(
+						$upload_data,
+						array(
+							'optimus' => $action_response
+						)
+					);
+
+				case ( $action_response === false ):
+					return $upload_data;
+
+				default:
+					$response_filesize = $action_response;
 			}
 
-			/* Inhalt schreiben */
-			if ( ! file_put_contents($upload_path_file, $response_body) ) {
-				return $upload_data;
+			/* Request: WebP convert */
+			if ( $options['webp_convert'] && Optimus_HQ::unlocked() ) {
+				$action_response = self::_do_image_action(
+					self::_replace_file_extension(
+						$upload_path_file,
+						'webp'
+					),
+					array(
+						'img'     => $upload_url_file_encoded,
+						'action'  => 'convert',
+						'target'  => 'image/webp',
+						'quality' => ( $mime_type === 'image/png' ? 100 : 85 ) /* later dynamically */
+					)
+				);
 			}
 
 		  	/* Differenz */
@@ -372,16 +397,117 @@ class Optimus
 
 
 	/**
+	* Änderung der Datei-Erweiterung
+	*
+	* @since   1.1.4
+	* @change  1.1.4
+	*
+	* @param   string  $file       Dateipfad
+	* @param   string  $extension  Ziel-Erweiterung
+	* @return  string              Umbenannter Dateipfad
+	*/
+
+	private static function _replace_file_extension($file, $extension)
+	{
+		return substr_replace(
+			$file,
+			$extension,
+			strlen(pathinfo($file, PATHINFO_EXTENSION)) * -1
+		);
+	}
+
+
+	/**
+	* Behandlung der Bilder-Aktionen
+	*
+	* @since   1.1.4
+	* @change  1.1.4
+	*
+	* @param   string  $file  Dateipfad
+	* @param   array   $args  POST-Argumente
+	* @return  mixed          Fehlercodes/Dateigröße/FALSE im Fehlerfall
+	*/
+
+	private static function _do_image_action($file, $args)
+	{
+		/* Request senden */
+		$response = self::_do_api_request($args);
+
+		/* Inhalt */
+		$response_body = (string)wp_remote_retrieve_body($response);
+
+		/* Code */
+		$response_code = (int)wp_remote_retrieve_response_code($response);
+
+		/* Kein 200 als Antwort? */
+		if ( $response_code !== 200 ) {
+			return array(
+				'error' => $response_code
+			);
+		}
+
+		/* Fehler? */
+		if ( is_wp_error($response) ) {
+			return false;
+		}
+
+		/* Optimierte Größe */
+		$response_filesize = wp_remote_retrieve_header(
+			$response,
+			'content-length'
+		);
+
+		/* Leere Datei? */
+		if ( empty($response_filesize) ) {
+			return false;
+		}
+
+		/* Inhalt schreiben */
+		if ( ! file_put_contents($file, $response_body) ) {
+			return false;
+		}
+
+		return $response_filesize;
+	}
+
+
+	/**
+	* Start der API-Anfrage
+	*
+	* @since   1.1.4
+	* @change  1.1.4
+	*
+	* @param   array  $args  POST-Argumente
+	* @return  array         Array inkl. Rückgabe-Header
+	*/
+
+	private static function _do_api_request($args)
+	{
+		return wp_remote_post(
+			sprintf(
+				'%s%s',
+				'http://api.optimus.io',
+				( Optimus_HQ::unlocked() ? sprintf( '/%s/', Optimus_HQ::key() ) : '' )
+			),
+			array(
+				'timeout' => 30,
+				'body'	  => $args
+			)
+		);
+	}
+
+
+	/**
 	* Prüfung des erlaubten Bildtyps pro Datei
 	*
 	* @since   1.1.0
-	* @change  1.1.1
+	* @change  1.1.4
 	*
 	* @param   string   $mime_type  Mime Type
 	* @return  boolean              TRUE bei bestehender Prüfung
 	*/
 
-	private static function _is_allowed_mime_type($mime_type)
+	private static function _allowed_mime_type($mime_type)
 	{
 		/* Leer? */
 		if ( empty($mime_type) ) {
@@ -400,14 +526,14 @@ class Optimus
 	* Prüfung der erlaubten Bildgröße pro Dateityp
 	*
 	* @since   1.1.0
-	* @change  1.1.1
+	* @change  1.1.4
 	*
 	* @param   string   $mime_type  Mime Type
 	* @param   integer  $file_size  Bild-Größe
 	* @return  boolean              TRUE bei bestehender Prüfung
 	*/
 
-	private static function _is_allowed_file_size($mime_type, $file_size)
+	private static function _allowed_file_size($mime_type, $file_size)
 	{
 		/* Leer? */
 		if ( empty($file_size) ) {
@@ -430,13 +556,13 @@ class Optimus
 	* Prüfung des URL-Hosts auf den festgelegten Muster
 	*
 	* @since   1.1.0
-	* @change  1.1.0
+	* @change  1.1.4
 	*
 	* @param   string  $url  Zu prüfende URL
 	* @return  boolean       TRUE bei bestehender Prüfung
 	*/
 
-	private static function _is_allowed_host_pattern($url)
+	private static function _allowed_host_pattern($url)
 	{
 		/* Leer? */
 		if ( empty($url) ) {
@@ -461,48 +587,6 @@ class Optimus
 
 
 	/**
-	* Start der Optimierungsanfrage für eine Datei
-	*
-	* @since   0.0.1
-	* @change  1.1.2
-	*
-	* @param   string  $file     URL der zu optimierender Datei
-	* @param   intval  $markers  Kopie der Metadaten [Ja/Nein]
-	* @return  array             Array inkl. Rückgabe-Header
-	*/
-
-	private static function _optimize_upload_image($file, $markers)
-	{
-		/* Argumente */
-		$params = array(
-			'img' => urlencode(
-				esc_url_raw(
-					$file,
-					array(
-						'http',
-						'https'
-					)
-				)
-			),
-			'markers' => $markers
-		);
-
-		/* URL erfragen */
-		return wp_remote_post(
-			sprintf(
-				'%s%s',
-				'http://api.optimus.io',
-				( Optimus_HQ::unlocked() ? sprintf( '/%s/', Optimus_HQ::key() ) : '' )
-			),
-			array(
-				'timeout'	=> 30,
-				'body'		=> $params
-			)
-		);
-	}
-
-
-	/**
 	* Rückgabe der Kontingente pro Optimus Modell
 	*
 	* @since   1.1.0
@@ -523,7 +607,7 @@ class Optimus
 			/* HQ */
 			true => array(
 				'image/jpeg' => 1000 * 1024,
-				'image/png'  => 100 * 1024
+				'image/png'  => 200 * 1024
 			)
 		);
 
@@ -541,6 +625,52 @@ class Optimus
 	public static function handle_uninstall_hook()
 	{
 		delete_site_option('optimus_key');
+	}
+
+
+	/**
+	* Löscht erzeugte WebP-Dateien
+	*
+	* @since   1.1.4
+	* @change  1.1.4
+	*
+	* @param   string  $file  Zu löschende Original-Datei
+	* @return  string  $file  Zu löschende Original-Datei
+	*/
+
+	public static function delete_converted_file($file) {
+		/* Plugin options */
+		$options = self::get_options();
+
+		/* Nicht aktiv? */
+		if ( ! $options['webp_convert'] OR ! Optimus_HQ::unlocked() ) {
+			return $file;
+		}
+
+		/* Upload path */
+		$upload_path = wp_upload_dir();
+		$base_dir = $upload_path['basedir'];
+
+		/* Init converted file */
+		$converted_file = $file;
+
+		/* Check for upload path */
+		if ( strpos($converted_file, $base_dir) === false ) {
+			$converted_file = path_join($base_dir, $converted_file);
+		}
+
+		/* Replace to webp extension */
+		$converted_file = self::_replace_file_extension(
+			$converted_file,
+			'webp'
+		);
+
+		/* Remove if exists */
+		if ( file_exists($converted_file) ) {
+			@unlink($converted_file);
+		}
+
+		return $file;
 	}
 
 
@@ -572,7 +702,7 @@ class Optimus
 	* Rückgabe der Optionen
 	*
 	* @since   1.1.2
-	* @change  1.1.2
+	* @change  1.1.4
 	*
 	* @return  array  $diff  Array mit Werten
 	*/
@@ -582,7 +712,8 @@ class Optimus
 		return wp_parse_args(
 			get_option('optimus'),
 			array(
-				'copy_markers' => 0
+				'copy_markers' => 0,
+				'webp_convert' => 0
 			)
 		);
 	}

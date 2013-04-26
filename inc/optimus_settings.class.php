@@ -35,7 +35,7 @@ class Optimus_Settings
 	* Valisierung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.2
+	* @change  1.1.4
 	*
 	* @param   array  $data  Array mit Formularwerten
 	* @return  array         Array mit geprüften Werten
@@ -44,7 +44,8 @@ class Optimus_Settings
 	public static function validate_options($data)
 	{
 		return array(
-			'copy_markers' => (int)(!empty($data['copy_markers']))
+			'copy_markers' => (int)(!empty($data['copy_markers'])),
+			'webp_convert' => (int)(!empty($data['webp_convert']))
 		);
 	}
 
@@ -108,7 +109,7 @@ class Optimus_Settings
 	* Darstellung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.2
+	* @change  1.1.4
 	*/
 
 	public static function options_page()
@@ -129,13 +130,29 @@ class Optimus_Settings
 					<table class="form-table">
 						<tr>
 							<th>
-								Bild-Metadaten (EXIF, IPTC) <strong>nicht</strong> entfernen
+								Bild-Metadaten <strong>nicht</strong> entfernen
 								<small>
-									Aktive Option behält EXIF- und IPTC-Informationen.<br />Andernfalls werden alle Bild-Metadaten entfernt.
+									Aktive Option behält EXIF- und IPTC-Daten in Fotos.<br />Empfohlen, wenn Copyright- und Aufnahme-Parameter erhalten bleiben sollen. <strong>Die Größenreduzierung fehlt geringer aus.</strong>
 								</small>
 							</th>
 							<td>
 								<input type="checkbox" name="optimus[copy_markers]" value="1" <?php checked(1, $options['copy_markers']) ?> />
+							</td>
+						</tr>
+					</table>
+				</div>
+
+				<div class="table rounded">
+					<table class="form-table">
+						<tr>
+							<th>
+								WebP-Dateien anfertigen <span>Optimus HQ</span>
+								<small>
+									Aktive Option legt für jedes Bild eine WebP-Variante an.<br />Erweiterung der Datei .htaccess um den <a href="https://gist.github.com/sergejmueller/5462544" target="_blank">Code</a> erforderlich.<br /><strong>Verlangsamt die Generierung der Vorschaubilder.</strong>
+								</small>
+							</th>
+							<td>
+								<input type="checkbox" name="optimus[webp_convert]" value="1" <?php checked(1, $options['webp_convert']) ?> />
 							</td>
 						</tr>
 					</table>

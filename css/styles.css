@@ -16,7 +16,7 @@
 	width: 460px;
 	height: 1%;
 	margin: 20px 0 0;
-	padding: 0 0 5px;
+	padding: 0 0 5px 5px;
 	overflow: hidden;
 	border: 1px solid #DFDFDF;
 }
@@ -26,10 +26,26 @@
 #optimus_main .form-table th {
 	width: 300px;
 }
+#optimus_main .form-table th span {
+	color: #FFF;
+	margin: 0 5px;
+	padding: 0 5px;
+	display: inline-block;
+	background: #DFDFDF;
+	text-shadow: none;
+
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
 #optimus_main .form-table th small {
-	color: #8F8F8F;
+	color: #6F6F6F;
+	margin: 5px 0 0;
 	display: block;
 	text-shadow: none;
+}
+#optimus_main .form-table th small a {
+	color: inherit;
 }
 #optimus_main .rounded {
 	border-radius: 3px;

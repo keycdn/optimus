@@ -5,12 +5,12 @@ Description: Reduzierung der Dateigröße während des Uploads der Bilder in die
 Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
 Plugin URI: http://optimus.io
-Version: 1.1.3
+Version: 1.1.4
 */
 
 
 /* Sicherheitsabfrage */
-if ( !class_exists('WP') ) {
+if ( ! class_exists('WP') ) {
 	die();
 }
 
