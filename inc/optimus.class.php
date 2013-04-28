@@ -364,8 +364,7 @@ class Optimus
 					array(
 						'img'     => $upload_url_file_encoded,
 						'action'  => 'convert',
-						'target'  => 'image/webp',
-						'quality' => ( $mime_type === 'image/png' ? 100 : 85 ) /* later dynamically */
+						'target'  => 'image/webp'
 					)
 				);
 			}
