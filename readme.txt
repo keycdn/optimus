@@ -80,7 +80,7 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 = 1.1.4 =
 * Optimus HQ: Erhöhung des Limits für PNGs auf 200 KB
-* Optimus HQ: Konvertierung der Bilder ins [WebP-Format](http://cup.wpcoder.de/webp-jpeg-alternative/) *experimentell*
+* Optimus HQ: Konvertierung der Bilder ins [WebP-Format](http://cup.wpcoder.de/webp-jpeg-alternative/) *(experimentell)*
 
 = 1.1.3 =
 * Unterstützung für WordPress Apps und Windows Live Writer / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/CDAc5FoDioN)
