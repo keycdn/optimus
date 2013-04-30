@@ -1,6 +1,6 @@
 === Optimus ===
 Contributors: sergej.mueller
-Tags: images, optimize, compress, smushit
+Tags: images, optimize, compress, smushit, webp
 Requires at least: 3.4
 Tested up to: 3.6
 Stable tag: trunk
@@ -24,11 +24,11 @@ Das *Optimus*-Plugin verkleinert die Dateigröße hochgeladener Medien. Abhängi
 
 
 = Prinzip =
-Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den entfernten *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - in der Größe reduzierte - Version des Bildes in der Mediathek ab.
+Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - in der Größe reduzierte - Version des Bildes in der Mediathek ab.
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
 
-Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. NEU: Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb des Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
+Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. NEU: Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb des Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus. Auch ist optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/) möglich.
 
 
 = Pluspunkte =
@@ -36,6 +36,7 @@ Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Sta
 * Optimierung aller Vorschauvarianten eines Bildes
 * Keine Code-Anpassungen notwendig
 * Option: Keine Entfernung von EXIF- und IPTC-Metadaten
+* Option: Konvertierung ins WebP-Bildformat
 * Auch für Bildübertragungen aus WordPress Apps und Windows Live Writer
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
