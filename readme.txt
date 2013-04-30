@@ -30,7 +30,7 @@ Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für
 
 Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb des Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
-NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins sparsame [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/) möglich.
+NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins sparsame [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/).
 
 
 = Pluspunkte =
