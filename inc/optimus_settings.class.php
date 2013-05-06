@@ -132,7 +132,7 @@ class Optimus_Settings
 							<th>
 								Bild-Metadaten <strong>nicht</strong> entfernen
 								<small>
-									Aktive Option behält EXIF- und IPTC-Daten in Fotos.<br />Empfohlen, wenn Copyright- und Aufnahme-Parameter erhalten bleiben sollen. <strong>Die Größenreduzierung fehlt geringer aus.</strong>
+									Aktive Option behält EXIF- und IPTC-Daten in Fotos.<br />Empfohlen, wenn Copyright- und Aufnahme-Parameter erhalten bleiben sollen. <strong>Die Größenreduzierung fällt geringer aus.</strong>
 								</small>
 							</th>
 							<td>
