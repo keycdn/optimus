@@ -432,9 +432,6 @@ class Optimus
 		/* Request senden */
 		$response = self::_do_api_request($args);
 
-		/* Inhalt */
-		$response_body = (string)wp_remote_retrieve_body($response);
-
 		/* Code */
 		$response_code = (int)wp_remote_retrieve_response_code($response);
 
@@ -450,14 +447,14 @@ class Optimus
 			return false;
 		}
 
-		/* Optimierte Größe */
-		$response_filesize = wp_remote_retrieve_header(
-			$response,
-			'content-length'
-		);
+		/* File size */
+		$response_filesize = wp_remote_retrieve_header($response, 'content-length');
+
+		/* File body */
+		$response_body = (string)wp_remote_retrieve_body($response);
 
 		/* Leere Datei? */
-		if ( empty($response_filesize) ) {
+		if ( empty($response_filesize) OR empty($response_body) ) {
 			return false;
 		}
 
