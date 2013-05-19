@@ -19,12 +19,16 @@
 	padding: 0 0 5px 5px;
 	overflow: hidden;
 	border: 1px solid #DFDFDF;
+
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 #optimus_main .form-table {
 	margin: 6px 0 0;
 }
 #optimus_main .form-table th {
-	width: 300px;
+	width: 320px;
 }
 #optimus_main .form-table th span {
 	color: #FFF;
@@ -51,6 +55,17 @@
 	border-radius: 3px;
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
+}
+
+#optimus_main .submit {
+	width: 460px;
+	height: 1%;
+	overflow: hidden;
+}
+#optimus_main .submit > a {
+	float: right;
+	margin: 0;
+	line-height: 24px;
 }
 
 /* @end group */

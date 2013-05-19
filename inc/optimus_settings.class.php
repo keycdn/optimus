@@ -148,7 +148,7 @@ class Optimus_Settings
 							<th>
 								WebP-Dateien anfertigen <span>Optimus HQ</span>
 								<small>
-									Aktive Option legt für jedes Bild eine WebP-Variante an.<br />Erweiterung der Datei .htaccess um <a href="https://gist.github.com/sergejmueller/5462544" target="_blank">Code-Snippet</a> erforderlich.<br /><strong>Verlangsamt die Generierung der Vorschaubilder.</strong>
+									Aktive Option legt für jede Bildgröße eine <a href="http://cup.wpcoder.de/webp-jpeg-alternative/" target="_blank">WebP-Datei</a> an.<br />Erweiterung der Datei .htaccess um <a href="https://gist.github.com/sergejmueller/5462544" target="_blank">Code-Snippet</a> erforderlich.<br /><strong>Verlangsamt die Generierung der Vorschaubilder.</strong>
 								</small>
 							</th>
 							<td>
@@ -159,6 +159,8 @@ class Optimus_Settings
 				</div>
 
 				<div class="submit">
+					<a href="http://optimus.io/#faq" target="_blank">FAQ</a>
+
 					<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 				</div>
 			</form>
