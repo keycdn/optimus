@@ -148,7 +148,7 @@ class Optimus_Settings
 							<th>
 								WebP-Dateien anfertigen <span>Optimus HQ</span>
 								<small>
-									Aktive Option legt für jedes Bild eine WebP-Variante an.<br />Erweiterung der Datei .htaccess um den <a href="https://gist.github.com/sergejmueller/5462544" target="_blank">Code</a> erforderlich.<br /><strong>Verlangsamt die Generierung der Vorschaubilder.</strong>
+									Aktive Option legt für jedes Bild eine WebP-Variante an.<br />Erweiterung der Datei .htaccess um <a href="https://gist.github.com/sergejmueller/5462544" target="_blank">Code-Snippet</a> erforderlich.<br /><strong>Verlangsamt die Generierung der Vorschaubilder.</strong>
 								</small>
 							</th>
 							<td>
