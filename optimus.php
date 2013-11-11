@@ -5,7 +5,7 @@ Description: Reduzierung der Dateigröße während des Uploads der Bilder in die
 Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
 Plugin URI: http://optimus.io
-Version: 1.1.4
+Version: 1.1.5
 */
 
 
@@ -20,14 +20,27 @@ define('OPTIMUS_FILE', __FILE__);
 define('OPTIMUS_BASE', plugin_basename(__FILE__));
 
 
-/* Hooks */
-add_action(
-	'plugins_loaded',
+/* Admin & XMLRPC only */
+if ( is_admin() OR (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
+	add_action(
+		'plugins_loaded',
+		array(
+			'Optimus',
+			'instance'
+		)
+	);
+}
+
+/* Activate */
+register_activation_hook(
+	__FILE__,
 	array(
 		'Optimus',
-		'instance'
+		'handle_activation_hook'
 	)
 );
+
+/* Uninstall */
 register_uninstall_hook(
 	__FILE__,
 	array(

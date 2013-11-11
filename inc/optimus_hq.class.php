@@ -94,10 +94,10 @@ class Optimus_HQ
 	* Steuerung der Ausgabe von Admin-Notizen
 	*
 	* @since   1.1.0
-	* @change  1.1.0
+	* @change  1.1.5
 	*/
 
- 	public static function display_admin_notices()
+ 	public static function optimus_hq_notice()
 	{
 		/* Typ festlegen */
 		if ( ! empty($_GET['_optimus_notice']) ) {

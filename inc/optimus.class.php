@@ -28,7 +28,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.4
+	* @change  1.1.5
 	*/
 
 	public function __construct()
@@ -123,26 +123,40 @@ class Optimus
 				'add_page'
 			)
 		);
+		add_filter(
+			'wp_delete_file',
+			array(
+				__CLASS__,
+				'delete_converted_file'
+			)
+		);
 
 		add_action(
 			'network_admin_notices',
 			array(
 				'Optimus_HQ',
-				'display_admin_notices'
+				'optimus_hq_notice'
 			)
 		);
 		add_action(
 			'admin_notices',
 			array(
 				'Optimus_HQ',
-				'display_admin_notices'
+				'optimus_hq_notice'
 			)
 		);
-		add_filter(
-			'wp_delete_file',
+		add_action(
+			'network_admin_notices',
 			array(
 				__CLASS__,
-				'delete_converted_file'
+				'protected_site_notice'
+			)
+		);
+		add_action(
+			'admin_notices',
+			array(
+				__CLASS__,
+				'protected_site_notice'
 			)
 		);
 	}
@@ -187,7 +201,7 @@ class Optimus
 	* Hinzufügen der Meta-Links
 	*
 	* @since   0.0.1
-	* @change  1.1.0
+	* @change  1.1.5
 	*
 	* @param   array   $input  Array mit Links
 	* @param   string  $file   Name des Plugins
@@ -206,22 +220,18 @@ class Optimus
 			return $input;
 		}
 
-		/* Optimus HQ */
-		if ( Optimus_HQ::unlocked() ) {
-			return $input;
-		}
-
 		return array_merge(
 			$input,
 			array(
 				sprintf(
-					'<a href="%s">Optimus HQ aktivieren</a>',
+					'<a href="%s">%s</a>',
 					add_query_arg(
 						array(
 							'_optimus_action' => 'rekey'
 						),
 						network_admin_url('plugins.php#optimus')
-					)
+					),
+					( Optimus_HQ::unlocked() ? 'Anderen Optimus HQ Key eingeben' : 'Optimus HQ aktivieren' )
 				)
 			)
 		);
@@ -232,7 +242,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  1.1.4
+	* @change  1.1.5
 	*
 	* @param   array    $upload_data    Array mit Upload-Informationen
 	* @param   integer  $attachment_id  Attachment ID
@@ -240,6 +250,11 @@ class Optimus
 	*/
 
 	public static function optimize_upload_images($upload_data, $attachment_id) {
+		/* Protected site? */
+		if ( get_transient('optimus_protected_site') ) {
+			return $upload_data;
+		}
+
 		/* Upload-Ordner */
 		$upload_dir = wp_upload_dir();
 
@@ -615,12 +630,69 @@ class Optimus
 	* Entfernt Plugin-Optionen
 	*
 	* @since   1.1.0
-	* @change  1.1.0
+	* @change  1.1.5
 	*/
 
 	public static function handle_uninstall_hook()
 	{
 		delete_site_option('optimus_key');
+		delete_transient('optimus_protected_site');
+	}
+
+
+	/**
+	* Activation hook
+	*
+	* @since   1.1.5
+	* @change  1.1.5
+	*/
+
+	public static function handle_activation_hook() {
+		set_transient(
+			'optimus_protected_site',
+			self::_is_protected_site()
+		);
+	}
+
+
+	/**
+	* Ermittelt, ob Bilder von "Außen" erreichbar sind
+	*
+	* @since   1.1.5
+	* @change  1.1.5
+	*
+	* @return  boolean  true/false  TRUE beim Response-Code 401
+	*/
+
+	private static function _is_protected_site() {
+		/* Get attachments */
+		$query = new WP_Query(
+			array(
+				'post_type'	     => 'attachment',
+				'post_status' 	 => 'any',
+				'orderby'        => 'rand',
+				'posts_per_page' => '1'
+			)
+		);
+
+		/* Attachment check */
+		if ( empty($query->posts[0]) ) {
+			return false;
+		}
+
+		/* Image attributes */
+		if ( ! $image_attr = wp_get_attachment_image_src($query->posts[0]->ID) ) {
+			return false;
+		}
+
+		/* Image request */
+		$response_code = wp_remote_retrieve_response_code(
+			wp_remote_get(
+				$image_attr[0]
+			)
+		);
+
+		return ( $response_code === 401 );
 	}
 
 
@@ -710,6 +782,35 @@ class Optimus
 			array(
 				'copy_markers' => 0,
 				'webp_convert' => 0
+			)
+		);
+	}
+
+
+	/**
+	* Steuerung der Ausgabe von Admin-Notizen
+	*
+	* @since   1.1.5
+	* @change  1.1.5
+	*/
+
+ 	public static function protected_site_notice()
+	{
+		/* Plugins overview only */
+		if ( $GLOBALS['pagenow'] !== 'plugins.php' ) {
+			return;
+		}
+
+		/* No warnings */
+		if ( ! get_transient('optimus_protected_site') ) {
+			return;
+		}
+
+		/* Message */
+		show_message(
+			sprintf(
+				'<div class="updated"><p>%s</p></div>',
+				'<strong>Optimus meldet:</strong> Upload-Bilder müssen im Web erreichbar sein. Bitte <a href="http://optimus.io/#require" target="_blank">Systemvoraussetzungen</a> beachten. Plugin-Reaktivierung erneuert den Prüfstatus.'
 			)
 		);
 	}

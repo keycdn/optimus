@@ -81,6 +81,11 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 == Changelog ==
 
+= 1.1.5 =
+* Optimus HQ: Eingabe eines neuen Lizenzschlüssels möglich
+* Selbstprüfung auf Erreichbarkeit der Upload-Bilder (Zugriffsschutz, etc.)
+* Performance-Optimierungen
+
 = 1.1.4 =
 * Optimus HQ: Erhöhung des Limits für PNGs auf 200 KB
 * Optimus HQ: Konvertierung der Bilder ins [WebP-Format](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X)
