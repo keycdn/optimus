@@ -661,7 +661,7 @@ class Optimus
 	* @since   1.1.5
 	* @change  1.1.5
 	*
-	* @return  boolean  true/false  TRUE beim Response-Code 401
+	* @return  boolean  true/false  TRUE beim Response-Code >= 400
 	*/
 
 	private static function _is_protected_site() {
@@ -692,7 +692,7 @@ class Optimus
 			)
 		);
 
-		return ( $response_code === 401 );
+		return ( $response_code >= 400 );
 	}
 
 
