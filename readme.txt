@@ -85,6 +85,7 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 * Optimus HQ: Eingabe eines neuen Lizenzschlüssels möglich
 * Selbstprüfung auf Erreichbarkeit der Upload-Bilder (Zugriffsschutz, etc.)
 * Performance-Optimierungen
+* [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/6nyJ3kPnFPu)
 
 = 1.1.4 =
 * Optimus HQ: Erhöhung des Limits für PNGs auf 200 KB
