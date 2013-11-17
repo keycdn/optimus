@@ -242,7 +242,7 @@ class Optimus
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  1.1.5
+	* @change  1.1.6
 	*
 	* @param   array    $upload_data    Array mit Upload-Informationen
 	* @param   integer  $attachment_id  Attachment ID
@@ -271,6 +271,11 @@ class Optimus
 			$upload_file = $file_info['basename'];
 		}
 
+		/* Simple regex check */
+		if ( ! preg_match('/^[^\?\%]+\.(?:jpe?g|png)$/i', $upload_file) ) {
+			return $upload_data;
+		}
+
 		/* Attachment */
 		$attachment = get_post($attachment_id);
 
@@ -296,11 +301,11 @@ class Optimus
 		/* Thumbs hinzufügen */
 		if ( !empty($upload_data['sizes']) ) {
 			/* Loopen */
-			foreach( $upload_data['sizes'] as $size ) {
-				if ( self::_allowed_mime_type($size['mime-type']) ) {
+			foreach( $upload_data['sizes'] as $thumb ) {
+				if ( self::_allowed_mime_type($thumb['mime-type']) ) {
 					array_push(
 						$todo_files,
-						$size['file']
+						$thumb['file']
 					);
 				}
 			}
