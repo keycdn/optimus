@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Optimus_Settings
 *
@@ -54,7 +58,7 @@ class Optimus_Settings
 	* Einfügen der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.2
+	* @change  1.1.6
 	*/
 
 	public static function add_page()
@@ -69,39 +73,6 @@ class Optimus_Settings
 				'options_page'
 			)
 		);
-
-		add_action(
-			'admin_print_styles-' .$page,
-			array(
-				__CLASS__,
-				'add_css'
-			)
-		);
-	}
-
-
-	/**
-	* Einbindung von CSS
-	*
-	* @since   1.0.0
-	* @change  1.1.2
-	*/
-
-	public static function add_css()
-	{
-		/* Infos auslesen */
-		$data = get_plugin_data(OPTIMUS_FILE);
-
-		/* CSS registrieren */
-		wp_register_style(
-			'optimus_css',
-			plugins_url('css/styles.min.css', OPTIMUS_FILE),
-			array(),
-			$data['Version']
-		);
-
-		/* CSS einbinden */
-		wp_enqueue_style('optimus_css');
 	}
 
 
@@ -109,14 +80,12 @@ class Optimus_Settings
 	* Darstellung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.4
+	* @change  1.1.6
 	*/
 
 	public static function options_page()
 	{ ?>
-		<div class="wrap" id="optimus_main">
-			<?php screen_icon('optimus') ?>
-
+		<div class="wrap">
 			<h2>
 				Optimus
 			</h2>
@@ -126,41 +95,47 @@ class Optimus_Settings
 
 				<?php $options = Optimus::get_options() ?>
 
-				<div class="table rounded">
-					<table class="form-table">
-						<tr>
-							<th>
-								Bild-Metadaten <strong>nicht</strong> entfernen
-								<small>
-									Aktive Option behält EXIF- und IPTC-Daten in Fotos.<br />Empfohlen, wenn Copyright- und Aufnahme-Parameter erhalten bleiben sollen. <strong>Die Größenreduzierung fällt geringer aus.</strong>
-								</small>
-							</th>
-							<td>
-								<input type="checkbox" name="optimus[copy_markers]" value="1" <?php checked(1, $options['copy_markers']) ?> />
-							</td>
-						</tr>
-					</table>
-				</div>
+				<table class="form-table">
+					<tr valign="top">
+						<th scope="row">
+							Bild-Metadaten
+						</th>
+						<td>
+							<fieldset>
+								<label for="optimus_copy_markers">
+									<input type="checkbox" name="optimus[copy_markers]" id="optimus_copy_markers" value="1" <?php checked(1, $options['copy_markers']) ?> />
+									Keine Löschung der Bild-Metadaten
+								</label>
 
-				<div class="table rounded">
-					<table class="form-table">
-						<tr>
-							<th>
-								WebP-Dateien anfertigen <span>Optimus HQ</span>
-								<small>
-									<a href="https://gist.github.com/sergejmueller/5462544" target="_blank">Erweiterung</a> der Datei .htaccess und <a href="http://cup.wpcoder.de/webp-jpeg-alternative/" target="_blank">Überprüfung</a> der Ausgabe erforderlich. Verlangsamt die Generierung der Vorschaubilder.<br /><strong>Nimmt Speicher- und Server-Ressourcen in Anspruch.</strong>
-								</small>
-							</th>
-							<td>
-								<input type="checkbox" name="optimus[webp_convert]" value="1" <?php checked(1, $options['webp_convert']) ?> />
-							</td>
-						</tr>
-					</table>
-				</div>
+								<p class="description">
+									Aktive Option behält EXIF- und IPTC-Daten bzw. Copyright- und Fotoaufnahme-Parameter in Bildern. Die Größenreduzierung fällt geringer aus.
+								</p>
+							</fieldset>
+						</td>
+					</tr>
 
-				<div class="submit">
+					<tr valign="top">
+						<th scope="row">
+							WebP-Dateien
+						</th>
+						<td>
+							<fieldset>
+								<label for="optimus_webp_convert">
+									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> />
+									Anfertigung der WebP-Dateien
+								</label>
+
+								<p class="description">
+									Nur Optimus HQ. Verlangsamt die Generierung der Vorschaubilder. Modifizierung der Server-Konfigurationsdatei und Überprüfung der Ausgabe erforderlich. [<a href="http://cup.wpcoder.de/webp-jpeg-alternative/" target="_blank">Details</a>]
+								</p>
+							</fieldset>
+						</td>
+					</tr>
+				</table>
+
+				<p class="submit">
 					<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-				</div>
+				</p>
 			</form>
 		</div><?php
 	}

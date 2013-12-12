@@ -1,8 +1,8 @@
 === Optimus ===
 Contributors: sergej.mueller
 Tags: images, optimize, compress, smushit, webp
-Requires at least: 3.4
-Tested up to: 3.7
+Requires at least: 3.8
+Tested up to: 3.8
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -64,7 +64,7 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 = Systemanforderungen =
 * PHP ab 5.2.4
-* WordPress ab 3.4
+* WordPress ab 3.8
 * Ausgehende Verbindung
 * Im Web erreichbare Bilder
 
@@ -80,6 +80,9 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 
 == Changelog ==
+
+= 1.1.6 =
+* Optimiert für WordPress 3.8
 
 = 1.1.5 =
 * Optimus HQ: Eingabe eines neuen Lizenzschlüssels möglich

@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Optimus_HQ
 *
@@ -15,7 +19,7 @@ class Optimus_HQ
 	* Ausgabe des Eingabefeldes für den Optimus HQ Key
 	*
 	* @since   1.1.0
-	* @change  1.1.0
+	* @change  1.1.6
 	*/
 
 	public static function display_key_input()
@@ -31,20 +35,40 @@ class Optimus_HQ
 		} ?>
 
 		<tr class="plugin-update-tr">
-  			<td colspan="4">
+  			<td colspan="3" class="plugin-update">
   				<div class="update-message">
   					<form action="<?php echo network_admin_url('plugins.php') ?>" method="post">
 						<input type="hidden" name="_optimus_action" value="verify" />
 						<?php wp_nonce_field('_optimus_nonce') ?>
 
-	  					<label for="_optimus_key">Optimus HQ Key:</label>
-		  				<input type="text" name="_optimus_key" id="_optimus_key" class="regular-text code" autofocus pattern="\w{17}" />
-		  				<input type="submit" name="submit" value="Aktivieren" class="button-primary" />
-		  				<a href="<?php echo network_admin_url('plugins.php') ?>" class="button-secondary">Abbrechen</a>
+	  					<label for="_optimus_key">
+	  						Optimus HQ Key:
+	  						<input type="text" name="_optimus_key" id="_optimus_key" maxlength="17" pattern="\w{17}" />
+	  					</label>
+
+		  				<input type="submit" name="submit" value="Aktivieren" class="button button-primary regular" />
+		  				<a href="<?php echo network_admin_url('plugins.php') ?>" class="button">Abbrechen</a>
 		  			</form>
   				</div>
   			</td>
 	  	</tr>
+
+	  	<style>
+		  	#optimus + .plugin-update-tr .update-message {
+		  		margin-top: 12px;
+		  	}
+	  		#optimus + .plugin-update-tr .update-message::before {
+	  			display: none;
+	  		}
+	  		#optimus + .plugin-update-tr label {
+	  			line-height: 30px;
+	  			vertical-align: top;
+	  		}
+	  		#optimus + .plugin-update-tr input[type="text"] {
+	  			width: 300px;
+	  			margin-left: 10px;
+	  		}
+	  	</style>
 	<?php }
 
 

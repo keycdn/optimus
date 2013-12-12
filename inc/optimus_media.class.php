@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Optimus_Media
 *

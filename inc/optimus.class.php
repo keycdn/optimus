@@ -1,6 +1,10 @@
 <?php
 
 
+/* Quit */
+defined('ABSPATH') OR exit;
+
+
 /**
 * Optimus
 *
@@ -231,7 +235,7 @@ class Optimus
 						),
 						network_admin_url('plugins.php#optimus')
 					),
-					( Optimus_HQ::unlocked() ? 'Anderen Optimus HQ Key eingeben' : 'Optimus HQ aktivieren' )
+					( Optimus_HQ::unlocked() ? 'Anderen Lizenzschlüssel eingeben' : 'Optimus HQ aktivieren' )
 				)
 			)
 		);
@@ -250,6 +254,11 @@ class Optimus
 	*/
 
 	public static function optimize_upload_images($upload_data, $attachment_id) {
+		/* Already optimized? */
+		if ( ! empty($upload_data['optimus']) ) {
+			return $upload_data;
+		}
+
 		/* Protected site? */
 		if ( get_transient('optimus_protected_site') ) {
 			return $upload_data;
