@@ -45,7 +45,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Datenschutz =
-* Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär abgelegten Dateien - unverzüglich. Keine Aufbewahrung!
+* Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär angelegten Dateien - unverzüglich. Keine Aufbewahrung!
 * Der Server-Standort ist Deutschland beim Hoster domainFACTORY.
 
 
