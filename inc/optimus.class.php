@@ -508,7 +508,7 @@ class Optimus
 
 	private static function _do_api_request($args)
 	{
-		return wp_remote_post(
+		return wp_safe_remote_post(
 			sprintf(
 				'%s%s',
 				'http://api.optimus.io',
@@ -603,7 +603,7 @@ class Optimus
 		}
 
 		/* Host prüfen */
-		if ( filter_var($parsed_url['host'], FILTER_VALIDATE_IP) OR strpos($parsed_url['host'], '.') === false ) {
+		if ( WP_Http::is_ip_address($parsed_url['host']) ) {
 			return false;
 		}
 
@@ -701,7 +701,7 @@ class Optimus
 
 		/* Image request */
 		$response_code = wp_remote_retrieve_response_code(
-			wp_remote_get(
+			wp_safe_remote_get(
 				$image_attr[0]
 			)
 		);
