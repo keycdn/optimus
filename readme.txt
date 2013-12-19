@@ -81,6 +81,9 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 == Changelog ==
 
+= 1.1.7 =
+* Christmas-Edition (Code- & Performance-Optimierungen)
+
 = 1.1.6 =
 * Optimiert für WordPress 3.8
 
