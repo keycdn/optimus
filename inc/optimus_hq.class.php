@@ -118,33 +118,33 @@ class Optimus_HQ
 	* Steuerung der Ausgabe von Admin-Notizen
 	*
 	* @since   1.1.0
-	* @change  1.1.5
+	* @change  1.1.7
 	*/
 
  	public static function optimus_hq_notice()
 	{
 		/* Typ festlegen */
-		if ( ! empty($_GET['_optimus_notice']) ) {
-			$term = $_GET['_optimus_notice'];
-		} else if ( $GLOBALS['pagenow'] === 'plugins.php' ) {
-			if ( ! self::unlocked() ) {
-				$term = 'plugins';
+		if ( ! empty($_GET['_optimus_notice']) && $_GET['_optimus_notice'] === 'licensed' ) {
+			$type = 'licensed';
+		} else if ( ! self::unlocked() ) {
+			if ( $GLOBALS['pagenow'] === 'plugins.php' OR @get_current_screen()->id === get_plugin_page_hookname('optimus', 'options-general.php') ) {
+				$type = 'unlocked';
 			}
 		}
 
 		/* Leer? */
-		if ( empty($term) ) {
+		if ( empty($type) ) {
 			return;
 		}
 
 		/* Matching */
-		switch($term) {
+		switch( $type ) {
 			case 'licensed':
-				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Weiterführende Informationen erhalten Sie auf der offiziellen Website <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes rund um das Plugin auf der offiziellen Website <a href="http://optimus.io" target="_blank">optimus.io</a>';
 			break;
 
-			case 'plugins':
-				$msg = 'Sie nutzen die im Umfang beschränkte Version von Optimus. <strong>Optimus HQ</strong> beherrscht mehrere Bildformate und komprimiert größere Dateien. Details auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+			case 'unlocked':
+				$msg = 'Optimus ist aktuell eingeschränkt nutzbar. <strong>Optimus HQ</strong> beherrscht mehrere Bildformate und komprimiert größere Dateien. Details auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
 			break;
 
 			default:
