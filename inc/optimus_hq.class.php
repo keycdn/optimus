@@ -140,11 +140,13 @@ class Optimus_HQ
 		/* Matching */
 		switch( $type ) {
 			case 'licensed':
-				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes rund um das Plugin auf der offiziellen Website <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a>.';
+				$class = 'updated';
 			break;
 
 			case 'unlocked':
 				$msg = 'Optimus ist aktuell eingeschränkt nutzbar. <strong>Optimus HQ</strong> beherrscht mehrere Bildformate und komprimiert größere Dateien. Details auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$class = 'error';
 			break;
 
 			default:
@@ -154,7 +156,8 @@ class Optimus_HQ
 		/* Ausgabe */
 		show_message(
 			sprintf(
-				'<div class="updated"><p>%s</p></div>',
+				'<div class="%s"><p>%s</p></div>',
+				$class,
 				$msg
 			)
 		);
