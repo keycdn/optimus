@@ -278,9 +278,9 @@ class Optimus_Request
 	{
 		return wp_safe_remote_post(
 			sprintf(
-				'%s%s',
+				'%s/%s',
 				'http://api.optimus.io',
-				( Optimus_HQ::unlocked() ? sprintf( '/%s/', Optimus_HQ::key() ) : '' )
+				Optimus_HQ::key()
 			),
 			array(
 				'timeout' => 30,
