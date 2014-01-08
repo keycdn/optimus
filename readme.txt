@@ -81,6 +81,10 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 == Changelog ==
 
+= 1.1.8 =
+* Anzeige des Optimus HQ Ablaufdatums
+* Admin-Hinweis bei abgelaufener Optimus HQ Lizenz
+
 = 1.1.7 =
 * Christmas-Edition (Code- & Performance-Optimierungen)
 

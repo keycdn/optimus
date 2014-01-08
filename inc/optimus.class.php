@@ -32,7 +32,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.7
+	* @change  1.1.8
 	*/
 
 	public function __construct()
@@ -87,7 +87,7 @@ class Optimus
 			'plugin_row_meta',
 			array(
 				__CLASS__,
-				'add_meta_link'
+				'add_row_meta'
 			),
 			10,
 			2
@@ -202,30 +202,31 @@ class Optimus
 
 
 	/**
-	* Hinzufügen der Meta-Links
+	* Hinzufügen der Meta-Informationen
 	*
 	* @since   0.0.1
-	* @change  1.1.5
+	* @change  1.1.8
 	*
-	* @param   array   $input  Array mit Links
-	* @param   string  $file   Name des Plugins
-	* @return  array           Array mit erweitertem Link
+	* @param   array   $rows  Array mit Links
+	* @param   string  $file  Name des Plugins
+	* @return  array          Array mit erweitertem Link
 	*/
 
-	public static function add_meta_link($input, $file)
+	public static function add_row_meta($rows, $file)
 	{
 		/* Restliche Plugins? */
 		if ( $file !== OPTIMUS_BASE ) {
-			return $input;
+			return $rows;
 		}
 
 		/* Keine Rechte? */
 		if ( ! current_user_can('administrator') ) {
-			return $input;
+			return $rows;
 		}
 
-		return array_merge(
-			$input,
+		/* Add new key link */
+		$rows = array_merge(
+			$rows,
 			array(
 				sprintf(
 					'<a href="%s">%s</a>',
@@ -235,10 +236,25 @@ class Optimus
 						),
 						network_admin_url('plugins.php#optimus')
 					),
-					( Optimus_HQ::unlocked() ? 'Anderen Lizenzschlüssel eingeben' : 'Optimus HQ aktivieren' )
+					( Optimus_HQ::key() ? 'Anderen Optimus HQ Key eingeben' : 'Optimus HQ aktivieren' )
 				)
 			)
 		);
+
+		/* Add expiration date */
+		if ( Optimus_HQ::key() ) {
+			$rows = array_merge(
+				$rows,
+				array(
+					sprintf(
+						'Optimus HQ Verfallsdatum: %s',
+						( Optimus_HQ::unlocked() ? Optimus_HQ::best_before() : '<span style="color:#a00">abgelaufen</span>' )
+					)
+				)
+			);
+		}
+
+		return $rows;
 	}
 
 
@@ -246,12 +262,14 @@ class Optimus
 	* Entfernt Plugin-Optionen
 	*
 	* @since   1.1.0
-	* @change  1.1.5
+	* @change  1.1.8
 	*/
 
 	public static function handle_uninstall_hook()
 	{
+		delete_option('optimus');
 		delete_site_option('optimus_key');
+		delete_site_transient('optimus_purchase_time');
 		delete_transient('optimus_protected_site');
 	}
 

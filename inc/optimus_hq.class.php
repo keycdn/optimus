@@ -94,6 +94,9 @@ class Optimus_HQ
 		/* Security */
 		check_admin_referer('_optimus_nonce');
 
+		/* Reset purchase_time */
+		delete_site_transient('optimus_purchase_time');
+
 		/* Speichern */
 		update_site_option(
 			'optimus_key',
@@ -101,14 +104,20 @@ class Optimus_HQ
 		);
 
 		/* Redirect */
-		wp_safe_redirect(
-			add_query_arg(
-				array(
-					'_optimus_notice' => 'licensed'
-				),
+		if ( self::unlocked() ) {
+			wp_safe_redirect(
+				add_query_arg(
+					array(
+						'_optimus_notice' => 'unlocked'
+					),
+					network_admin_url('plugins.php')
+				)
+			);
+		} else {
+			wp_safe_redirect(
 				network_admin_url('plugins.php')
-			)
-		);
+			);
+		}
 
 		die();
 	}
@@ -118,34 +127,42 @@ class Optimus_HQ
 	* Steuerung der Ausgabe von Admin-Notizen
 	*
 	* @since   1.1.0
-	* @change  1.1.7
+	* @change  1.1.8
 	*/
 
  	public static function optimus_hq_notice()
 	{
-		/* Typ festlegen */
-		if ( ! empty($_GET['_optimus_notice']) && $_GET['_optimus_notice'] === 'licensed' ) {
-			$type = 'licensed';
-		} else if ( ! self::unlocked() ) {
-			if ( $GLOBALS['pagenow'] === 'plugins.php' OR @get_current_screen()->id === get_plugin_page_hookname('optimus', 'options-general.php') ) {
-				$type = 'unlocked';
-			}
+		/* Check admin pages */
+		if ( $GLOBALS['pagenow'] !== 'plugins.php' AND @get_current_screen()->id !== get_plugin_page_hookname('optimus', 'options-general.php') ) {
+			return;
 		}
 
-		/* Leer? */
+		/* Get message type */
+		if ( ! empty($_GET['_optimus_notice']) && $_GET['_optimus_notice'] === 'unlocked' ) {
+			$type = 'unlocked';
+		} else if ( self::locked() ) {
+			$type = ( self::key() ? 'expired' : 'locked' );
+		}
+
+		/* Empty? */
 		if ( empty($type) ) {
 			return;
 		}
 
 		/* Matching */
 		switch( $type ) {
-			case 'licensed':
+			case 'unlocked':
 				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a>.';
 				$class = 'updated';
 			break;
 
-			case 'unlocked':
-				$msg = 'Optimus ist aktuell eingeschränkt nutzbar. <strong>Optimus HQ</strong> beherrscht mehrere Bildformate und komprimiert größere Dateien. Details auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+			case 'locked':
+				$msg = 'Optimus ist aktuell nur eingeschränkt nutzbar. <strong>Optimus HQ</strong> beherrscht mehrere Bildformate und komprimiert größere Dateien. Details auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$class = 'error';
+			break;
+
+			case 'expired':
+				$msg = '<strong>Optimus HQ Key</strong> ist nicht gültig, da wahrscheinlich abgelaufen. Erworben kann ein neuer Optimus HQ Key auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
 				$class = 'error';
 			break;
 
@@ -153,7 +170,7 @@ class Optimus_HQ
 				return;
 		}
 
-		/* Ausgabe */
+		/* Output */
 		show_message(
 			sprintf(
 				'<div class="%s"><p>%s</p></div>',
@@ -161,22 +178,6 @@ class Optimus_HQ
 				$msg
 			)
 		);
-	}
-
-
-	/**
-	* Interne Prüfung auf Optimus HQ
-	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-	*
-	* @since   1.1.0
-	* @change  1.1.0
-	*
-	* @return  boolean  TRUE wenn Optimus HQ
-	*/
-
-	public static function unlocked()
-	{
-		return (bool)self::key();
 	}
 
 
@@ -192,5 +193,99 @@ class Optimus_HQ
 	public static function key()
 	{
 		return get_site_option('optimus_key');
+	}
+
+
+	/**
+	* Interne Prüfung auf Optimus HQ
+	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+	*
+	* @since   1.1.0
+	* @change  1.1.8
+	*
+	* @return  boolean  TRUE wenn Optimus HQ aktiv
+	*/
+
+	public static function unlocked()
+	{
+		return (bool)self::best_before();
+	}
+
+
+	/**
+	* Interne Prüfung auf Optimus HQ
+	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+	*
+	* @since   1.1.8
+	* @change  1.1.8
+	*
+	* @return  boolean  TRUE wenn Optimus HQ inaktiv
+	*/
+
+	public static function locked()
+	{
+		return ! self::unlocked();
+	}
+
+
+	/**
+	* Ablaufdatum von Optimus HQ
+	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+	*
+	* @since   1.1.8
+	* @change  1.1.8
+	*
+	* @return  mixed  FALSE/Date  Datum im Erfolgsfall
+	*/
+
+	public static function best_before()
+	{
+		/* Key exists? */
+		if ( ! $key = self::key() ) {
+			return false;
+		}
+
+		/* Timestamp from cache */
+		if ( ! $timestamp = get_site_transient('optimus_purchase_time') ) {
+			$response = wp_safe_remote_get(
+				sprintf(
+					'%s/%s',
+					'http://verify.optimus.io',
+					$key
+				)
+			);
+
+			/* Set the timestamp */
+			if ( is_wp_error($response) ) {
+				$timestamp = -1;
+			} else {
+				$timestamp = wp_remote_retrieve_body($response);
+			}
+
+			/* Validate the timestamp */
+			if ( ! ( is_numeric($timestamp) && $timestamp <= PHP_INT_MAX && $timestamp >= ~PHP_INT_MAX ) ) {
+				$timestamp = -1;
+			}
+
+			/* Store on cache */
+			set_site_transient(
+				'optimus_purchase_time',
+				$timestamp,
+				DAY_IN_SECONDS
+			);
+		}
+
+		/* Invalid timestamp? */
+		if ( (int)$timestamp <= 0 ) {
+			return false;
+		}
+
+		return date(
+			'd.m.Y',
+			strtotime(
+				'+1 year',
+				$timestamp
+			)
+		);
 	}
 }

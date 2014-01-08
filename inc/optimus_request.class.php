@@ -423,7 +423,7 @@ class Optimus_Request
 		$options = Optimus::get_options();
 
 		/* Nicht aktiv? */
-		if ( ! $options['webp_convert'] OR ! Optimus_HQ::unlocked() ) {
+		if ( ! $options['webp_convert'] OR Optimus_HQ::locked() ) {
 			return $file;
 		}
 
