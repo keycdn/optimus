@@ -247,7 +247,7 @@ class Optimus
 				$rows,
 				array(
 					sprintf(
-						'Optimus HQ Verfallsdatum: %s',
+						'Optimus HQ Ablaufdatum: %s',
 						( Optimus_HQ::unlocked() ? Optimus_HQ::best_before() : '<span style="color:#a00">abgelaufen</span>' )
 					)
 				)
