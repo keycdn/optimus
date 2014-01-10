@@ -248,7 +248,7 @@ class Optimus
 				array(
 					sprintf(
 						'Optimus HQ Ablaufdatum: %s',
-						( Optimus_HQ::unlocked() ? Optimus_HQ::best_before() : '<span style="color:#a00">abgelaufen</span>' )
+						( Optimus_HQ::unlocked() ? date( 'd.m.Y', Optimus_HQ::best_before() ) : '<span style="color:#a00">abgelaufen</span>' )
 					)
 				)
 			);

@@ -280,12 +280,9 @@ class Optimus_HQ
 			return false;
 		}
 
-		return date(
-			'd.m.Y',
-			strtotime(
-				'+1 year',
-				$timestamp
-			)
+		return strtotime(
+			'+1 year',
+			$timestamp
 		);
 	}
 }
