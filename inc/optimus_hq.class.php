@@ -246,7 +246,7 @@ class Optimus_HQ
 		}
 
 		/* Timestamp from cache */
-		if ( ! $timestamp = get_site_transient('optimus_purchase_time') ) {
+		if ( ! $purchase_time = get_site_transient('optimus_purchase_time') ) {
 			$response = wp_safe_remote_get(
 				sprintf(
 					'%s/%s',
@@ -257,32 +257,40 @@ class Optimus_HQ
 
 			/* Set the timestamp */
 			if ( is_wp_error($response) ) {
-				$timestamp = -1;
+				$purchase_time = -1;
 			} else {
-				$timestamp = wp_remote_retrieve_body($response);
+				$purchase_time = wp_remote_retrieve_body($response);
 			}
 
 			/* Validate the timestamp */
-			if ( ! ( is_numeric($timestamp) && $timestamp <= PHP_INT_MAX && $timestamp >= ~PHP_INT_MAX ) ) {
-				$timestamp = -1;
+			if ( ! ( is_numeric($purchase_time) && $purchase_time <= PHP_INT_MAX && $purchase_time >= ~PHP_INT_MAX ) ) {
+				$purchase_time = -1;
 			}
 
 			/* Store on cache */
 			set_site_transient(
 				'optimus_purchase_time',
-				$timestamp,
-				DAY_IN_SECONDS
+				$purchase_time,
+				4 * WEEK_IN_SECONDS
 			);
 		}
 
-		/* Invalid timestamp? */
-		if ( (int)$timestamp <= 0 ) {
+		/* Invalid purchase time? */
+		if ( (int)$purchase_time <= 0 ) {
 			return false;
 		}
 
-		return strtotime(
+		/* Set expiration time */
+		$expiration_time = strtotime(
 			'+1 year',
-			$timestamp
+			$purchase_time
 		);
+
+		/* Expired time? */
+		if ( $expiration_time < time() ) {
+			return false;
+		}
+
+		return $expiration_time;
 	}
 }
