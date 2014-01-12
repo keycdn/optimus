@@ -242,13 +242,13 @@ class Optimus
 		);
 
 		/* Add expiration date */
-		if ( Optimus_HQ::key() ) {
+		if ( Optimus_HQ::unlocked() ) {
 			$rows = array_merge(
 				$rows,
 				array(
 					sprintf(
 						'Optimus HQ Ablaufdatum: %s',
-						( Optimus_HQ::unlocked() ? date( 'd.m.Y', Optimus_HQ::best_before() ) : '<span style="color:#a00">abgelaufen</span>' )
+						date( 'd.m.Y', Optimus_HQ::best_before() )
 					)
 				)
 			);
