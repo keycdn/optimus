@@ -81,7 +81,7 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 == Changelog ==
 
 = 1.1.9 =
-* Optimus HQ: Umbau der Lizenzverifizierung wegen einem Bug im W3 Total Cache Plugin
+* Optimus HQ: Umbau der Lizenzverifizierung wegen einem [Bug](https://www.google.de/search?q=w3+total+cache+transient) im W3 Total Cache Plugin
 * Ausbau der Schnittstelle für binäre Datenübertragung
 
 = 1.1.8 =
