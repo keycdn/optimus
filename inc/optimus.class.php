@@ -32,7 +32,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.8
+	* @change  1.1.9
 	*/
 
 	public function __construct()
@@ -149,20 +149,6 @@ class Optimus
 				'optimus_hq_notice'
 			)
 		);
-		add_action(
-			'network_admin_notices',
-			array(
-				__CLASS__,
-				'protected_site_notice'
-			)
-		);
-		add_action(
-			'admin_notices',
-			array(
-				__CLASS__,
-				'protected_site_notice'
-			)
-		);
 	}
 
 
@@ -236,13 +222,13 @@ class Optimus
 						),
 						network_admin_url('plugins.php#optimus')
 					),
-					( Optimus_HQ::key() ? 'Anderen Optimus HQ Key eingeben' : 'Optimus HQ aktivieren' )
+					( Optimus_HQ::get_key() ? 'Anderen Optimus HQ Key eingeben' : 'Optimus HQ aktivieren' )
 				)
 			)
 		);
 
 		/* Add expiration date */
-		if ( Optimus_HQ::unlocked() ) {
+		if ( Optimus_HQ::is_unlocked() ) {
 			$rows = array_merge(
 				$rows,
 				array(
@@ -269,93 +255,7 @@ class Optimus
 	{
 		delete_option('optimus');
 		delete_site_option('optimus_key');
-		delete_site_transient('optimus_purchase_time');
-		delete_transient('optimus_protected_site');
-	}
-
-
-	/**
-	* Activation hook
-	*
-	* @since   1.1.5
-	* @change  1.1.5
-	*/
-
-	public static function handle_activation_hook() {
-		set_transient(
-			'optimus_protected_site',
-			self::_is_protected_site()
-		);
-	}
-
-
-	/**
-	* Ermittelt, ob Bilder von "Außen" erreichbar sind
-	*
-	* @since   1.1.5
-	* @change  1.1.5
-	*
-	* @return  boolean  true/false  TRUE beim Response-Code >= 400
-	*/
-
-	private static function _is_protected_site() {
-		/* Get attachments */
-		$query = new WP_Query(
-			array(
-				'post_type'	     => 'attachment',
-				'post_status' 	 => 'any',
-				'orderby'        => 'rand',
-				'posts_per_page' => '1'
-			)
-		);
-
-		/* Attachment check */
-		if ( empty($query->posts[0]) ) {
-			return false;
-		}
-
-		/* Image attributes */
-		if ( ! $image_attr = wp_get_attachment_image_src($query->posts[0]->ID) ) {
-			return false;
-		}
-
-		/* Image request */
-		$response_code = wp_remote_retrieve_response_code(
-			wp_safe_remote_get(
-				$image_attr[0]
-			)
-		);
-
-		return ( $response_code >= 400 );
-	}
-
-
-	/**
-	* Steuerung der Ausgabe von Admin-Notizen
-	*
-	* @since   1.1.5
-	* @change  1.1.5
-	*/
-
- 	public static function protected_site_notice()
-	{
-		/* Plugins overview only */
-		if ( $GLOBALS['pagenow'] !== 'plugins.php' ) {
-			return;
-		}
-
-		/* No warnings */
-		if ( ! get_transient('optimus_protected_site') ) {
-			return;
-		}
-
-		/* Message */
-		show_message(
-			sprintf(
-				'<div class="updated"><p>%s</p></div>',
-				'<strong>Optimus meldet:</strong> Upload-Bilder müssen im Web erreichbar sein. Bitte <a href="http://optimus.io/#require" target="_blank">Systemvoraussetzungen</a> beachten. Plugin-Reaktivierung erneuert den Prüfstatus.'
-			)
-		);
+		delete_site_option('optimus_purchase_time');
 	}
 
 

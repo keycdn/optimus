@@ -15,6 +15,215 @@ class Optimus_HQ
 {
 
 
+	/* Private vars */
+	private static $_is_locked = NULL;
+	private static $_is_unlocked = NULL;
+
+
+	/**
+	* Interne Prüfung auf Optimus HQ
+	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @return  boolean  TRUE wenn Optimus HQ nicht freigeschaltet
+	*/
+
+	public static function is_locked()
+	{
+		if ( self::$_is_locked !== NULL ) {
+			return self::$_is_locked;
+		}
+
+		$is_locked = ! (bool)self::best_before();
+
+		self::$_is_locked = $is_locked;
+		self::$_is_unlocked = ! $is_locked;
+
+		return $is_locked;
+	}
+
+
+	/**
+	* Interne Prüfung auf Optimus HQ
+	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @return  boolean  TRUE wenn Optimus HQ freigeschaltet
+	*/
+
+	public static function is_unlocked()
+	{
+		if ( self::$_is_unlocked !== NULL ) {
+			return self::$_is_unlocked;
+		}
+
+		return ! self::is_locked();
+	}
+
+
+	/**
+	* Ablaufdatum von Optimus HQ
+	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @return  mixed  FALSE/Date  Datum im Erfolgsfall
+	*/
+
+	public static function best_before()
+	{
+		/* Key exists? */
+		if ( ! $key = self::get_key() ) {
+			return false;
+		}
+
+		/* Timestamp from cache */
+		if ( ! $purchase_time = self::get_purchase_time() ) {
+			$response = wp_safe_remote_get(
+				sprintf(
+					'%s/%s',
+					'http://verify.optimus.io',
+					$key
+				)
+			);
+
+			/* Set the timestamp */
+			if ( is_wp_error($response) ) {
+				$purchase_time = -1;
+			} else {
+				$purchase_time = wp_remote_retrieve_body($response);
+			}
+
+			/* Validate the timestamp */
+			if ( ! ( is_numeric($purchase_time) && $purchase_time <= PHP_INT_MAX && $purchase_time >= ~PHP_INT_MAX ) ) {
+				$purchase_time = -1;
+			}
+
+			/* Store as option */
+			self::_update_purchase_time($purchase_time);
+		}
+
+		/* Invalid purchase time? */
+		if ( (int)$purchase_time <= 0 ) {
+			self::_delete_key();
+
+			return false;
+		}
+
+		/* Set expiration time */
+		$expiration_time = strtotime(
+			'+1 year',
+			$purchase_time
+		);
+
+		/* Expired time? */
+		if ( $expiration_time < time() ) {
+			self::_delete_key();
+
+			return false;
+		}
+
+		return $expiration_time;
+	}
+
+
+	/**
+	* Return the license key
+	*
+	* @since   1.1.0
+	* @change  1.1.9
+	*
+	* @return  string  Optimus HQ Key
+	*/
+
+	public static function get_key()
+	{
+		return get_site_option('optimus_key');
+	}
+
+
+	/**
+	* Update the license key
+	*
+	* @since   1.1.0
+	* @change  1.1.9
+	*
+	* @return  mixed  $value  Optimus HQ Key value
+	*/
+
+	private static function _update_key($value)
+	{
+		update_site_option(
+			'optimus_key',
+			$value
+		);
+	}
+
+
+	/**
+	* Delete the license key
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*/
+
+	private static function _delete_key()
+	{
+		delete_site_option('optimus_key');
+	}
+
+
+	/**
+	* Return the purchase timestamp
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @return  string  Optimus HQ purchase timestamp
+	*/
+
+	public static function get_purchase_time()
+	{
+		return get_site_option('optimus_purchase_time');
+	}
+
+
+	/**
+	* Update the purchase timestamp
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @return  integer  $value  Purchase time as a timestamp
+	*/
+
+	private static function _update_purchase_time($value)
+	{
+		update_site_option(
+			'optimus_purchase_time',
+			$value
+		);
+	}
+
+
+	/**
+	* Delete the purchase timestamp
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*/
+
+	private static function _delete_purchase_time()
+	{
+		delete_site_option('optimus_purchase_time');
+	}
+
+
 	/**
 	* Ausgabe des Eingabefeldes für den Optimus HQ Key
 	*
@@ -76,7 +285,7 @@ class Optimus_HQ
 	* Prüfung und Speicherung des Optimus HQ Keys
 	*
 	* @since   1.1.0
-	* @change  1.1.0
+	* @change  1.1.9
 	*/
 
  	public static function verify_key_input()
@@ -94,30 +303,21 @@ class Optimus_HQ
 		/* Security */
 		check_admin_referer('_optimus_nonce');
 
-		/* Reset purchase_time */
-		delete_site_transient('optimus_purchase_time');
+		/* Delete purchase_time */
+		self::_delete_purchase_time();
 
-		/* Speichern */
-		update_site_option(
-			'optimus_key',
-			$_POST['_optimus_key']
-		);
+		/* Store current key */
+		self::_update_key($_POST['_optimus_key']);
 
 		/* Redirect */
-		if ( self::unlocked() ) {
-			wp_safe_redirect(
-				add_query_arg(
-					array(
-						'_optimus_notice' => 'unlocked'
-					),
-					network_admin_url('plugins.php')
-				)
-			);
-		} else {
-			wp_safe_redirect(
+		wp_safe_redirect(
+			add_query_arg(
+				array(
+					'_optimus_notice' => ( self::is_locked() ? 'locked' : 'unlocked' )
+				),
 				network_admin_url('plugins.php')
-			);
-		}
+			)
+		);
 
 		die();
 	}
@@ -127,7 +327,7 @@ class Optimus_HQ
 	* Steuerung der Ausgabe von Admin-Notizen
 	*
 	* @since   1.1.0
-	* @change  1.1.8
+	* @change  1.1.9
 	*/
 
  	public static function optimus_hq_notice()
@@ -140,8 +340,8 @@ class Optimus_HQ
 		/* Get message type */
 		if ( ! empty($_GET['_optimus_notice']) && $_GET['_optimus_notice'] === 'unlocked' ) {
 			$type = 'unlocked';
-		} else if ( self::locked() ) {
-			$type = ( self::key() ? 'expired' : 'locked' );
+		} else if ( self::is_locked() ) {
+			$type = ( self::get_purchase_time() ? 'expired' : 'locked' );
 		}
 
 		/* Empty? */
@@ -162,7 +362,7 @@ class Optimus_HQ
 			break;
 
 			case 'expired':
-				$msg = '<strong>Optimus HQ Key</strong> ist nicht gültig, da wahrscheinlich abgelaufen. Erworben kann ein neuer Optimus HQ Key auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$msg = '<strong>Optimus HQ Key</strong> ist nicht länger gültig, da abgelaufen. Erworben kann ein neuer Optimus HQ Key auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
 				$class = 'error';
 			break;
 
@@ -178,119 +378,5 @@ class Optimus_HQ
 				$msg
 			)
 		);
-	}
-
-
-	/**
-	* Rückgabe des Optimus HQ Keys
-	*
-	* @since   1.1.0
-	* @change  1.1.0
-	*
-	* @return  string  Optimus HQ Key
-	*/
-
-	public static function key()
-	{
-		return get_site_option('optimus_key');
-	}
-
-
-	/**
-	* Interne Prüfung auf Optimus HQ
-	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-	*
-	* @since   1.1.0
-	* @change  1.1.8
-	*
-	* @return  boolean  TRUE wenn Optimus HQ aktiv
-	*/
-
-	public static function unlocked()
-	{
-		return (bool)self::best_before();
-	}
-
-
-	/**
-	* Interne Prüfung auf Optimus HQ
-	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-	*
-	* @since   1.1.8
-	* @change  1.1.8
-	*
-	* @return  boolean  TRUE wenn Optimus HQ inaktiv
-	*/
-
-	public static function locked()
-	{
-		return ! self::unlocked();
-	}
-
-
-	/**
-	* Ablaufdatum von Optimus HQ
-	* P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-	*
-	* @since   1.1.8
-	* @change  1.1.8
-	*
-	* @return  mixed  FALSE/Date  Datum im Erfolgsfall
-	*/
-
-	public static function best_before()
-	{
-		/* Key exists? */
-		if ( ! $key = self::key() ) {
-			return false;
-		}
-
-		/* Timestamp from cache */
-		if ( ! $purchase_time = get_site_transient('optimus_purchase_time') ) {
-			$response = wp_safe_remote_get(
-				sprintf(
-					'%s/%s',
-					'http://verify.optimus.io',
-					$key
-				)
-			);
-
-			/* Set the timestamp */
-			if ( is_wp_error($response) ) {
-				$purchase_time = -1;
-			} else {
-				$purchase_time = wp_remote_retrieve_body($response);
-			}
-
-			/* Validate the timestamp */
-			if ( ! ( is_numeric($purchase_time) && $purchase_time <= PHP_INT_MAX && $purchase_time >= ~PHP_INT_MAX ) ) {
-				$purchase_time = -1;
-			}
-
-			/* Store on cache */
-			set_site_transient(
-				'optimus_purchase_time',
-				$purchase_time,
-				4 * WEEK_IN_SECONDS
-			);
-		}
-
-		/* Invalid purchase time? */
-		if ( (int)$purchase_time <= 0 ) {
-			return false;
-		}
-
-		/* Set expiration time */
-		$expiration_time = strtotime(
-			'+1 year',
-			$purchase_time
-		);
-
-		/* Expired time? */
-		if ( $expiration_time < time() ) {
-			return false;
-		}
-
-		return $expiration_time;
 	}
 }

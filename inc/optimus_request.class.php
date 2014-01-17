@@ -13,11 +13,13 @@ defined('ABSPATH') OR exit;
 
 class Optimus_Request
 {
+
+
 	/**
 	* Build-Optimierung für Upload-Image samt Thumbs
 	*
 	* @since   0.0.1
-	* @change  1.1.7
+	* @change  1.1.9
 	*
 	* @param   array    $upload_data    Array mit Upload-Informationen
 	* @param   integer  $attachment_id  Attachment ID
@@ -27,11 +29,6 @@ class Optimus_Request
 	public static function optimize_upload_images($upload_data, $attachment_id) {
 		/* Already optimized? */
 		if ( ! empty($upload_data['optimus']) ) {
-			return $upload_data;
-		}
-
-		/* Protected site? */
-		if ( get_transient('optimus_protected_site') ) {
 			return $upload_data;
 		}
 
@@ -64,11 +61,6 @@ class Optimus_Request
 
 		/* Prüfung auf Mime-Type */
 		if ( ! self::_allowed_mime_type($mime_type) ) {
-			return $upload_data;
-		}
-
-		/* Host-Prüfung */
-		if ( ! self::_allowed_host_pattern($upload_url) ) {
 			return $upload_data;
 		}
 
@@ -153,12 +145,9 @@ class Optimus_Request
 			}
 
 			/* Request: WebP convert */
-			if ( $options['webp_convert'] && Optimus_HQ::unlocked() ) {
+			if ( $options['webp_convert'] && Optimus_HQ::is_unlocked() ) {
 				$action_response = self::_do_image_action(
-					self::_replace_file_extension(
-						$upload_path_file,
-						'webp'
-					),
+					$upload_path_file,
 					array(
 						'file' => $upload_url_file_encoded,
 						'webp' => true
@@ -227,7 +216,7 @@ class Optimus_Request
 	private static function _do_image_action($file, $args)
 	{
 		/* Request senden */
-		$response = self::_do_api_request($args);
+		$response = self::_do_api_request($file, $args);
 
 		/* Code */
 		$response_code = (int)wp_remote_retrieve_response_code($response);
@@ -255,6 +244,14 @@ class Optimus_Request
 			return false;
 		}
 
+		/* File ext replace for WebP */
+		if ( ! empty($args['webp']) ) {
+			$file = self::_replace_file_extension(
+				$file,
+				'webp'
+			);
+		}
+
 		/* Inhalt schreiben */
 		if ( ! file_put_contents($file, $response_body) ) {
 			return false;
@@ -268,25 +265,93 @@ class Optimus_Request
 	* Start der API-Anfrage
 	*
 	* @since   1.1.4
-	* @change  1.1.7
+	* @change  1.1.9
 	*
 	* @param   array  $args  POST-Argumente
 	* @return  array         Array inkl. Rückgabe-Header
 	*/
 
-	private static function _do_api_request($args)
+	private static function _do_api_request($file, $args)
 	{
+		/* cURL request */
+		if ( WP_Http_Curl::test() ) {
+			add_action(
+				'http_api_curl',
+				array(
+					__CLASS__,
+					'set_curl_options'
+				)
+			);
+
+			return wp_safe_remote_post(
+				sprintf(
+					'%s/%s?%s',
+					'http://magic.optimus.io',
+					Optimus_HQ::get_key(),
+					self::_curl_optimus_task($args)
+				),
+				array(
+					'timeout' => 30,
+					'body'	  => file_get_contents($file)
+				)
+			);
+		}
+
+		/* Fallback request */
 		return wp_safe_remote_post(
 			sprintf(
 				'%s/%s',
 				'http://api.optimus.io',
-				Optimus_HQ::key()
+				Optimus_HQ::get_key()
 			),
 			array(
 				'timeout' => 30,
 				'body'	  => $args
 			)
 		);
+	}
+
+
+	/**
+	* Set cURL request options
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @param   object  $handle  cURL handle with default options
+	* @return  object  $handle  cURL handle with added options
+	*/
+
+	public static function set_curl_options(&$handle)
+	{
+		curl_setopt(
+			$handle,
+			CURLOPT_BINARYTRANSFER,
+			true
+		);
+	}
+
+
+	/**
+	* Get optimus task depending on $args array
+	*
+	* @since   1.1.9
+	* @change  1.1.9
+	*
+	* @param   array   $args  Array mit arguments
+	* @return  string         Current optimus task
+	*/
+
+	private static function _curl_optimus_task($args)
+	{
+		if ( ! empty($args['copy']) ) {
+			return 'clean';
+		}
+		if ( ! empty($args['webp']) ) {
+			return 'webp';
+		}
+
+		return 'optimize';
 	}
 
 
@@ -346,40 +411,6 @@ class Optimus_Request
 
 
 	/**
-	* Prüfung des URL-Hosts auf den festgelegten Muster
-	*
-	* @since   1.1.0
-	* @change  1.1.7
-	*
-	* @param   string  $url  Zu prüfende URL
-	* @return  boolean       TRUE bei bestehender Prüfung
-	*/
-
-	private static function _allowed_host_pattern($url)
-	{
-		/* Leer? */
-		if ( empty($url) ) {
-			return false;
-		}
-
-		/* URL zerlegen */
-		$parsed_url = parse_url($url);
-
-		/* Leere Werte? */
-		if ( empty($parsed_url['host']) OR empty($parsed_url['path']) ) {
-			return false;
-		}
-
-		/* Host prüfen */
-		if ( WP_Http::is_ip_address($parsed_url['host']) ) {
-			return false;
-		}
-
-		return true;
-	}
-
-
-	/**
 	* Rückgabe der Kontingente pro Optimus Modell
 	*
 	* @since   1.1.0
@@ -404,7 +435,7 @@ class Optimus_Request
 			)
 		);
 
-		return $quota[ Optimus_HQ::unlocked() ];
+		return $quota[ Optimus_HQ::is_unlocked() ];
 	}
 
 
@@ -423,7 +454,7 @@ class Optimus_Request
 		$options = Optimus::get_options();
 
 		/* Nicht aktiv? */
-		if ( ! $options['webp_convert'] OR Optimus_HQ::locked() ) {
+		if ( ! $options['webp_convert'] OR Optimus_HQ::is_locked() ) {
 			return $file;
 		}
 
