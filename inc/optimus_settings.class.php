@@ -121,7 +121,7 @@ class Optimus_Settings
 						<td>
 							<fieldset>
 								<label for="optimus_webp_convert">
-									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> />
+									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> onclick='if ( this.checked ) return confirm("Nur für erfahrene Nutzer, da Anpassung der Server-Konfigurationsdatei und Qualitätskontrolle notwendig.\n\nOption aktivieren?")' />
 									Anfertigung der WebP-Dateien
 								</label>
 
