@@ -165,7 +165,7 @@ class Optimus
 	public static function add_action_link($data)
 	{
 		/* Rechte? */
-		if ( ! current_user_can('administrator') ) {
+		if ( ! current_user_can('manage_options') ) {
 			return $data;
 		}
 
@@ -206,7 +206,7 @@ class Optimus
 		}
 
 		/* Keine Rechte? */
-		if ( ! current_user_can('administrator') ) {
+		if ( ! current_user_can('manage_options') ) {
 			return $rows;
 		}
 
