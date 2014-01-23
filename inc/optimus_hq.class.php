@@ -234,7 +234,7 @@ class Optimus_HQ
 	public static function display_key_input()
 	{
 		/* Keine Rechte? */
-		if ( ! current_user_can('administrator') ) {
+		if ( ! current_user_can('manage_options') ) {
 			return;
 		}
 
