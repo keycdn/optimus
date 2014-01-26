@@ -245,7 +245,7 @@ class Optimus
 
 
 	/**
-	* Entfernt Plugin-Optionen
+	* Run uninstall hook
 	*
 	* @since   1.1.0
 	* @change  1.1.8
@@ -256,6 +256,22 @@ class Optimus
 		delete_option('optimus');
 		delete_site_option('optimus_key');
 		delete_site_option('optimus_purchase_time');
+	}
+
+
+	/**
+	* Run activation hook
+	*
+	* @since   1.2.0
+	* @change  1.2.0
+	*/
+
+	public static function handle_activation_hook() {
+		set_transient(
+			'optimus_activation_hook_in_use',
+			1,
+			MINUTE_IN_SECONDS
+		);
 	}
 
 

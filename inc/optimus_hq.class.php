@@ -327,13 +327,13 @@ class Optimus_HQ
 	* Steuerung der Ausgabe von Admin-Notizen
 	*
 	* @since   1.1.0
-	* @change  1.1.9
+	* @change  1.2.0
 	*/
 
  	public static function optimus_hq_notice()
 	{
 		/* Check admin pages */
-		if ( $GLOBALS['pagenow'] !== 'plugins.php' AND @get_current_screen()->id !== get_plugin_page_hookname('optimus', 'options-general.php') ) {
+		if ( ! in_array($GLOBALS['pagenow'], array('plugins.php', 'index.php') ) ) {
 			return;
 		}
 
@@ -341,7 +341,11 @@ class Optimus_HQ
 		if ( ! empty($_GET['_optimus_notice']) && $_GET['_optimus_notice'] === 'unlocked' ) {
 			$type = 'unlocked';
 		} else if ( self::is_locked() ) {
-			$type = ( self::get_purchase_time() ? 'expired' : 'locked' );
+			if ( self::get_purchase_time() ) {
+				$type = 'expired';
+			} else if ( get_transient('optimus_activation_hook_in_use') ) {
+				$type = 'locked';
+			}
 		}
 
 		/* Empty? */
@@ -357,12 +361,12 @@ class Optimus_HQ
 			break;
 
 			case 'locked':
-				$msg = 'Optimus ist aktuell nur eingeschränkt nutzbar. <strong>Optimus HQ</strong> beherrscht mehrere Bildformate und komprimiert größere Dateien. Details auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$msg = 'Optimus ist aktuell nur eingeschränkt nutzbar.<br /><strong>Optimus HQ</strong> beherrscht mehr Bildformate, komprimiert größere Dateien und erlaubt Anfragen von im Ausland gehosteten Blogs. Weitere Details auf <a href="http://optimus.io" target="_blank">optimus.io</a><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em>';
 				$class = 'error';
 			break;
 
 			case 'expired':
-				$msg = '<strong>Optimus HQ Key</strong> ist nicht länger gültig, da abgelaufen. Erworben kann ein neuer Optimus HQ Key auf <a href="http://optimus.io" target="_blank">optimus.io</a>';
+				$msg = '<strong>Optimus HQ Key</strong> ist abgelaufen. Ein neuer Optimus HQ Key kann auf <a href="http://optimus.io" target="_blank">optimus.io</a> erworben werden. Vielen Dank!';
 				$class = 'error';
 			break;
 

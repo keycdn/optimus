@@ -42,6 +42,16 @@ register_uninstall_hook(
 );
 
 
+/* Activation */
+register_activation_hook(
+	__FILE__,
+	array(
+		'Optimus',
+		'handle_activation_hook'
+	)
+);
+
+
 /* Autoload Init */
 spl_autoload_register('optimus_autoload');
 
