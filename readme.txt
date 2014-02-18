@@ -28,11 +28,11 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 
 = Das Prinzip =
-Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das eingegangene Material bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - und in der Größe reduzierte - Version eines Bildes in der Mediathek ab.
+Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das eingegangene Material bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die in der Größe reduzierte Version eines Bildes in der Mediathek ab.
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
 
-Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
+Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches verkleinert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
 NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins sparsame [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/).
 
