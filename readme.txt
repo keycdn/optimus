@@ -47,6 +47,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 * Optimiert für WordPress Mobile Apps und Windows Live Writer
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
+* WordPress Multisite-fähig
 
 
 = Datenschutz =
