@@ -27,8 +27,8 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 > Alle Informationen zum Produkt auf [optimus.io](http://optimus.io)
 
 
-= Prinzip =
-Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das Bild bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - und in der Größe reduzierte - Version des Bildes in der Mediathek ab.
+= Das Prinzip =
+Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das eingegangene Material bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - und in der Größe reduzierte - Version eines Bildes in der Mediathek ab.
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
 
