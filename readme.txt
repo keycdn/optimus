@@ -16,50 +16,47 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 == Description ==
 
 = (Fast) Magie =
-Das *Optimus*-Plugin verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobyte einsparen, die der Performance von Blogseiten positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
+*Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen, die der Blogseiten-Performance positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
 
 
 > #### Optimus HQ mit PREMIUM-Funktionen
-> Optimus existiert in zwei Varianten: Die kostenlos erhältliche Grundversion mit einigen Einschränkungen und *Optimus HQ* nahezu ohne Limitierungen. Alle Informationen zum Produkt auf [optimus.io](http://optimus.io)
+> *Optimus* existiert in zwei Varianten:
+> 1. Die kostenlos erhältliche Grundversion mit einigen Einschränkungen.
+> 2. *Optimus HQ* mit erweitertem Funktionsumgang und unlimitiertem Traffic.
+>
+> Alle Informationen zum Produkt auf [optimus.io](http://optimus.io)
 
 
 = Prinzip =
-Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die URL des Bildes an den *Optimus*-Server, der das Bild einliest, bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - in der Größe reduzierte - Version des Bildes in der Mediathek ab.
+Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das Bild bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die entgegengenommene - und in der Größe reduzierte - Version des Bildes in der Mediathek ab.
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
 
-Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb des Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
+Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches minimiert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
 NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins sparsame [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/).
 
 
 = Pluspunkte =
+* [Progressive JPEGs](https://plus.google.com/114450218898660299759/posts/RPW48vHbwoM)
 * Verkleinerung der Dateigröße ohne Verlust der Qualität
 * Optimierung aller Vorschauvarianten eines Bildes
 * Keine Code-Anpassungen notwendig
 * Option: Keine Entfernung von EXIF- und IPTC-Metadaten
-* Option: Konvertierung ins WebP-Bildformat
-* Auch für Bildübertragungen aus WordPress Apps und Windows Live Writer
+* Option: Konvertierung ins WebP-Bildformat (Optimus HQ)
+* Optimiert für WordPress Mobile Apps und Windows Live Writer
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
 
 
 = Datenschutz =
-* Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär angelegten Dateien - unverzüglich. Keine Aufbewahrung!
+* Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär angelegten Dateien unverzüglich. Keine Aufbewahrung!
 * Der Server-Standort ist Deutschland beim Hoster domainFACTORY.
 
 
 = Tipps =
 * Fotos stets als JPEGs statt PNGs speichern. Das PNG-Format ist sinnvoll für Illustrationen, JPEG ist dagegen genau das Richtige für Fotoaufnahmen. Weiterer Grund: Die Größenreduzierung geht bei JPEGs flotter vonstatten.
-* Zahlreiche Blogger optimieren ihre Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress erstellte Thumbnails (= Vorschaubilder) eines Bildes ebenfalls behandelt und minimiert werden. Schliesslich sind im Theme fast immer Thumbnails eingebunden und nur selten das Originalbild.
-
-
-= Hintergrund =
-Das *Smush.it Plugin* hat über Jahre hinweg einen perfekten Dienst geleistet. In letzter Zeit hat die Reaktionszeit des Dienstes sehr nachgelassen, so dass selten ein Bild zuverlässig optimiert wurde. Mit *Optimus* wird eine geschwinde Alternative zur Verfügung, die jedoch nicht wie *Smush.it* enden soll. Daher die Bitte: Missbraucht den Service nicht. Danke!
-
-
-= Support =
-Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
+* Zahlreiche Blogger optimieren ihre Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress (Theme & Plugins) erstellte Thumbnails (= Vorschaubilder) von *Optimus* ebenfalls behandelt und minimiert werden. Schliesslich sind im Theme fast immer Thumbnails eingebunden und nur selten das Originalbild.
 
 
 = Systemanforderungen =
@@ -73,12 +70,17 @@ Freundlich formulierte Fragen rund um das Plugin werden per E-Mail beantwortet.
 
 
 = Autor =
+* [Twitter](https://twitter.com/wpSEO)
 * [Google+](https://plus.google.com/110569673423509816572 "Google+")
 * [Plugins](http://wpcoder.de "Plugins")
 
 
 
 == Changelog ==
+
+= 1.2.0 =
+* Optimierungen am Plugin-Rechtemanagement
+* Überarbeitung der Plugin-Hinweise
 
 = 1.1.9 =
 * Optimus HQ: Umbau der Lizenzverifizierung wegen einem [Bug](https://www.google.de/search?q=w3+total+cache+transient) im W3 Total Cache Plugin
