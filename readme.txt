@@ -82,6 +82,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 = 1.2.0 =
 * Optimierungen am Plugin-Rechtemanagement
 * Überarbeitung der Plugin-Hinweise
+* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/2eynLwEsedi)
 
 = 1.1.9 =
 * Optimus HQ: Umbau der Lizenzverifizierung wegen einem [Bug](https://www.google.de/search?q=w3+total+cache+transient) im W3 Total Cache Plugin
