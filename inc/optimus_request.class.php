@@ -206,7 +206,7 @@ class Optimus_Request
 	* Behandlung der Bilder-Aktionen
 	*
 	* @since   1.1.4
-	* @change  1.1.7
+	* @change  1.2.1
 	*
 	* @param   string  $file  Dateipfad
 	* @param   array   $args  POST-Argumente
@@ -220,6 +220,11 @@ class Optimus_Request
 
 		/* Code */
 		$response_code = (int)wp_remote_retrieve_response_code($response);
+
+		/* No content header */
+		if ( $response_code === 204 ) {
+			return false;
+		}
 
 		/* Kein 200 als Antwort? */
 		if ( $response_code !== 200 ) {
