@@ -4,7 +4,7 @@ Plugin Name: Optimus
 Description: Reduzierung der Dateigröße während des Uploads der Bilder in die Mediathek. Effektive und geschwinde Komprimierung ohne Qualitätsverlust.
 Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
-Plugin URI: http://optimus.io
+Plugin URI: https://optimus.io
 Version: 1.3.0
 */
 

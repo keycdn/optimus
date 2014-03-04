@@ -24,13 +24,13 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 > 1. Die kostenlos erhältliche Grundversion mit einigen Einschränkungen.
 > 2. *Optimus HQ* mit erweitertem Funktionsumgang und unlimitiertem Traffic.
 >
-> Alle Informationen zum Produkt auf [optimus.io](http://optimus.io)
+> Alle Informationen zum Produkt auf [optimus.io](https://optimus.io)
 
 
 = Das Prinzip =
 Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das eingegangene Material bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die in der Größe reduzierte Version eines Bildes in der Mediathek ab.
 
-Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/).
+Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](https://wordpress.org/plugins/optimus/screenshots/).
 
 Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches verkleinert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
@@ -68,7 +68,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Website =
-* [optimus.io](http://optimus.io)
+* [optimus.io](https://optimus.io)
 
 
 = Autor =
@@ -131,7 +131,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = 1.1.0 =
 * Umstellung auf Freemium Modell / [Offizielles Statement](https://plus.google.com/110569673423509816572/posts/XEoHhEi5uJw)
-* Plugin Website: [optimus.io](http://optimus.io)
+* Plugin Website: [optimus.io](https://optimus.io)
 
 = 1.0.0 =
 * Code-Freeze
@@ -156,7 +156,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = 0.0.5 =
 * Zusatzabfrage für (korrupte) Bild-URLs
-* Weiterer [Screenshot](http://wordpress.org/extend/plugins/optimus/screenshots/)
+* Weiterer [Screenshot](https://wordpress.org/plugins/optimus/screenshots/)
 
 = 0.0.4 =
 * Diverse Code-Optimierungen
