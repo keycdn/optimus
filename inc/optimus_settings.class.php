@@ -39,7 +39,7 @@ class Optimus_Settings
 	* Valisierung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.4
+	* @change  1.3.0
 	*
 	* @param   array  $data  Array mit Formularwerten
 	* @return  array         Array mit geprüften Werten
@@ -48,8 +48,9 @@ class Optimus_Settings
 	public static function validate_options($data)
 	{
 		return array(
-			'copy_markers' => (int)(!empty($data['copy_markers'])),
-			'webp_convert' => (int)(!empty($data['webp_convert']))
+			'copy_markers'		=> (int)(!empty($data['copy_markers'])),
+			'webp_convert'		=> (int)(!empty($data['webp_convert'])),
+			'secure_transport'	=> (int)(!empty($data['secure_transport']))
 		);
 	}
 
@@ -80,7 +81,7 @@ class Optimus_Settings
 	* Darstellung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.6
+	* @change  1.3.0
 	*/
 
 	public static function options_page()
@@ -127,6 +128,24 @@ class Optimus_Settings
 
 								<p class="description">
 									Nur Optimus HQ. Verlangsamt die Generierung der Vorschaubilder. Modifizierung der Server-Konfigurationsdatei und Überprüfung der Ausgabe erforderlich. [<a href="http://cup.wpcoder.de/webp-jpeg-alternative/" target="_blank">Details</a>]
+								</p>
+							</fieldset>
+						</td>
+					</tr>
+
+					<tr valign="top">
+						<th scope="row">
+							HTTPS-Verbindung
+						</th>
+						<td>
+							<fieldset>
+								<label for="optimus_secure_transport">
+									<input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']) ?> />
+									Bilder SSL-verschlüsselt übertragen
+								</label>
+
+								<p class="description">
+									Nur Optimus HQ. Die Kommunikation zum Optimus-Server erfolgt über eine HTTPS-Verbindung. Verlangsamt den Optimierungsprozess.
 								</p>
 							</fieldset>
 						</td>

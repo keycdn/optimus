@@ -279,7 +279,7 @@ class Optimus
 	* Rückgabe der Optionen
 	*
 	* @since   1.1.2
-	* @change  1.1.4
+	* @change  1.3.0
 	*
 	* @return  array  $diff  Array mit Werten
 	*/
@@ -289,8 +289,9 @@ class Optimus
 		return wp_parse_args(
 			get_option('optimus'),
 			array(
-				'copy_markers' => 0,
-				'webp_convert' => 0
+				'copy_markers'		=> 0,
+				'webp_convert' 		=> 0,
+				'secure_transport'	=> 0
 			)
 		);
 	}

@@ -16,10 +16,10 @@ class Optimus_Media
 
 
 	/**
-	* Hinzufügen der Stylesheets
+	* Add media column css
 	*
 	* @since   0.0.2
-	* @change  1.1.2
+	* @change  1.3.0
 	*/
 
 	public static function add_css()
@@ -37,13 +37,13 @@ class Optimus_Media
 
 
 	/**
-	* Ausgabe der Optimus-Spalte mit der Überschrift
+	* Media column output
 	*
 	* @since   0.0.1
-	* @change  1.1.2
+	* @change  1.3.0
 	*
-	* @param   array  $columns  Verfügbare Spalten
-	* @return  array            Editierte Spalten
+	* @param   array  $columns  Available columns
+	* @return  array            Renewed columns
 	*/
 
 	public static function manage_columns($columns)
@@ -58,13 +58,13 @@ class Optimus_Media
 
 
 	/**
-	* Ausgabe der Optimus-Spalte mit Werten
+	* Print Optimus values as column
 	*
 	* @since   0.0.1
-	* @change  1.1.2
+	* @change  1.3.0
 	*
-	* @param   string   $column  Bezeichnung der Spalte
-	* @param   integer  $id      ID des aktuellen Objektes
+	* @param   string   $column  Column name
+	* @param   integer  $id      Current object ID
 	*/
 
 	public static function manage_column($column, $id)
@@ -79,72 +79,51 @@ class Optimus_Media
 
 
 	/**
-	* Gibt die formatierte Spalte in HTML zurück
+	* Returns the formatted column as HTML
 	*
 	* @since   0.0.1
-	* @change  1.1.2
+	* @change  1.3.0
 	*
-	* @param   intval  $id  Attachment-ID
-	* @return  mixed        Ermittelter Wert
+	* @param   intval  $id  Object ID
+	* @return  string       Column HTML
 	*/
 
 	private static function _column_html($id)
 	{
-		/* Metadaten des Anhangs */
+		/* Attachment metadata */
 		$data = (array)wp_get_attachment_metadata($id);
 
-		/* Ausgabe */
-		if ( array_key_exists('optimus', $data) ) {
-			/* Init */
-			$optimus = $data['optimus'];
-
-			/* Neue Methode */
-			if ( is_array($optimus) ) {
-				/* Ausgabe der Erfolgmeldung */
-				if ( isset($optimus['profit']) ) {
-					return sprintf(
-						'<div class="%s"><p>%d%%</p></div>',
-						self::_pie_class( $optimus['quantity'] ),
-						$optimus['profit']
-					);
-				}
-
-				/* Ausgabe des Fehlercodes */
-				if ( isset($optimus['error']) ) {
-					return sprintf(
-						'<div class="fail"><p>%d</p></div>',
-						$optimus['error']
-					);
-				}
-			}
-
-			/* Ergebnis als Zahl */
-			if ( is_numeric($optimus) ) {
-				return sprintf(
-					'<div><p>%d%%</p></div>',
-					$optimus
-				);
-			}
-
-			/* Ergebnis als String */
-			return sprintf(
-				'<div class="fail"><p>X</p></div>',
-				$optimus
-			);
+		/* Data exists? */
+		if ( empty($data['optimus']) OR ! is_array($data['optimus']) ) {
+			return;
 		}
 
-		return NULL;
+		/* Array init */
+		$optimus = $data['optimus'];
+
+		/* Metadata exists? */
+		if ( ! isset($optimus['quantity']) OR ! isset($optimus['profit']) ) {
+			return;
+		}
+
+		return sprintf(
+			'<div class="%s"><p>%d%%</p></div>',
+			self::_pie_class(
+				$optimus['quantity']
+			),
+			$optimus['profit']
+		);
 	}
 
 
 	/**
-	* Gibt die CSS-Klasse je nach Menge komprimierter Dateien
+	* Specifies the CSS class depending on the amount of compressed files
 	*
 	* @since   0.0.8
-	* @change  1.1.2
+	* @change  1.3.0
 	*
-	* @param   intval  $quantity  Menge als Prozentwert
-	* @return  string             CSS-Klasse
+	* @param   intval  $quantity  File quantity
+	* @return  string             Optimus CSS class
 	*/
 
 	private static function _pie_class($quantity)
