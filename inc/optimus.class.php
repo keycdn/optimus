@@ -138,6 +138,21 @@ class Optimus
 		add_action(
 			'network_admin_notices',
 			array(
+				__CLASS__,
+				'optimus_requirements_check'
+			)
+		);
+		add_action(
+			'admin_notices',
+			array(
+				__CLASS__,
+				'optimus_requirements_check'
+			)
+		);
+
+		add_action(
+			'network_admin_notices',
+			array(
 				'Optimus_HQ',
 				'optimus_hq_notice'
 			)
@@ -276,12 +291,48 @@ class Optimus
 
 
 	/**
-	* Rückgabe der Optionen
+	* Check plugin requirements
+	*
+	* @since   1.3.1
+	* @change  1.3.1
+	*/
+
+	public static function optimus_requirements_check() {
+		/* WordPress version check */
+		if ( version_compare($GLOBALS['wp_version'], OPTIMUS_MIN_WP.'alpha', '<') ) {
+			show_message(
+				sprintf(
+					'<div class="error"><p>%s</p></div>',
+					sprintf(
+						'Optimus ist für WordPress %s optimiert. Bitte das Plugin deaktivieren oder WordPress aktualisieren (empfohlen).',
+						OPTIMUS_MIN_WP
+					)
+				)
+			);
+		}
+
+		/* cURL check */
+		if ( ! WP_Http_Curl::test() ) {
+			show_message(
+				sprintf(
+					'<div class="error"><p>%s</p></div>',
+					sprintf(
+						'Optimus setzt <a href="%s" target="_blank">cURL-Bibliothek</a> voraus (sollte auf keinem Server fehlen). Bitte beim Hoster anfragen.',
+						'http://www.php.net/manual/de/intro.curl.php'
+					)
+				)
+			);
+		}
+	}
+
+
+	/**
+	* Return plugin options
 	*
 	* @since   1.1.2
 	* @change  1.3.0
 	*
-	* @return  array  $diff  Array mit Werten
+	* @return  array  $diff  Data pairs
 	*/
 
 	public static function get_options()

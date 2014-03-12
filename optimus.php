@@ -16,6 +16,7 @@ defined('ABSPATH') OR exit;
 /* Konstanten */
 define('OPTIMUS_FILE', __FILE__);
 define('OPTIMUS_BASE', plugin_basename(__FILE__));
+define('OPTIMUS_MIN_WP', '3.8');
 
 
 /* Admin & XMLRPC only */

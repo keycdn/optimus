@@ -19,7 +19,7 @@ class Optimus_Settings
 	* Registrierung der Settings
 	*
 	* @since   1.0.0
-	* @change  1.1.2
+	* @change  1.3.1
 	*/
 
 	public static function register_settings()
@@ -29,7 +29,7 @@ class Optimus_Settings
 			'optimus',
 			array(
 				__CLASS__,
-				'validate_options'
+				'validate_settings'
 			)
 		);
 	}
@@ -39,13 +39,13 @@ class Optimus_Settings
 	* Valisierung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.3.0
+	* @change  1.3.1
 	*
 	* @param   array  $data  Array mit Formularwerten
 	* @return  array         Array mit geprüften Werten
 	*/
 
-	public static function validate_options($data)
+	public static function validate_settings($data)
 	{
 		return array(
 			'copy_markers'		=> (int)(!empty($data['copy_markers'])),
@@ -59,7 +59,7 @@ class Optimus_Settings
 	* Einfügen der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.1.6
+	* @change  1.3.1
 	*/
 
 	public static function add_page()
@@ -71,7 +71,7 @@ class Optimus_Settings
 			'optimus',
 			array(
 				__CLASS__,
-				'options_page'
+				'settings_page'
 			)
 		);
 	}
@@ -81,10 +81,10 @@ class Optimus_Settings
 	* Darstellung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.3.0
+	* @change  1.3.1
 	*/
 
-	public static function options_page()
+	public static function settings_page()
 	{ ?>
 		<div class="wrap">
 			<h2>
