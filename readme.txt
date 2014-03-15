@@ -1,6 +1,6 @@
 === Optimus ===
 Contributors: sergej.mueller
-Tags: images, optimize, compress, smushit, webp
+Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
 Requires at least: 3.8
 Tested up to: 3.9
 Stable tag: trunk
