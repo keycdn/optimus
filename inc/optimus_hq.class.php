@@ -282,21 +282,29 @@ class Optimus_HQ
 
 
 	/**
-	* Prüfung und Speicherung des Optimus HQ Keys
+	* Verify und store the Optimus HQ key
 	*
 	* @since   1.1.0
-	* @change  1.1.9
+	* @change  1.3.2
 	*/
 
  	public static function verify_key_input()
 	{
-		/* Kein Request? */
+		/* Action check */
 		if ( empty($_POST['_optimus_action']) OR $_POST['_optimus_action'] !== 'verify' ) {
 			return;
 		}
 
-		/* Prüfung des Keys */
-		if ( empty($_POST['_optimus_key']) OR ! preg_match('/^\w{17}$/', $_POST['_optimus_key']) ) {
+		/* Empty input? */
+		if ( empty($_POST['_optimus_key']) ) {
+			return;
+		}
+
+		/* Sanitize input */
+		$optimus_key = sanitize_text_field($_POST['_optimus_key']);
+
+		/* Advanced check */
+		if ( ! preg_match('/^[A-Z0-9]{17}$/', $optimus_key) ) {
 			return;
 		}
 
@@ -307,7 +315,7 @@ class Optimus_HQ
 		self::_delete_purchase_time();
 
 		/* Store current key */
-		self::_update_key($_POST['_optimus_key']);
+		self::_update_key($optimus_key);
 
 		/* Redirect */
 		wp_safe_redirect(
