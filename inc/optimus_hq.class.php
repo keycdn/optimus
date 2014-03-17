@@ -252,7 +252,7 @@ class Optimus_HQ
 
 	  					<label for="_optimus_key">
 	  						Optimus HQ Key:
-	  						<input type="text" name="_optimus_key" id="_optimus_key" maxlength="17" pattern="\w{17}" />
+	  						<input type="text" name="_optimus_key" id="_optimus_key" maxlength="17" pattern="[A-Z0-9]{17}" />
 	  					</label>
 
 		  				<input type="submit" name="submit" value="Aktivieren" class="button button-primary regular" />
