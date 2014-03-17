@@ -228,7 +228,7 @@ class Optimus_HQ
 	* Ausgabe des Eingabefeldes für den Optimus HQ Key
 	*
 	* @since   1.1.0
-	* @change  1.1.6
+	* @change  1.3.2
 	*/
 
 	public static function display_key_input()
