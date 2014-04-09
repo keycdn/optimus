@@ -109,7 +109,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									Aktive Option behält EXIF- und IPTC-Daten bzw. Copyright- und Fotoaufnahme-Parameter in Bildern. Die Größenreduzierung fällt geringer aus.
+									Aktive Option behält EXIF- und IPTC-Daten bzw. Copyright- und Fotoaufnahme-Parameter in Bildern. Die Größenreduzierung fällt geringer aus. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/Wwz7uFHBzFF" target="_blank">Details</a>]
 								</p>
 							</fieldset>
 						</td>
@@ -127,7 +127,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									Nur Optimus HQ. Verlangsamt die Generierung der Vorschaubilder. Modifizierung der Server-Konfigurationsdatei und Überprüfung der Ausgabe erforderlich. [<a href="http://cup.wpcoder.de/webp-jpeg-alternative/" target="_blank">Details</a>]
+									Nur Optimus HQ. Modifizierung der Server-Konfigurationsdatei und Überprüfung der Ausgabe erforderlich. Verlangsamt den Optimierungsprozess. [<a href="https://plus.google.com/114450218898660299759/posts/3emb7o4368X" target="_blank">Details</a>]
 								</p>
 							</fieldset>
 						</td>
@@ -141,20 +141,18 @@ class Optimus_Settings
 							<fieldset>
 								<label for="optimus_secure_transport">
 									<input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']) ?> />
-									Bilder SSL-verschlüsselt übertragen
+									Bilder TLS-verschlüsselt übertragen
 								</label>
 
 								<p class="description">
-									Nur Optimus HQ. Die Kommunikation zum Optimus-Server erfolgt über eine HTTPS-Verbindung. Verlangsamt den Optimierungsprozess.
+									Nur Optimus HQ. Die Kommunikation zum Optimus-Server erfolgt über eine HTTPS-Verbindung. Verlangsamt den Optimierungsprozess. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/5f2f9XKXb4F" target="_blank">Details</a>]
 								</p>
 							</fieldset>
 						</td>
 					</tr>
 				</table>
 
-				<p class="submit">
-					<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-				</p>
+				<?php submit_button() ?>
 			</form>
 		</div><?php
 	}
