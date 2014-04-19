@@ -32,16 +32,11 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.1.9
+	* @change  1.3.1
 	*/
 
 	public function __construct()
 	{
-		/* Filter */
-		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) OR (defined('DOING_CRON') && DOING_CRON) OR (defined('DOING_AJAX') && DOING_AJAX) ) {
-			return;
-		}
-
 		/* Fire! */
 		add_filter(
 			'wp_generate_attachment_metadata',
@@ -52,6 +47,11 @@ class Optimus
 			10,
 			2
 		);
+
+		/* Filter */
+		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) OR (defined('DOING_CRON') && DOING_CRON) OR (defined('DOING_AJAX') && DOING_AJAX) ) {
+			return;
+		}
 
 		/* BE only */
 		if ( ! is_admin() ) {

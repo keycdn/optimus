@@ -80,6 +80,9 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 == Changelog ==
 
+= 1.3.1 =
+* Anpassung für WordPress 3.9: Sicherstellung der Bildoptimierung im WordPress-Editor
+
 = 1.3.0 =
 * Überarbeitung der Kommunikation via cURL
 * Implementierung von HTTPS (Optimus HQ)
