@@ -237,7 +237,7 @@ class Optimus
 						),
 						network_admin_url('plugins.php#optimus')
 					),
-					( Optimus_HQ::get_key() ? 'Anderen Optimus HQ Key eingeben' : 'Optimus HQ aktivieren' )
+					( Optimus_HQ::get_key() ? 'Anderen Optimus HQ Key eingeben' : '<span style="color:#006505">Optimus HQ aktivieren</span>' )
 				)
 			)
 		);
