@@ -80,8 +80,10 @@ class Optimus_Settings
 	/**
 	* Darstellung der Optionsseite
 	*
+	* @since   1.3.2  Implementierung von get_intermediate_image_sizes
 	* @since   1.0.0
-	* @change  1.3.1
+	*
+	* @return  void
 	*/
 
 	public static function settings_page()
@@ -97,6 +99,23 @@ class Optimus_Settings
 				<?php $options = Optimus::get_options() ?>
 
 				<table class="form-table">
+					<?php if ( $sizes = get_intermediate_image_sizes() ) { ?>
+						<tr valign="top">
+							<th scope="row">
+								Bildgrößen
+							</th>
+							<td>
+								<p>
+									<?php echo implode( ', ', array_values($sizes) ) ?>
+								</p>
+
+								<p class="description">
+									Zusätzlich zum Originalbild und abhängig von der Dateigröße verkleinert Optimus die in WordPress registrierten Bildgrößen. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW" target="_blank">Details</a>]
+								</p>
+							</td>
+						</tr>
+					<?php } ?>
+
 					<tr valign="top">
 						<th scope="row">
 							Bild-Metadaten

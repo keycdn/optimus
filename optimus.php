@@ -5,7 +5,7 @@ Description: Verlustfreie Komprimierung der Upload-Bilder in WordPress. Automati
 Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
 Plugin URI: https://optimus.io
-Version: 1.3.1
+Version: 1.3.2
 */
 
 
