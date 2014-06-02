@@ -37,7 +37,7 @@ class Optimus_Request
 	* Build optimization for a upload image including previews
 	*
 	* @since   0.0.1
-	* @change  1.3.0
+	* @change  1.3.3
 	*
 	* @param   array    $upload_data    Incoming upload information
 	* @param   integer  $attachment_id  Attachment ID
@@ -47,6 +47,11 @@ class Optimus_Request
 	public static function optimize_upload_images($upload_data, $attachment_id) {
 		/* Already optimized? */
 		if ( ! empty($upload_data['optimus']) ) {
+			return $upload_data;
+		}
+
+		/* Skip regenerating */
+		if ( ! empty($_REQUEST['action']) && $_REQUEST['action'] === 'regeneratethumbnail' ) {
 			return $upload_data;
 		}
 
