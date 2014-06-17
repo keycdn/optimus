@@ -135,30 +135,16 @@ class Optimus
 			)
 		);
 
+		/* Admin notices */
 		add_action(
-			'network_admin_notices',
+			'all_admin_notices',
 			array(
 				__CLASS__,
 				'optimus_requirements_check'
 			)
 		);
 		add_action(
-			'admin_notices',
-			array(
-				__CLASS__,
-				'optimus_requirements_check'
-			)
-		);
-
-		add_action(
-			'network_admin_notices',
-			array(
-				'Optimus_HQ',
-				'optimus_hq_notice'
-			)
-		);
-		add_action(
-			'admin_notices',
+			'all_admin_notices',
 			array(
 				'Optimus_HQ',
 				'optimus_hq_notice'
