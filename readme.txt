@@ -67,6 +67,11 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 * Ausgehende Serververbindung
 
 
+= Speicherbelegung =
+* Im Backend: ~0,19 MB
+* Im Frontend: ~0,03 MB
+
+
 = Website =
 * [optimus.io](https://optimus.io)
 
