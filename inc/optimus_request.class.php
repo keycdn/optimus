@@ -63,11 +63,13 @@ class Optimus_Request
 			$upload_path = $upload_dir['path'];
 			$upload_url = $upload_dir['url'];
 			$upload_file = $upload_data['file'];
-		} else {
+		} elseif ( ! empty($upload_data['file']) ) {
 			$file_info = pathinfo($upload_data['file']);
 			$upload_path = path_join($upload_dir['basedir'], $file_info['dirname']);
 			$upload_url = path_join($upload_dir['baseurl'], $file_info['dirname']);
 			$upload_file = $file_info['basename'];
+		} else {
+			return $upload_data;
 		}
 
 		/* Simple regex check */
