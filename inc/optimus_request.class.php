@@ -50,6 +50,11 @@ class Optimus_Request
 			return $upload_data;
 		}
 
+		/* Only images, please */
+		if ( empty($upload_data['file']) ) {
+			return $upload_data;
+		}
+
 		/* Skip regenerating */
 		if ( ! empty($_REQUEST['action']) && $_REQUEST['action'] === 'regeneratethumbnail' ) {
 			return $upload_data;
@@ -63,13 +68,11 @@ class Optimus_Request
 			$upload_path = $upload_dir['path'];
 			$upload_url = $upload_dir['url'];
 			$upload_file = $upload_data['file'];
-		} elseif ( ! empty($upload_data['file']) ) {
+		} else {
 			$file_info = pathinfo($upload_data['file']);
 			$upload_path = path_join($upload_dir['basedir'], $file_info['dirname']);
 			$upload_url = path_join($upload_dir['baseurl'], $file_info['dirname']);
 			$upload_file = $file_info['basename'];
-		} else {
-			return $upload_data;
 		}
 
 		/* Simple regex check */
