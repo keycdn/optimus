@@ -2,7 +2,7 @@
 Contributors: sergej.mueller
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
 Requires at least: 3.8
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -68,8 +68,8 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Speicherbelegung =
-* Im Backend: ~0,19 MB
-* Im Frontend: ~0,03 MB
+* Im Backend: ~ 0,19 MB
+* Im Frontend: ~ 0,03 MB
 
 
 = Website =
@@ -77,13 +77,17 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Autor =
-* [Twitter](https://twitter.com/wpSEO)
+* [Twitter](https://twitter.com/wpseo)
 * [Google+](https://plus.google.com/110569673423509816572 "Google+")
 * [Plugins](http://wpcoder.de "Plugins")
 
 
 
 == Changelog ==
+
+= 1.3.3 =
+* Einführung von Optimus HQ PRO
+* Kompatibilität zu WooCommerce
 
 = 1.3.2 =
 * Anzeige der in WordPress registrierten Bildgrößen (Thumbnails)
@@ -182,13 +186,6 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = 0.0.1 =
 * Init release
-
-
-
-== Upgrade Notice ==
-
-= 1.1.0 =
-*Optimus* wurde auf Freemium Modell umgestellt. [Offizielles Statement](https://plus.google.com/110569673423509816572/posts/XEoHhEi5uJw).
 
 
 
