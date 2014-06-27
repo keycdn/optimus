@@ -86,8 +86,9 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 == Changelog ==
 
 = 1.3.3 =
-* Einführung von Optimus HQ PRO
 * Kompatibilität zu WooCommerce
+* Einführung von Optimus HQ PRO
+* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/iNDtLhWw4p2)
 
 = 1.3.2 =
 * Anzeige der in WordPress registrierten Bildgrößen (Thumbnails)
