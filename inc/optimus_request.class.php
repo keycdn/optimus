@@ -56,7 +56,7 @@ class Optimus_Request
 		}
 
 		/* Skip regenerating */
-		if ( ! empty($_REQUEST['action']) && $_REQUEST['action'] === 'regeneratethumbnail' ) {
+		if ( ! empty($_POST['action']) && $_POST['action'] === 'regeneratethumbnail' ) {
 			return $upload_data;
 		}
 
