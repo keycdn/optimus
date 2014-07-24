@@ -300,6 +300,14 @@ class Optimus_HQ
 			return;
 		}
 
+		/* Nonce check */
+		check_admin_referer('_optimus_nonce');
+
+		/* Capability check */
+		if ( ! current_user_can('manage_options') ) {
+			return;
+		}
+
 		/* Sanitize input */
 		$optimus_key = sanitize_text_field($_POST['_optimus_key']);
 
@@ -307,9 +315,6 @@ class Optimus_HQ
 		if ( ! preg_match('/^[A-Z0-9]{17}$/', $optimus_key) ) {
 			return;
 		}
-
-		/* Security */
-		check_admin_referer('_optimus_nonce');
 
 		/* Delete purchase_time */
 		self::_delete_purchase_time();
