@@ -337,7 +337,7 @@ class Optimus_Request
 			$handle,
 			CURLOPT_HTTPHEADER,
 			array(
-				'Accept: image/jpeg,image/webp,image/png'
+				'Accept: image/*'
 			)
 		);
 	}
