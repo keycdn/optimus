@@ -87,6 +87,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = 1.3.4 =
 * Umstellung des Plugins auf die neue Optimus API (cURL only)
+* [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/GYrUK4YeXvU)
 
 = 1.3.3 =
 * Kompatibilität zu WooCommerce
