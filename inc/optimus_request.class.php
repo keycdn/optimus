@@ -16,15 +16,6 @@ class Optimus_Request
 
 
 	/**
-	* cURL is available
-	*
-	* @var  boolean
-	*/
-
-	private static $_use_curl = false;
-
-
-	/**
 	* Default remote scheme
 	*
 	* @var  string
@@ -37,7 +28,7 @@ class Optimus_Request
 	* Build optimization for a upload image including previews
 	*
 	* @since   0.0.1
-	* @change  1.3.3
+	* @change  1.3.4
 	*
 	* @param   array    $upload_data    Incoming upload information
 	* @param   integer  $attachment_id  Attachment ID
@@ -57,6 +48,11 @@ class Optimus_Request
 
 		/* Skip regenerating */
 		if ( ! empty($_POST['action']) && $_POST['action'] === 'regeneratethumbnail' ) {
+			return $upload_data;
+		}
+
+		/* cURL only */
+		if ( ! WP_Http_Curl::test() ) {
 			return $upload_data;
 		}
 
@@ -101,15 +97,13 @@ class Optimus_Request
 		$diff_filesizes = array();
 
 		/* Set cURL options */
-		if ( self::$_use_curl = WP_Http_Curl::test() ) {
-			add_action(
-				'http_api_curl',
-				array(
-					__CLASS__,
-					'set_curl_options'
-				)
-			);
-		}
+		add_action(
+			'http_api_curl',
+			array(
+				__CLASS__,
+				'set_curl_options'
+			)
+		);
 
 		/* Set https scheme */
 		if ( $options['secure_transport'] && Optimus_HQ::is_unlocked() ) {
@@ -276,7 +270,7 @@ class Optimus_Request
 	* Optimus API request
 	*
 	* @since   1.1.4
-	* @change  1.3.0
+	* @change  1.3.4
 	*
 	* @param   string  $file  Image file
 	* @param   array   $args  Request arguments
@@ -285,31 +279,15 @@ class Optimus_Request
 
 	private static function _do_api_request($file, $args)
 	{
-		/* cURL Request */
-		if ( self::$_use_curl ) {
-			return wp_safe_remote_post(
-				sprintf(
-					'%s://magic.optimus.io/%s?%s',
-					self::$_remote_scheme,
-					Optimus_HQ::get_key(),
-					self::_curl_optimus_task($args)
-				),
-				array(
-					'body'	  => file_get_contents($file),
-					'timeout' => 10
-				)
-			);
-		}
-
-		/* Fallback request */
 		return wp_safe_remote_post(
 			sprintf(
-				'%s://api.optimus.io/%s',
+				'%s://magic.optimus.io/%s?%s',
 				self::$_remote_scheme,
-				Optimus_HQ::get_key()
+				Optimus_HQ::get_key(),
+				self::_curl_optimus_task($args)
 			),
 			array(
-				'body'	  => $args,
+				'body'	  => file_get_contents($file),
 				'timeout' => 10
 			)
 		);
