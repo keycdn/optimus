@@ -16,13 +16,17 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 == Description ==
 
 = (Fast) Magie =
-*Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen, die der Blogseiten-Performance positiv beitragen. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
+*Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen – diese Sparmaßnahme trägt der Blogseiten-Performance positiv bei. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
 
 
 > #### Optimus HQ mit PREMIUM-Funktionen
-> *Optimus* existiert in zwei Varianten:
-> 1. Die kostenlos erhältliche Grundversion mit einigen Einschränkungen.
-> 2. *Optimus HQ* mit erweitertem Funktionsumgang und unlimitiertem Traffic.
+> *Optimus* existiert in drei Varianten:
+>
+> 1. Die kostenlos erhältliche Grundversion mit Einschränkungen.
+>
+> 2. *Optimus HQ* mit erweitertem Funktionsumgang für Eigenprojekte.
+>
+> 3. *Optimus HQ PRO* als professionelle Lösung in Kunden-Websites.
 >
 > Alle Informationen zum Produkt auf [optimus.io](https://optimus.io)
 
@@ -48,6 +52,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 * Optimiert für WordPress Mobile Apps und Windows Live Writer
 * Vorteilhafterer PageSpeed als Ranking-Faktor
 * Geringere Ladezeit der Blogseiten
+* Unterstützung für WooCommerce
 * WordPress Multisite-fähig
 
 
@@ -58,7 +63,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = Tipps =
 * Fotos stets als JPEGs statt PNGs speichern. Das PNG-Format ist sinnvoll für Illustrationen, JPEG ist dagegen genau das Richtige für Fotoaufnahmen. Weiterer Grund: Die Größenreduzierung geht bei JPEGs flotter vonstatten.
-* Zahlreiche Blogger optimieren ihre Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](http://playground.ebiene.de/png-bilder-optimieren/). *Optimus* hat den gravierenden Vorteil, dass von WordPress (Theme & Plugins) erstellte Thumbnails (= Vorschaubilder) von *Optimus* ebenfalls behandelt und minimiert werden. Schliesslich sind im Theme fast immer Thumbnails eingebunden und nur selten das Originalbild.
+* Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/A15GfjcFgR9) (Mac) oder [PNGGauntlet](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/AEwkCSMMoTk) (Win) optimiert?. *Optimus* hat den gravierenden Vorteil: Die von WordPress (Theme & Plugins) erstellten Thumbnails (= Vorschaubilder) werden von *Optimus* ebenfalls behandelt und minimiert. Schließlich sind im Theme fast immer Thumbnails und keine Originalbilder eingebunden.
 
 
 = Systemanforderungen =
@@ -68,7 +73,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Speicherbelegung =
-* Im Backend: ~ 0,19 MB
+* Im Backend: ~ 0,21 MB
 * Im Frontend: ~ 0,03 MB
 
 
