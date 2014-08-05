@@ -35,12 +35,12 @@ Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plug
 
 Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](https://wordpress.org/plugins/optimus/screenshots/).
 
-Anders als andere Tools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches verkleinert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
+Anders als gängige Optimierungstools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches verkleinert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
 
 NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins sparsame [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/).
 
 
-= Pluspunkte =
+= Features =
 * [Progressive JPEGs](https://plus.google.com/114450218898660299759/posts/RPW48vHbwoM)
 * Verkleinerung der Dateigröße ohne Verlust der Qualität
 * Optimierung aller Vorschauvarianten eines Bildes
@@ -62,7 +62,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = Tipps =
 * Fotos stets als JPEGs statt PNGs speichern. Das PNG-Format ist sinnvoll für Illustrationen, JPEG ist dagegen genau das Richtige für Fotoaufnahmen. Weiterer Grund: Die Größenreduzierung geht bei JPEGs flotter vonstatten.
-* Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/A15GfjcFgR9) (Mac) oder [PNGGauntlet](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/AEwkCSMMoTk) (Win) optimiert?. *Optimus* hat den gravierenden Vorteil: Die von WordPress (Theme & Plugins) erstellten Thumbnails (= Vorschaubilder) werden von *Optimus* ebenfalls behandelt und minimiert. Schließlich sind im Theme fast immer Thumbnails und keine Originalbilder eingebunden.
+* Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/A15GfjcFgR9) (Mac) oder [PNGGauntlet](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/AEwkCSMMoTk) (Win) optimiert? *Optimus* hat den gravierenden Vorteil, dass die von WordPress erstellten Thumbnails (= Vorschaubilder) ebenfalls minimiert werden. Schließlich sind im Theme fast immer Thumbnails und keine Originalbilder eingebunden.
 
 
 = Systemanforderungen =
