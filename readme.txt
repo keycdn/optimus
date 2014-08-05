@@ -19,8 +19,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 *Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen – diese Sparmaßnahme trägt der Blogseiten-Performance positiv bei. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
 
 
-> #### Optimus HQ mit PREMIUM-Funktionen
-> *Optimus* existiert in drei Varianten:
+> #### Optimus existiert in drei Varianten:
 >
 > 1. Die kostenlos erhältliche Grundversion mit Einschränkungen.
 >
