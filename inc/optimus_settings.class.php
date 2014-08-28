@@ -128,7 +128,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									Aktive Option behält EXIF- und IPTC-Daten bzw. Copyright- und Fotoaufnahme-Parameter in Bildern. Die Größenreduzierung fällt geringer aus. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/Wwz7uFHBzFF" target="_blank">Details</a>]
+									Aktive Option behält EXIF- und IPTC-Daten bzw. Copyright- und Fotoaufnahme-Informationen in Bildern. Die Größenreduzierung fällt geringer aus. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/Wwz7uFHBzFF" target="_blank">Details</a>]
 								</p>
 							</fieldset>
 						</td>

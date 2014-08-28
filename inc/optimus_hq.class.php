@@ -374,7 +374,7 @@ class Optimus_HQ
 			break;
 
 			case 'locked':
-				$msg = 'Optimus ist aktuell nur eingeschränkt nutzbar.<br /><strong>Optimus HQ</strong> (Premium) beherrscht mehr Bildformate, komprimiert größere Dateien, nutzt HTTPS-Verbindung und erlaubt Anfragen von Blogs außerhalb D-A-CH. Weitere Details auf <a href="http://optimus.io" target="_blank">optimus.io</a><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em>';
+				$msg = '<strong>Optimus</strong> ist kostenlos, der Funktionsumfang ist auf wesentliche Features reduziert.<br /><strong>Optimus HQ</strong> (Premium) beherrscht dagegen mehrere Bildformate, komprimiert größere Dateien, nutzt HTTPS-Verbindung und erlaubt Anfragen außerhalb D-A-CH. Weitere Details auf <a href="http://optimus.io" target="_blank">optimus.io</a><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em>';
 				$class = 'error';
 			break;
 
