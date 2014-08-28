@@ -2,7 +2,7 @@
 Contributors: sergej.mueller
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
 Requires at least: 3.8
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,8 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 > #### Optimus existiert in drei Varianten:
 >
-> 1. Die kostenlos erhältliche Grundversion mit Einschränkungen.
+>
+> 1. *Optimus* als kostenlose Grundversion mit Einschränkungen.
 >
 > 2. *Optimus HQ* mit erweitertem Funktionsumgang für Eigenprojekte.
 >
@@ -72,8 +73,8 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Speicherbelegung =
-* Im Backend: ~ 0,21 MB
-* Im Frontend: ~ 0,03 MB
+* Im Backend: ~ 0,19 MB
+* Im Frontend: ~ 0,01 MB
 
 
 = Website =
