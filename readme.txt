@@ -88,6 +88,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = 1.3.5 =
 * Erhöhung des Limits für PNG-Dateien auf 512 KB (Optimus HQ)
+* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/EUA797D8aYS)
 
 = 1.3.4 =
 * Umstellung des Plugins auf die neue Optimus API (cURL only)
