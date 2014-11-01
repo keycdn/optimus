@@ -20,12 +20,8 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 
 > #### Optimus existiert in drei Varianten:
->
->
 > 1. *Optimus* als kostenlose Grundversion mit Einschränkungen.
->
 > 2. *Optimus HQ* mit erweitertem Funktionsumgang für Eigenprojekte.
->
 > 3. *Optimus HQ PRO* als professionelle Lösung in Kunden-Websites.
 >
 > Alle Informationen zum Produkt auf [optimus.io](https://optimus.io)
@@ -89,6 +85,9 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 == Changelog ==
+
+= 1.3.5 =
+* Erhöhung des Limits für PNG-Dateien auf 512 KB (Optimus HQ)
 
 = 1.3.4 =
 * Umstellung des Plugins auf die neue Optimus API (cURL only)

@@ -270,7 +270,7 @@ class Optimus_Request
 	* Optimus API request
 	*
 	* @since   1.1.4
-	* @change  1.3.4
+	* @change  1.3.5
 	*
 	* @param   string  $file  Image file
 	* @param   array   $args  Request arguments
@@ -288,7 +288,7 @@ class Optimus_Request
 			),
 			array(
 				'body'	  => file_get_contents($file),
-				'timeout' => 10
+				'timeout' => 30
 			)
 		);
 	}
@@ -424,7 +424,7 @@ class Optimus_Request
 	* Return Optimus quota for a plugin type
 	*
 	* @since   1.1.0
-	* @change  1.3.0
+	* @change  1.3.5
 	*
 	* @return  array  Optimus quota
 	*/
@@ -433,16 +433,16 @@ class Optimus_Request
 	{
 		/* Quota */
 		$quota = array(
-			/* FREE */
+			/* Optimus */
 			false => array(
 				'image/jpeg' => 20 * 1024
 			),
 
-			/* HQ */
+			/* Optimus HQ */
 			true => array(
 				'image/jpeg' => 1000 * 1024,
 				'image/webp' => 1000 * 1024,
-				'image/png'  => 200  * 1024
+				'image/png'  => 500  * 1024
 			)
 		);
 
