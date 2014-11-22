@@ -281,8 +281,10 @@ class Optimus_Request
 	{
 		return wp_safe_remote_post(
 			sprintf(
-				'%s://magic.optimus.io/%s?%s',
+				'%s://%s.%s/%s?%s',
 				self::$_remote_scheme,
+                'magic',
+                'optimus.io',
 				Optimus_HQ::get_key(),
 				self::_curl_optimus_task($args)
 			),
