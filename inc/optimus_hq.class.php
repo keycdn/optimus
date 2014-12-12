@@ -369,7 +369,7 @@ class Optimus_HQ
 		/* Matching */
 		switch( $type ) {
 			case 'unlocked':
-				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a>.';
+				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a> und <a href="https://twitter.com/optimusHQ" target="_blank">Twitter</a>.';
 				$class = 'updated';
 			break;
 
