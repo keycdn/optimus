@@ -47,6 +47,13 @@ class Optimus
 			10,
 			2
 		);
+		add_filter(
+			'wp_delete_file',
+			array(
+				'Optimus_Request',
+				'delete_converted_file'
+			)
+		);
 
 		/* Filter */
 		if ( (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) OR (defined('DOING_CRON') && DOING_CRON) OR (defined('DOING_AJAX') && DOING_AJAX) OR (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
@@ -125,13 +132,6 @@ class Optimus
 			array(
 				'Optimus_Settings',
 				'add_page'
-			)
-		);
-		add_filter(
-			'wp_delete_file',
-			array(
-				'Optimus_Request',
-				'delete_converted_file'
 			)
 		);
 
