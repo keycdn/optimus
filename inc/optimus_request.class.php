@@ -28,7 +28,7 @@ class Optimus_Request
 	* Build optimization for a upload image including previews
 	*
 	* @since   0.0.1
-	* @change  1.3.4
+	* @change  1.3.6
 	*
 	* @param   array    $upload_data    Incoming upload information
 	* @param   integer  $attachment_id  Attachment ID
@@ -90,11 +90,17 @@ class Optimus_Request
 		/* Get plugin options */
 		$options = Optimus::get_options();
 
-		/* Todo files array */
-		$todo_files = array($upload_file);
-
-		/* Diff file sizes */
+		/* Init arrays */
+		$todo_files = array();
 		$diff_filesizes = array();
+
+		/* Keep the master */
+		if ( ! $options['keep_original'] ) {
+			array_push(
+				$todo_files,
+				$upload_file
+			);
+		}
 
 		/* Set cURL options */
 		add_action(
@@ -125,6 +131,11 @@ class Optimus_Request
 			$todo_files = array_reverse(
 				array_unique($todo_files)
 			);
+		}
+
+		/* No images to process */
+		if ( empty($todo_files) ) {
+			return $upload_data;
 		}
 
 		/* Loop todo files */

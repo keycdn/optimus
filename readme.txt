@@ -86,6 +86,11 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 == Changelog ==
 
+= 1.3.6 =
+* Neue Option: Keine Optimierung der Originalbilder
+* Korrektur: Löschung der WebP-Bilder im AJAX-Modus
+* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/hWjiVYht9yF)
+
 = 1.3.5 =
 * Erhöhung des Limits für PNG-Dateien auf 512 KB (Optimus HQ)
 * [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/EUA797D8aYS)

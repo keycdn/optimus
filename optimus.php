@@ -6,7 +6,7 @@ Author: Sergej M&uuml;ller
 Author URI: http://wpcoder.de
 Plugin URI: https://optimus.io
 License: GPLv2 or later
-Version: 1.3.5
+Version: 1.3.6
 */
 
 /*

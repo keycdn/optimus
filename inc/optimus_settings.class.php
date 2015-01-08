@@ -39,7 +39,7 @@ class Optimus_Settings
 	* Valisierung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.3.1
+	* @change  1.3.6
 	*
 	* @param   array  $data  Array mit Formularwerten
 	* @return  array         Array mit geprüften Werten
@@ -50,6 +50,7 @@ class Optimus_Settings
 		return array(
 			'copy_markers'		=> (int)(!empty($data['copy_markers'])),
 			'webp_convert'		=> (int)(!empty($data['webp_convert'])),
+			'keep_original'		=> (int)(!empty($data['keep_original'])),
 			'secure_transport'	=> (int)(!empty($data['secure_transport']))
 		);
 	}
@@ -80,8 +81,8 @@ class Optimus_Settings
 	/**
 	* Darstellung der Optionsseite
 	*
-	* @since   1.3.2  Implementierung von get_intermediate_image_sizes
 	* @since   1.0.0
+	* @change  1.3.6
 	*
 	* @return  void
 	*/
@@ -115,6 +116,24 @@ class Optimus_Settings
 							</td>
 						</tr>
 					<?php } ?>
+
+					<tr valign="top">
+						<th scope="row">
+							Originalbilder
+						</th>
+						<td>
+							<fieldset>
+								<label for="optimus_keep_original">
+									<input type="checkbox" name="optimus[keep_original]" id="optimus_keep_original" value="1" <?php checked(1, $options['keep_original']) ?> />
+									Keine Optimierung der Originalbilder
+								</label>
+
+								<p class="description">
+									Optimus komprimiert ausschließlich Vorschaubilder (Thumbnails). In WordPress hochgeladene Originalbilder bleiben unangetastet.
+								</p>
+							</fieldset>
+						</td>
+					</tr>
 
 					<tr valign="top">
 						<th scope="row">

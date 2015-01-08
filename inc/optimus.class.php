@@ -316,7 +316,7 @@ class Optimus
 	* Return plugin options
 	*
 	* @since   1.1.2
-	* @change  1.3.0
+	* @change  1.3.6
 	*
 	* @return  array  $diff  Data pairs
 	*/
@@ -328,6 +328,7 @@ class Optimus
 			array(
 				'copy_markers'		=> 0,
 				'webp_convert' 		=> 0,
+				'keep_original'		=> 0,
 				'secure_transport'	=> 0
 			)
 		);
