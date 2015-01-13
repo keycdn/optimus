@@ -129,7 +129,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									Optimus komprimiert ausschließlich Vorschaubilder (Thumbnails). In WordPress hochgeladene Originalbilder bleiben unangetastet.
+									Optimus komprimiert ausschließlich Vorschaubilder (Thumbnails). In WordPress hochgeladene Originalbilder bleiben unangetastet. [<a href="https://plus.google.com/114450218898660299759/posts/eNQFbeh9wqk" target="_blank">Details</a>]
 								</p>
 							</fieldset>
 						</td>
