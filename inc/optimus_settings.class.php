@@ -111,7 +111,7 @@ class Optimus_Settings
 								</p>
 
 								<p class="description">
-									Zusätzlich zum Originalbild und abhängig von der Dateigröße verkleinert Optimus die in WordPress registrierten Bildgrößen. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW" target="_blank">Details</a>]
+									Zusätzlich zum Originalbild und abhängig von der Dateigröße verkleinert Optimus diese in WordPress registrierten Bildgrößen. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW" target="_blank">Details</a>]
 								</p>
 							</td>
 						</tr>
