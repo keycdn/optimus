@@ -92,16 +92,17 @@ class Optimus_HQ
 				)
 			);
 
-			/* Set the timestamp */
+			/* Exit on error */
 			if ( is_wp_error($response) ) {
-				$purchase_time = -1;
-			} else {
-				$purchase_time = wp_remote_retrieve_body($response);
+				wp_die( $response->get_error_message() );
 			}
 
-			/* Validate the timestamp */
-			if ( ! ( is_numeric($purchase_time) && $purchase_time <= PHP_INT_MAX && $purchase_time >= ~PHP_INT_MAX ) ) {
-				$purchase_time = -1;
+			/* Initial state */
+			$purchase_time = -1;
+
+			/* Set the timestamp */
+			if ( wp_remote_retrieve_response_code($response) === 200 ) {
+				$purchase_time = (int) wp_remote_retrieve_body($response);
 			}
 
 			/* Store as option */
