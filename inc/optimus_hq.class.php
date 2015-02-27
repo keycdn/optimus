@@ -370,17 +370,17 @@ class Optimus_HQ
 		/* Matching */
 		switch( $type ) {
 			case 'unlocked':
-				$msg = 'Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a> und <a href="https://twitter.com/optimusHQ" target="_blank">Twitter</a>.';
+				$msg = '<p>Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a> und <a href="https://twitter.com/optimusHQ" target="_blank">Twitter</a>.</p>';
 				$class = 'updated';
 			break;
 
 			case 'locked':
-				$msg = '<strong>Optimus</strong> ist kostenlos, der Funktionsumfang ist auf wesentliche Features reduziert.<br /><strong>Optimus HQ</strong> (Premium) beherrscht dagegen mehrere Bildformate, komprimiert größere Dateien, nutzt HTTPS-Verbindung und erlaubt Anfragen außerhalb D-A-CH. Weitere Details auf <a href="https://optimus.io" target="_blank">optimus.io</a><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em>';
+				$msg = '<p><strong>Optimus</strong> ist kostenlos, der Funktionsumfang ist auf wesentliche Features reduziert.</p><p><strong>Optimus HQ</strong> (Premium) beherrscht dagegen mehrere Bildformate, komprimiert größere Dateien und verfügt über HTTPS-Verbindung. <span class="no-break">Weitere Details auf <a href="https://optimus.io" target="_blank">optimus.io</a></span><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em></p>';
 				$class = 'error';
 			break;
 
 			case 'expired':
-				$msg = '<strong>Optimus HQ Key</strong> ist abgelaufen. Ein neuer Optimus HQ Key kann auf <a href="https://optimus.io" target="_blank">optimus.io</a> erworben werden. Vielen Dank!';
+				$msg = '<p><strong>Optimus HQ Key</strong> ist abgelaufen. Ein neuer Optimus HQ Key kann auf <a href="https://optimus.io" target="_blank">optimus.io</a> erworben werden. Vielen Dank!</p>';
 				$class = 'error';
 			break;
 
@@ -391,7 +391,7 @@ class Optimus_HQ
 		/* Output */
 		show_message(
 			sprintf(
-				'<div class="%s"><p>%s</p></div>',
+				'<div class="%s">%s</div>',
 				$class,
 				$msg
 			)
