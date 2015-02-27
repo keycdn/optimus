@@ -304,7 +304,7 @@ class Optimus
 					'<div class="error"><p>%s</p></div>',
 					sprintf(
 						'Optimus setzt <a href="%s" target="_blank">cURL-Bibliothek</a> voraus (sollte auf keinem Server fehlen). Bitte beim Hoster anfragen.',
-						'http://www.php.net/manual/de/intro.curl.php'
+						'https://php.net/manual/de/intro.curl.php'
 					)
 				)
 			);

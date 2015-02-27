@@ -375,12 +375,12 @@ class Optimus_HQ
 			break;
 
 			case 'locked':
-				$msg = '<strong>Optimus</strong> ist kostenlos, der Funktionsumfang ist auf wesentliche Features reduziert.<br /><strong>Optimus HQ</strong> (Premium) beherrscht dagegen mehrere Bildformate, komprimiert größere Dateien, nutzt HTTPS-Verbindung und erlaubt Anfragen außerhalb D-A-CH. Weitere Details auf <a href="http://optimus.io" target="_blank">optimus.io</a><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em>';
+				$msg = '<strong>Optimus</strong> ist kostenlos, der Funktionsumfang ist auf wesentliche Features reduziert.<br /><strong>Optimus HQ</strong> (Premium) beherrscht dagegen mehrere Bildformate, komprimiert größere Dateien, nutzt HTTPS-Verbindung und erlaubt Anfragen außerhalb D-A-CH. Weitere Details auf <a href="https://optimus.io" target="_blank">optimus.io</a><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em>';
 				$class = 'error';
 			break;
 
 			case 'expired':
-				$msg = '<strong>Optimus HQ Key</strong> ist abgelaufen. Ein neuer Optimus HQ Key kann auf <a href="http://optimus.io" target="_blank">optimus.io</a> erworben werden. Vielen Dank!';
+				$msg = '<strong>Optimus HQ Key</strong> ist abgelaufen. Ein neuer Optimus HQ Key kann auf <a href="https://optimus.io" target="_blank">optimus.io</a> erworben werden. Vielen Dank!';
 				$class = 'error';
 			break;
 
