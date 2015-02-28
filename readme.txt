@@ -21,8 +21,8 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 > #### Optimus existiert in drei Varianten:
 > 1. **Optimus** *(Free)* als Grundversion mit Einschränkungen (z.B. 25 KB für JPEGs)
-> 2. **Optimus HQ** *(Premium)* mit erweitertem Funktionsumgang für Eigenprojekte.
-> 3. **Optimus HQ PRO** *(Premium)* als professionelle Lösung in Kunden-Websites.
+> 2. **Optimus HQ** *(Premium)* mit erweitertem Funktionsumgang für Eigenprojekte
+> 3. **Optimus HQ PRO** *(Premium)* als professionelle Lösung in Kunden-Websites
 >
 > Alle Details zum Funktionsumfang und den einzelnen Preismodellen auf [optimus.io](https://optimus.io)
 
