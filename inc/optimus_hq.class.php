@@ -234,22 +234,25 @@ class Optimus_HQ
 
 	public static function display_key_input()
 	{
-		/* Keine Rechte? */
+		/* Plausibility check */
+		if ( empty($_GET['_optimus_action']) OR $_GET['_optimus_action'] !== 'rekey' ) {
+			return;
+		}
+
+		/* Capability check */
 		if ( ! current_user_can('manage_options') ) {
 			return;
 		}
 
-		/* Überspringen? */
-		if ( empty($_GET['_optimus_action']) OR $_GET['_optimus_action'] !== 'rekey' ) {
-			return;
-		} ?>
+		/* Nonce check */
+		check_admin_referer('_optimus__rekey_nonce'); ?>
 
 		<tr class="plugin-update-tr">
   			<td colspan="3" class="plugin-update">
   				<div class="update-message">
   					<form action="<?php echo network_admin_url('plugins.php') ?>" method="post">
 						<input type="hidden" name="_optimus_action" value="verify" />
-						<?php wp_nonce_field('_optimus_key_nonce') ?>
+						<?php wp_nonce_field('_optimus__key_nonce') ?>
 
 	  					<label for="_optimus_key">
 	  						Optimus HQ Key:
@@ -302,7 +305,7 @@ class Optimus_HQ
 		}
 
 		/* Nonce check */
-		check_admin_referer('_optimus_key_nonce');
+		check_admin_referer('_optimus__key_nonce');
 
 		/* Capability check */
 		if ( ! current_user_can('manage_options') ) {
