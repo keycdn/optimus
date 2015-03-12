@@ -249,7 +249,7 @@ class Optimus_HQ
   				<div class="update-message">
   					<form action="<?php echo network_admin_url('plugins.php') ?>" method="post">
 						<input type="hidden" name="_optimus_action" value="verify" />
-						<?php wp_nonce_field('_optimus_nonce') ?>
+						<?php wp_nonce_field('_optimus_key_nonce') ?>
 
 	  					<label for="_optimus_key">
 	  						Optimus HQ Key:
@@ -302,7 +302,7 @@ class Optimus_HQ
 		}
 
 		/* Nonce check */
-		check_admin_referer('_optimus_nonce');
+		check_admin_referer('_optimus_key_nonce');
 
 		/* Capability check */
 		if ( ! current_user_can('manage_options') ) {
