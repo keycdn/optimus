@@ -34,6 +34,7 @@ defined('ABSPATH') OR exit;
 
 /* Konstanten */
 define('OPTIMUS_FILE', __FILE__);
+define('OPTIMUS_DIR', dirname(__FILE__));
 define('OPTIMUS_BASE', plugin_basename(__FILE__));
 define('OPTIMUS_MIN_WP', '3.8');
 
@@ -79,7 +80,7 @@ function optimus_autoload($class) {
 		require_once(
 			sprintf(
 				'%s/inc/%s.class.php',
-				dirname(__FILE__),
+				OPTIMUS_DIR,
 				strtolower($class)
 			)
 		);
