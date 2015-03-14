@@ -242,10 +242,7 @@ class Optimus_HQ
 		/* Capability check */
 		if ( ! current_user_can('manage_options') ) {
 			return;
-		}
-
-		/* Nonce check */
-		check_admin_referer('_optimus__rekey_nonce'); ?>
+		} ?>
 
 		<tr class="plugin-update-tr">
   			<td colspan="3" class="plugin-update">

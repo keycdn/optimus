@@ -217,14 +217,11 @@ class Optimus
 			array(
 				sprintf(
 					'<a href="%s">%s</a>',
-					wp_nonce_url(
-						add_query_arg(
-							array(
-								'_optimus_action' => 'rekey'
-							),
-							network_admin_url('plugins.php#_optimus_key')
+					add_query_arg(
+						array(
+							'_optimus_action' => 'rekey'
 						),
-						'_optimus__rekey_nonce'
+						network_admin_url('plugins.php#_optimus_key')
 					),
 					( Optimus_HQ::get_key() ? 'Anderen Optimus HQ Key eingeben' : '<span style="color:#006505">Optimus HQ aktivieren</span>' )
 				)
