@@ -177,7 +177,7 @@ class Optimus_Request
 			}
 
 			/* Request: WebP convert */
-			if ( $options['webp_convert'] && Optimus_HQ::is_unlocked() ) {
+			if ( $options['webp_convert'] && Optimus_HQ::is_unlocked() && self::_allowed_file_size($mime_type, $response_filesize) ) {
 				self::_do_image_action(
 					$upload_path_file,
 					array(
