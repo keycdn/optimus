@@ -1,5 +1,5 @@
 === Optimus ===
-Contributors: sergej.mueller, keycdn
+Contributors: keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
 Requires at least: 3.8
 Tested up to: 4.2.2
