@@ -2,15 +2,15 @@
 /*
 Plugin Name: Optimus
 Description: Verlustfreie Komprimierung der Upload-Bilder in WordPress. Automatisch, zuverlässig, wirkungsvoll.
-Author: Sergej M&uuml;ller
-Author URI: http://wpcoder.de
+Author: KeyCDN
+Author URI: https://www.keycdn.com
 Plugin URI: https://optimus.io
 License: GPLv2 or later
 Version: 1.3.6
 */
 
 /*
-Copyright (C)  2012-2015 Sergej Müller
+Copyright (C)  2012-2015 KeyCDN
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

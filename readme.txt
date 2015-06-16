@@ -1,5 +1,5 @@
 === Optimus ===
-Contributors: sergej.mueller
+Contributors: sergej.mueller, keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
 Requires at least: 3.8
 Tested up to: 4.2.2
@@ -20,7 +20,7 @@ Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und
 
 
 > #### Optimus existiert in drei Varianten:
-> 1. **Optimus** *(Free)* als Grundversion mit Einschränkungen (z.B. 25 KB für JPEGs)
+> 1. **Optimus** *(Free)* als Grundversion mit Einschränkungen (z.B. max. 100 KB für JPEGs)
 > 2. **Optimus HQ** *(Premium)* mit erweitertem Funktionsumgang für Eigenprojekte
 > 3. **Optimus HQ PRO** *(Premium)* als professionelle Lösung in Kunden-Websites
 >
@@ -54,7 +54,7 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 = Datenschutz =
 * Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär angelegten Dateien unverzüglich. Keine Aufbewahrung!
-* Der Server-Standort ist Deutschland beim Hoster domainFACTORY.
+* Der Server-Standort ist Deutschland.
 
 
 = Tipps =
@@ -78,13 +78,17 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 
 
 = Autor =
-* [Twitter](https://twitter.com/wpseo)
-* [Google+](https://plus.google.com/110569673423509816572 "Google+")
-* [Plugins](http://wpcoder.de "Plugins")
+* [Twitter](https://twitter.com/keycdn)
+* [Google+](https://plus.google.com/+Keycdn "Google+")
+* [KeyCDN](https://www.keycdn.com "KeyCDN")
 
 
 
 == Changelog ==
+
+= 1.3.7 =
+* Erhöhung der Limits für alle Formate
+* [Limits auf optimus.io](https://optimus.io)
 
 = 1.3.6 =
 * Neue Option: Keine Optimierung der Originalbilder

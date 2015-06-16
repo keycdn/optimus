@@ -448,14 +448,14 @@ class Optimus_Request
 		$quota = array(
 			/* Optimus */
 			false => array(
-				'image/jpeg' => 20 * 1024
+				'image/jpeg' => 100 * 1024
 			),
 
 			/* Optimus HQ */
 			true => array(
-				'image/jpeg' => 1000 * 1024,
-				'image/webp' => 1000 * 1024,
-				'image/png'  => 500  * 1024
+				'image/jpeg' => 5000 * 1024,
+				'image/webp' => 5000 * 1024,
+				'image/png'  => 5000 * 1024
 			)
 		);
 

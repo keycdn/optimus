@@ -91,7 +91,7 @@ class Optimus_Settings
 	{ ?>
 		<div class="wrap">
 			<h2>
-				Optimus
+				Optimus Einstellungen
 			</h2>
 
 			<form method="post" action="options.php">
@@ -111,7 +111,11 @@ class Optimus_Settings
 								</p>
 
 								<p class="description">
-									Zusätzlich zum Originalbild und abhängig von der Dateigröße verkleinert Optimus diese in WordPress registrierten Bildgrößen. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW" target="_blank">Details</a>]
+									Zusätzlich zum Originalbild verkleinert Optimus die in WordPress registrierten Bildgrößen. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW" target="_blank">Details</a>]
+								</p>
+								<br>
+								<p class="description">
+									Größenlimitierung der kostenlosen Version von Optimus ist <strong>100 KB</strong>. Sollen größere Bilder auch optimiert werden? <a href="https://optimus.io" target="_blank">Optimus HQ</a> ist die Lösung.
 								</p>
 							</td>
 						</tr>
