@@ -66,7 +66,7 @@ Optimus optional support the conversion of images to the thrifty *WebP* image fo
 * Your images have been optimized using Desktop tools such as ImageOptim (Mac) or PNGGauntlet (Win) before you upload them? Optimus has the significant benefit of also minimizing the thumbnails (=preview images) created by WordPress. After all, themes almost always integrate thumbnails rather than original images.
 
 
-== Translations ==
+= Translations =
 * English (default)
 * German
 
