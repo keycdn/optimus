@@ -1,7 +1,8 @@
 <?php
 /*
 Plugin Name: Optimus
-Description: Verlustfreie Komprimierung der Upload-Bilder in WordPress. Automatisch, zuverlässig, wirkungsvoll.
+Text Domain: optimus
+Description: Lossless compression and optimization of uploaded images in WordPress. Automatic, reliable, effective.
 Author: KeyCDN
 Author URI: https://www.keycdn.com
 Plugin URI: https://optimus.io
@@ -37,6 +38,14 @@ define('OPTIMUS_FILE', __FILE__);
 define('OPTIMUS_DIR', dirname(__FILE__));
 define('OPTIMUS_BASE', plugin_basename(__FILE__));
 define('OPTIMUS_MIN_WP', '3.8');
+
+
+/* Hook text domain */
+add_action('init', 'optimus_plugin_textdomain');
+function optimus_plugin_textdomain()
+{
+	load_plugin_textdomain( 'optimus', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+}
 
 
 /* Admin & XMLRPC only */

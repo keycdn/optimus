@@ -256,8 +256,8 @@ class Optimus_HQ
 	  						<input type="text" name="_optimus_key" id="_optimus_key" maxlength="17" pattern="[A-Z0-9]{17}" />
 	  					</label>
 
-		  				<input type="submit" name="submit" value="Aktivieren" class="button button-primary regular" />
-		  				<a href="<?php echo network_admin_url('plugins.php') ?>" class="button">Abbrechen</a>
+		  				<input type="submit" name="submit" value="<?php _e("Activate", "optimus"); ?>" class="button button-primary regular" />
+		  				<a href="<?php echo network_admin_url('plugins.php') ?>" class="button"><?php _e("Cancel", "optimus"); ?></a>
 		  			</form>
   				</div>
   			</td>
@@ -370,17 +370,17 @@ class Optimus_HQ
 		/* Matching */
 		switch( $type ) {
 			case 'unlocked':
-				$msg = '<p>Vielen Dank für die Nutzung von <strong>Optimus HQ</strong>. Wissenswertes und Aktualisierungen rund um das Plugin auf <a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts" target="_blank">Google+</a> und <a href="https://twitter.com/optimusHQ" target="_blank">Twitter</a>.</p>';
+				$msg = __("<p>Thank you for using <strong>Optimus HQ</strong>. Follow us on <a href=\"https://twitter.com/optimusHQ\" target=\"_blank\">Twitter</a> to get the latest news and updates.</p>", "optimus");
 				$class = 'updated';
 			break;
 
 			case 'locked':
-				$msg = '<p><strong>Optimus</strong> ist kostenlos, der Funktionsumfang ist auf wesentliche Features reduziert.</p><p><strong>Optimus HQ</strong> (Premium) beherrscht dagegen mehrere Bildformate, komprimiert größere Dateien und verfügt über HTTPS-Verbindung. <span class="no-break">Weitere Details auf <a href="https://optimus.io" target="_blank">optimus.io</a></span><br /><br /><em>Dieser Hinweis hat eine Lebensdauer von 60 Sekunden und erscheint nicht erneut.</em></p>';
+				$msg = __("<p><strong>Optimus</strong> is free of charge, the functionality is limited to the essential features.</p><p><strong>Optimus HQ</strong> (Premium) on the other hand can handle several image formats, compress larger files and connects through HTTPS. <span class=\"no-break\">More details on <a href=\"https://optimus.io\" target=\"_blank\">optimus.io</a></span><br /><br /><em>This information is displayed for 60 seconds and will not appear again.</em></p>", "optimus");
 				$class = 'error';
 			break;
 
 			case 'expired':
-				$msg = '<p><strong>Optimus HQ Key</strong> ist abgelaufen. Ein neuer Optimus HQ Key kann auf <a href="https://optimus.io" target="_blank">optimus.io</a> erworben werden. Vielen Dank!</p>';
+				$msg = __("<p><strong>Optimus HQ license key</strong> has expired. Get a new Optimus HQ license key on <a href=\"https://optimus.io\" target=\"_blank\">optimus.io</a>. Thank you!", "optimus");
 				$class = 'error';
 			break;
 

@@ -91,7 +91,7 @@ class Optimus_Settings
 	{ ?>
 		<div class="wrap">
 			<h2>
-				Optimus Einstellungen
+				<?php _e("Optimus Settings", "optimus"); ?>
 			</h2>
 
 			<form method="post" action="options.php">
@@ -103,7 +103,7 @@ class Optimus_Settings
 					<?php if ( $sizes = get_intermediate_image_sizes() ) { ?>
 						<tr valign="top">
 							<th scope="row">
-								Bildgrößen
+								<?php _e("Image sizes", "optimus"); ?>
 							</th>
 							<td>
 								<p>
@@ -111,11 +111,11 @@ class Optimus_Settings
 								</p>
 
 								<p class="description">
-									Zusätzlich zum Originalbild verkleinert Optimus die in WordPress registrierten Bildgrößen. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW" target="_blank">Details</a>]
+									<?php _e("In addition to the original image, Optimus compresses the registered image sizes in WordPress. [<a href=\"https://optimus.io/support/compression-of-thumbnail-images-in-wordpress/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 								<br>
 								<p class="description">
-									Größenlimitierung der kostenlosen Version von Optimus ist <strong>100 KB</strong>. Sollen größere Bilder auch optimiert werden? <a href="https://optimus.io" target="_blank">Optimus HQ</a> ist die Lösung.
+									<?php _e("The size limit of the free version of Optimus is <strong>100 KB</strong>. Do you want to compress larger images? Get a license for <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>.", "optimus"); ?>
 								</p>
 							</td>
 						</tr>
@@ -123,17 +123,17 @@ class Optimus_Settings
 
 					<tr valign="top">
 						<th scope="row">
-							Originalbilder
+							<?php _e("Original images", "optimus"); ?>
 						</th>
 						<td>
 							<fieldset>
 								<label for="optimus_keep_original">
 									<input type="checkbox" name="optimus[keep_original]" id="optimus_keep_original" value="1" <?php checked(1, $options['keep_original']) ?> />
-									Keine Optimierung der Originalbilder
+									<?php _e("No optimization of original images", "optimus"); ?>
 								</label>
 
 								<p class="description">
-									Optimus komprimiert ausschließlich Vorschaubilder (Thumbnails). In WordPress hochgeladene Originalbilder bleiben unangetastet. [<a href="https://plus.google.com/114450218898660299759/posts/eNQFbeh9wqk" target="_blank">Details</a>]
+									<?php _e("Optimus only compresses preview images (Thumbnails). Original images uploaded to WordPress are not affected. [<a href=\"https://optimus.io/support/optimization-of-original-images/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
@@ -141,17 +141,17 @@ class Optimus_Settings
 
 					<tr valign="top">
 						<th scope="row">
-							Bild-Metadaten
+							<?php _e("Image metadata", "optimus"); ?>
 						</th>
 						<td>
 							<fieldset>
 								<label for="optimus_copy_markers">
 									<input type="checkbox" name="optimus[copy_markers]" id="optimus_copy_markers" value="1" <?php checked(1, $options['copy_markers']) ?> />
-									Keine Löschung der Bild-Metadaten
+									<?php _e("No deletion of image metadata", "optimus"); ?>
 								</label>
 
 								<p class="description">
-									Nur <a href="https://optimus.io" target="_blank">Optimus HQ</a>. Aktive Option behält EXIF-, Copyright- und Fotoaufnahme-Informationen in Bildern. Die Größenreduzierung fällt geringer aus. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/Wwz7uFHBzFF" target="_blank">Details</a>]
+									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Active option keeps EXIF-, copyright and photo creation information in images. Size reduction is less significant. [<a href=\"https://optimus.io/support/remove-metadata-from-images/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
@@ -159,17 +159,17 @@ class Optimus_Settings
 
 					<tr valign="top">
 						<th scope="row">
-							WebP-Dateien
+							<?php _e("WebP files", "optimus"); ?>
 						</th>
 						<td>
 							<fieldset>
 								<label for="optimus_webp_convert">
-									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> onclick='if ( this.checked ) return confirm("Nur für erfahrene Nutzer, da Anpassung der Server-Konfigurationsdatei und Qualitätskontrolle notwendig.\n\nOption aktivieren?")' />
-									Anfertigung der WebP-Dateien
+									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> onclick='if ( this.checked ) return confirm("<?php _e("Only for experienced users. Modification of your web server configuration required.\\n\\nActivate option?", "optimus"); ?>")' />
+									<?php _e("Creation of WebP files", "optimus"); ?>
 								</label>
 
 								<p class="description">
-									Nur <a href="https://optimus.io" target="_blank">Optimus HQ</a>. Modifizierung der Server-Konfigurationsdatei und Überprüfung der Ausgabe erforderlich. Verlangsamt den Optimierungsprozess. [<a href="https://plus.google.com/114450218898660299759/posts/3emb7o4368X" target="_blank">Details</a>]
+									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Modification of the server configuration file and verification of output required. Slows down the optimization process. [<a href=\"https://optimus.io/support/convert-jpeg-and-png-to-webp-image-format/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
@@ -177,17 +177,17 @@ class Optimus_Settings
 
 					<tr valign="top">
 						<th scope="row">
-							HTTPS-Verbindung
+							<?php _e("HTTPS connection", "optimus"); ?>
 						</th>
 						<td>
 							<fieldset>
 								<label for="optimus_secure_transport">
 									<input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']) ?> />
-									Bilder TLS-verschlüsselt übertragen
+									<?php _e("Transfer images using TLS encryption", "optimus"); ?>
 								</label>
 
 								<p class="description">
-									Nur <a href="https://optimus.io" target="_blank">Optimus HQ</a>. Die Kommunikation zum Optimus-Server erfolgt über eine HTTPS-Verbindung. Verlangsamt den Optimierungsprozess. [<a href="https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/5f2f9XKXb4F" target="_blank">Details</a>]
+									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Communication with the Optimus server is conducted through an HTTPS connection. Slightly slows down the optimization process.", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>

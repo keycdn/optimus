@@ -9,75 +9,79 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 
-Effektive Komprimierung der Bilder während des Upload-Vorgangs. Automatisch und ohne Qualitätsverlust.
+Effective image compression and optimization during the upload process. Automatic and without loss of quality.
 
 
 
 == Description ==
 
 = (Fast) Magie =
-*Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen – diese Sparmaßnahme trägt der Blogseiten-Performance positiv bei. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten.
+*Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen – diese Sparmaßnahme trägt der Blogseiten-Performance positiv bei. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten. Alle Details zum Funktionsumfang und den einzelnen Preismodellen auf [optimus.io](https://optimus.io)
 
 
-> #### Optimus existiert in drei Varianten:
-> 1. **Optimus** *(Free)* als Grundversion mit Einschränkungen (z.B. max. 100 KB für JPEGs)
-> 2. **Optimus HQ** *(Premium)* mit erweitertem Funktionsumgang für Eigenprojekte
-> 3. **Optimus HQ PRO** *(Premium)* als professionelle Lösung in Kunden-Websites
+= (Almost) Magic =
+Optimus reduces the file size of uploaded media files. Depending on the image and format, reductions in size of up to 70% are possible. Several kilobytes can be saved per image—these savings contribute positively to the performance of the blog website. What’s most impressive about the compression technology: the quality of the images is maintained—guaranteed.
+
+
+> #### There are three different versions of Optimus:
+> 1. **Optimus** *(Free)* as base version with limitations (e.g. a maximum of 100kb for JPEGs)
+> 2. **Optimus HQ** *(Premium)* with expanded functionality for personal projects
+> 3. **Optimus HQ PRO** *(Premium)* as professional solution for customer websites
 >
-> Alle Details zum Funktionsumfang und den einzelnen Preismodellen auf [optimus.io](https://optimus.io)
+> More details about the features and the pricing model on [optimus.io](https://optimus.io)
 
 
-= Das Prinzip =
-Während der Übertragung der Bilder in die Mediathek schickt das *Optimus*-Plugin die jeweiligen Bilder parallel an den *Optimus*-Server, der das eingegangene Material bearbeitet und in optimierter Form zurückgibt. Daraufhin speichert das *Optimus*-Plugin die in der Größe reduzierte Version eines Bildes in der Mediathek ab.
+= How does it work? =
+During the uploading process of images to the media library, the *Optimus* plugin simultaneously sends the images to the *Optimus* server, where the incoming material is processed and sent back in optimized form. Afterwards, the *Optimus* plugin saves the image version with a reduced file size in the media library.
 
-Die Optimierung der Bilder (samt Thumbnails) erfolgt im Hintergrund und ist für Nutzer optisch nahezu nicht wahrzunehmen. Den Kompressionsgewinn pro Datei stellt *Optimus* innerhalb der Mediathek in Form eines Prozentwertes dar, siehe [Screenshot](https://wordpress.org/plugins/optimus/screenshots/).
+The optimization of images - *including thumbnails* - is conducted in the background and outside of the view of the user. The compression gains per file are displayed by Optimus within the media library in form of a percentage value, see [screenshot](https://wordpress.org/plugins/optimus/screenshots/).
 
-Anders als gängige Optimierungstools rührt *Optimus* die Qualität der Fotos niemals an. Stattdessen werden aus Bilddateien überflüssige Informationen extrahiert, die von Bildprogrammen (mit)gespeichert werden und zur Darstellung überhaupt nicht notwendig sind. Auf diese Art bleibt die Qualität der Grafiken erhalten, die Dateigröße kann um ein Vielfaches verkleinert werden. Auf Wunsch behält *Optimus* alle Autor-, EXIF- und Copyright-Informationen innerhalb der Fotos - der Kompressionsgewinn fällt entsprechend kleiner aus.
+Differently from common optimization tools, Optimus never alters the quality of images. Instead, superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
 
-NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X) der Bilder ins sparsame [WebP-Bildformat](http://cup.wpcoder.de/webp-jpeg-alternative/).
+Optimus optional support the conversion of images to the thrifty *WebP* image format.
 
 
 = Features =
-* [Progressive JPEGs](https://plus.google.com/114450218898660299759/posts/RPW48vHbwoM)
-* Verkleinerung der Dateigröße ohne Verlust der Qualität
-* Optimierung aller Vorschauvarianten eines Bildes
-* Keine Code-Anpassungen notwendig
-* Option: Keine Entfernung von EXIF- und IPTC-Metadaten
-* Option: HTTPS-Verbindung für die Bildübertragung (Optimus HQ)
-* Option: Konvertierung ins WebP-Bildformat (Optimus HQ)
-* Optimiert für WordPress Mobile Apps und Windows Live Writer
-* Vorteilhafterer PageSpeed als Ranking-Faktor
-* Geringere Ladezeit der Blogseiten
-* Unterstützung für WooCommerce
-* WordPress Multisite-fähig
+* [Progressive JPEGs](https://optimus.io/support/progressive-jpegs/)
+* Reduction of file size *without loss in quality*
+* Optimization of all preview images of a photo
+* No adjustments to code necessary
+* Optional: no removal of EXIF and IPTC metadata
+* Optional: HTTPS connection for the image transfer (Optimus HQ)
+* Optional: [conversion to the WebP](https://optimus.io/support/convert-jpeg-and-png-to-webp-image-format/) image format (Optimus HQ)
+* Optimized for WordPress Mobile Apps and Windows Live Writer
+* More advantageous PageSpeed, influencing the Ranking Factor
+* Faster load times for blog pages
+* Support for WooCommerce
+* WordPress multisite-support
 
 
-= Datenschutz =
-* Nach der Optimierung und Auslieferung der Bilder löscht der *Optimus*-Server die temporär angelegten Dateien unverzüglich. Keine Aufbewahrung!
-* Der Server-Standort ist Deutschland.
+= Privacy =
+* After the optimization and transfer process, the *Optimus* server immediately deletes all the temporarily stored files. No files are stored!
+* The Optimus servers are located in Germany.
 
 
-= Tipps =
-* Fotos stets als JPEGs statt PNGs speichern. Das PNG-Format ist sinnvoll für Illustrationen, JPEG ist dagegen genau das Richtige für Fotoaufnahmen. Weiterer Grund: Die Größenreduzierung geht bei JPEGs flotter vonstatten.
-* Bilder vor dem Upload mit Desktop-Tools wie [ImageOptim](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/A15GfjcFgR9) (Mac) oder [PNGGauntlet](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/AEwkCSMMoTk) (Win) optimiert? *Optimus* hat den gravierenden Vorteil, dass die von WordPress erstellten Thumbnails (= Vorschaubilder) ebenfalls minimiert werden. Schließlich sind im Theme fast immer Thumbnails und keine Originalbilder eingebunden.
+= Tips =
+* Photos should always be saved as JPEGs rather than PNGs. The PNG format works well for illustrations, JPEG on the other hand is the right choice for photographs. Another reason: the size reduction always works more quickly for JPEGs.
+* Your images have been optimized using Desktop tools such as ImageOptim (Mac) or PNGGauntlet (Win) before you upload them? Optimus has the significant benefit of also minimizing the thumbnails (=preview images) created by WordPress. After all, themes almost always integrate thumbnails rather than original images.
 
 
-= Systemanforderungen =
-* PHP ab 5.2.4
-* WordPress ab 3.8
-* Ausgehende Serververbindung
+= System Requirements =
+* PHP >=5.2.4
+* WordPress >=3.8
+* Allow outbound connections
 
 
-= Speicherbelegung =
-* Im Backend: ~ 0,19 MB
-* Im Frontend: ~ 0,01 MB
+= Storage Utilization =
+* Backend: ~ 0,19 MB
+* Frontend: ~ 0,01 MB
 
 
 = Website =
 * [optimus.io](https://optimus.io)
 
 
-= Autor =
+= Author =
 * [Twitter](https://twitter.com/keycdn)
 * [Google+](https://plus.google.com/+Keycdn "Google+")
 * [KeyCDN](https://www.keycdn.com "KeyCDN")
@@ -207,8 +211,14 @@ NEU für Optimus HQ: Optionale [Konvertierung](https://plus.google.com/b/1144502
 * Init release
 
 
+== Translations ==
+* English (default)
+* German
+
+*Note:* Optimus is localized. Please contribute your language to the plugin to make it even more awesome.
+
 
 == Screenshots ==
 
-1. Anzeige der Komprimierung und der Bildmenge als Kreis
-2. Bild samt Thumbnails ohne (oben) und mit Optimus Optimierung
+1. Display of the compression rate and how many images have been optimized (circle)
+2. Before and after: Original image incl. thumbnails without compression (above) and below with Optimus compressed/optimized

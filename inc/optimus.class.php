@@ -150,7 +150,9 @@ class Optimus
 				'optimus_hq_notice'
 			)
 		);
+
 	}
+
 
 
 	/**
@@ -181,7 +183,7 @@ class Optimus
 						),
 						admin_url('options-general.php')
 					),
-					__('Settings')
+					__("Settings")
 				)
 			)
 		);
@@ -223,7 +225,7 @@ class Optimus
 						),
 						network_admin_url('plugins.php#_optimus_key')
 					),
-					( Optimus_HQ::get_key() ? 'Anderen Optimus HQ Key eingeben' : '<span style="color:#006505">Optimus HQ aktivieren</span>' )
+					( Optimus_HQ::get_key() ? __("Enter a different Optimus HQ license key", "optimus") : '<span style="color:#006505">'.__("Activate Optimus HQ", "optimus").'</span>' )
 				)
 			)
 		);
@@ -234,7 +236,7 @@ class Optimus
 				$rows,
 				array(
 					sprintf(
-						'Optimus HQ Ablaufdatum: %s',
+						__("Optimus HQ expiry date: %s", "optimus"),
 						date( 'd.m.Y', Optimus_HQ::best_before() )
 					)
 				)
@@ -290,7 +292,7 @@ class Optimus
 				sprintf(
 					'<div class="error"><p>%s</p></div>',
 					sprintf(
-						'Optimus ist für WordPress %s optimiert. Bitte das Plugin deaktivieren oder WordPress aktualisieren (empfohlen).',
+						__("Optimus is optimized for WordPress %s. Please disable the plugin or upgrade your WordPress installation (recommended).", "optimus"),
 						OPTIMUS_MIN_WP
 					)
 				)
@@ -303,8 +305,8 @@ class Optimus
 				sprintf(
 					'<div class="error"><p>%s</p></div>',
 					sprintf(
-						'Optimus setzt <a href="%s" target="_blank">cURL-Bibliothek</a> voraus (sollte auf keinem Server fehlen). Bitte beim Hoster anfragen.',
-						'https://php.net/manual/de/intro.curl.php'
+						__("Optimus requires the <a href=\"%s\" target=\"_blank\">cURL-Library</a>. Please contact your hosting provider to get cURL installed.", "optimus"),
+						'https://php.net/manual/en/intro.curl.php'
 					)
 				)
 			);
