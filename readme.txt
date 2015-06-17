@@ -28,7 +28,7 @@ Optimus reduces the file size of uploaded media files. Depending on the image an
 > 2. **Optimus HQ** *(Premium)* with expanded functionality for personal projects
 > 3. **Optimus HQ PRO** *(Premium)* as professional solution for customer websites
 >
-> More details about the features and the pricing model on [optimus.io](https://optimus.io)
+> More details about the features and the pricing model on [optimus.io](https://optimus.io/en/)
 
 
 = How does it work? =
@@ -64,6 +64,13 @@ Optimus optional support the conversion of images to the thrifty *WebP* image fo
 = Tips =
 * Photos should always be saved as JPEGs rather than PNGs. The PNG format works well for illustrations, JPEG on the other hand is the right choice for photographs. Another reason: the size reduction always works more quickly for JPEGs.
 * Your images have been optimized using Desktop tools such as ImageOptim (Mac) or PNGGauntlet (Win) before you upload them? Optimus has the significant benefit of also minimizing the thumbnails (=preview images) created by WordPress. After all, themes almost always integrate thumbnails rather than original images.
+
+
+== Translations ==
+* English (default)
+* German
+
+*Note:* Optimus is localized. Please contribute your language to the plugin to make it even more awesome.
 
 
 = System Requirements =
@@ -209,13 +216,6 @@ Optimus optional support the conversion of images to the thrifty *WebP* image fo
 
 = 0.0.1 =
 * Init release
-
-
-== Translations ==
-* English (default)
-* German
-
-*Note:* Optimus is localized. Please contribute your language to the plugin to make it even more awesome.
 
 
 == Screenshots ==
