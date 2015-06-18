@@ -38,7 +38,7 @@ The optimization of images - *including thumbnails* - is conducted in the backgr
 
 Differently from common optimization tools, Optimus never alters the quality of images. Instead, superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
 
-Optimus optional support the conversion of images to the thrifty *WebP* image format.
+Optimus optional support the conversion of images to the thrifty [*WebP* image format](https://www.keycdn.com/blog/convert-to-webp-the-successor-of-jpeg/).
 
 
 = Features =
