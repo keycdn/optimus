@@ -1,4 +1,4 @@
-=== Optimus ===
+=== Optimus Image Optimizer ===
 Contributors: keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
 Requires at least: 3.8
