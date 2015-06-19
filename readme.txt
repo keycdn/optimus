@@ -24,7 +24,7 @@ Optimus reduces the file size of uploaded media files. Depending on the image an
 
 
 > #### There are three different versions of Optimus:
-> 1. **Optimus** *(Free)* as base version with limitations (e.g. a maximum of 100kb for JPEGs)
+> 1. **Optimus** *(Free)* as base version with limitations (e.g. max of 100kb for JPEGs)
 > 2. **Optimus HQ** *(Premium)* with expanded functionality for personal projects
 > 3. **Optimus HQ PRO** *(Premium)* as professional solution for customer websites
 >
