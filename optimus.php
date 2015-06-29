@@ -40,11 +40,28 @@ define('OPTIMUS_BASE', plugin_basename(__FILE__));
 define('OPTIMUS_MIN_WP', '3.8');
 
 
-/* Hook text domain */
-add_action('init', 'optimus_plugin_textdomain');
-function optimus_plugin_textdomain()
+/* Hook admin init */
+add_action('init', 'admin_init');
+function admin_init()
 {
-	load_plugin_textdomain( 'optimus', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+	if (is_admin()) {
+		load_plugin_textdomain( 'optimus', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+
+		add_action(
+			'wp_ajax_optimus_optimize_image',
+			array(
+				'Optimus_Request',
+				'optimize_image'
+			)
+		);
+		add_action(
+			'admin_action_optimus_bulk_optimizer',
+			array(
+				'Optimus_Management',
+				'bulk_optimizer_media'
+			)
+		);
+	}
 }
 
 
@@ -85,7 +102,7 @@ spl_autoload_register('optimus_autoload');
 
 /* Autoload Funktion */
 function optimus_autoload($class) {
-	if ( in_array($class, array('Optimus', 'Optimus_HQ', 'Optimus_Settings', 'Optimus_Media', 'Optimus_Request')) ) {
+	if ( in_array($class, array('Optimus', 'Optimus_HQ', 'Optimus_Management', 'Optimus_Settings', 'Optimus_Media', 'Optimus_Request')) ) {
 		require_once(
 			sprintf(
 				'%s/inc/%s.class.php',

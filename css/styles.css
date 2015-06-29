@@ -59,3 +59,44 @@
 }
 
 /* @end group */
+
+/* @group Management */
+
+#optimus-bulk-optimizer #media-items .bar.success {
+    background-color: #7ad03a;
+}
+
+#optimus-bulk-optimizer #media-items .bar.partial {
+    background-color: #3a91d0;
+}
+
+#optimus-bulk-optimizer #media-items .bar.info {
+    background-color: #999;
+}
+
+#optimus-bulk-optimizer #media-items .bar.err {
+    background-color: #d4352e;
+}
+
+#optimus-bulk-optimizer .media-item {
+    box-shadow: 0px 1px 0px #DFDFDF;
+    min-height: 36px;
+    margin-bottom: 1px;
+    position: relative;
+    width: 100%;
+    background: none repeat scroll 0% 0% #FFF;
+}
+
+#optimus-bulk-optimizer .progress~.percent {
+    float: right;
+    line-height: 36px;
+    margin-right: 20px;
+}
+
+#optimus-progress span, #optimus-status span {
+	background: #eaeaea;
+	background: rgba(0,0,0,.07);
+	padding: 5px;
+}
+
+/* @end group */

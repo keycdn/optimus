@@ -16,27 +16,6 @@ class Optimus_Media
 
 
 	/**
-	* Add media column css
-	*
-	* @since   0.0.2
-	* @change  1.3.0
-	*/
-
-	public static function add_css()
-	{
-		wp_register_style(
-			'optimus-media',
-			plugins_url(
-				'css/styles.min.css',
-				OPTIMUS_FILE
-			)
-		);
-
-		wp_enqueue_style('optimus-media');
-	}
-
-
-	/**
 	* Media column output
 	*
 	* @since   0.0.1

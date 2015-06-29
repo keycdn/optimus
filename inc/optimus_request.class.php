@@ -9,6 +9,7 @@ defined('ABSPATH') OR exit;
 * Optimus_Request
 *
 * @since 1.1.7
+* @change  1.3.8
 */
 
 class Optimus_Request
@@ -16,12 +17,73 @@ class Optimus_Request
 
 
 	/**
-	* Default remote scheme
+	* Optimize image
 	*
 	* @var  string
 	*/
 
 	private static $_remote_scheme = 'http';
+
+
+	/**
+	* Image optimization post process (ajax)
+	*
+	* @since   1.3.8
+	* @change  1.3.8
+	*
+	* @return  json    $metadata    Update metadata information
+	*/
+
+	public static function optimize_image() {
+		if (!check_ajax_referer('optimus-optimize', '_nonce', false)) {
+			exit();
+		}
+
+		/* check if valid request */
+		if (empty($_POST['id'])) {
+			$message = __("Invalid request", "optimus");
+			echo json_encode(array('error' => $message));
+			exit();
+		}
+		$id = intval($_POST['id']);
+
+		/* check user permission */
+		if (!current_user_can('upload_files')) {
+			$message = __("Permission missing (upload_files)", "optimus");
+			echo json_encode(array('error' => $message));
+			exit();
+		}
+
+		/* get metadata */
+		$metadata = wp_get_attachment_metadata($id);
+		if (!is_array($metadata)) {
+			$message = __("Metadata missing", "optimus");
+			echo json_encode(array('error' => $message));
+			exit;
+		}
+
+		/* check if already optimized */
+		if (isset($metadata['optimus'])) {
+			$message = __("Already optimized", "optimus");
+			echo json_encode(array('info' => $message));
+			exit;
+		}
+
+		/* optimize image */
+		$optimus_metadata = self::optimize_upload_images($metadata, $id);
+
+		if (!isset($optimus_metadata['optimus'])) {
+			$message = __("Optimus HQ required", "optimus");
+			echo json_encode(array('error' => $message));
+			exit;
+		}
+
+		/* update metadata */
+		update_post_meta($id, '_wp_attachment_metadata', $optimus_metadata);
+
+		echo json_encode($optimus_metadata);
+		exit;
+	}
 
 
 	/**

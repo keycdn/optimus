@@ -115,7 +115,7 @@ class Optimus_Settings
 								</p>
 								<br>
 								<p class="description">
-									<?php _e("The size limit of the free version of Optimus is <strong>100 KB</strong>. Do you want to compress larger images? Get a license for <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>.", "optimus"); ?>
+									<?php if ( Optimus_HQ::is_locked() ) { _e("The size limit of the free version of Optimus is <strong>100 KB</strong>. Do you want to compress larger images? Get a license for <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>.", "optimus"); } ?>
 								</p>
 							</td>
 						</tr>
