@@ -7,7 +7,7 @@ Author: KeyCDN
 Author URI: https://www.keycdn.com
 Plugin URI: https://optimus.io
 License: GPLv2 or later
-Version: 1.3.7
+Version: 1.3.8
 */
 
 /*

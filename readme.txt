@@ -54,6 +54,7 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 * Faster load times for blog pages
 * Support for WooCommerce
 * WordPress multisite-support
+* Bulk optimization
 
 
 = Privacy =
@@ -96,6 +97,9 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 
 
 == Changelog ==
+
+= 1.3.8 =
+* Bulk optimization feature
 
 = 1.3.7 =
 * Erhöhung der Limits für alle Formate
