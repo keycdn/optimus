@@ -72,14 +72,13 @@ class Optimus_Request
 		/* optimize image */
 		$optimus_metadata = self::optimize_upload_images($metadata, $id);
 
-		if (!isset($optimus_metadata['optimus'])) {
-			$message = __("Optimus HQ required", "optimus");
-			echo json_encode(array('error' => $message));
-			exit;
-		}
-
 		/* update metadata */
 		update_post_meta($id, '_wp_attachment_metadata', $optimus_metadata);
+
+		if (!empty($optimus_metadata['optimus']['error'])) {
+			echo json_encode(array('error' => $optimus_metadata['optimus']['error']));
+			exit;
+		}
 
 		echo json_encode($optimus_metadata);
 		exit;
@@ -135,6 +134,7 @@ class Optimus_Request
 
 		/* Simple regex check */
 		if ( ! preg_match('/^[^\?\%]+\.(?:jpe?g|png)$/i', $upload_file) ) {
+			$upload_data['optimus']['error'] = __("Format not supported", "optimus");
 			return $upload_data;
 		}
 
@@ -146,6 +146,7 @@ class Optimus_Request
 
 		/* Mime type check */
 		if ( ! self::_allowed_mime_type($mime_type) ) {
+			$upload_data['optimus']['error'] = __("Mime type not supported", "optimus");
 			return $upload_data;
 		}
 
@@ -235,6 +236,8 @@ class Optimus_Request
 			if ( is_numeric($action_response) ) {
 				$response_filesize = $action_response;
 			} else {
+				// return error message
+				$upload_data['optimus']['error'] = $action_response;
 				return $upload_data;
 			}
 
@@ -299,12 +302,12 @@ class Optimus_Request
 
 		/* Not success status code? */
 		if ( $response_code !== 200 ) {
-			return false;
+			return 'code '.$response_code;
 		}
 
 		/* Response error? */
 		if ( is_wp_error($response) ) {
-			return false;
+			return get_error_message($response);
 		}
 
 		/* Response properties */
@@ -314,12 +317,12 @@ class Optimus_Request
 
 		/* Empty file? */
 		if ( empty($response_body) OR empty($response_type) OR empty($response_length) ) {
-			return false;
+			return __("File empty", "optimus");
 		}
 
 		/* Mime type check */
 		if ( ! self::_allowed_mime_type($response_type) ) {
-			return false;
+			return __("Mime type not supported", "optimus");
 		}
 
 		/* Extension replace for WebP */
@@ -332,7 +335,7 @@ class Optimus_Request
 
 		/* Rewrite image file */
 		if ( ! file_put_contents($file, $response_body) ) {
-			return false;
+			return __("Write operation failed", "optimus");
 		}
 
 		return $response_length;
