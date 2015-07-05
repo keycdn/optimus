@@ -72,13 +72,13 @@ class Optimus_Request
 		/* optimize image */
 		$optimus_metadata = self::optimize_upload_images($metadata, $id);
 
-		/* update metadata */
-		update_post_meta($id, '_wp_attachment_metadata', $optimus_metadata);
-
 		if (!empty($optimus_metadata['optimus']['error'])) {
 			echo json_encode(array('error' => $optimus_metadata['optimus']['error']));
 			exit;
 		}
+
+		/* update metadata */
+		update_post_meta($id, '_wp_attachment_metadata', $optimus_metadata);
 
 		echo json_encode($optimus_metadata);
 		exit;
