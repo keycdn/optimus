@@ -80,7 +80,7 @@
 }).call()
 
 jQuery(document).ready(function() {
-    if (adminpage === "upload-php") {
+    if (typeof adminpage != "undefined" && adminpage === "upload-php") {
         jQuery('<option>').val('optimus_bulk_optimizer').text(optimusOptimize.bulkAction).appendTo('select[name="action"]')
         jQuery('<option>').val('optimus_bulk_optimizer').text(optimusOptimize.bulkAction).appendTo('select[name="action2"]')
     }
