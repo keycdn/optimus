@@ -380,7 +380,7 @@ class Optimus_HQ
 			break;
 
 			case 'expired':
-				$msg = __("<p><strong>Optimus HQ license key</strong> has expired. Get a new Optimus HQ license key on <a href=\"https://optimus.io\" target=\"_blank\">optimus.io</a>. Thank you!", "optimus");
+				$msg = __("<p><strong>Optimus HQ license key</strong> has expired. Get a new Optimus HQ license key on <a href=\"https://optimus.io/en/\" target=\"_blank\">optimus.io</a>. Thank you!", "optimus");
 				$class = 'error';
 			break;
 

@@ -98,6 +98,9 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 
 == Changelog ==
 
+= 1.3.9 =
+* Bug fixing and activation update
+
 = 1.3.8 =
 * Bulk optimization feature
 
