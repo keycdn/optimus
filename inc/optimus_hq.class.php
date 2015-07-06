@@ -253,7 +253,7 @@ class Optimus_HQ
 
 	  					<label for="_optimus_key">
 	  						Optimus HQ Key:
-	  						<input type="text" name="_optimus_key" id="_optimus_key" maxlength="17" pattern="[A-Z0-9]{17}" />
+	  						<input type="text" name="_optimus_key" id="_optimus_key" maxlength="24" pattern="[A-Z0-9]{17,24}" />
 	  					</label>
 
 		  				<input type="submit" name="submit" value="<?php _e("Activate", "optimus"); ?>" class="button button-primary regular" />
@@ -313,7 +313,7 @@ class Optimus_HQ
 		$optimus_key = sanitize_text_field($_POST['_optimus_key']);
 
 		/* Advanced check */
-		if ( ! preg_match('/^[A-Z0-9]{17}$/', $optimus_key) ) {
+		if ( ! preg_match('/^[A-Z0-9]{17,24}$/', $optimus_key) ) {
 			return;
 		}
 
