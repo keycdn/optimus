@@ -232,7 +232,7 @@ class Optimus
 						),
 						network_admin_url('plugins.php#_optimus_key')
 					),
-					( Optimus_HQ::get_key() ? __("Enter a different Optimus HQ license key", "optimus") : '<span style="color:#006505">'.__("Activate Optimus HQ", "optimus").'</span>' )
+					( Optimus_HQ::get_key() ? __("Enter a different Optimus HQ license key", "optimus") : '<span style="color:#dd3d36">'.__("Activate Optimus HQ", "optimus").'</span>' )
 				)
 			)
 		);
