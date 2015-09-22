@@ -49,6 +49,7 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 * Optional: no removal of EXIF and IPTC metadata
 * Optional: HTTPS connection for the image transfer (Optimus HQ)
 * Optional: [conversion to the WebP](https://optimus.io/support/convert-jpeg-and-png-to-webp-image-format/) image format (Optimus HQ)
+* Optional: Disable automatic optimizaion during upload process
 * Optimized for WordPress Mobile Apps and Windows Live Writer
 * More advantageous PageSpeed, influencing the Ranking Factor
 * Faster load times for blog pages
