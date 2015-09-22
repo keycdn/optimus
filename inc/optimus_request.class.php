@@ -9,7 +9,7 @@ defined('ABSPATH') OR exit;
 * Optimus_Request
 *
 * @since 1.1.7
-* @change  1.3.8
+* @change  1.4.0
 */
 
 class Optimus_Request
@@ -502,7 +502,7 @@ class Optimus_Request
 	* Return Optimus quota for a plugin type
 	*
 	* @since   1.1.0
-	* @change  1.3.5
+	* @change  1.4.0
 	*
 	* @return  array  Optimus quota
 	*/
@@ -513,7 +513,8 @@ class Optimus_Request
 		$quota = array(
 			/* Optimus */
 			false => array(
-				'image/jpeg' => 100 * 1024
+				'image/jpeg' => 100 * 1024,
+				'image/png'  => 100 * 1024
 			),
 
 			/* Optimus HQ */

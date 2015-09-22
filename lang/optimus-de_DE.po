@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Optimus\n"
 "Report-Msgid-Bugs-To: KeyCDN\n"
 "POT-Creation-Date: 2015-06-16 19:46+0100\n"
-"PO-Revision-Date: 2015-07-06 21:03+0100\n"
+"PO-Revision-Date: 2015-09-22 12:31+0100\n"
 "Last-Translator: KeyCDN <optimus@keycdn.com>\n"
 "Language-Team: KeyCDN\n"
 "Language: de_DE\n"
@@ -63,6 +63,16 @@ msgstr ""
 #: inc/optimus_settings.class.php:94
 msgid "Optimus Settings"
 msgstr "Optimus Einstellungen"
+
+#: inc/optimus_settings.class.php:xx
+msgid ""
+"Need to optimize all your existing images? Use the <strong><a href=\"/wp-"
+"admin/tools.php?page=optimus-bulk-optimizer\">Optimus Bulk Optimizer</a></"
+"strong>."
+msgstr ""
+"Mit dem <strong><a href=\"/wp-admin/tools.php?page=optimus-bulk-optimizer"
+"\">Optimus Bulk Optimizer</a></strong> können alle bestehenden Bilder "
+"optimiert werden."
 
 #: inc/optimus_settings.class.php:xx
 msgid "Image size"
@@ -182,6 +192,26 @@ msgstr ""
 "Verlangsamt den Optimierungsprozess. [<a href=\"https://plus.google.com/"
 "b/114450218898660299759/114450218898660299759/posts/5f2f9XKXb4F\" target="
 "\"_blank\">Details</a>]"
+
+#: inc/optimus_settings.class.php:xx
+msgid "Optimize during upload"
+msgstr "Automatische Optimierung"
+
+#: inc/optimus_settings.class.php:xx
+msgid "No optimization of images during the upload process"
+msgstr "Bilder nicht während dem Upload-Vorgang optimieren"
+
+#: inc/optimus_settings.class.php:xx
+msgid ""
+"This setting prevents the automatic optimization during the upload process. "
+"Images need to be optimized via the Media Library later on. [<a href="
+"\"https://optimus.io/support/image-bulk-optimization/\" target=\"_blank"
+"\">Details</a>]"
+msgstr ""
+"Diese Einstellung unterbindet die automatische Optimierung während des "
+"Upload-Vorgangs. Die Bilder müssen somit nachträglich via Mediathek "
+"optimiert werden. [<a href=\"https://optimus.io/support/image-bulk-"
+"optimization/\" target=\"_blank\">Details</a>]"
 
 #: inc/optimus_hq.class.php:xx
 msgid "Activate"

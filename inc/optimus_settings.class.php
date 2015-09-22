@@ -39,7 +39,7 @@ class Optimus_Settings
 	* Valisierung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.3.6
+	* @change  1.4.0
 	*
 	* @param   array  $data  Array mit Formularwerten
 	* @return  array         Array mit geprüften Werten
@@ -51,7 +51,8 @@ class Optimus_Settings
 			'copy_markers'		=> (int)(!empty($data['copy_markers'])),
 			'webp_convert'		=> (int)(!empty($data['webp_convert'])),
 			'keep_original'		=> (int)(!empty($data['keep_original'])),
-			'secure_transport'	=> (int)(!empty($data['secure_transport']))
+			'secure_transport'	=> (int)(!empty($data['secure_transport'])),
+			'manual_optimize'	=> (int)(!empty($data['manual_optimize']))
 		);
 	}
 
@@ -82,7 +83,7 @@ class Optimus_Settings
 	* Darstellung der Optionsseite
 	*
 	* @since   1.0.0
-	* @change  1.3.6
+	* @change  1.4.0
 	*
 	* @return  void
 	*/
@@ -93,6 +94,8 @@ class Optimus_Settings
 			<h2>
 				<?php _e("Optimus Settings", "optimus"); ?>
 			</h2>
+
+			<div class="updated"><p><?php _e("Need to optimize all your existing images? Use the <strong><a href=\"/wp-admin/tools.php?page=optimus-bulk-optimizer\">Optimus Bulk Optimizer</a></strong>.", "optimus"); ?></p></div>
 
 			<form method="post" action="options.php">
 				<?php settings_fields('optimus') ?>
@@ -188,6 +191,24 @@ class Optimus_Settings
 
 								<p class="description">
 									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Communication with the Optimus server is conducted through an HTTPS connection. Slightly slows down the optimization process.", "optimus"); ?>
+								</p>
+							</fieldset>
+						</td>
+					</tr>
+
+					<tr valign="top">
+						<th scope="row">
+							<?php _e("Optimize during upload", "optimus"); ?>
+						</th>
+						<td>
+							<fieldset>
+								<label for="optimus_manual_optimize">
+									<input type="checkbox" name="optimus[manual_optimize]" id="optimus_manual_optimize" value="1" <?php checked(1, $options['manual_optimize']) ?> />
+									<?php _e("No optimization of images during the upload process", "optimus"); ?>
+								</label>
+
+								<p class="description">
+									<?php _e("This setting prevents the automatic optimization during the upload process. Images need to be optimized via the Media Library later on. [<a href=\"https://optimus.io/support/image-bulk-optimization/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
