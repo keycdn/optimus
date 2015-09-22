@@ -98,6 +98,9 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 
 == Changelog ==
 
+= 1.4.0 =
+* Added PNG in the free version and the manual optimization setting
+
 = 1.3.9 =
 * Bug fixing and activation update
 
