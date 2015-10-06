@@ -21,15 +21,22 @@
             row.find('.bar').css('width', '100%')
             row.find('.percent').html(data.info)
             row.find('.progress').attr("title", data.info)
-        } else if (data.optimus.quantity < 100) {
-            status.addClass('partial')
-            row.find('.bar').css('width', data.optimus.quantity + '%')
-            row.find('.percent').html(data.optimus.quantity + "% " + optimusOptimize.optimized)
-            row.find('.progress').attr("title", data.message)
+        } else if (data.optimus.quantity) {
+            if (data.optimus.quantity < 100) {
+                status.addClass('partial')
+                row.find('.bar').css('width', data.optimus.quantity + '%')
+                row.find('.percent').html(data.optimus.quantity + "% " + optimusOptimize.optimized)
+                row.find('.progress').attr("title", data.message)
+            } else {
+                status.addClass('success')
+                row.find('.bar').css('width', '100%')
+                row.find('.percent').html(data.optimus.quantity + "% " + optimusOptimize.optimized)
+            }
         } else {
-            status.addClass('success')
+            status.addClass('err')
             row.find('.bar').css('width', '100%')
-            row.find('.percent').html(data.optimus.quantity + "% " + optimusOptimize.optimized)
+            row.find('.percent').html(optimusOptimize.internalError)
+            row.find('.progress').attr("title", error.toString())
         }
 
         if (assets[++i]) {

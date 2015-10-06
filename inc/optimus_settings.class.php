@@ -95,7 +95,7 @@ class Optimus_Settings
 				<?php _e("Optimus Settings", "optimus"); ?>
 			</h2>
 
-			<div class="updated"><p><?php _e("Need to optimize all your existing images? Use the <strong><a href=\"/wp-admin/tools.php?page=optimus-bulk-optimizer\">Optimus Bulk Optimizer</a></strong>.", "optimus"); ?></p></div>
+			<div class="updated"><p><?php _e("Need to optimize all your existing images? Use the <strong><a href=\"".admin_url( 'tools.php?page=optimus-bulk-optimizer', 'https' )."\">Optimus Bulk Optimizer</a></strong>.", "optimus"); ?></p></div>
 
 			<form method="post" action="options.php">
 				<?php settings_fields('optimus') ?>
