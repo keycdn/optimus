@@ -371,7 +371,7 @@ class Optimus
 
 		$handle = 'optimus-scripts';
 
-		wp_register_script( $handle, plugins_url('js/scripts.js', OPTIMUS_FILE), array('jquery'), TRUE );
+		wp_register_script( $handle, plugins_url('js/scripts.js', OPTIMUS_FILE), array('jquery'), '2', TRUE );
 		wp_localize_script($handle, 'optimusOptimize', array(
 			'nonce' => wp_create_nonce('optimus-optimize'),
 			'bulkDone' => __("All images have been optimized.", "optimus"),
