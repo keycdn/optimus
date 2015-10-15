@@ -182,7 +182,7 @@ class Optimus_Request
 		/* Search for thumbs */
 		if ( ! empty($upload_data['sizes']) ) {
 			foreach( $upload_data['sizes'] as $thumb ) {
-				if ( $thumb['file'] && self::_allowed_mime_type($thumb['mime-type']) ) {
+				if ( $thumb['file'] && ( empty($thumb['mime-type']) || self::_allowed_mime_type($thumb['mime-type']) ) ) {
 					array_push(
 						$todo_files,
 						$thumb['file']
