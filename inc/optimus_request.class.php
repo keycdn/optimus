@@ -72,8 +72,14 @@ class Optimus_Request
 		/* optimize image */
 		$optimus_metadata = self::optimize_upload_images($metadata, $id);
 
-		if (!empty($optimus_metadata['optimus']['error'])) {
+		if ( !empty($optimus_metadata['optimus']['error']) ) {
 			echo json_encode(array('error' => $optimus_metadata['optimus']['error']));
+			exit;
+		}
+
+		/* check if optimus array empty */
+		if ( empty($optimus_metadata['optimus']) ) {
+			echo json_encode(array('error' => __("Internal error", "optimus")));
 			exit;
 		}
 
