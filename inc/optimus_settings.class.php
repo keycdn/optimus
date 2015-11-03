@@ -167,12 +167,12 @@ class Optimus_Settings
 						<td>
 							<fieldset>
 								<label for="optimus_webp_convert">
-									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> onclick='if ( this.checked ) return confirm("<?php _e("Only for experienced users. Modification of your web server configuration required.\\n\\nActivate option?", "optimus"); ?>")' />
+									<input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> />
 									<?php _e("Creation of WebP files", "optimus"); ?>
 								</label>
 
 								<p class="description">
-									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Modification of the server configuration file and verification of output required. Slows down the optimization process. [<a href=\"https://optimus.io/support/convert-jpeg-and-png-to-webp-image-format/\" target=\"_blank\">Details</a>]", "optimus"); ?>
+									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. It is recommended to use the <a href=\"https://wordpress.org/plugins/cache-enabler/\">Cache Enabler plugin</a> to integrate the WebP images. [<a href=\"https://optimus.io/support/convert-jpeg-and-png-to-webp-image-format/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
