@@ -267,9 +267,19 @@ class Optimus_Request
 
 		/* Average values */
 		if ( $received ) {
+
+			/* Reallocate optimization results */
+			if ( !empty($upload_data['optimus']['profit']) and ( $upload_data['optimus']['profit'] > max($diff_filesizes) ) ) {
+				$profit = $upload_data['optimus']['profit'];
+				$quantity = $upload_data['optimus']['quantity'];
+			} else {
+				$profit = max($diff_filesizes);
+				$quantity = round( $received * 100 / $ordered );
+			}
+
 			$upload_data['optimus'] = array(
-				'profit'   => max($diff_filesizes),
-				'quantity' => round( $received * 100 / $ordered ),
+				'profit'   => $profit,
+				'quantity' => $quantity,
 				'webp'	   => $options['webp_convert']
 			);
 		}
