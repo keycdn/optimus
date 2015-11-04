@@ -99,8 +99,11 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 
 == Changelog ==
 
+= 1.4.2 =
+* Allow to generate WebP images on already optimzed images (bulk optimizer)
+
 = 1.4.1 =
-* Improve bulk optimization error handling
+* Improves bulk optimization error handling
 
 = 1.4.0 =
 * Added PNG in the free version and the manual optimization setting

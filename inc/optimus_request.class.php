@@ -29,7 +29,7 @@ class Optimus_Request
 	* Image optimization post process (ajax)
 	*
 	* @since   1.3.8
-	* @change  1.3.8
+	* @change  1.4.2
 	*
 	* @return  json    $metadata    Update metadata information
 	*/
@@ -62,13 +62,6 @@ class Optimus_Request
 			exit;
 		}
 
-		/* check if already optimized */
-		if (isset($metadata['optimus'])) {
-			$message = __("Already optimized", "optimus");
-			echo json_encode(array('info' => $message));
-			exit;
-		}
-
 		/* optimize image */
 		$optimus_metadata = self::optimize_upload_images($metadata, $id);
 
@@ -95,7 +88,7 @@ class Optimus_Request
 	* Build optimization for a upload image including previews
 	*
 	* @since   0.0.1
-	* @change  1.3.6
+	* @change  1.4.2
 	*
 	* @param   array    $upload_data    Incoming upload information
 	* @param   integer  $attachment_id  Attachment ID
@@ -103,8 +96,11 @@ class Optimus_Request
 	*/
 
 	public static function optimize_upload_images($upload_data, $attachment_id) {
+		/* Get plugin options */
+		$options = Optimus::get_options();
+
 		/* Already optimized? */
-		if ( ! empty($upload_data['optimus']) ) {
+		if ( ( ! empty($upload_data['optimus']) && $options['webp_convert'] == 0 ) || ( ! empty($upload_data['optimus']['webp']) && $upload_data['optimus']['webp'] == 1 ) ) {
 			return $upload_data;
 		}
 
@@ -155,9 +151,6 @@ class Optimus_Request
 			$upload_data['optimus']['error'] = __("Mime type not supported", "optimus");
 			return $upload_data;
 		}
-
-		/* Get plugin options */
-		$options = Optimus::get_options();
 
 		/* Init arrays */
 		$todo_files = array();
@@ -276,7 +269,8 @@ class Optimus_Request
 		if ( $received ) {
 			$upload_data['optimus'] = array(
 				'profit'   => max($diff_filesizes),
-				'quantity' => round( $received * 100 / $ordered )
+				'quantity' => round( $received * 100 / $ordered ),
+				'webp'	   => $options['webp_convert']
 			);
 		}
 
