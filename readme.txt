@@ -1,6 +1,6 @@
-=== Optimus Image Optimizer ===
+=== Optimus - WordPress Image Optimizer ===
 Contributors: keycdn
-Tags: images, optimize, compress, progressive, performance, png, jpeg, webp
+Tags: images, optimize, compress, progressive, performance, png, jpeg, webp, image optimizer, wordpress image optimizer, optimize image, optimize jpg, optimize jpeg, optimize png, compress image, progressive jpeg, progressive jpg
 Requires at least: 3.8
 Tested up to: 4.3
 Stable tag: trunk
@@ -15,11 +15,7 @@ Effective image compression and optimization during the upload process. Automati
 
 == Description ==
 
-= (Fast) Magie =
-*Optimus* verkleinert die Dateigröße hochgeladener Medien. Abhängig vom Bild und Format ist eine Reduzierung der Größe um bis zu 70 Prozent möglich. Pro Bild lassen sich mehrere Kilobytes einsparen – diese Sparmaßnahme trägt der Blogseiten-Performance positiv bei. Das Beeindruckende an der Kompressionstechnologie: Die Qualität der Bilder bleibt garantiert erhalten. Alle Details zum Funktionsumfang und den einzelnen Preismodellen auf [optimus.io](https://optimus.io)
-
-
-= (Almost) Magic =
+= WordPress Image Optimizer =
 Optimus reduces the file size of uploaded media files. Depending on the image and format, reductions in size of up to 70% are possible. Several kilobytes can be saved per image—these savings contribute positively to the performance of the blog website. What’s most impressive about the compression technology: the quality of the images is maintained—guaranteed.
 
 
@@ -34,9 +30,9 @@ Optimus reduces the file size of uploaded media files. Depending on the image an
 = How does it work? =
 During the uploading process of images to the media library, the *Optimus* plugin simultaneously sends the images to the *Optimus* server, where the incoming material is processed and sent back in optimized form. Afterwards, the *Optimus* plugin saves the image version with a reduced file size in the media library.
 
-The optimization of images - *including thumbnails* - is conducted in the background and outside of the view of the user. The compression gains per file are displayed by Optimus within the media library in form of a percentage value, see [screenshot](https://wordpress.org/plugins/optimus/screenshots/).
+The optimization of images - *including thumbnails* - is conducted in the background and outside of the view of the user. The image compression gains per file are displayed by Optimus within the media library in form of a percentage value, see [screenshot](https://wordpress.org/plugins/optimus/screenshots/).
 
-Differently from common optimization tools, Optimus never alters the quality of images. Instead, superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
+Differently from common optimization tools, this WordPress image optimization pluign never alters the quality of images. Instead, superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
 
 Optimus optional support the conversion of images to the thrifty [*WebP* image format](https://www.keycdn.com/blog/convert-to-webp-the-successor-of-jpeg/).
 
@@ -59,7 +55,7 @@ Optimus optional support the conversion of images to the thrifty [*WebP* image f
 
 
 = Privacy =
-* After the optimization and transfer process, the *Optimus* server immediately deletes all the temporarily stored files. No files are stored!
+* After the image optimization and transfer process, the *Optimus* server immediately deletes all the temporarily stored files. No files are stored!
 * The Optimus servers are located in Germany.
 
 
