@@ -34,8 +34,9 @@ The optimization of images - *including thumbnails* - is conducted in the backgr
 
 Differently from common optimization tools, this WordPress image optimization pluign never alters the quality of images. Instead, superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
 
-Optimus optional support the conversion of images to the thrifty [*WebP* image format](https://www.keycdn.com/blog/convert-to-webp-the-successor-of-jpeg/).
+Optimus supports the conversion of images to the new [*WebP* image format](https://www.keycdn.com/blog/convert-to-webp-the-successor-of-jpeg/).
 
+> It is recommended to use the [WordPress Cache Enabler](https://wordpress.org/plugins/cache-enabler/) plugin to integrate the converted WebP images.
 
 = Features =
 * [Progressive JPEGs](https://optimus.io/support/progressive-jpegs/)
