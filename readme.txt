@@ -96,6 +96,9 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.4.3 =
+* Increased timeout value to 180 seconds
+
 = 1.4.2 =
 * Allow to generate WebP images on already optimzed images (bulk optimizer)
 

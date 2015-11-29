@@ -310,7 +310,7 @@ class Optimus_Request
 		/* Response status code */
 		$response_code = (int)wp_remote_retrieve_response_code($response);
 
-		/* Not success status code? */
+		/* Not success status code? $response->get_error_message() */
 		if ( $response_code !== 200 ) {
 			return 'code '.$response_code;
 		}
@@ -356,7 +356,7 @@ class Optimus_Request
 	* Optimus API request
 	*
 	* @since   1.1.4
-	* @change  1.3.5
+	* @change  1.4.3
 	*
 	* @param   string  $file  Image file
 	* @param   array   $args  Request arguments
@@ -376,7 +376,7 @@ class Optimus_Request
 			),
 			array(
 				'body'	  => file_get_contents($file),
-				'timeout' => 30
+				'timeout' => 180
 			)
 		);
 	}
