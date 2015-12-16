@@ -19,10 +19,10 @@ class Optimus_Management
 	* Bulk optimizer media
 	*
 	* @since   1.3.8
-	* @change  1.3.8
+	* @change  1.4.4
 	*/
 
-    public function bulk_optimizer_media() {
+    public static function bulk_optimizer_media() {
         check_admin_referer('bulk-media');
 
         if (empty($_GET['media']) || !is_array( $_GET['media'])) {

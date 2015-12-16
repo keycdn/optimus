@@ -96,6 +96,9 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.4.4 =
+* Fixed static function warning in PHP 5.6
+
 = 1.4.3 =
 * Increased timeout value to 180 seconds
 
