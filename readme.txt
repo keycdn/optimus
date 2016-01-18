@@ -96,6 +96,9 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.4.5 =
+* Optimization to avoid conflicts with other plugins or themes
+
 = 1.4.4 =
 * Fixed static function warning in PHP 5.6
 
