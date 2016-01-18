@@ -40,9 +40,9 @@ define('OPTIMUS_BASE', plugin_basename(__FILE__));
 define('OPTIMUS_MIN_WP', '3.8');
 
 
-/* Hook admin init */
-add_action('init', 'admin_init');
-function admin_init()
+/* Hook optimus admin init */
+add_action('init', 'optimus_admin_init');
+function optimus_admin_init()
 {
 	if (is_admin()) {
 		load_plugin_textdomain( 'optimus', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
