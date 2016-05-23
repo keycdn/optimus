@@ -9,7 +9,6 @@ defined('ABSPATH') OR exit;
 * Optimus_Request
 *
 * @since 1.1.7
-* @change  1.4.0
 */
 
 class Optimus_Request
@@ -231,6 +230,22 @@ class Optimus_Request
 				)
 			);
 
+			/* get retina image [WP Retina 2x] */
+			if ( function_exists( 'wr2x_get_retina' ) ) {
+				$upload_path_file_retina = wr2x_get_retina( $upload_path_file );
+			}
+
+			/* Request: Optimize retina image [WP Retina 2x] */
+			if ( $upload_path_file_retina ) {
+				self::_do_image_action(
+					$upload_path_file_retina,
+					array(
+						'file' => $upload_url_file_encoded,
+						'copy' => $options['copy_markers']
+					)
+				);
+			}
+
 			/* Evaluate response */
 			if ( is_numeric($action_response) ) {
 				$response_filesize = $action_response;
@@ -249,6 +264,17 @@ class Optimus_Request
 						'webp' => true
 					)
 				);
+
+				/* convert retina image to webp [WP Retina 2x] */
+				if ( $upload_path_file_retina ) {
+					self::_do_image_action(
+						$upload_path_file_retina,
+						array(
+							'file' => $upload_url_file_encoded,
+							'webp' => true
+						)
+					);
+				}
 			}
 
 		  	/* File size difference */
