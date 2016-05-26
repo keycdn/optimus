@@ -32,7 +32,7 @@ class Optimus
 	* Konstruktor der Klasse
 	*
 	* @since   0.0.1
-	* @change  1.4.0
+	* @change  1.4.6
 	*/
 
 	public function __construct()
@@ -54,12 +54,24 @@ class Optimus
 			);
 		}
 
+		/* Remove converted files */
 		add_filter(
 			'wp_delete_file',
 			array(
 				'Optimus_Request',
 				'delete_converted_file'
 			)
+		);
+
+		/* WP Retina 2x compatibility (existing images) */
+		add_action(
+			'wr2x_retina_file_added',
+			array(
+				'Optimus_Request',
+				'optimize_wr2x_image'
+			),
+			10,
+			2
 		);
 
 		/* Filter */
