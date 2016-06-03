@@ -114,7 +114,7 @@ class Optimus_Settings
 								</p>
 
 								<p class="description">
-									<?php _e("In addition to the original image, Optimus compresses the registered image sizes in WordPress. [<a href=\"https://optimus.io/support/compression-of-thumbnail-images-in-wordpress/\" target=\"_blank\">Details</a>]", "optimus"); ?>
+									<?php _e("In addition to the original image, Optimus compresses the registered image sizes in WordPress. [<a href=\"https://optimus.keycdn.com/support/optimus-settings/#compression-thumbnail-images\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 								<br>
 								<p class="description">
@@ -136,7 +136,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									<?php _e("Optimus only compresses preview images (Thumbnails). Original images uploaded to WordPress are not affected. [<a href=\"https://optimus.io/support/optimization-of-original-images/\" target=\"_blank\">Details</a>]", "optimus"); ?>
+									<?php _e("Optimus only compresses preview images (Thumbnails). Original images uploaded to WordPress are not affected. [<a href=\"https://optimus.keycdn.com/support/optimus-settings/#optimization-original-images\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
@@ -154,7 +154,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Active option keeps EXIF-, copyright and photo creation information in images. Size reduction is less significant. [<a href=\"https://optimus.io/support/remove-metadata-from-images/\" target=\"_blank\">Details</a>]", "optimus"); ?>
+									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. Active option keeps EXIF-, copyright and photo creation information in images. Size reduction is less significant. [<a href=\"https://optimus.keycdn.com/support/optimus-settings/#remove-metadata\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
@@ -172,7 +172,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. It is recommended to use the <a href=\"https://wordpress.org/plugins/cache-enabler/\">Cache Enabler plugin</a> to integrate the WebP images. [<a href=\"https://optimus.io/support/convert-jpeg-and-png-to-webp-image-format/\" target=\"_blank\">Details</a>]", "optimus"); ?>
+									<?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. It is recommended to use the <a href=\"https://wordpress.org/plugins/cache-enabler/\">Cache Enabler plugin</a> to integrate the WebP images. [<a href=\"https://optimus.keycdn.com/support/optimus-settings/#convert-to-webp\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
@@ -208,7 +208,7 @@ class Optimus_Settings
 								</label>
 
 								<p class="description">
-									<?php _e("This setting prevents the automatic optimization during the upload process. Images need to be optimized via the Media Library later on. [<a href=\"https://optimus.io/support/image-bulk-optimization/\" target=\"_blank\">Details</a>]", "optimus"); ?>
+									<?php _e("This setting prevents the automatic optimization during the upload process. Images need to be optimized via the Media Library later on. [<a href=\"https://optimus.keycdn.com/support/image-bulk-optimization/\" target=\"_blank\">Details</a>]", "optimus"); ?>
 								</p>
 							</fieldset>
 						</td>
