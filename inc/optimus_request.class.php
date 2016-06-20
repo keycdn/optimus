@@ -291,13 +291,13 @@ class Optimus_Request
 				)
 			);
 
-			/* get retina image [WP Retina 2x] */
+			/* Get retina image [WP Retina 2x] */
 			if ( function_exists( 'wr2x_get_retina' ) ) {
 				$upload_path_file_retina = wr2x_get_retina( $upload_path_file );
 			}
 
 			/* Request: Optimize retina image [WP Retina 2x] */
-			if ( $upload_path_file_retina ) {
+			if ( isset($upload_path_file_retina) ) {
 				self::_do_image_action(
 					$upload_path_file_retina,
 					array(
@@ -326,8 +326,8 @@ class Optimus_Request
 					)
 				);
 
-				/* convert retina image to webp [WP Retina 2x] */
-				if ( $upload_path_file_retina ) {
+				/* Convert retina image to webp [WP Retina 2x] */
+				if ( isset($upload_path_file_retina) ) {
 					self::_do_image_action(
 						$upload_path_file_retina,
 						array(
