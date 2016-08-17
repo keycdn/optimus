@@ -86,7 +86,7 @@ class Optimus_Request
 	* Image optimization for wp retina 2x
 	*
 	* @since   1.4.6
-	* @change  1.4.6
+	* @change  1.4.7
 	*
 	* @param   integer  $attachment_id  Attachment ID
 	* @param   string  $upload_path_file_retina  Retina file path
@@ -106,15 +106,6 @@ class Optimus_Request
 		if ( self::_allowed_mime_type($mime_type) && self::_allowed_file_size($mime_type, $upload_filesize) ) {
 			// get optimus plugin options
 			$options = Optimus::get_options();
-
-			// set cURL options
-			add_action(
-				'http_api_curl',
-				array(
-					__CLASS__,
-					'set_curl_options'
-				)
-			);
 
 			// set https scheme
 			if ( $options['secure_transport'] && Optimus_HQ::is_unlocked() ) {
@@ -148,7 +139,7 @@ class Optimus_Request
 	* Build optimization for a upload image including previews
 	*
 	* @since   0.0.1
-	* @change  1.4.2
+	* @change  1.4.7
 	*
 	* @param   array    $upload_data    Incoming upload information
 	* @param   integer  $attachment_id  Attachment ID
@@ -224,15 +215,6 @@ class Optimus_Request
 			);
 		}
 
-		/* Set cURL options */
-		add_action(
-			'http_api_curl',
-			array(
-				__CLASS__,
-				'set_curl_options'
-			)
-		);
-
 		/* Set https scheme */
 		if ( $options['secure_transport'] && Optimus_HQ::is_unlocked() ) {
 			self::$_remote_scheme = 'https';
@@ -294,6 +276,8 @@ class Optimus_Request
 			/* Get retina image [WP Retina 2x] */
 			if ( function_exists( 'wr2x_get_retina' ) ) {
 				$upload_path_file_retina = wr2x_get_retina( $upload_path_file );
+			} else {
+				$upload_path_file_retina = false;
 			}
 
 			/* Request: Optimize retina image [WP Retina 2x] */
@@ -399,7 +383,7 @@ class Optimus_Request
 
 		/* Not success status code? $response->get_error_message() */
 		if ( $response_code !== 200 ) {
-			return 'code '.$response_code;
+			return 'code '.$response_code.' '.$response->get_error_message();
 		}
 
 		/* Response error? */
@@ -463,34 +447,10 @@ class Optimus_Request
 			),
 			array(
 				'body'	  => file_get_contents($file),
-				'timeout' => 180
-			)
-		);
-	}
-
-
-	/**
-	* Set cURL request options
-	*
-	* @since   1.1.9
-	* @change  1.3.0
-	*
-	* @param   object  $handle  cURL handle with default options
-	* @return  object  $handle  cURL handle with added options
-	*/
-
-	public static function set_curl_options(&$handle)
-	{
-		curl_setopt(
-			$handle,
-			CURLOPT_BINARYTRANSFER,
-			true
-		);
-		curl_setopt(
-			$handle,
-			CURLOPT_HTTPHEADER,
-			array(
-				'Accept: image/*'
+				'timeout' => 180,
+				'headers' => array(
+					'Accept' => 'image/*'
+				)
 			)
 		);
 	}
