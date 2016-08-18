@@ -383,7 +383,7 @@ class Optimus_Request
 
 		/* Not success status code? $response->get_error_message() */
 		if ( $response_code !== 200 ) {
-			return 'code '.$response_code.' '.$response->get_error_message();
+			return 'code '.$response_code;
 		}
 
 		/* Response error? */
