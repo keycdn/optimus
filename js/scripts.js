@@ -91,4 +91,9 @@ jQuery(document).ready(function() {
         jQuery('<option>').val('optimus_bulk_optimizer').text(optimusOptimize.bulkAction).appendTo('select[name="action"]')
         jQuery('<option>').val('optimus_bulk_optimizer').text(optimusOptimize.bulkAction).appendTo('select[name="action2"]')
     }
+    
+    var i = location.search.split('=');
+    if (i[0] == '?_optimus_action' && i[1] == 'rekey') {
+        jQuery("input[value='optimus/optimus.php']").prop('checked', true)
+    }
  });
