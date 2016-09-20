@@ -281,7 +281,7 @@ class Optimus_Request
 			}
 
 			/* Request: Optimize retina image [WP Retina 2x] */
-			if ( isset($upload_path_file_retina) ) {
+			if ( ! empty($upload_path_file_retina) ) {
 				self::_do_image_action(
 					$upload_path_file_retina,
 					array(
@@ -311,7 +311,7 @@ class Optimus_Request
 				);
 
 				/* Convert retina image to webp [WP Retina 2x] */
-				if ( isset($upload_path_file_retina) ) {
+				if ( ! empty($upload_path_file_retina) ) {
 					self::_do_image_action(
 						$upload_path_file_retina,
 						array(

@@ -73,20 +73,33 @@ class Optimus_Management
 	public static function bulk_optimizer_page() {
 		global $wpdb;
 
-        if (!empty($_GET['ids'])) {
-            $ids = implode(',', array_map('intval', explode('-', $_GET['ids'])));
-            $condition = "AND ID IN($ids)";
+        /* Get plugin options */
+		$options = Optimus::get_options();
+
+        /* Check if images are already optimized */
+        if ( $options['webp_convert'] ) {
+            $optimus_query = '%optimus%webp";i:1%';
         } else {
-            $condition = "";
+            $optimus_query = '%optimus%';
         }
 
+        /* Check if specific IDs are selected */
+        if (!empty($_GET['ids'])) {
+            $ids = implode(',', array_map('intval', explode('-', $_GET['ids'])));
+            $id_query = "AND ID IN($ids)";
+        } else {
+            $id_query = "";
+        }
+
+        /* Image query */
         $query = "SELECT $wpdb->posts.ID, $wpdb->posts.post_title, $wpdb->posts.post_mime_type
             FROM $wpdb->posts, $wpdb->postmeta
             WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
                 AND $wpdb->posts.post_type = 'attachment'
-                AND $wpdb->posts.post_mime_type LIKE 'image/%' $condition
+                AND $wpdb->posts.post_mime_type LIKE 'image/%'
                 AND $wpdb->postmeta.meta_key = '_wp_attachment_metadata'
-                AND $wpdb->postmeta.meta_value NOT LIKE '%optimus%'
+                AND $wpdb->postmeta.meta_value NOT LIKE '$optimus_query'
+                $id_query
             ORDER BY $wpdb->posts.ID DESC";
 
         $assets = $wpdb->get_results($query, ARRAY_A);
