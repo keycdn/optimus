@@ -7,11 +7,11 @@ Author: KeyCDN
 Author URI: https://www.keycdn.com
 Plugin URI: https://optimus.io
 License: GPLv2 or later
-Version: 1.4.6
+Version: 1.4.7
 */
 
 /*
-Copyright (C)  2012-2015 KeyCDN
+Copyright (C)  2012-2016 KeyCDN
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

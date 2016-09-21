@@ -88,6 +88,9 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.4.7 =
+* Improved the bulk optimizer
+
 = 1.4.6 =
 * Added support for WP Retina 2x
 
