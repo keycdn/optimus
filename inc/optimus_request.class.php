@@ -139,7 +139,7 @@ class Optimus_Request
 	* Build optimization for a upload image including previews
 	*
 	* @since   0.0.1
-	* @change  1.4.7
+	* @change  1.4.8
 	*
 	* @param   array    $upload_data    Incoming upload information
 	* @param   integer  $attachment_id  Attachment ID
@@ -293,7 +293,12 @@ class Optimus_Request
 
 			/* Evaluate response */
 			if ( is_numeric($action_response) ) {
-				$response_filesize = $action_response;
+				// keep the size if nothing was optimized
+				if ($action_response === 0) {
+					$response_filesize = $upload_filesize;
+				} else {
+					$response_filesize = $action_response;
+				}
 			} else {
 				// return error message
 				$upload_data['optimus']['error'] = $action_response;
@@ -363,7 +368,7 @@ class Optimus_Request
 	* Handle image actions
 	*
 	* @since   1.1.4
-	* @change  1.3.0
+	* @change  1.4.8
 	*
 	* @param   string  $file  Image file
 	* @param   array   $args  Request arguments
@@ -380,6 +385,11 @@ class Optimus_Request
 
 		/* Response status code */
 		$response_code = (int)wp_remote_retrieve_response_code($response);
+
+		/* No content? return 0 */
+		if ( $response_code === 204 ) {
+			return 0;
+		}
 
 		/* Not success status code? $response->get_error_message() */
 		if ( $response_code !== 200 ) {

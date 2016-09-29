@@ -66,7 +66,7 @@ class Optimus_Management
 	* Bulk optimizer page
 	*
 	* @since   1.3.8
-	* @change  1.4.7
+	* @change  1.4.8
 	*
 	*/
 
@@ -114,7 +114,7 @@ class Optimus_Management
                 echo '<p>' . __("It is recommended to run the bulk image optimization with an Optimus HQ activated version due to the size limitation of the free version.", "optimus") . '</p>';
 			}
 
-            echo '<p><em>' . sprintf(__("Optimus found <strong>%d images</strong> in your WordPress media library.", "optimus"), $count) . '</em></p>';
+            echo '<p><em>' . sprintf(__("Optimus found <strong>%d images</strong> in your WordPress media library that can be optimized.", "optimus"), $count) . '</em></p>';
 			echo '<form method="POST" action="?page=optimus-bulk-optimizer">';
 			echo '<input type="hidden" name="_wpnonce" value="' . wp_create_nonce('optimus-bulk-optimizer') . '">';
 			echo '<input type="hidden" name="optimus-bulk-optimizer" value="1">';
