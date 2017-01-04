@@ -2,7 +2,7 @@
 Contributors: keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp, image optimizer, wordpress image optimizer, optimize image, optimize jpg, optimize jpeg, optimize png, compress image, progressive jpeg, progressive jpg
 Requires at least: 3.8
-Tested up to: 4.6
+Tested up to: 4.7
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,7 +16,7 @@ Effective image compression and optimization during the upload process. Automati
 == Description ==
 
 = WordPress Image Optimizer =
-Optimus reduces the file size of uploaded media files. Depending on the image and format, reductions in size of up to 70% are possible. Several kilobytes can be saved per image—these savings contribute positively to the performance of the blog website. What’s most impressive about the compression technology: the quality of the images is maintained—guaranteed.
+Optimus reduces the file size of uploaded media files *lossless*. Depending on the image and format, reductions in size of up to 70% are possible. Several kilobytes can be saved per image—these savings contribute positively to the performance of the blog website. What’s most impressive about the compression technology: the quality of the images is maintained—guaranteed.
 
 
 > #### There are three different versions of Optimus:
