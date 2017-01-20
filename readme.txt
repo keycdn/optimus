@@ -88,6 +88,10 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.4.8 =
+* Improved the handling of 204 errors
+* Removed language files
+
 = 1.4.7 =
 * Improved the bulk optimizer
 
