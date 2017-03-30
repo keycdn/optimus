@@ -2,7 +2,7 @@
 /*
 Plugin Name: Optimus
 Text Domain: optimus
-Description: Lossless compression and optimization of uploaded images in WordPress. Automatic, reliable, effective.
+Description: Smart compression and optimization of uploaded images in WordPress. Automatic, reliable, effective.
 Author: KeyCDN
 Author URI: https://www.keycdn.com
 Plugin URI: https://optimus.io

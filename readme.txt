@@ -9,14 +9,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
 
-Effective image compression and optimization during the upload process. Automatic and without loss of quality.
+Effective image compression and optimization during the upload process. Smart, automatic and reliable.
 
 
 
 == Description ==
 
 = WordPress Image Optimizer =
-Optimus reduces the file size of uploaded media files *lossless*. Depending on the image and format, reductions in size of up to 70% are possible. Several kilobytes can be saved per image—these savings contribute positively to the performance of the blog website. What’s most impressive about the compression technology: the quality of the images is maintained—guaranteed.
+Optimus reduces the file size of uploaded media files automatically. Depending on the image and format, reductions in size of up to 70% are possible. Several kilobytes can be saved per image—these savings contribute positively to the performance of the blog website. What’s most impressive about the compression technology: the quality of the images is maintained.
 
 
 > #### There are three different versions of Optimus:
@@ -32,7 +32,7 @@ During the uploading process of images to the media library, the *Optimus* plugi
 
 The optimization of images - *including thumbnails* - is conducted in the background and outside of the view of the user. The image compression gains per file are displayed by Optimus within the media library in form of a percentage value, see [screenshot](https://wordpress.org/plugins/optimus/screenshots/).
 
-Differently from common optimization tools, this WordPress image optimization plugin never alters the quality of images. Instead, superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
+Superfluous information that is saved by image processing programs and is not even necessary for displaying the image is extracted from image files. This way, the quality of the graphics remains intact while the image size can be reduced significantly. If you wish, Optimus keeps all author, EXIF and copyright information contained within the photos — the compressional gains will be correspondingly lower.
 
 Optimus supports the conversion of images to the new [*WebP* image format](https://www.keycdn.com/blog/convert-to-webp-the-successor-of-jpeg/).
 
@@ -40,7 +40,7 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 = Features =
 * [Progressive JPEGs](https://optimus.keycdn.com/support/progressive-jpeg/)
-* Reduction of file size *without loss in quality*
+* Reduction of file size during the upload
 * Optimization of all preview images of a photo
 * No adjustments to code necessary
 * Optional: no removal of EXIF and IPTC metadata
