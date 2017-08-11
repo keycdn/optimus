@@ -16,11 +16,11 @@ class Optimus_Management
 
 
     /**
-	* Bulk optimizer media
-	*
-	* @since   1.3.8
-	* @change  1.4.4
-	*/
+    * Bulk optimizer media
+    *
+    * @since   1.3.8
+    * @change  1.4.4
+    */
 
     public static function bulk_optimizer_media() {
         check_admin_referer('bulk-media');
@@ -39,42 +39,42 @@ class Optimus_Management
     }
 
 
-	/**
-	* Add bulk optimizer page
-	*
-	* @since   1.3.8
-	* @change  1.3.8
-	*/
+    /**
+    * Add bulk optimizer page
+    *
+    * @since   1.3.8
+    * @change  1.3.8
+    */
 
-	public static function add_bulk_optimizer_page()
-	{
+    public static function add_bulk_optimizer_page()
+    {
         /* Management page */
-		add_management_page(
+        add_management_page(
             __("Optimus Bulk Optimizer", "optimus"),
             __("Optimize all images", "optimus"),
             'upload_files',
             'optimus-bulk-optimizer',
             array(
-				__CLASS__,
-				'bulk_optimizer_page'
-			)
+                __CLASS__,
+                'bulk_optimizer_page'
+            )
         );
-	}
+    }
 
 
     /**
-	* Bulk optimizer page
-	*
-	* @since   1.3.8
-	* @change  1.4.8
-	*
-	*/
+    * Bulk optimizer page
+    *
+    * @since   1.3.8
+    * @change  1.4.8
+    *
+    */
 
-	public static function bulk_optimizer_page() {
-		global $wpdb;
+    public static function bulk_optimizer_page() {
+        global $wpdb;
 
         /* Get plugin options */
-		$options = Optimus::get_options();
+        $options = Optimus::get_options();
 
         /* Check if images are already optimized */
         if ( $options['webp_convert'] ) {
@@ -105,32 +105,32 @@ class Optimus_Management
         $assets = $wpdb->get_results($query, ARRAY_A);
         $count = count($assets);
 
-		echo '<div class="wrap" id="optimus-bulk-optimizer">';
-		echo '<h2>' . __("Optimus Bulk Optimizer", "optimus") . '</h2>';
-		if (empty($_POST['optimus-bulk-optimizer']) && empty($_GET['ids'])) {
-			echo '<p>' . __("The Optimus bulk optimizer compresses all images that have not yet been compressed in your WordPress media library.", "optimus") . '</p>';
+        echo '<div class="wrap" id="optimus-bulk-optimizer">';
+        echo '<h2>' . __("Optimus Bulk Optimizer", "optimus") . '</h2>';
+        if (empty($_POST['optimus-bulk-optimizer']) && empty($_GET['ids'])) {
+            echo '<p>' . __("The Optimus bulk optimizer compresses all images that have not yet been compressed in your WordPress media library.", "optimus") . '</p>';
 
             if ( Optimus_HQ::is_locked() ) {
                 echo '<p>' . __("It is recommended to run the bulk image optimization with an Optimus HQ activated version due to the size limitation of the free version.", "optimus") . '</p>';
-			}
+            }
 
             echo '<p><em>' . sprintf(__("Optimus found <strong>%d images</strong> in your WordPress media library that can be optimized.", "optimus"), $count) . '</em></p>';
-			echo '<form method="POST" action="?page=optimus-bulk-optimizer">';
-			echo '<input type="hidden" name="_wpnonce" value="' . wp_create_nonce('optimus-bulk-optimizer') . '">';
-			echo '<input type="hidden" name="optimus-bulk-optimizer" value="1">';
-			echo '<p><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__("Optimize all images", "optimus").'"></p>';
-			echo '</form>';
-		} else {
-			check_admin_referer('optimus-bulk-optimizer');
-			echo '<p>' . __("It might take a while until all images are optimized. This depends on the amount and size of the images.", "optimus") . '</p>';
-			echo '<p><em>' . __("Note: Do not close this tab during the optimization process.", "optimus") . '</em></p>';
+            echo '<form method="POST" action="?page=optimus-bulk-optimizer">';
+            echo '<input type="hidden" name="_wpnonce" value="' . wp_create_nonce('optimus-bulk-optimizer') . '">';
+            echo '<input type="hidden" name="optimus-bulk-optimizer" value="1">';
+            echo '<p><input type="submit" name="submit" id="submit" class="button button-primary" value="'.__("Optimize all images", "optimus").'"></p>';
+            echo '</form>';
+        } else {
+            check_admin_referer('optimus-bulk-optimizer');
+            echo '<p>' . __("It might take a while until all images are optimized. This depends on the amount and size of the images.", "optimus") . '</p>';
+            echo '<p><em>' . __("Note: Do not close this tab during the optimization process.", "optimus") . '</em></p>';
 
-			echo '<div id="optimus-progress"><p>' . __("Completed", "optimus") . ' <span>0</span> / ' . sprintf(' %d </p></div>', $count);
-			echo '<div id="media-items"></div>';
+            echo '<div id="optimus-progress"><p>' . __("Completed", "optimus") . ' <span>0</span> / ' . sprintf(' %d </p></div>', $count);
+            echo '<div id="media-items"></div>';
 
-			echo '<script type="text/javascript">jQuery(function() { optimusBulkOptimizer('. json_encode($assets) . ')})</script>';
-		}
+            echo '<script type="text/javascript">jQuery(function() { optimusBulkOptimizer('. json_encode($assets) . ')})</script>';
+        }
 
-		echo '</div>';
-	}
+        echo '</div>';
+    }
 }

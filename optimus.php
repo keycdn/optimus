@@ -44,56 +44,56 @@ define('OPTIMUS_MIN_WP', '3.8');
 add_action('init', 'optimus_admin_init');
 function optimus_admin_init()
 {
-	if (is_admin()) {
-		load_plugin_textdomain( 'optimus', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+    if (is_admin()) {
+        load_plugin_textdomain( 'optimus', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
 
-		add_action(
-			'wp_ajax_optimus_optimize_image',
-			array(
-				'Optimus_Request',
-				'optimize_image'
-			)
-		);
-		add_action(
-			'admin_action_optimus_bulk_optimizer',
-			array(
-				'Optimus_Management',
-				'bulk_optimizer_media'
-			)
-		);
-	}
+        add_action(
+            'wp_ajax_optimus_optimize_image',
+            array(
+                'Optimus_Request',
+                'optimize_image'
+            )
+        );
+        add_action(
+            'admin_action_optimus_bulk_optimizer',
+            array(
+                'Optimus_Management',
+                'bulk_optimizer_media'
+            )
+        );
+    }
 }
 
 
 /* Admin & XMLRPC only */
 if ( is_admin() OR (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
-	add_action(
-		'plugins_loaded',
-		array(
-			'Optimus',
-			'instance'
-		)
-	);
+    add_action(
+        'plugins_loaded',
+        array(
+            'Optimus',
+            'instance'
+        )
+    );
 }
 
 
 /* Uninstall */
 register_uninstall_hook(
-	__FILE__,
-	array(
-		'Optimus',
-		'handle_uninstall_hook'
-	)
+    __FILE__,
+    array(
+        'Optimus',
+        'handle_uninstall_hook'
+    )
 );
 
 
 /* Activation */
 register_activation_hook(
-	__FILE__,
-	array(
-		'Optimus',
-		'handle_activation_hook'
-	)
+    __FILE__,
+    array(
+        'Optimus',
+        'handle_activation_hook'
+    )
 );
 
 
@@ -102,13 +102,13 @@ spl_autoload_register('optimus_autoload');
 
 /* Autoload Funktion */
 function optimus_autoload($class) {
-	if ( in_array($class, array('Optimus', 'Optimus_HQ', 'Optimus_Management', 'Optimus_Settings', 'Optimus_Media', 'Optimus_Request')) ) {
-		require_once(
-			sprintf(
-				'%s/inc/%s.class.php',
-				OPTIMUS_DIR,
-				strtolower($class)
-			)
-		);
-	}
+    if ( in_array($class, array('Optimus', 'Optimus_HQ', 'Optimus_Management', 'Optimus_Settings', 'Optimus_Media', 'Optimus_Request')) ) {
+        require_once(
+            sprintf(
+                '%s/inc/%s.class.php',
+                OPTIMUS_DIR,
+                strtolower($class)
+            )
+        );
+    }
 }

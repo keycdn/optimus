@@ -1,7 +1,7 @@
 === Optimus - WordPress Image Optimizer ===
 Contributors: keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp, image optimizer, wordpress image optimizer, optimize image, optimize jpg, optimize jpeg, optimize png, compress image, progressive jpeg, progressive jpg
-Requires at least: 3.8
+Requires at least: 4.6
 Tested up to: 4.8
 Stable tag: trunk
 License: GPLv2 or later
@@ -67,8 +67,8 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 
 = System Requirements =
-* PHP >=5.2.4
-* WordPress >=3.8
+* PHP >=5.6
+* WordPress >=4.6
 * Allow outbound connections
 
 
@@ -87,6 +87,9 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 
 == Changelog ==
+
+= 1.4.9 =
+* Formatting updates
 
 = 1.4.8 =
 * Improved the handling of 204 errors
