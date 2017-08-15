@@ -28,7 +28,7 @@ class Optimus_Request
     * Image optimization post process (ajax)
     *
     * @since   1.3.8
-    * @change  1.4.2
+    * @change  1.4.10
     *
     * @return  json    $metadata    Update metadata information
     */
@@ -71,7 +71,7 @@ class Optimus_Request
 
         /* check if optimus array empty */
         if ( empty($optimus_metadata['optimus']) ) {
-            echo json_encode(array('error' => __("Internal error", "optimus")));
+            echo json_encode(array('error' => __("Not found", "optimus")));
             exit;
         }
 
