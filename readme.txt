@@ -132,24 +132,19 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 = 1.3.6 =
 * Neue Option: Keine Optimierung der Originalbilder
 * Korrektur: Löschung der WebP-Bilder im AJAX-Modus
-* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/hWjiVYht9yF)
 
 = 1.3.5 =
 * Erhöhung des Limits für PNG-Dateien auf 512 KB (Optimus HQ)
-* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/EUA797D8aYS)
 
 = 1.3.4 =
 * Umstellung des Plugins auf die neue Optimus API (cURL only)
-* [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/GYrUK4YeXvU)
 
 = 1.3.3 =
 * Kompatibilität zu WooCommerce
 * Einführung von Optimus HQ PRO
-* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/iNDtLhWw4p2)
 
 = 1.3.2 =
 * Anzeige der in WordPress registrierten Bildgrößen (Thumbnails)
-* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/jZVfeac5eHW)
 
 = 1.3.1 =
 * Anpassung für WordPress 3.9: Sicherstellung der Bildoptimierung im WordPress-Editor
@@ -166,7 +161,6 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 = 1.2.0 =
 * Optimierungen am Plugin-Rechtemanagement
 * Überarbeitung der Plugin-Hinweise
-* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/2eynLwEsedi)
 
 = 1.1.9 =
 * Optimus HQ: Umbau der Lizenzverifizierung wegen einem [Bug](https://www.google.de/search?q=w3+total+cache+transient) im W3 Total Cache Plugin
@@ -175,7 +169,6 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 = 1.1.8 =
 * Anzeige des Optimus HQ Ablaufdatums
 * Admin-Hinweis bei abgelaufener Optimus HQ Lizenz
-* [Ausführlich auf Google+](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/9UGqj6UPjLv)
 
 = 1.1.7 =
 * Christmas-Edition (Code- & Performance-Optimierungen)
@@ -187,24 +180,23 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 * Optimus HQ: Eingabe eines neuen Lizenzschlüssels möglich
 * Selbstprüfung auf Erreichbarkeit der Upload-Bilder (Zugriffsschutz, etc.)
 * Performance-Optimierungen
-* [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/6nyJ3kPnFPu)
 
 = 1.1.4 =
 * Optimus HQ: Erhöhung des Limits für PNGs auf 200 KB
-* Optimus HQ: Konvertierung der Bilder ins [WebP-Format](https://plus.google.com/b/114450218898660299759/114450218898660299759/posts/3emb7o4368X)
+* Optimus HQ: Konvertierung der Bilder ins WebP-Format
 
 = 1.1.3 =
-* Unterstützung für WordPress Apps und Windows Live Writer / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/CDAc5FoDioN)
+* Unterstützung für WordPress Apps und Windows Live Writer
 
 = 1.1.2 =
-* Option: Bild-Metadaten nicht entfernen / [Ausführlich auf Google+](https://plus.google.com/114450218898660299759/posts/Nu8SLUwvNSS)
+* Option: Bild-Metadaten nicht entfernen
 
 = 1.1.1 =
 * Interne Umstellung auf Mime-Type
 * Code-Optimierungen
 
 = 1.1.0 =
-* Umstellung auf Freemium Modell / [Offizielles Statement](https://plus.google.com/110569673423509816572/posts/XEoHhEi5uJw)
+* Umstellung auf Freemium Modell
 * Plugin Website: [optimus.io](https://optimus.io)
 
 = 1.0.0 =
