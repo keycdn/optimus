@@ -340,11 +340,11 @@ class Optimus
         return wp_parse_args(
             get_option('optimus'),
             array(
-                'copy_markers'        => 0,
-                'webp_convert'         => 0,
-                'keep_original'        => 0,
-                'secure_transport'    => 0,
-                'manual_optimize'    => 0
+                'copy_markers'      => 0,
+                'webp_convert'      => 0,
+                'keep_original'     => 0,
+                'secure_transport'  => 0,
+                'manual_optimize'   => 0
             )
         );
     }

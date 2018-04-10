@@ -39,7 +39,7 @@ class Optimus_Settings
     * Valisierung der Optionsseite
     *
     * @since   1.0.0
-    * @change  1.4.0
+    * @change  1.5.0
     *
     * @param   array  $data  Array mit Formularwerten
     * @return  array         Array mit geprüften Werten
@@ -48,11 +48,11 @@ class Optimus_Settings
     public static function validate_settings($data)
     {
         return array(
-            'copy_markers'        => (int)(!empty($data['copy_markers'])),
-            'webp_convert'        => (int)(!empty($data['webp_convert'])),
-            'keep_original'        => (int)(!empty($data['keep_original'])),
-            'secure_transport'    => (int)(!empty($data['secure_transport'])),
-            'manual_optimize'    => (int)(!empty($data['manual_optimize']))
+            'copy_markers'      => (int)(!empty($data['copy_markers'])),
+            'webp_convert'      => (int)(!empty($data['webp_convert'])),
+            'keep_original'     => (int)(!empty($data['keep_original'])),
+            'secure_transport'  => (int)(!empty($data['secure_transport'])),
+            'manual_optimize'   => (int)(!empty($data['manual_optimize']))
         );
     }
 
