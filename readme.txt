@@ -88,6 +88,13 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.5.0 =
+* Unsupported image types are now gracefully skipped
+* Renamed setting names and greyed out inapplicable settings to avoid confusion
+* Increased size limit for Optimus HQ to 10MB
+* Licences can now easily be extended
+* Optimize images uploaded through the REST API
+
 = 1.4.9 =
 * Formatting updates
 
