@@ -100,6 +100,21 @@ register_activation_hook(
 /* Autoload Init */
 spl_autoload_register('optimus_autoload');
 
+/* Check if manual optimization is enabled, hook in if not */
+$options = Optimus::get_options();
+
+if ( ! $options['manual_optimize'] ) {
+    error_log("optim new");
+    add_action('wp_generate_attachment_metadata',
+        array(
+            'Optimus_Request',
+            'optimize_upload_images',
+        ),
+        10,
+        2
+    );
+}
+
 /* Autoload Funktion */
 function optimus_autoload($class) {
     if ( in_array($class, array('Optimus', 'Optimus_HQ', 'Optimus_Management', 'Optimus_Settings', 'Optimus_Media', 'Optimus_Request')) ) {

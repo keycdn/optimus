@@ -40,20 +40,6 @@ class Optimus
         /* Get plugin options */
         $options = Optimus::get_options();
 
-        /* Check if manual optimization is enabled */
-        if ( ! $options['manual_optimize'] ) {
-            /* Fire! */
-            add_filter(
-                'wp_generate_attachment_metadata',
-                array(
-                    'Optimus_Request',
-                    'optimize_upload_images'
-                ),
-                10,
-                2
-            );
-        }
-
         /* Remove converted files */
         add_filter(
             'wp_delete_file',
