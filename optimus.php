@@ -7,7 +7,7 @@ Author: KeyCDN
 Author URI: https://www.keycdn.com
 Plugin URI: https://optimus.io
 License: GPLv2 or later
-Version: 1.4.9
+Version: 1.5.0
 */
 
 /*
@@ -99,6 +99,20 @@ register_activation_hook(
 
 /* Autoload Init */
 spl_autoload_register('optimus_autoload');
+
+/* Check if manual optimization is enabled, hook in if not */
+$options = Optimus::get_options();
+
+if ( ! $options['manual_optimize'] ) {
+    add_action('wp_generate_attachment_metadata',
+        array(
+            'Optimus_Request',
+            'optimize_upload_images',
+        ),
+        10,
+        2
+    );
+}
 
 /* Autoload Funktion */
 function optimus_autoload($class) {

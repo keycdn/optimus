@@ -40,20 +40,6 @@ class Optimus
         /* Get plugin options */
         $options = Optimus::get_options();
 
-        /* Check if manual optimization is enabled */
-        if ( ! $options['manual_optimize'] ) {
-            /* Fire! */
-            add_filter(
-                'wp_generate_attachment_metadata',
-                array(
-                    'Optimus_Request',
-                    'optimize_upload_images'
-                ),
-                10,
-                2
-            );
-        }
-
         /* Remove converted files */
         add_filter(
             'wp_delete_file',
@@ -354,11 +340,11 @@ class Optimus
         return wp_parse_args(
             get_option('optimus'),
             array(
-                'copy_markers'        => 0,
-                'webp_convert'         => 0,
-                'keep_original'        => 0,
-                'secure_transport'    => 0,
-                'manual_optimize'    => 0
+                'copy_markers'      => 0,
+                'webp_convert'      => 0,
+                'keep_original'     => 0,
+                'secure_transport'  => 0,
+                'manual_optimize'   => 0
             )
         );
     }

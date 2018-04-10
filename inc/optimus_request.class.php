@@ -586,9 +586,9 @@ class Optimus_Request
 
             /* Optimus HQ */
             true => array(
-                'image/jpeg' => 5000 * 1024,
-                'image/webp' => 5000 * 1024,
-                'image/png'  => 5000 * 1024
+                'image/jpeg' => 10000 * 1024,
+                'image/webp' => 10000 * 1024,
+                'image/png'  => 10000 * 1024
             )
         );
 

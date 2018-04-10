@@ -83,36 +83,10 @@ class Optimus_HQ
         }
 
         /* Timestamp from cache */
-        if ( ! $purchase_time = self::get_purchase_time() ) {
-            $response = wp_safe_remote_get(
-                sprintf(
-                    '%s/%s',
-                    'https://verify.optimus.io',
-                    $key
-                )
-            );
-
-            /* Exit on error */
-            if ( is_wp_error($response) ) {
-                wp_die( $response->get_error_message() );
-            }
-
-            /* Initial state */
-            $purchase_time = -1;
-
-            /* Set the timestamp */
-            if ( wp_remote_retrieve_response_code($response) === 200 ) {
-                $purchase_time = (int) wp_remote_retrieve_body($response);
-            }
-
-            /* Store as option */
-            self::_update_purchase_time($purchase_time);
-        }
+        $purchase_time = self::get_purchase_time();
 
         /* Invalid purchase time? */
         if ( (int)$purchase_time <= 0 ) {
-            self::_delete_key();
-
             return false;
         }
 
@@ -124,7 +98,26 @@ class Optimus_HQ
 
         /* Expired time? */
         if ( $expiration_time < time() ) {
-            self::_delete_key();
+
+            /* try to renew the licence once every 10 minutes */
+            if ( empty(get_transient('optimus_renew_licence')) ) {
+                set_transient('optimus_renew_licence', true, 600);
+
+                $purchase_time_new = self::get_purchase_time(true);
+
+                if ( $purchase_time_new <= $purchase_time ) {
+                    /* unchanged */
+                    return false;
+                }
+
+                /* re-calculate expiry time */
+                $expiration_time = strtotime(
+                    '+1 year',
+                    $purchase_time_new
+                );
+
+                return $expiration_time;
+            }
 
             return false;
         }
@@ -167,61 +160,53 @@ class Optimus_HQ
 
 
     /**
-    * Delete the license key
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    */
-
-    private static function _delete_key()
-    {
-        delete_site_option('optimus_key');
-    }
-
-
-    /**
     * Return the purchase timestamp
     *
     * @since   1.1.9
-    * @change  1.1.9
+    * @change  1.5.0
     *
     * @return  string  Optimus HQ purchase timestamp
     */
 
-    public static function get_purchase_time()
+    public static function get_purchase_time($renew = false)
     {
-        return get_site_option('optimus_purchase_time');
-    }
+        $purchase_time = get_site_option('optimus_purchase_time', 0);
 
+        if ( $purchase_time == 0 || $renew == true) {
+            if ( ! $key = self::get_key() ) {
+                return false;
+            }
 
-    /**
-    * Update the purchase timestamp
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    *
-    * @return  integer  $value  Purchase time as a timestamp
-    */
+            $response = wp_safe_remote_get(
+                sprintf(
+                    '%s/%s',
+                    'https://verify.optimus.io',
+                    $key
+                )
+            );
 
-    private static function _update_purchase_time($value)
-    {
-        update_site_option(
-            'optimus_purchase_time',
-            $value
-        );
-    }
+            /* Exit on error */
+            if ( is_wp_error($response) ) {
+                wp_die( $response->get_error_message() );
+            }
 
+            /* Initial state */
+            $purchase_time = -1;
 
-    /**
-    * Delete the purchase timestamp
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    */
+            /* Set the timestamp */
+            if ( wp_remote_retrieve_response_code($response) === 200 ) {
+                $purchase_time = (int) wp_remote_retrieve_body($response);
+            }
 
-    private static function _delete_purchase_time()
-    {
-        delete_site_option('optimus_purchase_time');
+            /* Store as option */
+            update_site_option(
+                'optimus_purchase_time',
+                $purchase_time
+            );
+
+        }
+
+        return $purchase_time;
     }
 
 
@@ -289,7 +274,7 @@ class Optimus_HQ
     * @change  1.3.2
     */
 
-     public static function verify_key_input()
+    public static function verify_key_input()
     {
         /* Action check */
         if ( empty($_POST['_optimus_action']) OR $_POST['_optimus_action'] !== 'verify' ) {
@@ -318,7 +303,7 @@ class Optimus_HQ
         }
 
         /* Delete purchase_time */
-        self::_delete_purchase_time();
+        delete_site_option('optimus_purchase_time');
 
         /* Store current key */
         self::_update_key($optimus_key);

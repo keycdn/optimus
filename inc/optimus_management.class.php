@@ -76,6 +76,13 @@ class Optimus_Management
         /* Get plugin options */
         $options = Optimus::get_options();
 
+        /* Supported image types */
+        $imageTypes = ['jpeg', 'png'];
+        foreach ($imageTypes as &$imageType) {
+           $imageType = "$wpdb->posts.post_mime_type = 'image/$imageType'"; 
+        }
+        $queryImageTypes = "(". join(" OR ", $imageTypes) .")";
+
         /* Check if images are already optimized */
         if ( $options['webp_convert'] ) {
             $optimus_query = '%optimus%webp";i:1%';
@@ -97,6 +104,7 @@ class Optimus_Management
             WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
                 AND $wpdb->posts.post_type = 'attachment'
                 AND $wpdb->posts.post_mime_type LIKE 'image/%'
+                AND $queryImageTypes
                 AND $wpdb->postmeta.meta_key = '_wp_attachment_metadata'
                 AND $wpdb->postmeta.meta_value NOT LIKE '$optimus_query'
                 $id_query
@@ -107,7 +115,7 @@ class Optimus_Management
 
         echo '<div class="wrap" id="optimus-bulk-optimizer">';
         echo '<h2>' . __("Optimus Bulk Optimizer", "optimus") . '</h2>';
-        if (empty($_POST['optimus-bulk-optimizer']) && empty($_GET['ids'])) {
+        if ((empty($_POST['optimus-bulk-optimizer']) && empty($_GET['ids'])) || $count == 0) {
             echo '<p>' . __("The Optimus bulk optimizer compresses all images that have not yet been compressed in your WordPress media library.", "optimus") . '</p>';
 
             if ( Optimus_HQ::is_locked() ) {

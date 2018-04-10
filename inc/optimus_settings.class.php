@@ -39,7 +39,7 @@ class Optimus_Settings
     * Valisierung der Optionsseite
     *
     * @since   1.0.0
-    * @change  1.4.0
+    * @change  1.5.0
     *
     * @param   array  $data  Array mit Formularwerten
     * @return  array         Array mit geprüften Werten
@@ -48,11 +48,11 @@ class Optimus_Settings
     public static function validate_settings($data)
     {
         return array(
-            'copy_markers'        => (int)(!empty($data['copy_markers'])),
-            'webp_convert'        => (int)(!empty($data['webp_convert'])),
-            'keep_original'        => (int)(!empty($data['keep_original'])),
-            'secure_transport'    => (int)(!empty($data['secure_transport'])),
-            'manual_optimize'    => (int)(!empty($data['manual_optimize']))
+            'copy_markers'      => (int)(!empty($data['copy_markers'])),
+            'webp_convert'      => (int)(!empty($data['webp_convert'])),
+            'keep_original'     => (int)(!empty($data['keep_original'])),
+            'secure_transport'  => (int)(!empty($data['secure_transport'])),
+            'manual_optimize'   => (int)(!empty($data['manual_optimize']))
         );
     }
 
@@ -126,7 +126,7 @@ class Optimus_Settings
 
                     <tr valign="top">
                         <th scope="row">
-                            <?php _e("Original images", "optimus"); ?>
+                            <?php _e("Ignore original images", "optimus"); ?>
                         </th>
                         <td>
                             <fieldset>
@@ -144,12 +144,12 @@ class Optimus_Settings
 
                     <tr valign="top">
                         <th scope="row">
-                            <?php _e("Image metadata", "optimus"); ?>
+                            <?php _e("Keep image metadata", "optimus"); ?>
                         </th>
                         <td>
                             <fieldset>
                                 <label for="optimus_copy_markers">
-                                    <input type="checkbox" name="optimus[copy_markers]" id="optimus_copy_markers" value="1" <?php checked(1, $options['copy_markers']) ?> />
+                                    <input type="checkbox" name="optimus[copy_markers]" id="optimus_copy_markers" value="1" <?php checked(1, $options['copy_markers']); if ( Optimus_HQ::is_locked() ) { _e("onclick=\"return false;\" disabled=\"disabled\""); } ?> />
                                     <?php _e("No deletion of image metadata", "optimus"); ?>
                                 </label>
 
@@ -167,7 +167,7 @@ class Optimus_Settings
                         <td>
                             <fieldset>
                                 <label for="optimus_webp_convert">
-                                    <input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']) ?> />
+                                    <input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']); if ( Optimus_HQ::is_locked() ) { _e("onclick=\"return false;\" disabled=\"disabled\""); }  ?> />
                                     <?php _e("Creation of WebP files", "optimus"); ?>
                                 </label>
 
@@ -185,7 +185,7 @@ class Optimus_Settings
                         <td>
                             <fieldset>
                                 <label for="optimus_secure_transport">
-                                    <input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']) ?> />
+                                    <input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']); if ( Optimus_HQ::is_locked() ) { _e("onclick=\"return false;\" disabled=\"disabled\""); }  ?> />
                                     <?php _e("Transfer images using TLS encryption", "optimus"); ?>
                                 </label>
 
@@ -198,7 +198,7 @@ class Optimus_Settings
 
                     <tr valign="top">
                         <th scope="row">
-                            <?php _e("Optimize during upload", "optimus"); ?>
+                            <?php _e("Manual optimization", "optimus"); ?>
                         </th>
                         <td>
                             <fieldset>
