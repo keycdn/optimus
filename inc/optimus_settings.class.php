@@ -149,7 +149,7 @@ class Optimus_Settings
                         <td>
                             <fieldset>
                                 <label for="optimus_copy_markers">
-                                    <input type="checkbox" name="optimus[copy_markers]" id="optimus_copy_markers" value="1" <?php checked(1, $options['copy_markers']); if ( Optimus_HQ::is_locked() ) { _e("onclick=\"return false;\" disabled=\"disabled\""); } ?> />
+                                    <input type="checkbox" name="optimus[copy_markers]" id="optimus_copy_markers" value="1" <?php checked(1, $options['copy_markers']); echo Optimus_HQ::is_locked() ? "onclick=\"return false;\" disabled=\"disabled\"" : ""; ?> />
                                     <?php _e("No deletion of image metadata", "optimus"); ?>
                                 </label>
 
@@ -167,7 +167,7 @@ class Optimus_Settings
                         <td>
                             <fieldset>
                                 <label for="optimus_webp_convert">
-                                    <input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']); if ( Optimus_HQ::is_locked() ) { _e("onclick=\"return false;\" disabled=\"disabled\""); }  ?> />
+                                    <input type="checkbox" name="optimus[webp_convert]" id="optimus_webp_convert" value="1" <?php checked(1, $options['webp_convert']); echo Optimus_HQ::is_locked() ? "onclick=\"return false;\" disabled=\"disabled\"" : ""; ?> />
                                     <?php _e("Creation of WebP files", "optimus"); ?>
                                 </label>
 
@@ -185,7 +185,7 @@ class Optimus_Settings
                         <td>
                             <fieldset>
                                 <label for="optimus_secure_transport">
-                                    <input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']); if ( Optimus_HQ::is_locked() ) { _e("onclick=\"return false;\" disabled=\"disabled\""); }  ?> />
+                                    <input type="checkbox" name="optimus[secure_transport]" id="optimus_secure_transport" value="1" <?php checked(1, $options['secure_transport']); echo Optimus_HQ::is_locked() ? "onclick=\"return false;\" disabled=\"disabled\"" : ""; ?> />
                                     <?php _e("Transfer images using TLS encryption", "optimus"); ?>
                                 </label>
 
