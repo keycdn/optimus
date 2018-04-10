@@ -104,7 +104,6 @@ spl_autoload_register('optimus_autoload');
 $options = Optimus::get_options();
 
 if ( ! $options['manual_optimize'] ) {
-    error_log("optim new");
     add_action('wp_generate_attachment_metadata',
         array(
             'Optimus_Request',

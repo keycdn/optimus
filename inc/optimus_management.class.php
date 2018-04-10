@@ -115,7 +115,7 @@ class Optimus_Management
 
         echo '<div class="wrap" id="optimus-bulk-optimizer">';
         echo '<h2>' . __("Optimus Bulk Optimizer", "optimus") . '</h2>';
-        if (empty($_POST['optimus-bulk-optimizer']) && empty($_GET['ids'])) {
+        if ((empty($_POST['optimus-bulk-optimizer']) && empty($_GET['ids'])) || $count == 0) {
             echo '<p>' . __("The Optimus bulk optimizer compresses all images that have not yet been compressed in your WordPress media library.", "optimus") . '</p>';
 
             if ( Optimus_HQ::is_locked() ) {
