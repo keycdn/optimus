@@ -126,7 +126,7 @@ class Optimus_Settings
 
                     <tr valign="top">
                         <th scope="row">
-                            <?php _e("Original images", "optimus"); ?>
+                            <?php _e("Ignore original images", "optimus"); ?>
                         </th>
                         <td>
                             <fieldset>
@@ -144,7 +144,7 @@ class Optimus_Settings
 
                     <tr valign="top">
                         <th scope="row">
-                            <?php _e("Image metadata", "optimus"); ?>
+                            <?php _e("Keep image metadata", "optimus"); ?>
                         </th>
                         <td>
                             <fieldset>
@@ -198,7 +198,7 @@ class Optimus_Settings
 
                     <tr valign="top">
                         <th scope="row">
-                            <?php _e("Optimize during upload", "optimus"); ?>
+                            <?php _e("Manual optimization", "optimus"); ?>
                         </th>
                         <td>
                             <fieldset>
