@@ -100,7 +100,8 @@ class Optimus_HQ
         if ( $expiration_time < time() ) {
 
             /* try to renew the licence once every 10 minutes */
-            if ( empty(get_transient('optimus_renew_licence')) ) {
+            $transient = get_transient('optimus_renew_licence');
+            if ( empty($transient) ) {
                 set_transient('optimus_renew_licence', true, 600);
 
                 $purchase_time_new = self::get_purchase_time(true);
