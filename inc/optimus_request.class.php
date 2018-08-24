@@ -248,6 +248,11 @@ class Optimus_Request
             $upload_url_file = path_join($upload_url, $file);
             $upload_path_file = path_join($upload_path, $file);
 
+            /* skip loop iteration if file doesn't exist */
+            if ( ! file_exists($upload_path_file) ) {
+                continue;
+            }
+
             /* Get file size */
             $upload_filesize = (int)filesize($upload_path_file);
 
