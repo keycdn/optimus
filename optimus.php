@@ -76,6 +76,18 @@ if ( is_admin() OR (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) ) {
     );
 }
 
+/* WP-CLI */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    require_once(OPTIMUS_DIR."/inc/optimus_cli.class.php");
+
+    add_action(
+        'init',
+        array(
+            'Optimus_CLI',
+            'add_commands'
+        )
+    );
+}
 
 /* Uninstall */
 register_uninstall_hook(

@@ -63,14 +63,13 @@ class Optimus_Management
 
 
     /**
-    * Bulk optimizer page
+    * Bulk optimizer collect assets
     *
-    * @since   1.3.8
-    * @change  1.4.8
+    * @since   1.5.0
     *
     */
 
-    public static function bulk_optimizer_page() {
+    public static function bulk_optimizer_assets() {
         global $wpdb;
 
         /* Get plugin options */
@@ -110,7 +109,20 @@ class Optimus_Management
                 $id_query
             ORDER BY $wpdb->posts.ID DESC";
 
-        $assets = $wpdb->get_results($query, ARRAY_A);
+        return $wpdb->get_results($query, ARRAY_A);
+    }
+
+
+    /**
+    * Bulk optimizer page
+    *
+    * @since   1.3.8
+    * @change  1.5.0
+    *
+    */
+
+    public static function bulk_optimizer_page() {
+        $assets = self::bulk_optimizer_assets();
         $count = count($assets);
 
         echo '<div class="wrap" id="optimus-bulk-optimizer">';
