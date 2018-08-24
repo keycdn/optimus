@@ -50,6 +50,7 @@ class Optimus_Settings
         return array(
             'copy_markers'      => (int)(!empty($data['copy_markers'])),
             'webp_convert'      => (int)(!empty($data['webp_convert'])),
+            'webp_keeporigext'  => (int)(!empty($data['webp_keeporigext'])),
             'keep_original'     => (int)(!empty($data['keep_original'])),
             'secure_transport'  => (int)(!empty($data['secure_transport'])),
             'manual_optimize'   => (int)(!empty($data['manual_optimize']))
@@ -173,6 +174,19 @@ class Optimus_Settings
 
                                 <p class="description">
                                     <?php _e("Only <a href=\"https://optimus.io\" target=\"_blank\">Optimus HQ</a>. It is recommended to use the <a href=\"https://wordpress.org/plugins/cache-enabler/\">Cache Enabler plugin</a> to integrate the WebP images. [<a href=\"https://optimus.keycdn.com/support/optimus-settings/#convert-to-webp\" target=\"_blank\">Details</a>]", "optimus"); ?>
+                                </p>
+                            </fieldset>
+
+                            <br>
+
+                            <fieldset>
+                                <label for="optimus_webp_keeporigext">
+                                    <input type="checkbox" name="optimus[webp_keeporigext]" id="optimus_webp_keeporigext" value="1" <?php checked(1, $options['webp_keeporigext']); echo Optimus_HQ::is_locked() ? "onclick=\"return false;\" disabled=\"disabled\"" : ""; ?> />
+                                    <?php _e("Append .webp extension", "optimus"); ?>
+                                </label>
+
+                                <p class="description">
+                                    <?php _e("Append .webp extension instead of replacing the original one (e.g. <i>test.jpg.webp</i>)", "optimus"); ?>
                                 </p>
                             </fieldset>
                         </td>
