@@ -248,6 +248,11 @@ class Optimus_Request
             $upload_url_file = path_join($upload_url, $file);
             $upload_path_file = path_join($upload_path, $file);
 
+            /* skip loop iteration if file doesn't exist */
+            if ( ! file_exists($upload_path_file) ) {
+                continue;
+            }
+
             /* Get file size */
             $upload_filesize = (int)filesize($upload_path_file);
 
@@ -416,12 +421,18 @@ class Optimus_Request
             return __("Mime type not supported", "optimus");
         }
 
-        /* Extension replace for WebP */
+        $options = Optimus::get_options();
+
+        /* Replace to or append webp extension */
         if ( isset($args['webp']) ) {
-            $file = self::_replace_file_extension(
-                $file,
-                'webp'
-            );
+            if ( $options['webp_keeporigext'] == 1 ) {
+                $file = $file . ".webp";
+            } else {
+                $file = self::_replace_file_extension(
+                    $file,
+                    'webp'
+                );
+            }
         }
 
         /* Rewrite image file */
@@ -638,11 +649,15 @@ class Optimus_Request
             @unlink($converted_file_retina);
         }
 
-        /* Replace to webp extension */
-        $converted_file = self::_replace_file_extension(
-            $converted_file,
-            'webp'
-        );
+        /* Replace to or append webp extension */
+        if ( $options['webp_keeporigext'] == 1 ) {
+            $converted_file = $converted_file . ".webp";
+        } else {
+            $converted_file = self::_replace_file_extension(
+                $converted_file,
+                'webp'
+            );
+        }
 
         /* Remove if exists */
         if ( file_exists($converted_file) ) {

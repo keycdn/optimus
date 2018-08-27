@@ -88,6 +88,11 @@ Optimus supports the conversion of images to the new [*WebP* image format](https
 
 == Changelog ==
 
+= 1.6.0 =
+* skip missing files
+* added wpcli command for bulk optimization
+* added option to append instead of replace file extension for webp files
+
 = 1.5.0 =
 * Unsupported image types are now gracefully skipped
 * Renamed setting names and greyed out inapplicable settings to avoid confusion
