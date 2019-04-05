@@ -170,72 +170,14 @@ class Optimus_Request
             return $upload_data;
         }
 
-        /* WP upload folder */
-        $upload_dir = wp_upload_dir();
-
-        /* Upload dir workaround */
-        if ( empty($upload_dir['subdir']) ) {
-            $upload_path = $upload_dir['path'];
-            $upload_url = $upload_dir['url'];
-            $upload_file = $upload_data['file'];
-        } else {
-            $file_info = pathinfo($upload_data['file']);
-            $upload_path = path_join($upload_dir['basedir'], $file_info['dirname']);
-            $upload_url = path_join($upload_dir['baseurl'], $file_info['dirname']);
-            $upload_file = $file_info['basename'];
-        }
-
-        /* Simple regex check */
-        if ( ! preg_match('/^[^\?\%]+\.(?:jpe?g|png)$/i', $upload_file) ) {
-            $upload_data['optimus']['error'] = __("Format not supported", "optimus");
-            return $upload_data;
-        }
-
-        /* Get the attachment */
-        $attachment = get_post($attachment_id);
-
-        /* Attachment mime type */
-        $mime_type = get_post_mime_type($attachment);
-
-        /* Mime type check */
-        if ( ! self::_allowed_mime_type($mime_type) ) {
-            $upload_data['optimus']['error'] = __("Mime type not supported", "optimus");
-            return $upload_data;
-        }
-
-        /* Init arrays */
-        $todo_files = array();
-        $diff_filesizes = array();
-
-        /* Keep the master */
-        if ( ! $options['keep_original'] ) {
-            array_push(
-                $todo_files,
-                $upload_file
-            );
-        }
-
         /* Set https scheme */
         if ( $options['secure_transport'] && Optimus_HQ::is_unlocked() ) {
             self::$_remote_scheme = 'https';
         }
 
-        /* Search for thumbs */
-        if ( ! empty($upload_data['sizes']) ) {
-            foreach( $upload_data['sizes'] as $thumb ) {
-                if ( $thumb['file'] && ( empty($thumb['mime-type']) || self::_allowed_mime_type($thumb['mime-type']) ) ) {
-                    array_push(
-                        $todo_files,
-                        $thumb['file']
-                    );
-                }
-            }
-
-            /* Reverse files array */
-            $todo_files = array_reverse(
-                array_unique($todo_files)
-            );
-        }
+        /* Get all images from the attachment */
+        $diff_filesizes = array();
+        $todo_files = self::_get_files($upload_data, $attachment_id);
 
         /* No images to process */
         if ( empty($todo_files) ) {
@@ -245,8 +187,8 @@ class Optimus_Request
         /* Loop todo files */
         foreach ($todo_files as $file) {
             /* Merge path & file */
-            $upload_url_file = path_join($upload_url, $file);
-            $upload_path_file = path_join($upload_path, $file);
+            $upload_url_file = $file['upload_url'];
+            $upload_path_file = $file['upload_path'];
 
             /* skip loop iteration if file doesn't exist */
             if ( ! file_exists($upload_path_file) ) {
@@ -368,6 +310,99 @@ class Optimus_Request
         return $upload_data;
     }
 
+    /**
+    * Gets all the files paths of the optimized images.
+    */
+    public static function get_files_paths($post_id) {
+       $metadata = wp_get_attachment_metadata($post_id);
+       $files = self::_get_files($metadata, $post_id);
+       $post_files = array();
+
+       foreach( $files as $file ) {
+           $post_files[] = self::_get_webp_file_path($file['upload_path']);
+       }
+
+       return $post_files;
+    }
+
+    /**
+    * Gets files information from the upload data.
+    */
+    private static function _get_files(&$upload_data, $attachment_id) {
+        /* Get plugin options */
+        $options = Optimus::get_options();
+
+        /* WP upload folder */
+        $upload_dir = wp_upload_dir();
+
+        /* Upload dir workaround */
+        if ( empty($upload_dir['subdir']) ) {
+            $upload_path = $upload_dir['path'];
+            $upload_url = $upload_dir['url'];
+            $upload_file = $upload_data['file'];
+        } else {
+            $file_info = pathinfo($upload_data['file']);
+            $upload_path = path_join($upload_dir['basedir'], $file_info['dirname']);
+            $upload_url = path_join($upload_dir['baseurl'], $file_info['dirname']);
+            $upload_file = $file_info['basename'];
+        }
+
+        /* Simple regex check */
+        if ( ! preg_match('/^[^\?\%]+\.(?:jpe?g|png)$/i', $upload_file) ) {
+            $upload_data['optimus']['error'] = __("Format not supported", "optimus");
+            return FALSE;
+        }
+
+        /* Get the attachment */
+        $attachment = get_post($attachment_id);
+
+        /* Attachment mime type */
+        $mime_type = get_post_mime_type($attachment);
+
+        /* Mime type check */
+        if ( ! self::_allowed_mime_type($mime_type) ) {
+            $upload_data['optimus']['error'] = __("Mime type not supported", "optimus");
+            return FALSE;
+        }
+
+        /* Init arrays */
+        $todo_files = array();
+
+        /* Keep the master */
+        if ( ! $options['keep_original'] ) {
+            $upload_url_file = path_join($upload_url, $upload_file);
+            $upload_path_file = path_join($upload_path, $upload_file);
+            array_push(
+                $todo_files,
+                array(
+                  'upload_url' => $upload_url_file,
+                  'upload_path' => $upload_path_file,
+                )
+            );
+        }
+
+        /* Search for thumbs */
+        if ( ! empty($upload_data['sizes']) ) {
+            foreach( $upload_data['sizes'] as $thumb ) {
+                if ( $thumb['file'] && ( empty($thumb['mime-type']) || self::_allowed_mime_type($thumb['mime-type']) ) ) {
+                    $upload_url_file = path_join($upload_url, $thumb['file']);
+                    $upload_path_file = path_join($upload_path, $thumb['file']);
+                    array_push(
+                        $todo_files,
+                        array(
+                          'upload_url' => $upload_url_file,
+                          'upload_path' => $upload_path_file,
+                        )
+                    );
+                }
+            }
+
+            /* Reverse files array */
+            $todo_files = array_reverse($todo_files);
+        }
+
+        return $todo_files;
+    }
 
     /**
     * Handle image actions
@@ -421,18 +456,9 @@ class Optimus_Request
             return __("Mime type not supported", "optimus");
         }
 
-        $options = Optimus::get_options();
-
         /* Replace to or append webp extension */
         if ( isset($args['webp']) ) {
-            if ( $options['webp_keeporigext'] == 1 ) {
-                $file = $file . ".webp";
-            } else {
-                $file = self::_replace_file_extension(
-                    $file,
-                    'webp'
-                );
-            }
+            $file = self::_get_webp_file_path($file);
         }
 
         /* Rewrite image file */
@@ -518,6 +544,23 @@ class Optimus_Request
             $extension,
             strlen(pathinfo($file, PATHINFO_EXTENSION)) * -1
         );
+    }
+
+    /**
+    * Gets the webp file path.
+    */
+    private static function _get_webp_file_path($file) {
+        $options = Optimus::get_options();
+        if ( $options['webp_keeporigext'] == 1 ) {
+            $file = $file . ".webp";
+        } else {
+            $file = self::_replace_file_extension(
+                $file,
+                'webp'
+            );
+        }
+
+        return $file;
     }
 
 
@@ -650,14 +693,7 @@ class Optimus_Request
         }
 
         /* Replace to or append webp extension */
-        if ( $options['webp_keeporigext'] == 1 ) {
-            $converted_file = $converted_file . ".webp";
-        } else {
-            $converted_file = self::_replace_file_extension(
-                $converted_file,
-                'webp'
-            );
-        }
+        $converted_file = self::_get_webp_file_path($converted_file);
 
         /* Remove if exists */
         if ( file_exists($converted_file) ) {

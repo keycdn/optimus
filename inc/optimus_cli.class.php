@@ -51,6 +51,36 @@ class Optimus_CLI extends WP_CLI_Command
         $formatter->display_items( $assets );
     }
 
+    /**
+     * sync-missing command.
+     *
+     * Checks if all the registered files really have the optimized version.
+     * Note: only works with convert to webp is enabled.
+     */
+    public static function syncMissing () {
+      $options = Optimus::get_options();
+      if ($options['webp_convert'] == 0) {
+        WP_CLI::error('sync-missing command only syncs webp missing images. Looks like you don\'t have this setting enabled.', TRUE);
+      }
+
+      // Retrieves the post ids with optimized assets registered in the DB.
+      $posts = Optimus_Management::bulk_optimized_assets();
+
+      foreach ($posts as $key => $post) {
+        $assets = Optimus_Request::get_files_paths($post['ID']);
+        foreach($assets as $asset_path) {
+          if (stream_resolve_include_path($asset_path) === FALSE) {
+            $metadata = wp_get_attachment_metadata($post['ID']);
+            // Unregister the optimus flags when the file is not longer there.
+            unset($metadata['optimus']);
+            update_post_meta($post['ID'], '_wp_attachment_metadata', $metadata);
+            // Registries works at post level.
+            break;
+          }
+        }
+      }
+    }
+
     private static function _optimize_image($img) {
         /* get metadata */
         $metadata = wp_get_attachment_metadata($img['ID']);
@@ -98,6 +128,11 @@ class Optimus_CLI extends WP_CLI_Command
                     'options'       => array( 'table', 'csv', 'json' ),
                 ),
             ),
+        ));
+
+        $cmd_syncmissing = function() { self::syncMissing(); };
+        WP_CLI::add_command( 'optimus sync-missing', $cmd_syncmissing, array(
+            'shortdesc' => 'Detects missing optimized assets.',
         ));
     }
 }
