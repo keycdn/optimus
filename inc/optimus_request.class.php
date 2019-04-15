@@ -314,7 +314,9 @@ class Optimus_Request
     * Gets all the files paths of the optimized images.
     */
     public static function get_files_paths($post_id) {
-       $metadata = wp_get_attachment_metadata($post_id);
+       if ( empty ( $metadata = wp_get_attachment_metadata( $post_id ) ) ) {
+         return array();
+       }
        $files = self::_get_files($metadata, $post_id);
        $post_files = array();
 
