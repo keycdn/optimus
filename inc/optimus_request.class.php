@@ -320,7 +320,7 @@ class Optimus_Request
        $files = self::_get_files($metadata, $post_id);
        $post_files = array();
 
-       foreach( $files as $file ) {
+       foreach ( $files as $file ) {
            $post_files[] = self::_get_webp_file_path($file['upload_path']);
        }
 
@@ -385,7 +385,7 @@ class Optimus_Request
 
         /* Search for thumbs */
         if ( ! empty($upload_data['sizes']) ) {
-            foreach( $upload_data['sizes'] as $thumb ) {
+            foreach ( $upload_data['sizes'] as $thumb ) {
                 if ( $thumb['file'] && ( empty($thumb['mime-type']) || self::_allowed_mime_type($thumb['mime-type']) ) ) {
                     $upload_url_file = path_join($upload_url, $thumb['file']);
                     $upload_path_file = path_join($upload_path, $thumb['file']);

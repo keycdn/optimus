@@ -52,29 +52,30 @@ class Optimus_CLI extends WP_CLI_Command
     }
 
     /**
-     * sync-missing command.
+     * webp sync command.
      *
      * Checks if all the registered files really have the optimized version.
-     * Note: only works with convert to webp is enabled.
+     * Note: Only works if convert to webp is enabled.
      */
     public static function syncMissingWebp () {
         $options = Optimus::get_options();
         if ($options['webp_convert'] == 0) {
-            WP_CLI::error('sync-missing command only syncs webp missing images. Looks like you don\'t have this setting enabled.', TRUE);
+            WP_CLI::error('webp sync command synchronizes the optimization status of attachments with actual files in the filesystem, but the webp feature is not enabled.', TRUE);
         }
 
-        // Retrieves the post ids with optimized assets registered in the DB.
+        // Retrieve all post IDs with positive optimization status in database.
         $posts = Optimus_Management::bulk_optimized_assets();
 
         foreach ($posts as $key => $post) {
             $assets = Optimus_Request::get_files_paths($post['ID']);
-            foreach($assets as $asset_path) {
+            foreach ($assets as $asset_path) {
                 if (stream_resolve_include_path($asset_path) === FALSE) {
                     $metadata = wp_get_attachment_metadata($post['ID']);
-                    // Unregister the optimus flags when the file is not longer there.
+                    // Remove the optimus metadata when the file does not exist.
                     unset($metadata['optimus']);
                     update_post_meta($post['ID'], '_wp_attachment_metadata', $metadata);
-                    // Registries works at post level.
+                    // No need to check further files as the whole attachment
+                    // will be re-optimized.
                     break;
                 }
             }
@@ -132,7 +133,7 @@ class Optimus_CLI extends WP_CLI_Command
 
         $cmd_syncmissing = function() { self::syncMissingWebp(); };
         WP_CLI::add_command( 'optimus webp sync', $cmd_syncmissing, array(
-            'shortdesc' => 'Detects missing optimized assets.',
+            'shortdesc' => 'Synchronizes actual webp file optimization status and missing files on disk with database.',
         ));
     }
 }
