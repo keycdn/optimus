@@ -14,25 +14,21 @@ defined('ABSPATH') OR exit;
 class Optimus_Request
 {
 
-
     /**
-    * Optimize image
-    *
-    * @var  string
-    */
-
+     * Optimize image
+     *
+     * @var  string
+     */
     private static $_remote_scheme = 'http';
 
-
     /**
-    * Image optimization post process (ajax)
-    *
-    * @since   1.3.8
-    * @change  1.4.10
-    *
-    * @return  json    $metadata    Update metadata information
-    */
-
+     * Image optimization post process (ajax)
+     *
+     * @since   1.3.8
+     * @change  1.4.10
+     *
+     * @return  json    $metadata    Update metadata information
+     */
     public static function optimize_image() {
         if (!check_ajax_referer('optimus-optimize', '_nonce', false)) {
             exit();
@@ -83,15 +79,14 @@ class Optimus_Request
     }
 
     /**
-    * Image optimization for wp retina 2x
-    *
-    * @since   1.4.6
-    * @change  1.4.7
-    *
-    * @param   integer  $attachment_id  Attachment ID
-    * @param   string  $upload_path_file_retina  Retina file path
-    */
-
+     * Image optimization for wp retina 2x
+     *
+     * @since   1.4.6
+     * @change  1.4.7
+     *
+     * @param   integer  $attachment_id  Attachment ID
+     * @param   string  $upload_path_file_retina  Retina file path
+     */
     public static function optimize_wr2x_image($attachment_id, $upload_path_file_retina) {
         // get file size
         $upload_filesize = (int)filesize($upload_path_file_retina);
@@ -134,18 +129,16 @@ class Optimus_Request
         }
     }
 
-
     /**
-    * Build optimization for a upload image including previews
-    *
-    * @since   0.0.1
-    * @change  1.4.8
-    *
-    * @param   array    $upload_data    Incoming upload information
-    * @param   integer  $attachment_id  Attachment ID
-    * @return  array    $upload_data    Renewed upload information
-    */
-
+     * Build optimization for a upload image including previews
+     *
+     * @since   0.0.1
+     * @change  1.4.8
+     *
+     * @param   array    $upload_data    Incoming upload information
+     * @param   integer  $attachment_id  Attachment ID
+     * @return  array    $upload_data    Renewed upload information
+     */
     public static function optimize_upload_images($upload_data, $attachment_id) {
         /* Get plugin options */
         $options = Optimus::get_options();
@@ -311,8 +304,8 @@ class Optimus_Request
     }
 
     /**
-    * Gets all the files paths of the optimized images.
-    */
+     * Gets all the files paths of the optimized images.
+     */
     public static function get_files_paths($post_id) {
        if ( empty ( $metadata = wp_get_attachment_metadata( $post_id ) ) ) {
          return array();
@@ -328,8 +321,8 @@ class Optimus_Request
     }
 
     /**
-    * Gets files information from the upload data.
-    */
+     * Gets files information from the upload data.
+     */
     private static function _get_files(&$upload_data, $attachment_id) {
         /* Get plugin options */
         $options = Optimus::get_options();
@@ -407,19 +400,18 @@ class Optimus_Request
     }
 
     /**
-    * Handle image actions
-    *
-    * @since   1.1.4
-    * @change  1.4.8
-    *
-    * @param   string  $file  Image file
-    * @param   array   $args  Request arguments
-    * @return  array          Request failed with an error code
-    * @return  false          An error has occurred
-    * @return  null           Empty response with 204 status code
-    * @return  intval         Response content length
-    */
-
+     * Handle image actions
+     *
+     * @since   1.1.4
+     * @change  1.4.8
+     *
+     * @param   string  $file  Image file
+     * @param   array   $args  Request arguments
+     * @return  array          Request failed with an error code
+     * @return  false          An error has occurred
+     * @return  null           Empty response with 204 status code
+     * @return  intval         Response content length
+     */
     private static function _do_image_action($file, $args)
     {
         /* Start request */
@@ -471,18 +463,16 @@ class Optimus_Request
         return $response_length;
     }
 
-
     /**
-    * Optimus API request
-    *
-    * @since   1.1.4
-    * @change  1.4.3
-    *
-    * @param   string  $file  Image file
-    * @param   array   $args  Request arguments
-    * @return  array          Response data
-    */
-
+     * Optimus API request
+     *
+     * @since   1.1.4
+     * @change  1.4.3
+     *
+     * @param   string  $file  Image file
+     * @param   array   $args  Request arguments
+     * @return  array          Response data
+     */
     private static function _do_api_request($file, $args)
     {
         return wp_safe_remote_post(
@@ -504,17 +494,15 @@ class Optimus_Request
         );
     }
 
-
     /**
-    * Get optimus task depending on $args array
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    *
-    * @param   array   $args  Array mit arguments
-    * @return  string         Current optimus task
-    */
-
+     * Get optimus task depending on $args array
+     *
+     * @since   1.1.9
+     * @change  1.1.9
+     *
+     * @param   array   $args  Array mit arguments
+     * @return  string         Current optimus task
+     */
     private static function _curl_optimus_task($args)
     {
         if ( ! empty($args['copy']) ) {
@@ -527,18 +515,16 @@ class Optimus_Request
         return 'optimize';
     }
 
-
     /**
-    * Adjustment of the file extension
-    *
-    * @since   1.1.4
-    * @change  1.3.0
-    *
-    * @param   string  $file       File path
-    * @param   string  $extension  Target extension
-    * @return  string              Renewed file path
-    */
-
+     * Adjustment of the file extension
+     *
+     * @since   1.1.4
+     * @change  1.3.0
+     *
+     * @param   string  $file       File path
+     * @param   string  $extension  Target extension
+     * @return  string              Renewed file path
+     */
     private static function _replace_file_extension($file, $extension)
     {
         return substr_replace(
@@ -549,8 +535,8 @@ class Optimus_Request
     }
 
     /**
-    * Gets the webp file path.
-    */
+     * Gets the webp file path.
+     */
     private static function _get_webp_file_path($file) {
         $options = Optimus::get_options();
         if ( $options['webp_keeporigext'] == 1 ) {
@@ -565,17 +551,15 @@ class Optimus_Request
         return $file;
     }
 
-
     /**
-    * Prüfung des erlaubten Bildtyps pro Datei
-    *
-    * @since   1.1.0
-    * @change  1.1.7
-    *
-    * @param   string   $mime_type  Mime Type
-    * @return  boolean              TRUE bei bestehender Prüfung
-    */
-
+     * Prüfung des erlaubten Bildtyps pro Datei
+     *
+     * @since   1.1.0
+     * @change  1.1.7
+     *
+     * @param   string   $mime_type  Mime Type
+     * @return  boolean              TRUE bei bestehender Prüfung
+     */
     private static function _allowed_mime_type($mime_type)
     {
         /* Leer? */
@@ -590,18 +574,16 @@ class Optimus_Request
         );
     }
 
-
     /**
-    * Prüfung der erlaubten Bildgröße pro Dateityp
-    *
-    * @since   1.1.0
-    * @change  1.1.7
-    *
-    * @param   string   $mime_type  Mime Type
-    * @param   integer  $file_size  Bild-Größe
-    * @return  boolean              TRUE bei bestehender Prüfung
-    */
-
+     * Prüfung der erlaubten Bildgröße pro Dateityp
+     *
+     * @since   1.1.0
+     * @change  1.1.7
+     *
+     * @param   string   $mime_type  Mime Type
+     * @param   integer  $file_size  Bild-Größe
+     * @return  boolean              TRUE bei bestehender Prüfung
+     */
     private static function _allowed_file_size($mime_type, $file_size)
     {
         /* Leer? */
@@ -620,16 +602,14 @@ class Optimus_Request
         return true;
     }
 
-
     /**
-    * Return Optimus quota for a plugin type
-    *
-    * @since   1.1.0
-    * @change  1.4.0
-    *
-    * @return  array  Optimus quota
-    */
-
+     * Return Optimus quota for a plugin type
+     *
+     * @since   1.1.0
+     * @change  1.4.0
+     *
+     * @return  array  Optimus quota
+     */
     private static function _get_request_quota()
     {
         /* Quota */
@@ -651,17 +631,15 @@ class Optimus_Request
         return $quota[ Optimus_HQ::is_unlocked() ];
     }
 
-
     /**
-    * Löscht erzeugte WebP-Dateien
-    *
-    * @since   1.1.4
-    * @change  1.4.6
-    *
-    * @param   string  $file  Zu löschende Original-Datei
-    * @return  string  $file  Zu löschende Original-Datei
-    */
-
+     * Löscht erzeugte WebP-Dateien
+     *
+     * @since   1.1.4
+     * @change  1.4.6
+     *
+     * @param   string  $file  Zu löschende Original-Datei
+     * @return  string  $file  Zu löschende Original-Datei
+     */
     public static function delete_converted_file($file) {
         /* Plugin options */
         $options = Optimus::get_options();
@@ -705,18 +683,16 @@ class Optimus_Request
         return $file;
     }
 
-
     /**
-    * Ermittelt die Differenz der Dateigröße
-    *
-    * @since   0.0.1
-    * @change  1.1.7
-    *
-    * @param   intval  $before  Größe vor der Optimierung in Bytes
-    * @param   intval  $after   Größe nach der Optimierung in Bytes
-    * @return  intval           Ermittelte Differenz
-    */
-
+     * Ermittelt die Differenz der Dateigröße
+     *
+     * @since   0.0.1
+     * @change  1.1.7
+     *
+     * @param   intval  $before  Größe vor der Optimierung in Bytes
+     * @param   intval  $after   Größe nach der Optimierung in Bytes
+     * @return  intval           Ermittelte Differenz
+     */
     private static function _calculate_diff_filesize($before, $after)
     {
         /* Konvertieren */

@@ -14,22 +14,19 @@ defined('ABSPATH') OR exit;
 class Optimus_HQ
 {
 
-
     /* Private vars */
     private static $_is_locked = NULL;
     private static $_is_unlocked = NULL;
 
-
     /**
-    * Interne Prüfung auf Optimus HQ
-    * P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    *
-    * @return  boolean  TRUE wenn Optimus HQ nicht freigeschaltet
-    */
-
+     * Interne Prüfung auf Optimus HQ
+     * P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+     *
+     * @since   1.1.9
+     * @change  1.1.9
+     *
+     * @return  boolean  TRUE wenn Optimus HQ nicht freigeschaltet
+     */
     public static function is_locked()
     {
         if ( self::$_is_locked !== NULL ) {
@@ -44,17 +41,15 @@ class Optimus_HQ
         return $is_locked;
     }
 
-
     /**
-    * Interne Prüfung auf Optimus HQ
-    * P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    *
-    * @return  boolean  TRUE wenn Optimus HQ freigeschaltet
-    */
-
+     * Interne Prüfung auf Optimus HQ
+     * P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+     *
+     * @since   1.1.9
+     * @change  1.1.9
+     *
+     * @return  boolean  TRUE wenn Optimus HQ freigeschaltet
+     */
     public static function is_unlocked()
     {
         if ( self::$_is_unlocked !== NULL ) {
@@ -64,17 +59,15 @@ class Optimus_HQ
         return ! self::is_locked();
     }
 
-
     /**
-    * Ablaufdatum von Optimus HQ
-    * P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
-    *
-    * @since   1.1.9
-    * @change  1.1.9
-    *
-    * @return  mixed  FALSE/Date  Datum im Erfolgsfall
-    */
-
+     * Ablaufdatum von Optimus HQ
+     * P.S. Manipulation bringt nichts, da serverseitige Prüfung. Peace!
+     *
+     * @since   1.1.9
+     * @change  1.1.9
+     *
+     * @return  mixed  FALSE/Date  Datum im Erfolgsfall
+     */
     public static function best_before()
     {
         /* Key exists? */
@@ -126,31 +119,27 @@ class Optimus_HQ
         return $expiration_time;
     }
 
-
     /**
-    * Return the license key
-    *
-    * @since   1.1.0
-    * @change  1.1.9
-    *
-    * @return  string  Optimus HQ Key
-    */
-
+     * Return the license key
+     *
+     * @since   1.1.0
+     * @change  1.1.9
+     *
+     * @return  string  Optimus HQ Key
+     */
     public static function get_key()
     {
         return get_site_option('optimus_key');
     }
 
-
     /**
-    * Update the license key
-    *
-    * @since   1.1.0
-    * @change  1.1.9
-    *
-    * @return  mixed  $value  Optimus HQ Key value
-    */
-
+     * Update the license key
+     *
+     * @since   1.1.0
+     * @change  1.1.9
+     *
+     * @return  mixed  $value  Optimus HQ Key value
+     */
     private static function _update_key($value)
     {
         update_site_option(
@@ -159,16 +148,14 @@ class Optimus_HQ
         );
     }
 
-
     /**
-    * Return the purchase timestamp
-    *
-    * @since   1.1.9
-    * @change  1.5.0
-    *
-    * @return  string  Optimus HQ purchase timestamp
-    */
-
+     * Return the purchase timestamp
+     *
+     * @since   1.1.9
+     * @change  1.5.0
+     *
+     * @return  string  Optimus HQ purchase timestamp
+     */
     public static function get_purchase_time($renew = false)
     {
         $purchase_time = get_site_option('optimus_purchase_time', 0);
@@ -210,14 +197,12 @@ class Optimus_HQ
         return $purchase_time;
     }
 
-
     /**
-    * Ausgabe des Eingabefeldes für den Optimus HQ Key
-    *
-    * @since   1.1.0
-    * @change  1.3.2
-    */
-
+     * Ausgabe des Eingabefeldes für den Optimus HQ Key
+     *
+     * @since   1.1.0
+     * @change  1.3.2
+     */
     public static function display_key_input()
     {
         /* Plausibility check */
@@ -267,14 +252,12 @@ class Optimus_HQ
           </style>
     <?php }
 
-
     /**
-    * Verify und store the Optimus HQ key
-    *
-    * @since   1.1.0
-    * @change  1.3.2
-    */
-
+     * Verify und store the Optimus HQ key
+     *
+     * @since   1.1.0
+     * @change  1.3.2
+     */
     public static function verify_key_input()
     {
         /* Action check */
@@ -322,15 +305,13 @@ class Optimus_HQ
         die();
     }
 
-
     /**
-    * Steuerung der Ausgabe von Admin-Notizen
-    *
-    * @since   1.1.0
-    * @change  1.2.0
-    */
-
-     public static function optimus_hq_notice()
+     * Steuerung der Ausgabe von Admin-Notizen
+     *
+     * @since   1.1.0
+     * @change  1.2.0
+     */
+    public static function optimus_hq_notice()
     {
         /* Check admin pages */
         if ( ! in_array($GLOBALS['pagenow'], array('plugins.php', 'index.php') ) ) {

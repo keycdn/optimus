@@ -14,17 +14,15 @@ defined('ABSPATH') OR exit;
 class Optimus_Media
 {
 
-
     /**
-    * Media column output
-    *
-    * @since   0.0.1
-    * @change  1.3.0
-    *
-    * @param   array  $columns  Available columns
-    * @return  array            Renewed columns
-    */
-
+     * Media column output
+     *
+     * @since   0.0.1
+     * @change  1.3.0
+     *
+     * @param   array  $columns  Available columns
+     * @return  array            Renewed columns
+     */
     public static function manage_columns($columns)
     {
         return array_merge(
@@ -35,17 +33,15 @@ class Optimus_Media
         );
     }
 
-
     /**
-    * Print Optimus values as column
-    *
-    * @since   0.0.1
-    * @change  1.3.0
-    *
-    * @param   string   $column  Column name
-    * @param   integer  $id      Current object ID
-    */
-
+     * Print Optimus values as column
+     *
+     * @since   0.0.1
+     * @change  1.3.0
+     *
+     * @param   string   $column  Column name
+     * @param   integer  $id      Current object ID
+     */
     public static function manage_column($column, $id)
     {
         /* Falsche Spalte? */
@@ -56,17 +52,15 @@ class Optimus_Media
         echo self::_column_html($id);
     }
 
-
     /**
-    * Returns the formatted column as HTML
-    *
-    * @since   0.0.1
-    * @change  1.3.0
-    *
-    * @param   intval  $id  Object ID
-    * @return  string       Column HTML
-    */
-
+     * Returns the formatted column as HTML
+     *
+     * @since   0.0.1
+     * @change  1.3.0
+     *
+     * @param   intval  $id  Object ID
+     * @return  string       Column HTML
+     */
     private static function _column_html($id)
     {
         /* Attachment metadata */
@@ -94,17 +88,15 @@ class Optimus_Media
         );
     }
 
-
     /**
-    * Specifies the CSS class depending on the amount of compressed files
-    *
-    * @since   0.0.8
-    * @change  1.3.0
-    *
-    * @param   intval  $quantity  File quantity
-    * @return  string             Optimus CSS class
-    */
-
+     * Specifies the CSS class depending on the amount of compressed files
+     *
+     * @since   0.0.8
+     * @change  1.3.0
+     *
+     * @param   intval  $quantity  File quantity
+     * @return  string             Optimus CSS class
+     */
     private static function _pie_class($quantity)
     {
         /* Init */

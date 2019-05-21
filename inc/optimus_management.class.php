@@ -14,14 +14,12 @@ defined('ABSPATH') OR exit;
 class Optimus_Management
 {
 
-
     /**
-    * Bulk optimizer media
-    *
-    * @since   1.3.8
-    * @change  1.4.4
-    */
-
+     * Bulk optimizer media
+     *
+     * @since   1.3.8
+     * @change  1.4.4
+     */
     public static function bulk_optimizer_media() {
         check_admin_referer('bulk-media');
 
@@ -38,14 +36,12 @@ class Optimus_Management
         exit();
     }
 
-
     /**
-    * Add bulk optimizer page
-    *
-    * @since   1.3.8
-    * @change  1.3.8
-    */
-
+     * Add bulk optimizer page
+     *
+     * @since   1.3.8
+     * @change  1.3.8
+     */
     public static function add_bulk_optimizer_page()
     {
         /* Management page */
@@ -96,11 +92,11 @@ class Optimus_Management
     }
 
     /**
-    * Bulk optimizer collect assets
-    *
-    * @since   1.5.0
-    *
-    */
+     * Bulk optimizer collect assets
+     *
+     * @since   1.5.0
+     *
+     */
     public static function bulk_optimizer_assets() {
         global $wpdb;
 
@@ -122,8 +118,8 @@ class Optimus_Management
     }
 
     /**
-    * Gets all assets registered as already optimized.
-    */
+     * Gets all assets registered as already optimized.
+     */
     public static function bulk_optimized_assets() {
         global $wpdb;
 
@@ -145,13 +141,12 @@ class Optimus_Management
     }
 
     /**
-    * Bulk optimizer page
-    *
-    * @since   1.3.8
-    * @change  1.5.0
-    *
-    */
-
+     * Bulk optimizer page
+     *
+     * @since   1.3.8
+     * @change  1.5.0
+     *
+     */
     public static function bulk_optimizer_page() {
         $assets = self::bulk_optimizer_assets();
         $count = count($assets);

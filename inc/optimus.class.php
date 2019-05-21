@@ -6,35 +6,31 @@ defined('ABSPATH') OR exit;
 
 
 /**
-* Optimus
-*
-* @since 0.0.1
-*/
+ * Optimus
+ *
+ * @since 0.0.1
+ */
 
 class Optimus
 {
 
-
     /**
-    * Pseudo-Konstruktor der Klasse
-    *
-    * @since   0.0.1
-    * @change  0.0.1
-    */
-
+     * Pseudo-Konstruktor der Klasse
+     *
+     * @since   0.0.1
+     * @change  0.0.1
+     */
     public static function instance()
     {
         new self();
     }
 
-
     /**
-    * Konstruktor der Klasse
-    *
-    * @since   0.0.1
-    * @change  1.4.6
-    */
-
+     * Konstruktor der Klasse
+     *
+     * @since   0.0.1
+     * @change  1.4.6
+     */
     public function __construct()
     {
         /* Get plugin options */
@@ -165,18 +161,15 @@ class Optimus
 
     }
 
-
-
     /**
-    * Hinzufügen der Action-Links
-    *
-    * @since   1.1.2
-    * @change  1.1.2
-    *
-    * @param   array  $data  Bereits existente Links
-    * @return  array  $data  Erweitertes Array mit Links
-    */
-
+     * Hinzufügen der Action-Links
+     *
+     * @since   1.1.2
+     * @change  1.1.2
+     *
+     * @param   array  $data  Bereits existente Links
+     * @return  array  $data  Erweitertes Array mit Links
+     */
     public static function add_action_link($data)
     {
         /* Rechte? */
@@ -201,18 +194,16 @@ class Optimus
         );
     }
 
-
     /**
-    * Hinzufügen der Meta-Informationen
-    *
-    * @since   0.0.1
-    * @change  1.1.8
-    *
-    * @param   array   $rows  Array mit Links
-    * @param   string  $file  Name des Plugins
-    * @return  array          Array mit erweitertem Link
-    */
-
+     * Hinzufügen der Meta-Informationen
+     *
+     * @since   0.0.1
+     * @change  1.1.8
+     *
+     * @param   array   $rows  Array mit Links
+     * @param   string  $file  Name des Plugins
+     * @return  array          Array mit erweitertem Link
+     */
     public static function add_row_meta($rows, $file)
     {
         /* Restliche Plugins? */
@@ -258,14 +249,12 @@ class Optimus
         return $rows;
     }
 
-
     /**
-    * Run uninstall hook
-    *
-    * @since   1.1.0
-    * @change  1.1.8
-    */
-
+     * Run uninstall hook
+     *
+     * @since   1.1.0
+     * @change  1.1.8
+     */
     public static function handle_uninstall_hook()
     {
         delete_option('optimus');
@@ -273,14 +262,12 @@ class Optimus
         delete_site_option('optimus_purchase_time');
     }
 
-
     /**
-    * Run activation hook
-    *
-    * @since   1.2.0
-    * @change  1.2.0
-    */
-
+     * Run activation hook
+     *
+     * @since   1.2.0
+     * @change  1.2.0
+     */
     public static function handle_activation_hook() {
         set_transient(
             'optimus_activation_hook_in_use',
@@ -289,14 +276,12 @@ class Optimus
         );
     }
 
-
     /**
-    * Check plugin requirements
-    *
-    * @since   1.3.1
-    * @change  1.3.1
-    */
-
+     * Check plugin requirements
+     *
+     * @since   1.3.1
+     * @change  1.3.1
+     */
     public static function optimus_requirements_check() {
         /* WordPress version check */
         if ( version_compare($GLOBALS['wp_version'], OPTIMUS_MIN_WP.'alpha', '<') ) {
@@ -325,16 +310,14 @@ class Optimus
         }
     }
 
-
     /**
-    * Return plugin options
-    *
-    * @since   1.1.2
-    * @change  1.4.0
-    *
-    * @return  array  $diff  Data pairs
-    */
-
+     * Return plugin options
+     *
+     * @since   1.1.2
+     * @change  1.4.0
+     *
+     * @return  array  $diff  Data pairs
+     */
     public static function get_options()
     {
         return wp_parse_args(
@@ -350,13 +333,12 @@ class Optimus
         );
     }
 
-
     /**
-    * Hinzufügen von JavaScript und Styles
-    *
-    * @since   1.3.8
-    * @change  1.3.8
-    */
+     * Hinzufügen von JavaScript und Styles
+     *
+     * @since   1.3.8
+     * @change  1.3.8
+     */
     public static function add_js_css()
     {
         wp_register_style(

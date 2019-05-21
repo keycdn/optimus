@@ -6,9 +6,9 @@ defined('ABSPATH') OR exit;
 
 
 /**
-* Optimus WP-CLI
-*
-*/
+ * Optimus WP-CLI
+ *
+ */
 
 class Optimus_CLI extends WP_CLI_Command
 {

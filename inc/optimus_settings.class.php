@@ -14,14 +14,12 @@ defined('ABSPATH') OR exit;
 class Optimus_Settings
 {
 
-
     /**
-    * Registrierung der Settings
-    *
-    * @since   1.0.0
-    * @change  1.3.1
-    */
-
+     * Registrierung der Settings
+     *
+     * @since   1.0.0
+     * @change  1.3.1
+     */
     public static function register_settings()
     {
         register_setting(
@@ -34,17 +32,15 @@ class Optimus_Settings
         );
     }
 
-
     /**
-    * Valisierung der Optionsseite
-    *
-    * @since   1.0.0
-    * @change  1.5.0
-    *
-    * @param   array  $data  Array mit Formularwerten
-    * @return  array         Array mit geprüften Werten
-    */
-
+     * Valisierung der Optionsseite
+     *
+     * @since   1.0.0
+     * @change  1.5.0
+     *
+     * @param   array  $data  Array mit Formularwerten
+     * @return  array         Array mit geprüften Werten
+     */
     public static function validate_settings($data)
     {
         return array(
@@ -57,14 +53,12 @@ class Optimus_Settings
         );
     }
 
-
     /**
-    * Einfügen der Optionsseite
-    *
-    * @since   1.0.0
-    * @change  1.3.1
-    */
-
+     * Einfügen der Optionsseite
+     *
+     * @since   1.0.0
+     * @change  1.3.1
+     */
     public static function add_page()
     {
         $page = add_options_page(
@@ -79,16 +73,14 @@ class Optimus_Settings
         );
     }
 
-
     /**
-    * Darstellung der Optionsseite
-    *
-    * @since   1.0.0
-    * @change  1.4.0
-    *
-    * @return  void
-    */
-
+     * Darstellung der Optionsseite
+     *
+     * @since   1.0.0
+     * @change  1.4.0
+     *
+     * @return  void
+     */
     public static function settings_page()
     { ?>
         <div class="wrap">
