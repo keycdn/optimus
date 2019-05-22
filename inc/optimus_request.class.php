@@ -170,7 +170,7 @@ class Optimus_Request
 
         /* Get all images from the attachment */
         $diff_filesizes = array();
-        $todo_files = self::_get_files($upload_data, $attachment_id);
+        list($todo_files, $mime_type) = self::_get_files($upload_data, $attachment_id);
 
         /* No images to process */
         if ( empty($todo_files) ) {
@@ -310,7 +310,7 @@ class Optimus_Request
        if ( empty ( $metadata = wp_get_attachment_metadata( $post_id ) ) ) {
          return array();
        }
-       $files = self::_get_files($metadata, $post_id);
+       list($files, $mime_type) = self::_get_files($metadata, $post_id);
        $post_files = array();
 
        foreach ( $files as $file ) {
@@ -322,6 +322,9 @@ class Optimus_Request
 
     /**
      * Gets files information from the upload data.
+     *
+     * @return array
+     *   Array containing the array of files and the mime type.
      */
     private static function _get_files(&$upload_data, $attachment_id) {
         /* Get plugin options */
@@ -396,7 +399,7 @@ class Optimus_Request
             $todo_files = array_reverse($todo_files);
         }
 
-        return $todo_files;
+        return array($todo_files, $mime_type);
     }
 
     /**
