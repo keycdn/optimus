@@ -24,7 +24,7 @@ Optimus reduces the file size of uploaded media files automatically. Depending o
 > 2. **Optimus HQ** *(Premium)* with expanded functionality for personal projects
 > 3. **Optimus HQ PRO** *(Premium)* as professional solution for customer websites
 >
-> More details about the features and the pricing model on [optimus.io](https://optimus.io/en/)
+> More details about the features and the pricing model on [optimus.io](https://optimus.io)
 
 
 = How does it work? =
