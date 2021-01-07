@@ -21,7 +21,7 @@
             row.find('.bar').css('width', '100%')
             row.find('.percent').html(data.info)
             row.find('.progress').attr("title", data.info)
-        } else if (typeof data.optimus.quantity != "undefined") {
+        } else if (typeof data.optimus != "undefined" && typeof data.optimus.quantity != "undefined") {
             if (data.optimus.quantity < 100) {
                 status.addClass('partial')
                 row.find('.bar').css('width', data.optimus.quantity + '%')
