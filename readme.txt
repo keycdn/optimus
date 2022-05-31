@@ -1,16 +1,15 @@
 === Optimus - WordPress Image Optimizer ===
 Contributors: keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp, image optimizer, wordpress image optimizer, optimize image, optimize jpg, optimize jpeg, optimize png, compress image, progressive jpeg, progressive jpg
-Requires at least: 4.6
 Tested up to: 6.0
-Stable tag: trunk
+Stable tag: 1.6.1
+Requires at least: 4.6
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 
-
 Effective image compression and optimization during the upload process. Smart, automatic and reliable.
-
 
 
 == Description ==
@@ -23,8 +22,8 @@ Optimus reduces the file size of uploaded media files automatically. Depending o
 > 1. **Optimus** *(Free)* as base version with limitations (e.g. max of 100kb)
 > 2. **Optimus HQ** *(Premium)* with expanded functionality for personal projects
 > 3. **Optimus HQ PRO** *(Premium)* as professional solution for customer websites
->
-> More details about the features and the pricing model on [optimus.io](https://optimus.io)
+
+More details about the features and the pricing model on [optimus.io](https://optimus.io)
 
 
 = How does it work? =
