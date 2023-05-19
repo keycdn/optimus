@@ -1,7 +1,7 @@
 === Optimus - WordPress Image Optimizer ===
 Contributors: keycdn
 Tags: images, optimize, compress, progressive, performance, png, jpeg, webp, image optimizer, wordpress image optimizer, optimize image, optimize jpg, optimize jpeg, optimize png, compress image, progressive jpeg, progressive jpg
-Tested up to: 6.1
+Tested up to: 6.2
 Stable tag: 1.6.3
 Requires at least: 4.6
 Requires PHP: 5.6
