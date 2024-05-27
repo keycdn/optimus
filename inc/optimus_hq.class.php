@@ -138,6 +138,10 @@ class Optimus_HQ
 
     public static function get_key()
     {
+        if (defined('OPTIMUS_KEY')) {
+            return OPTIMUS_KEY;
+        }
+
         return get_site_option('optimus_key');
     }
 
