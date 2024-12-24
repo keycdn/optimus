@@ -1,7 +1,7 @@
 === Optimus - WordPress Image Optimizer ===
 Contributors: keycdn
 Tags: image optimizer, wordpress image optimizer, optimize image, images, webp
-Tested up to: 6.5
+Tested up to: 6.7
 Stable tag: 1.6.3
 Requires at least: 4.6
 Requires PHP: 5.6
